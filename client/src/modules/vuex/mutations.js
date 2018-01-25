@@ -2,11 +2,11 @@ import * as types from './type'
 
 export default {
   [types.SET_TOKEN] (state, data) {
-    localStorage.setItem('token', data.token);
+    sessionStorage.setItem('token', data.token);
     state.token = data;
   },
   [types.LOG_OUT] (state) {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     state.token = '';
   },
   [types.GET_LIST] (state, data) {
@@ -20,5 +20,8 @@ export default {
   },
   ['showLoading'](state){
     state.onLoading = !state.onLoading;
+  },
+  [types.GET_ALL_TAG_CLASSIC](state,data){
+    state.tagAndClassicList = data;
   }
 }

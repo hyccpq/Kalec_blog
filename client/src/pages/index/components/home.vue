@@ -9,7 +9,7 @@
 
       <ul class="home-content-center">
         <router-link to="/index"><li>》网络日志(Blog)</li></router-link>
-        <li>》相册</li>
+        <li @click.naitve="onClickPt">》相册</li>
       </ul>
 
       <div class="home-content-bottom">
@@ -27,6 +27,20 @@
 		name: "home",
     components:{
 		  myFooter
+    },
+    methods:{
+		  onClickPt(){
+        this.$Notice.warning({
+          title: '抱歉',
+          desc: '施工中，敬请期待~'
+        })
+      }
+    },
+    mounted(){
+      this.$Notice.config({
+        top: 80,
+        duration: 3
+      });
     }
 	}
 </script>

@@ -4,10 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router/index'
 import store from '../../modules/vuex/store'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'
 import axios from '../../modules/util/axios'
-
+import { Notice } from 'iview'
+import 'iview/dist/styles/iview.css'
 
 router.beforeEach((to,from,next)=>{
   let token = localStorage.getItem('token');
@@ -25,8 +24,9 @@ router.beforeEach((to,from,next)=>{
 
 
 Vue.config.productionTip = false;
-Vue.use(iView);
 Vue.prototype.axios = axios;
+Vue.prototype.$Notice = Notice;
+
 
 
 /* eslint-disable no-new */

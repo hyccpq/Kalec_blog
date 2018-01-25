@@ -55,26 +55,29 @@
   background: #000;
   opacity: .3;
   position: fixed;
-  z-index: 5;
+  z-index: 1600;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
 .block {
-  width: 100%;
+  width: 300px;
   position: fixed;
   max-height: 50%;
   overflow: auto;
   top: 20%;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 2000;
 }
 .dialog-content {
-  width: 360px;
+  width: 300px;
   background: #fff;
   border: 1px solid #464068;
   border-radius: 10px;
-  padding: 1%;
+  padding: 6%;
   line-height: 1.6;
   margin: 0 auto;
 }

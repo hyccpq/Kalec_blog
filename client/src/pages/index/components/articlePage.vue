@@ -13,7 +13,9 @@
       <div class="about-info"><Icon type="cube" class="about-info-icon"></Icon>{{articleInfo.classic}}</div>
       <div class="about-info"><Icon type="calendar" class="about-info-icon"></Icon>{{articleInfo.time}}</div>
       <ul class="about-info"><Icon type="ios-pricetags-outline" class="about-info-icon"></Icon>
-         <li v-for="item in articleInfo.tag"><Tag type="dot" color="#5cadff">{{item.tagName}}</Tag></li>
+         <li v-for="item in articleInfo.tag">
+           <Tag :tag-name="item.tagName"></Tag>
+         </li>
       </ul>
     </div>
     <article-toggle class="new-toggle"></article-toggle>
@@ -32,12 +34,14 @@
 <script>
 	import {mapState,mapActions} from 'vuex'
   import articleToggle from './plug/articleToggle'
-  import loading from './plug/Loading'
+  import { Breadcrumb,BreadcrumbItem,Icon } from 'iview'
+  import Tag from './plug/Tag'
   import '../assets/css/markdown.css'
   export default {
 		name: "article-page",
     components:{
-      articleToggle
+      articleToggle,
+      Breadcrumb,BreadcrumbItem,Icon,Tag
     },
     data(){
 		  return {
@@ -82,7 +86,7 @@
             value.insertAdjacentHTML('beforebegin',`<a class="anchor" id="${value.localName}-${index}"></a>`);
             this.toggle.push({
               tagName: value.tagName,
-              text: value.innerText,
+              text: '•\n'+value.innerText,
               href: `#${value.localName}-${index}`,
             })
           });

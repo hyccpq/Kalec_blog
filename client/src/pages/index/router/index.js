@@ -9,6 +9,7 @@ Vue.use(Router)
 
 export default new Router({
   mode:'history',
+  saveScrollPosition:true,
   routes: [
     {
       path:'/',
@@ -18,10 +19,21 @@ export default new Router({
     {
       path: '/index',
       component: index,
+      redirect:'/index/1',
       children:[
         {
-          path:'/',
+          path:'/index/:page',
           name: '主文章页面',
+          component: pageList
+        },
+        {
+          path: '/classic/:class/:page',
+          name: '文章类别列表',
+          component: pageList
+        },
+        {
+          path: '/tag/:tag/:page',
+          name: '文章标签页',
           component: pageList
         },
         {

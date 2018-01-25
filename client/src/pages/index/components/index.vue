@@ -3,7 +3,7 @@
     <loading :onLoading="onLoading"></loading>
     <el-nav @onChange="changeLog" @log-out="closeShowLog" :show-log="showLog" :username="username" class="my-nav" @showSideBox="showSideBox"></el-nav>
     <login-form :is-showlog="isShowlog" @onChange="changeLog">
-      <on-form @has-log="hasLog"></on-form>
+      <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长登录
     </login-form>
     <cover-image class="cover"></cover-image>
     <div class="all-content">
@@ -20,13 +20,12 @@
 </template>
 
 <script>
-// import elNav from '../components/ui/nav'
 import abstract from './plug/abstract'
 import myFooter from './plug/footer'
 import coverImage from './plug/coverImage'
 import elNav from '../components/plug/nav'
 import loginForm from '../components/plug/login'
-import onForm from '../components/plug/form'
+// import onForm from '../components/plug/form'
 import loading from './plug/Loading'
 import {mapState} from 'vuex'
 export default {
@@ -37,7 +36,7 @@ export default {
     coverImage,
     elNav,
     loginForm,
-    onForm,
+    // onForm,
     loading
   },
   data(){
@@ -57,7 +56,7 @@ export default {
   methods:{
     showSideBox(){
       this.isShowSideBox = !this.isShowSideBox;
-      console.log(this.isShowSideBox);
+      // console.log(this.isShowSideBox);
     },
     closeSideBox(){
       this.isShowSideBox = false;
@@ -127,7 +126,7 @@ export default {
         padding 5px
       .right-content
         position fixed
-        left 0px
+        left 0
         top 60px
         bottom 0
         -webkit-transform: translateX(-330px)

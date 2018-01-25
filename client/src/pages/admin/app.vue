@@ -1,12 +1,11 @@
 <template>
-    <div>
-      有没有东西呀?????
-      <admin></admin>
+    <div id="app">
+      <router-view></router-view>
     </div>
 </template>
 
 <script>
-  import admin from './admin/admin'
+  import admin from './componets/admin'
 	export default {
 		name: "app",
     components:{
@@ -15,6 +14,14 @@
 	}
 </script>
 
-<style scoped>
-
+<style>
+html,body,#app{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+  .content-input-wrapper{
+    overflow: auto;
+  }
 </style>

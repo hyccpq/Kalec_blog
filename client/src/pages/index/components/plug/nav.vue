@@ -1,64 +1,64 @@
 <template>
-  <Menu mode="horizontal" :theme="'dark'" id="nav" @on-select="onSelect">
-    <MenuItem name="-1" class="nav-menu-button">
-      <div><Icon class="icon-menu" type="navicon-round" size="25"></Icon></div>
-    </MenuItem>
-    <MenuItem name="0" class="nav-title">
-      <div style="height: 60px; color: aqua ">冰空的作品展示</div>
-    </MenuItem>
+<div id="nav">
+  <iMenu mode="horizontal" :theme="'dark'" id="nav" @on-select="onSelect">
+    <iMenuItem name="-1" class="nav-menu-button">
+      <Icon class="icon-menu" type="navicon-round" size="30"></Icon>
+    </iMenuItem>
+    <iMenuItem name="0" class="nav-title">
+      <div>冰空的作品展示</div>
+    </iMenuItem>
     <div class="set-center"></div>
     <Row type="flex" justify="end" class="code-row-bg">
-      <MenuItem name="1">
-          <router-link to="/index">
-            <div><Icon type="ios-home-outline"></Icon>
-          首页</div>
-          </router-link>
-      </MenuItem>
-      <MenuItem name="2">
-          <div><Icon type="ios-photos-outline"></Icon>
+      <iMenuItem name="1">
+        <router-link to="/index">
+          <div><Icon type="ios-home-outline"></Icon>
+            首页</div>
+        </router-link>
+      </iMenuItem>
+      <iMenuItem name="2">
+        <div><Icon type="ios-photos-outline"></Icon>
           相册</div>
-      </MenuItem>
+      </iMenuItem>
       <Submenu name="3">
-          <template slot="title">
-              <Icon type="ios-pricetags-outline"></Icon>
-              分类
-          </template>
-          <MenuGroup title="使用">
-              <MenuItem name="3-1">新增和启动</MenuItem>
-              <MenuItem name="3-2">活跃分析</MenuItem>
-              <MenuItem name="3-3">时段分析</MenuItem>
-          </MenuGroup>
-          <MenuGroup title="留存">
-              <MenuItem name="3-4">用户留存</MenuItem>
-              <MenuItem name="3-5">流失用户</MenuItem>
-          </MenuGroup>
+        <template slot="title">
+          <Icon type="ios-pricetags-outline"></Icon>
+          分类
+        </template>
+        <iMenuItem :name="`3-${item}`" v-for="(item , i) in tagAndClassicList" :key="i">{{item}}</iMenuItem>
+
       </Submenu>
-      <MenuItem name="4" v-if="!showLog"><div @click.prevent="open">
+      <iMenuItem name="4" v-if="!showLog"><div @click.prevent="open">
         <Icon type="log-in"></Icon>&nbsp;&nbsp;
-        登陆 </div></MenuItem>
+        登陆 </div></iMenuItem>
 
       <Submenu v-if="showLog" name="5">
-          <template slot="title">
-              <Icon type="ios-pricetags-outline"></Icon>
-               {{username}}
-          </template>
-          <MenuGroup title="管理">
-              <MenuItem name="5-1"><router-link to="/admin"><div>管理</div></router-link></MenuItem>
-          </MenuGroup>
-        <MenuGroup title="操作">
-              <MenuItem name="5-4"><div @click="logOut">登出</div></MenuItem>
-              <MenuItem name="5-5"><div>关于</div></MenuItem>
-          </MenuGroup>
+        <template slot="title">
+          <Icon type="ios-pricetags-outline"></Icon>
+          {{username}}
+        </template>
+        <iMenuItem name="5-1"><router-link to="/admin"><div>管理</div></router-link></iMenuItem>
+        <iMenuItem name="5-4"><div @click="logOut">登出</div></iMenuItem>
+        <iMenuItem name="5-5"><div>关于</div></iMenuItem>
       </Submenu>
-      <MenuItem name="6"><Icon type="log-in"></Icon> 关于我 </MenuItem>
+      <iMenuItem name="6"><Icon type="log-in"></Icon> 关于我 </iMenuItem>
     </Row>
 
-    </Menu>
+  </iMenu>
+</div>
 </template>
 
 <script>
+  import { Menu,Row,Icon,MenuItem,Submenu } from 'iview'
+  import { mapState } from 'vuex'
   export default {
     name: "my-nav",
+    components:{
+      iMenu:Menu,
+      Row,
+      Icon,
+      iMenuItem:MenuItem,
+      Submenu
+    },
     props:{
       showLog:{
         type:Boolean,
@@ -74,15 +74,32 @@
         theme1: 'light',
       }
     },
-    // computed:{
-    //   ...mapState({
-    //     tagList: state => state.indexPageList.tagList
-    //   })
-    // },
+    computed:{
+      ...mapState({
+        tagAndClassicList: state => state.tagAndClassicList.classic
+      })
+    },
     methods:{
       onSelect(name){
         if(name === '-1'){
           this.$emit('showSideBox');
+        }
+        // console.log(name);
+        if(name === '0'){
+          this.$router.push('/index');
+        }
+        if(name.split('-')[0]==3){
+          this.$router.push(`/classic/${name.split('-')[1]}/1`)
+        }
+        if(name === '2'){
+          this.$Notice.config({
+            top: 80,
+            duration: 3
+          });
+          this.$Notice.warning({
+            title: '抱歉',
+            desc: '施工中，敬请期待~'
+          })
         }
       },
       open(){
@@ -100,6 +117,11 @@
 
 <style scoped lang="stylus">
 #nav
+  width: 100%;
+  .nav-title
+    height: 60px
+    color: aqua
+    font-size 18px
   .nav-menu-button
     display: none;
   .set-center

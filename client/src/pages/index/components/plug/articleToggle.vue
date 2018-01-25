@@ -31,7 +31,6 @@
 
 <style scoped lang="stylus">
 #toggle
-  background #f7fafc
   .toggle-name
     /*text-align center*/
     font-size 1.5em

@@ -1,24 +1,30 @@
 <template>
   <div>
     <div >
-      <Content class="left-content">
+      <i-content class="left-content">
         <Breadcrumb :style="{margin: '20px 0'}">
           <BreadcrumbItem><router-link to="/">HOME</router-link></BreadcrumbItem>
-          <BreadcrumbItem>首页</BreadcrumbItem>
+          <BreadcrumbItem><span v-if="!isClassicOrTag">首页</span>
+          <router-link v-if="isClassicOrTag" to="/index">首页</router-link>
+          </BreadcrumbItem>
+          <BreadcrumbItem v-if="isClassicOrTag">{{decodeURIComponent($route.path.split('/')[2])}}</BreadcrumbItem>
         </Breadcrumb>
         <div  v-for="(item,index) in articleList">
           <Card class="article-list"
-                :style="{marginTop:index===0?'0px':'30px',marginBottom:index===articleList.length-1?'0px':'30px'}">
+                :style="{marginTop:index===0?'0px':'30px',marginBottom:'30px'}">
             <h2>{{item.title}}</h2>
             <span>发布时间：{{item.time}}</span>
             <p>{{item.intr}}......</p>
             <router-link :to="`/article/${item.id}`">
-              <Button type="primary" shape="circle">查看更多</Button>
+              <i-button type="primary" shape="circle">查看更多</i-button>
             </router-link>
           </Card>
         </div>
-        <Page :total="articleListNum" @on-change="onChange" :current="current"></Page>
-      </Content>
+        <div class="page-block">
+          <Page :total="articleListNum" @on-change="onChange" :current="current" class="arcticle-page"></Page>
+        </div>
+
+      </i-content>
 
     </div>
     <!--<p>{{articleList}}</p>-->
@@ -27,24 +33,64 @@
 
 <script>
   import { mapState } from 'vuex'
+  import { Button,Page,Card,Content,Breadcrumb,BreadcrumbItem } from 'iview'
+  import '../assets/css/markdown.css'
+
   export default {
     name: "page-list",
     data(){
       return {
-
+        listChange:true
       }
+    },
+    components:{
+      iButton:Button,
+      Page,
+      Card,
+      iContent:Content,
+      Breadcrumb,
+      BreadcrumbItem
     },
     methods:{
       // ...mapActions(['getIndexList'])
       onChange(page){
-        this.$store.commit('showLoading');
-        let data = new Date();
+        // this.$store.commit('showLoading');
         // console.log(page);
-        this.$router.push({path:`/index?第${page}页`});
-        this.$store.dispatch('getIndexList',page-1)
-          .then(()=>{
-          this.$store.commit('showLoading');
-        })
+        this.$router.push({name: '主文章页面',params:{page}});
+        // this.$store.dispatch('getIndexList',page-1)
+        //   .then(()=>{
+        //   this.$store.commit('showLoading');
+        // })
+      },
+      loadPage(){
+        let classic = this.$route.params.class;
+        let tag = this.$route.params.tag;
+        this.$store.commit('showLoading');
+        if(classic){
+          this.$store.dispatch('getClassicList',{
+            params:classic,
+            page:this.$route.params.page-1
+          })
+            .then(()=>{
+              this.$store.commit('showLoading');
+            })
+        } else if(tag) {
+          this.$store.dispatch('getTagList',{
+            params:tag,
+            page:this.$route.params.page-1
+          })
+            .then(()=>{
+              this.$store.commit('showLoading');
+            })
+        } else {
+          console.log(this.$route.params.page-1);
+          this.$store.dispatch('getIndexList',{
+            page:this.$route.params.page-1
+          })
+            .then(()=>{
+              this.$store.commit('showLoading');
+            })
+        }
       }
     },
     computed:{
@@ -52,17 +98,22 @@
         articleList: state => state.indexPageList.articleList,
         articleListNum: state => state.indexPageList.allArticleList,
         current: state => state.indexPageList.currentPage?state.indexPageList.currentPage+1:1
-      })
+      }),
+      isClassicOrTag(){
+        let listType=this.$route.path.split('/')[1];
+        return listType==='classic'||listType==='tag';
+      }
+    },
+    watch:{
+      articleList(){
+        this.listChange = true;
+      },
+      '$route'(to,from){
+        this.loadPage();
+      }
     },
     mounted(){
-      if(!this.articleList){
-        this.$store.commit('showLoading');
-        this.$store.dispatch('getIndexList')
-          .then(()=>{
-            this.$store.commit('showLoading');
-          })
-      }
-
+      this.loadPage();
     }
   }
 </script>
@@ -74,6 +125,9 @@ h2
   padding 20px 0
 p
   padding 10px 0
+.page-block
+  display flex
+  justify-content center
 
 
 </style>

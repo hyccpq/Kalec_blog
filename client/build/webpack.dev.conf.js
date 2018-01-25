@@ -24,8 +24,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     historyApiFallback: {
       rewrites:[
         // {from:/^\/$/,to:'admin.html'},
-        {from:/^\/admin$/,to:'/admin.html'}
-      ]
+        {from:/\/admin/,to:'/admin.html'},
+        {from:/^\/admin\/.*$/,to:'/admin.html'}
+      ],
+      disableDotRule: true
     },
     hot: true,
     compress: true,

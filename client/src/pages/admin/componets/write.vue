@@ -1,80 +1,85 @@
 <template>
-  <div>
-    <Collapse v-model="indexs"  accordion>
-      <Panel name="1">
-        添加相关信息
+  <div id="write">
+    <div class="write-content write-contents-1">
+      <h3>编辑文章</h3>
+        <Form ref="subInfo" :model="subInfo" :label-width="0" class="content">
+          <!--文章标题-->
+          <FormItem label="文章标题" prop="文章标题">
+            <Input v-model="subInfo.title" placeholder="输入你的标题"></Input>
+          </FormItem>
+          <mavon-editor ref="md" @imgAdd="$imgAdd" @imgDel="$imgDel"
+                        :ishljs = "true" v-model="markdown" default_open="edit" class="editor"></mavon-editor>
+        </Form>
+    </div>
+    <div class="container">
+      <div class="write-content write-contents-2">
+        <h3>添加相关信息</h3>
         <div slot="content" style="margin: 20px auto;">
-          <Form ref="subInfo" :model="subInfo" :label-width="80">
-            <!--文章标题-->
-            <FormItem label="标题" prop="标题">
-              <Input v-model="subInfo.title" placeholder="输入你的标题"></Input>
-            </FormItem>
+          <Form ref="subInfo" :model="subInfo" :label-width="0">
+
             <!--日期-->
             <!--标签-->
             <FormItem label="标签" prop="标签">
-              <Row>
-                <Col span="22">
-                  <Select v-model="selectTagName" multiple>
-                    <Option v-for="item in tagList" :value="JSON.stringify(item)" :key="item.tagId">{{ item.tagName }}</Option>
-                  </Select>
-                </Col>
-                <Col span="2" ><Button type="info" @click="changeAdd">添加</Button></Col>
-              </Row>
+              <Select v-model="selectTagName" multiple>
+                <Option v-for="item in tagList" :value="JSON.stringify(item)" :key="item.tagId">
+                  {{ item.tagName }}
+                </Option>
+              </Select>
+              <Button type="info" @click="changeAdd">添加</Button>
 
             </FormItem>
             <!--分类-->
             <FormItem label="分类" prop="分类">
               <Select v-model="subInfo.classic" placeholder="选择你的分类">
-                <Option v-for="(classItem,key) in classList" :key="key" :value="classItem">{{classItem}}</Option>
+                <Option v-for="(classItem,key) in classList" :key="key" :value="classItem">
+                  {{classItem}}
+                </Option>
               </Select>
             </FormItem>
+            <!--封面图-->
+            <!--上传文件-->
+            <Button type="primary" :loading="loading" icon="checkmark-round" @click="toLoading" style="margin: 30px auto;">
+              <span v-if="!loading">提交日志</span>
+              <span v-else>Loading...</span>
+
+            </Button>
+          </Form>
+        </div>
+      </div>
+      <div class="write-content write-contents-3">
+        <h3>填写简介或上传文件图片</h3>
+        <div slot="content">
+          <Form ref="subInfo" :model="subInfo" :label-width="0">
             <!--简介-->
             <FormItem label="简介" prop="简介内容">
               <Input v-model="subInfo.abstract" type="textarea" :autosize="{minRows: 6,maxRows: 6}"
                      placeholder="请输入简介"></Input>
             </FormItem>
-            <!--封面图-->
-            <!--上传文件-->
+
+            <Upload
+              ref="upload"
+              :show-upload-list="true"
+              :default-file-list="defaultList"
+              :on-success="handleSuccess"
+              :max-size="5096"
+              :multiple="true"
+              :on-exceeded-size="handleMaxSize"
+              type="drag"
+              name="articleImage"
+              action="../api/upload">
+              <div style="padding: 20px 0">
+                <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                <p>点击或者拖动到此处上传</p>
+              </div>
+            </Upload>
           </Form>
         </div>
-      </Panel>
-      <Panel name="2">
-        上传图片或文件
-        <div slot="content">
-          <Upload
-            ref="upload"
-            :show-upload-list="true"
-            :default-file-list="defaultList"
-            :on-success="handleSuccess"
-            :max-size="5096"
-            :multiple="true"
-            :on-exceeded-size="handleMaxSize"
-            type="drag"
-            name="articleImage"
-            action="../api/upload">
-            <div style="padding: 20px 0">
-              <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-              <p>点击或者拖动到此处上传</p>
-            </div>
-          </Upload>
-        </div>
-      </Panel>
-      <Panel name="3">
-        编辑文章
-        <div slot="content">
-          <mavon-editor ref="md" @imgAdd="$imgAdd" @imgDel="$imgDel"
-            :ishljs = "true" style="height: 800px;" v-model="markdown" default_open="edit"></mavon-editor>
-          {{subInfo.markdown}}
-        </div>
-      </Panel>
-    </Collapse>
-    <Button type="primary" :loading="loading" icon="checkmark-round" @click="toLoading" style="margin: 30px auto;" long>
-        <span v-if="!loading">提交</span>
-        <span v-else>Loading...</span>
+      </div>
+    </div>
 
-    </Button>
-    <add-tag :isShowlog="isTagAdd" @onChange="changeAdd">
-      <Form :label-width="80">
+
+    <add-tag :isShowlog="isTagAdd" @onChange="changeAdd" >
+      <Form :label-width="0" class="add-tags">
         <FormItem label="新标签">
           <Input v-model="addTagValue" placeholder="请输入新标签"></Input>
         </FormItem>
@@ -88,16 +93,18 @@
 </template>
 
 <script>
+  import { Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon } from 'iview'
   import { mavonEditor } from 'mavon-editor';
   import 'mavon-editor/dist/css/index.css'
-  import addTag from '../../index/components/plug/login'
+  import addTag from './plug/login'
   import $http from 'axios'
   // import MarkdownIt from 'markdown-it'
   export default {
     name: "write",
     components:{
       mavonEditor,
-      addTag
+      addTag,
+      Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon
     },
     data() {
       return {
@@ -136,7 +143,7 @@
       toLoading(){
         this.loading = true;
         this.subInfo.time=this.issueTime;
-        this.subInfo.author = localStorage.getItem('admin');
+        this.subInfo.author = sessionStorage.getItem('admin');
         this.subInfo.tag=this.getTag;
         this.getHtml();
         for(let key in this.subInfo){
@@ -176,12 +183,18 @@
         this.subInfo.content = htmlContent;
       },
       addTag() {
-        let n = this.tagList.length;
-        this.tagList.push({
-          tagId: n+1,
-          tagName: this.addTagValue
-        });
-        this.addTagValue = '';
+        if(this.addTagValue){
+          let n = this.tagList.length;
+          this.tagList.push({
+            tagId: n+1,
+            tagName: this.addTagValue
+          });
+          this.addTagValue = '';
+        } else {
+          this.$Notice.warning({
+            title:'新标签不能为空'
+          })
+        }
         this.changeAdd();
         console.log(this.tagList);
       },
@@ -239,9 +252,10 @@
     },
     mounted () {
       this.axios.get('searchAllTags')
-        .then(data => {
-          if(data.data.status === 1){
-            this.tagList = data.data.data
+        .then(res => {
+          if(res.data.status === 1){
+            console.log(res.data.data.tags);
+            this.tagList = res.data.data.tags
           }
         })
         .catch(err => {
@@ -251,6 +265,46 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="stylus">
+#write
+  height 100%
+  display flex
+  flex-wrap wrap
+  .add-tags
+    width: 260px
+  .write-content
+    border 1px dashed rgba(255, 227, 180, 0.7)
+    padding 5px
+    background #ffffff
+    h3
+      text-align center
+  .write-contents-1
+    width: 75%
+    .content
+      height 100%
+      .editor
+        height 87%
+  .container
+    width: 25%
+    display flex
+    flex-wrap wrap
+    .write-content
+      width: 100%
+    .write-contents-2
+      order 1
+    .write-contents-3
+      order 2
+@media screen and (max-width: 767px)
+  #write
+    .write-contents-1
+      width 100%
+      .content
+        .editor
+          height 500px
+    .container
+      width 100%
+      .write-contents-2
+        order 2
+      .write-contents-3
+        order 1
 </style>

@@ -7,9 +7,12 @@ export const setToken = ({commit},data) => {
 
 export const logOut = ({commit}) => {
   commit(types.LOG_OUT);
+  return new Promise(resolve => {
+    resolve({commit});
+  })
 };
 // 主页列表
-export const getIndexList = ({commit},payload=0) => {
+export const getIndexList = ({commit},payload) => {
   return API.getIndexList(payload).then((res) => {
       if(res.data.status === 1){
         commit(types.GET_LIST,res.data.data);
@@ -26,15 +29,20 @@ export const getIndexList = ({commit},payload=0) => {
 
 // Tag页面数据
 export const getTagList = ({commit}, payload) => {
-  API.getTagList(payload, message => {
-    commit(types.GET_LIST, { message })
-  })
+  return API.getTagList(payload)
+    .then(res => {
+      commit(types.GET_LIST, res);
+      return new Promise(resolve => resolve(res));
+    })
 };
 // class页面数据
 export const getClassicList = ({commit}, payload) => {
-   API.getClassicList(payload, message => {
-    commit(types.GET_LIST, { message })
-  })
+  API.getClassicList(payload)
+    .then(res => {
+      commit(types.GET_LIST, res);
+      return new Promise(resolve => resolve(res))
+    })
+  
 };
 // 文章
 export const getArticleList = ({commit}, payload) => {
@@ -52,4 +60,10 @@ export const getArticleList = ({commit}, payload) => {
   }).catch((err) => {
     console.log('error')
   });
+};
+// TAG标签列表
+export const getAllTagClassic = ({commit}) => {
+  API.getAllTag().then(res => {
+    commit(types.GET_ALL_TAG_CLASSIC, res)
+  })
 };

@@ -13,7 +13,8 @@ const store = new Vuex.Store({
     indexPageList: {},
     articleInfo: {},
     toggle:{},
-    onLoading:false
+    onLoading:false,
+    tagAndClassicList:{}
   },
   actions,
   mutations,
