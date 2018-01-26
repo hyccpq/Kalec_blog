@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '../components/home'
-import index from '../components/index'
-import articlePage from '../components/articlePage'
-import pageList from '../components/pageList'
+const home = resolve => require(['../components/home'],resolve);
+const index = resolve => require(['../components/index'],resolve);
+const articlePage = resolve => require(['../components/articlePage'],resolve);
+const pageList = resolve => require(['../components/pageList'],resolve);
 
 Vue.use(Router)
 

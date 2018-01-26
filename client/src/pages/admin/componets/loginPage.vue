@@ -10,12 +10,6 @@
 		name: "login",
     components:{
 		  myForm
-    },
-    mounted(){
-		  this.$Notice.config({
-        top: 80,
-        duration: 3
-      });
     }
 	}
 </script>

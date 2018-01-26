@@ -8,7 +8,7 @@
             <Input v-model="subInfo.title" placeholder="输入你的标题"></Input>
           </FormItem>
           <mavon-editor ref="md" @imgAdd="$imgAdd" @imgDel="$imgDel"
-                        :ishljs = "true" v-model="markdown" default_open="edit" class="editor"></mavon-editor>
+                        :ishljs = "true" v-model="subInfo.markdown" default_open="edit" class="editor"></mavon-editor>
         </Form>
     </div>
     <div class="container">
@@ -25,16 +25,17 @@
                   {{ item.tagName }}
                 </Option>
               </Select>
-              <Button type="info" @click="changeAdd">添加</Button>
+              <Button type="info" @click="changeAdd">添加标签</Button>
 
             </FormItem>
             <!--分类-->
             <FormItem label="分类" prop="分类">
               <Select v-model="subInfo.classic" placeholder="选择你的分类">
-                <Option v-for="(classItem,key) in classList" :key="key" :value="classItem">
+                <Option v-for="(classItem,key) in classicList" :key="key" :value="classItem">
                   {{classItem}}
                 </Option>
               </Select>
+              <Button type="info" @click="changeAddClassic">添加分类</Button>
             </FormItem>
             <!--封面图-->
             <!--上传文件-->
@@ -89,6 +90,17 @@
         </FormItem>
       </Form>
     </add-tag>
+    <add-classic :isShowlog="isClassicAdd" @onChange="changeAddClassic" >
+      <Form :label-width="0" class="add-tags">
+        <FormItem label="新分类">
+          <Input v-model="addClassicValue" placeholder="请输入新分类"></Input>
+        </FormItem>
+        <FormItem>
+          <Button type="primary" @click="addClassic">添加</Button>
+          <Button type="ghost" style="margin-left: 8px" @click="changeAddClassic">取消</Button>
+        </FormItem>
+      </Form>
+    </add-classic>
   </div>
 </template>
 
@@ -96,14 +108,15 @@
   import { Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon } from 'iview'
   import { mavonEditor } from 'mavon-editor';
   import 'mavon-editor/dist/css/index.css'
-  import addTag from './plug/login'
+  import add from './plug/login'
   import $http from 'axios'
   // import MarkdownIt from 'markdown-it'
   export default {
     name: "write",
     components:{
       mavonEditor,
-      addTag,
+      addTag:add,
+      addClassic:add,
       Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon
     },
     data() {
@@ -111,11 +124,14 @@
         indexs: '1',
         loading: false,
         isTagAdd: false,
+        isClassicAdd:false,
         tagList: [],
+        classicList:[],
         defaultList:[],
         selectTagName:[],
-        classList: ['技术','生活','梦想','其他'],
+        // classList: ['技术','生活','梦想','其他'],
         addTagValue:'',
+        addClassicValue:'',
         img_file:{},
         markdown:'',
         subInfo: {
@@ -125,8 +141,8 @@
           classic: '',//
           tag: [],//
           imgUrl: 'null',
-          content: 'test',//~
-          markdown: 'null',//~
+          content: '',//~
+          markdown: '',//~
           abstract: ''//~
         }
       }
@@ -142,9 +158,9 @@
     methods:{
       toLoading(){
         this.loading = true;
-        this.subInfo.time=this.issueTime;
         this.subInfo.author = sessionStorage.getItem('admin');
         this.subInfo.tag=this.getTag;
+        this.subInfo.time=this.subInfo.time?this.subInfo.time:this.issueTime;
         this.getHtml();
         for(let key in this.subInfo){
           if(!this.subInfo[key]){
@@ -153,28 +169,56 @@
             });
             this.loading = false;
             return;
-
           }
         }
-        this.axios('addArticle',{
-          method:'POST',
-          headers:{
-            'Content-Type': 'application/json'
-          },
-          data: this.subInfo
-        })
-          .then(data => {
-            if(data.data.status === 1){
-              this.$Message.info('保存成功');
-              console.log(this.subInfo);
-            } else {
-              this.$Message.warning(data.data.msg);
-            }
-            this.loading = false;
+        if(!this.$route.params.id){
+
+          this.axios('addArticle',{
+            method:'POST',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            data: this.subInfo
           })
-          .catch(data => {
-            console.error('error');
+            .then(data => {
+              if(data.data.status === 1){
+                this.$Notice.info({title:'保存成功'});
+                console.log(this.subInfo);
+              } else {
+                this.$Notice.warning({title:data.data.msg});
+              }
+              this.loading = false;
+            })
+            .then(()=>this.loading = false)
+            .catch(err => {
+              console.error(err);
+            })
+        } else {
+          this.subInfo.id = this.$route.params.id;
+          this.axios('editArticle',{
+            method:'PUT',
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            data: this.subInfo
           })
+            .then(data => {
+              if(data.data.status === 1){
+                this.$Notice.info({title:'修改成功'});
+              } else {
+                this.$Notice.warning({title:data.data.msg});
+              }
+
+            })
+            .then(()=>{
+              this.loading = false;
+              this.$router.push('/articleManage')
+            })
+            .catch(err => {
+              console.error('抱歉，出错了');
+            })
+        }
+
       },
       getHtml(){
 
@@ -189,6 +233,9 @@
             tagId: n+1,
             tagName: this.addTagValue
           });
+          this.$Notice.success({
+            title:`成功添加新标签:${this.addTagValue}`
+          });
           this.addTagValue = '';
         } else {
           this.$Notice.warning({
@@ -200,6 +247,24 @@
       },
       changeAdd(){
         this.isTagAdd = !this.isTagAdd;
+      },
+      addClassic(){
+        if(this.addClassicValue){
+          this.classicList.push(this.addClassicValue);
+          this.$Notice.success({
+            title:`成功添加新分类:${this.addClassicValue}`
+          });
+          this.addClassicValue = '';
+        } else {
+          this.$Notice.warning({
+            title:'新的分类不能为空'
+          })
+        }
+        this.changeAddClassic();
+        console.log(this.classicList);
+      },
+      changeAddClassic(){
+        this.isClassicAdd = !this.isClassicAdd;
       },
       $imgAdd(pos,$file){
         let formData = new FormData();
@@ -245,8 +310,38 @@
       },
       handleMaxSize(){
         this.$Notice.warning({
-          title:'文件必须小于5M',
-          desc:`文件${file.name}超过5M`
+          title:'文件必须小于10M',
+          desc:`文件${file.name}超过10M`
+        })
+      }
+    },
+    created () {
+      let id = this.$route.params.id
+      if(id){
+        this.axios.get('searchAdArticle',{
+          params:{
+            id
+          }
+        }).then(res => {
+          if(res.data.status ===1){
+            console.log(res.data.data);
+            let data = res.data.data;
+            // this.subInfo.forEach((item,key) => {
+            //   console.log(item+'/'+key);
+            // });
+            for(let item in this.subInfo){
+              this.subInfo[item] = data[item];
+            }
+            data.tag.forEach(item => {
+              this.selectTagName.push(JSON.stringify(item));
+            })
+          } else {
+            this.$Notice.warning({
+              title:'数据获取失败'
+            })
+          }
+        }).catch(err=> {
+          console.log('出错了');
         })
       }
     },
@@ -255,7 +350,8 @@
         .then(res => {
           if(res.data.status === 1){
             console.log(res.data.data.tags);
-            this.tagList = res.data.data.tags
+            this.tagList = res.data.data.tags;
+            this.classicList = res.data.data.classic;
           }
         })
         .catch(err => {

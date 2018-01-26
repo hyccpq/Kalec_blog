@@ -54,13 +54,16 @@
     methods:{
       // ...mapActions(['getIndexList'])
       onChange(page){
-        // this.$store.commit('showLoading');
-        // console.log(page);
-        this.$router.push({name: '主文章页面',params:{page}});
-        // this.$store.dispatch('getIndexList',page-1)
-        //   .then(()=>{
-        //   this.$store.commit('showLoading');
-        // })
+        let classic = this.$route.params.class;
+        let tag = this.$route.params.tag;
+        if(classic){
+          this.$router.push({name: '文章类别列表',params:{page}});
+        } else if(tag) {
+          this.$router.push({name: '文章标签页',params:{page}});
+        } else {
+          this.$router.push({name: '主文章页面',params:{page}});
+        }
+
       },
       loadPage(){
         let classic = this.$route.params.class;

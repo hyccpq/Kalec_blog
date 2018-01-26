@@ -2,7 +2,7 @@
   <div id="admin-layout">
     <ad-nav class="admin-nav" @onChangeMenu="showMenu" @onLogOut="showLogOut"></ad-nav>
     <div class="layout">
-      <Menu active-name="1-1" theme="dark" :open-names="['1']" class="layout-menu-left" :class="{'layout-menu-left-open' : isShowMenu}">
+      <Menu active-name="1-1" theme="dark" :open-names="['1']" class="layout-menu-left" :class="{'layout-menu-left-open' : isShowMenu}" @on-select="onSelectItem">
         <div class="layout-logo-left">主菜单</div>
         <Submenu name="1">
           <template slot="title">
@@ -83,6 +83,15 @@
         this.$Notice.success({
           title:'登出成功！'
         })
+      },
+      onSelectItem(name){
+		    // console.log(name);
+		    if(name === '1-1'){
+		      this.$router.push('/write');
+        }
+        if(name === '1-2'){
+		      this.$router.push('/articleManage')
+        }
       }
     }
 	}

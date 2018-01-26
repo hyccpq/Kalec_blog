@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import admin from '../componets/admin'
-import login from '../componets/loginPage'
-import write from '../componets/write'
+const admin = resolve => require(['../componets/admin'],resolve);
+const login = resolve => require(['../componets/loginPage'],resolve);
+const write = resolve => require(['../componets/write'],resolve);
+const articleManage = resolve => require(['../componets/articleManage'],resolve);
 
 Vue.use(Router);
 
@@ -29,6 +30,18 @@ export default new Router({
           component: write,
           name: 'adminWrite'
         },
+        {
+          path: '/articleManage',
+          meta: {auth: true},
+          component: articleManage,
+          name: 'articleManage',
+        },
+        {
+          path: '/articleManage/edit/:id',
+          meta: {auth: true},
+          component: write,
+          name: 'adminEdit'
+        }
       ]
     }
   ]

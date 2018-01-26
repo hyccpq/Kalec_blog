@@ -6,7 +6,7 @@ import router from './router/index'
 import store from '../../modules/vuex/store'
 import axios from '../../modules/util/adAxios'
 import 'iview/dist/styles/iview.css'
-import { Notice } from 'iview'
+import { Notice,Button } from 'iview'
 
 router.beforeEach((to,from,next)=>{
   let token = sessionStorage.getItem('token');
@@ -25,6 +25,7 @@ router.beforeEach((to,from,next)=>{
 Vue.config.productionTip = false;
 Vue.prototype.axios = axios;
 Vue.prototype.$Notice = Notice;
+Vue.component('Button',Button);
 
 /* eslint-disable no-new */
 export default new Vue({

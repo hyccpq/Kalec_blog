@@ -55,11 +55,9 @@
         let content = this.formInline.password.trim();
         const cp = new Crypto('myapp');
         let password = cp.hex(content);
-		    this.axios.get('/login',{
-		      params:{
-		        user: this.formInline.user,
-            password
-          }
+        this.axios.post('/login',{
+          user: this.formInline.user,
+          password
         })
           .then(data=>{
             if(data.data.status === 1){

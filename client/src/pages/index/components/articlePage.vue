@@ -77,7 +77,7 @@
         return;
       }
       this.$store.commit('showLoading');
-      this.getArticleList(`${self.$route.params.id}&auth1`).then(
+      this.getArticleList(`${self.$route.params.id}`).then(
         () => {
         this.$nextTick(() => {
           const self = this;
