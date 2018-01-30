@@ -6,7 +6,7 @@ import store from '../vuex/store'
 import * as types from '../vuex/type.js'
 
 const http = axios.create({
-  baseURL:`http://${location.hostname}:${location.port}/api`,
+  baseURL:`${location.protocol}//${location.hostname}:${location.port}/api`,
   timeout:5000,
   data:{},
 });

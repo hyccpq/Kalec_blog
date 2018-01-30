@@ -8,19 +8,6 @@ import axios from '../../modules/util/axios'
 import { Notice } from 'iview'
 import 'iview/dist/styles/iview.css'
 
-router.beforeEach((to,from,next)=>{
-  let token = localStorage.getItem('token');
-  // console.log(to.matched.some(({meta}) => meta.auth));
-  if(to.matched.some(({meta}) => meta.auth)){
-    if(!token){
-      next('/');
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
 
 
 Vue.config.productionTip = false;

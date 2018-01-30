@@ -18,6 +18,9 @@
           <Form ref="subInfo" :model="subInfo" :label-width="0">
 
             <!--日期-->
+            <FormItem label="发布日期" prop="发布日期">
+                <DatePicker type="datetime" format="yyyy-MM-dd HH:mm" placeholder="更改发布时间" style="width: 200px" v-model="selectDate"></DatePicker>
+             </FormItem>
             <!--标签-->
             <FormItem label="标签" prop="标签">
               <Select v-model="selectTagName" multiple>
@@ -67,7 +70,7 @@
               :on-exceeded-size="handleMaxSize"
               type="drag"
               name="articleImage"
-              action="../api/upload">
+              action="/api/upload">
               <div style="padding: 20px 0">
                 <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                 <p>点击或者拖动到此处上传</p>
@@ -105,7 +108,7 @@
 </template>
 
 <script>
-  import { Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon } from 'iview'
+  import { Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon,DatePicker } from 'iview'
   import { mavonEditor } from 'mavon-editor';
   import 'mavon-editor/dist/css/index.css'
   import add from './plug/login'
@@ -117,7 +120,7 @@
       mavonEditor,
       addTag:add,
       addClassic:add,
-      Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon
+      Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon,DatePicker
     },
     data() {
       return {
@@ -129,6 +132,7 @@
         classicList:[],
         defaultList:[],
         selectTagName:[],
+        selectDate:'',
         // classList: ['技术','生活','梦想','其他'],
         addTagValue:'',
         addClassicValue:'',
@@ -160,7 +164,11 @@
         this.loading = true;
         this.subInfo.author = sessionStorage.getItem('admin');
         this.subInfo.tag=this.getTag;
-        this.subInfo.time=this.subInfo.time?this.subInfo.time:this.issueTime;
+        if(this.selectDate){
+          this.subInfo.time = this.selectDate;
+        } else {
+          this.subInfo.time=this.subInfo.time?this.subInfo.time:this.issueTime;
+        }
         this.getHtml();
         for(let key in this.subInfo){
           if(!this.subInfo[key]){
@@ -272,7 +280,7 @@
         console.log(pos);
         // let xhr = new XMLHttpRequest();
         formData.append("articleImage",$file);
-        $http('../api/upload',{
+        $http('/api/upload',{
           method:'POST',
           data:formData,
           headers:{
@@ -280,7 +288,7 @@
           }
         }).then((res)=>{
           console.log(res.data);
-          const imgUrl = `http://localhost:8081/${res.data.data.filePath}`;
+          const imgUrl = `${window.location.protocol}//${location.hostname}:${location.port}/${res.data.data.filePath}`;
           this.$refs.md.$imgUpdateByUrl(pos,imgUrl);
           this.$refs.md.$img2Url(pos,imgUrl);
           this.$refs.md.$refs.toolbar_left.$imgUpdateByFilename(pos,imgUrl);
@@ -293,7 +301,7 @@
       },
       handleSuccess(res,file){
         if(res.status === 1){
-          let url = `${window.location.protocol}//localhost:3000/uploads/${res.data.fileName}`;
+          let url = `${window.location.protocol}//${location.hostname}:${location.port}/uploads/${res.data.fileName}`;
           this.subInfo.imgUrl = url;
           file.name = res.data.fileName;
           file.url = url;
@@ -332,6 +340,7 @@
             for(let item in this.subInfo){
               this.subInfo[item] = data[item];
             }
+            this.selectDate = data.time;
             data.tag.forEach(item => {
               this.selectTagName.push(JSON.stringify(item));
             })

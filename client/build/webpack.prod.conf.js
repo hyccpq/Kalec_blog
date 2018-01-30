@@ -63,7 +63,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'index.html',
+      template: 'src/pages/index/index.html',
       inject: true,
       minify: {
         removeComments: true,
@@ -78,7 +78,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: config.build.admin,
-      template: 'admin.html',
+      template: 'src/pages/admin/admin.html',
       inject: true,
       minify: {
         removeComments: true,

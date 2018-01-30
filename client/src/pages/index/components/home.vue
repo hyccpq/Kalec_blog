@@ -53,7 +53,7 @@
   align-items center
   width: 100%
   height: inherit
-  background url("../assets/img/Mario_Odyssey_thanks_1920_1080.jpg")
+  background url("../assets/img/d.cfc8d05.jpg")
   color white
   text-align center
   .home-content

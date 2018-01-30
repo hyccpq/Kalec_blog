@@ -7,10 +7,10 @@
       <div class="my-icon row"></div>
       <div class="my-name row"><router-link to="/">Kalecgos</router-link></div>
       <div class="my-content row">
-        <a href="/" title="微博"><div class="some-contents icon1"></div></a>
-        <a href="/" title="GitHub"><div class="some-contents icon2"></div></a>
-        <a href="/" title="邮件"><div class="some-contents icon3"></div></a>
-        <a href="/" title="Twitter"><div class="some-contents icon4"></div></a>
+        <a href="http://weibo.com/kalecgos" title="微博"><div class="some-contents icon1"></div></a>
+        <a href="https://github.com/hyccpq" title="GitHub"><div class="some-contents icon2"></div></a>
+        <a href="mailto:hyccpq@hotmail.com" title="邮件"><div class="some-contents icon3"></div></a>
+        <a href="https://twitter.com/hyccpq" title="Twitter"><div class="some-contents icon4"></div></a>
       </div>
       <div class="my-tag-title row">全部标签</div>
       <ul class="my-tag row">
@@ -43,7 +43,7 @@
     data(){
 		  return {
 		    isShowToggle:false,
-        src_music:`http://${location.hostname}:${location.port}/uploads/test.mp3`
+        src_music:`https://${location.hostname}:${location.port}/uploads/test.mp3`
       }
     },
     watch:{
@@ -82,7 +82,8 @@
       -webkit-border-radius 50%
       -moz-border-radius 50%
       border-radius 50%
-      background #959da5
+      background url("../../assets/img/F3CB98926ED3625BBD7EAECDACD31AFF.jpg") center no-repeat
+      background-size 120%
       margin 20px auto
     .my-name
       justify-content center
