@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="14b2f9d3-2c25-4375-9cbf-261fdce48882" name="Default" comment="finish！">
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
+=======
+    <list default="true" id="14b2f9d3-2c25-4375-9cbf-261fdce48882" name="Default" comment="finish!!!!!!">
+      <change afterPath="$PROJECT_DIR$/client/src/pages/index/assets/img/F3CB98926ED3625BBD7EAECDACD31AFF.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/index/assets/img/d.cfc8d05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/index/assets/img/d.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> dev
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -232,6 +240,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
             <path>
               <item name="kalec_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="kalec_blog" type="462c0819:PsiDirectoryNode" />
@@ -259,6 +268,8 @@
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> dev
           </expand>
           <select />
         </subPane>
@@ -280,19 +291,19 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\admin\componets\plug" />
-      <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\modules\util" />
-      <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\admin\router" />
-      <recent name="C:\Users\hyccp\es6\kalec_blog\client\config" />
-      <recent name="C:\Users\hyccp\es6\kalec_blog\client\build" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/client/src/pages/index/assets/img" />
       <recent name="$PROJECT_DIR$/client/src/pages/index/assets" />
       <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\admin\componets" />
       <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\index\assets\svg" />
       <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\index\assets\img" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\admin\componets\plug" />
+      <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\modules\util" />
+      <recent name="C:\Users\hyccp\es6\kalec_blog\client\src\pages\admin\router" />
+      <recent name="C:\Users\hyccp\es6\kalec_blog\client\config" />
+      <recent name="C:\Users\hyccp\es6\kalec_blog\client\build" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -354,7 +365,13 @@
       <workItem from="1517210508299" duration="506000" />
       <workItem from="1517211867207" duration="1406000" />
       <workItem from="1517285880681" duration="329000" />
+<<<<<<< HEAD
       <workItem from="1517306719002" duration="1470000" />
+=======
+      <workItem from="1517306719002" duration="248000" />
+      <workItem from="1517309856265" duration="148000" />
+      <workItem from="1517311661257" duration="201000" />
+>>>>>>> dev
     </task>
     <task id="LOCAL-00001" summary="还差一点文章编辑">
       <created>1516863382664</created>
@@ -370,6 +387,7 @@
       <option name="project" value="LOCAL" />
       <updated>1516958150313</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00003" summary="finish！">
       <created>1517307017593</created>
       <option name="number" value="00003" />
@@ -389,6 +407,34 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="210117000" />
+=======
+    <task id="LOCAL-00003" summary="基本功能完成！">
+      <created>1517308880083</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1517308880083</updated>
+    </task>
+    <task id="LOCAL-00004" summary="基本功能完成！">
+      <created>1517309970712</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1517309970712</updated>
+    </task>
+    <task id="LOCAL-00005" summary="finish!!!!!!">
+      <created>1517311700819</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1517311700819</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="210109000" />
+>>>>>>> dev
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,7 +455,11 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.30499467" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32943678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.6918172" />
+=======
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30818278" />
+>>>>>>> dev
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -440,8 +490,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="还差一点文章编辑" />
     <MESSAGE value="基本功能完成！" />
+<<<<<<< HEAD
     <MESSAGE value="finish！" />
     <option name="LAST_COMMIT_MESSAGE" value="finish！" />
+=======
+    <MESSAGE value="finish!!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish!!!!!!" />
+>>>>>>> dev
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -450,6 +505,16 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/client/src/pages/index/components/plug/svgMenu.vue">
+<<<<<<< HEAD
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/write.vue">
+>>>>>>> dev
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
@@ -636,13 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/loginPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/modules/util/axios.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -678,6 +736,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/articleManage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -685,6 +744,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> dev
     <entry file="file://$PROJECT_DIR$/client/src/modules/util/adAxios.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -698,13 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="80" column="33" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/admin.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="44" column="46" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -764,6 +818,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/write.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="869">
@@ -771,6 +826,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> dev
     <entry file="file://$PROJECT_DIR$/client/src/pages/index/components/plug/svgMenu.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -794,6 +851,37 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/admin.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1188">
+          <caret line="44" column="46" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/articleManage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/loginPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/write.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="869">
+          <caret line="342" column="40" selection-start-line="342" selection-start-column="40" selection-end-line="342" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/admin.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
