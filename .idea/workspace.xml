@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14b2f9d3-2c25-4375-9cbf-261fdce48882" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/pages/index/assets/img/beian.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/webpack.dev.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/webpack.dev.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/build/webpack.prod.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/build/webpack.prod.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/util/adAxios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/util/adAxios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/modules/util/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/modules/util/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/componets/write.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/componets/write.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/assets/img/Mario_Odyssey_thanks_1920_1080.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/assets/svg/email.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/assets/svg/email.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/assets/svg/github.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/assets/svg/github.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/assets/svg/github1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/assets/svg/github1.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/assets/svg/twitter.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/assets/svg/twitter.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/assets/svg/weibo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/assets/svg/weibo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/components/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/components/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/components/plug/abstract.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/components/plug/abstract.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/components/plug/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/components/plug/footer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="footer.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/pages/index/components/plug/footer.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="543">
@@ -68,6 +52,11 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -189,17 +178,6 @@
               <item name="kalec_blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="kalec_blog" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="kalec_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kalec_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="kalec_blog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kalec_blog" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -295,7 +273,7 @@
       <workItem from="1517210508299" duration="506000" />
       <workItem from="1517211867207" duration="1406000" />
       <workItem from="1517285880681" duration="329000" />
-      <workItem from="1517306719002" duration="248000" />
+      <workItem from="1517306719002" duration="705000" />
     </task>
     <task id="LOCAL-00001" summary="还差一点文章编辑">
       <created>1516863382664</created>
@@ -311,11 +289,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516958150313</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finish！">
+      <created>1517307017593</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1517307017593</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208895000" />
+    <option name="totallyTimeSpent" value="209352000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -329,14 +314,14 @@
   <component name="ToolWindowManager">
     <frame x="-1860" y="23" width="1860" height="1057" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21943231" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21943231" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.30499467" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22954305" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.22954305" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -357,7 +342,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="还差一点文章编辑" />
     <MESSAGE value="基本功能完成！" />
-    <option name="LAST_COMMIT_MESSAGE" value="基本功能完成！" />
+    <MESSAGE value="finish！" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish！" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -365,13 +351,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/write.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9126">
-          <caret line="342" column="40" selection-start-line="342" selection-start-column="40" selection-end-line="342" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/admin/componets/admin.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
@@ -699,6 +678,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
