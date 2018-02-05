@@ -22,9 +22,9 @@
                 <DatePicker type="datetime" format="yyyy-MM-dd HH:mm" placeholder="更改发布时间" style="width: 200px" v-model="selectDate"></DatePicker>
              </FormItem>
             <!--标签-->
-            <FormItem label="标签" prop="标签">
-              <Select v-model="selectTagName" multiple>
-                <Option v-for="item in tagList" :value="JSON.stringify(item)" :key="item.tagId">
+            <FormItem label="标签" prop="标签">{{selectTagName}}
+              <Select v-model="selectTagName" :multiple="true" :value="selectTagName">
+                <Option v-for="(item,key) in tagList" :value="item.tagName" :key="key">
                   {{ item.tagName }}
                 </Option>
               </Select>
@@ -156,10 +156,17 @@
         return new Date();
       },
       getTag(){
-        return this.selectTagName.map(item => JSON.parse(item));
+        return this.selectTagName.map(item => {
+          for(let i = 0;i< this.tagList.length;i++){
+            if(this.tagList[i].tagName == item){
+              return this.tagList[i]
+            }
+          }
+        });
       }
     },
     methods:{
+
       toLoading(){
         this.loading = true;
         this.subInfo.author = sessionStorage.getItem('admin');
@@ -229,9 +236,12 @@
 
       },
       getHtml(){
-
-        let htmlContent = document.getElementsByClassName('v-show-content-html')[0].innerText;
-        console.log(htmlContent);
+        let artContent = document.querySelector('.v-show-content');
+        Array.from(artContent.querySelectorAll('h1,h2,h3,h4,h5,h6')).forEach((value, index) => {
+          value.id = `T-${value.localName}-${index}`;
+          value.insertAdjacentHTML('beforebegin',`<a class="anchor" id="${value.localName}-${index}"></a>`);
+        });
+        let htmlContent = artContent.innerHTML;
         this.subInfo.content = htmlContent;
       },
       addTag() {
@@ -324,37 +334,6 @@
       }
     },
     created () {
-      let id = this.$route.params.id
-      if(id){
-        this.axios.get('searchAdArticle',{
-          params:{
-            id
-          }
-        }).then(res => {
-          if(res.data.status ===1){
-            console.log(res.data.data);
-            let data = res.data.data;
-            // this.subInfo.forEach((item,key) => {
-            //   console.log(item+'/'+key);
-            // });
-            for(let item in this.subInfo){
-              this.subInfo[item] = data[item];
-            }
-            this.selectDate = data.time;
-            data.tag.forEach(item => {
-              this.selectTagName.push(JSON.stringify(item));
-            })
-          } else {
-            this.$Notice.warning({
-              title:'数据获取失败'
-            })
-          }
-        }).catch(err=> {
-          console.log('出错了');
-        })
-      }
-    },
-    mounted () {
       this.axios.get('searchAllTags')
         .then(res => {
           if(res.data.status === 1){
@@ -365,7 +344,35 @@
         })
         .catch(err => {
           console.warn(err);
+        });
+
+      let id = this.$route.params.id;
+      if(id){
+        this.axios.get('searchAdArticle',{
+          params:{
+            id
+          }
+        }).then(res => {
+          if(res.data.status ===1){
+            // console.log(res.data.data);
+            let data = res.data.data;
+            for(let item in this.subInfo){
+              this.subInfo[item] = data[item];
+            }
+            this.selectDate = data.time;
+            this.subInfo.tag.forEach(item => {
+              this.selectTagName.push(item.tagName);
+            });
+            console.warn(this.selectTagName);
+          } else {
+            this.$Notice.warning({
+              title:'数据获取失败'
+            })
+          }
+        }).catch(err=> {
+          console.log(err);
         })
+      }
     }
   }
 </script>

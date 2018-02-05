@@ -182,7 +182,7 @@
 .markdown-body kbd,
 .markdown-body pre {
   font-family: monospace, monospace;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 .markdown-body hr {
@@ -338,7 +338,7 @@
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 14px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 .markdown-body .octicon {
@@ -635,9 +635,9 @@
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-  padding: 16px;
+  padding: 0;
   overflow: auto;
-  font-size: 85%;
+  font-size: 100%;
   line-height: 1.45;
   background-color: #f6f8fa;
   border-radius: 3px;

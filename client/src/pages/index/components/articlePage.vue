@@ -22,7 +22,7 @@
     <div>
 
       <article id="page-view" class="markdown-body"
-               v-html="articleInfo.content" ref="post">
+               v-html="articleInfo.content" ref="post" v-highlight>
 
       </article>
     </div>
@@ -36,6 +36,7 @@
   import articleToggle from './plug/articleToggle'
   import { Breadcrumb,BreadcrumbItem,Icon } from 'iview'
   import Tag from './plug/Tag'
+  import 'highlight.js/styles/solarized-light.css'
   import '../assets/css/markdown.css'
   export default {
 		name: "article-page",
@@ -70,10 +71,6 @@
     mounted(){
 		  const self = this;
 		  if(this.articleInfo.id == this.$route.params.id){
-        Array.from(self.$refs.post.querySelectorAll('h1,h2,h3,h4,h5,h6')).forEach((value, index) => {
-          value.id = `T-${value.localName}-${index}`;
-          value.insertAdjacentHTML('beforebegin',`<a class="anchor" id="${value.localName}-${index}"></a>`);
-        });
         return;
       }
       this.$store.commit('showLoading');
@@ -82,8 +79,6 @@
         this.$nextTick(() => {
           const self = this;
           Array.from(self.$refs.post.querySelectorAll('h1,h2,h3,h4,h5,h6')).forEach((value, index) => {
-            value.id = `T-${value.localName}-${index}`;
-            value.insertAdjacentHTML('beforebegin',`<a class="anchor" id="${value.localName}-${index}"></a>`);
             this.toggle.push({
               tagName: value.tagName,
               text: '•\n'+value.innerText,
