@@ -25,6 +25,7 @@
                v-html="articleInfo.content" ref="post" v-highlight>
 
       </article>
+      <comment></comment>
     </div>
   </div>
 
@@ -34,6 +35,7 @@
 <script>
 	import {mapState,mapActions} from 'vuex'
   import articleToggle from './plug/articleToggle'
+  import comment from './plug/comment'
   import { Breadcrumb,BreadcrumbItem,Icon } from 'iview'
   import Tag from './plug/Tag'
   import 'highlight.js/styles/solarized-light.css'
@@ -42,6 +44,7 @@
 		name: "article-page",
     components:{
       articleToggle,
+      comment,
       Breadcrumb,BreadcrumbItem,Icon,Tag
     },
     data(){
