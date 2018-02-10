@@ -11,7 +11,9 @@ const store = new Vuex.Store({
   state:{
     token: null,
     indexPageList: {},
-    articleInfo: {},
+    articleInfo: {
+      markList:[]
+    },
     toggle:{},
     onLoading:false,
     tagAndClassicList:{}

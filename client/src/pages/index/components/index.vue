@@ -1,7 +1,7 @@
 <template>
   <div id="index-content">
     <loading :onLoading="onLoading"></loading>
-    <el-nav @onChange="changeLog" @log-out="closeShowLog" :show-log="showLog" :username="username" class="my-nav" @showSideBox="showSideBox"></el-nav>
+    <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
     <login-form :is-showlog="isShowlog" @onChange="changeLog">
       <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长<a href="/admin">登录</a>
     </login-form>
@@ -63,24 +63,13 @@ export default {
     },
     changeLog(){
       this.isShowlog = !this.isShowlog;
-    },
-    closeShowLog(){
-      this.showLog = false;
-      location.reload();
-    },
-    hasLog(){
-      this.username = localStorage.getItem('admin');
-      if(this.username){
-        this.showLog = true;
-        this.isShowlog = false;
-      } else {
-        localStorage.clear();
-      }
-    },
+    }
   },
   mounted(){
-    this.hasLog();
-
+    this.$Notice.config({
+      top: 80,
+      duration: 3
+    });
   }
 }
 </script>

@@ -27,19 +27,12 @@
         <iMenuItem :name="`3-${item}`" v-for="(item , i) in tagAndClassicList" :key="i">{{item}}</iMenuItem>
 
       </Submenu>
-      <iMenuItem name="4" v-if="!showLog"><div @click.prevent="open">
-        <Icon type="log-in"></Icon>&nbsp;&nbsp;
-        登陆 </div></iMenuItem>
-
-      <Submenu v-if="showLog" name="5">
-        <template slot="title">
-          <Icon type="ios-pricetags-outline"></Icon>
-          {{username}}
-        </template>
-        <iMenuItem name="5-1"><router-link to="/admin"><div>管理</div></router-link></iMenuItem>
-        <iMenuItem name="5-4"><div @click="logOut">登出</div></iMenuItem>
-        <iMenuItem name="5-5"><div>关于</div></iMenuItem>
-      </Submenu>
+      <iMenuItem name="4">
+        <div @click.prevent="open">
+          <Icon type="log-in"></Icon>&nbsp;&nbsp;
+          登陆
+        </div>
+      </iMenuItem>
       <iMenuItem name="6"><Icon type="log-in"></Icon> 关于我 </iMenuItem>
     </Row>
 
@@ -60,10 +53,6 @@
       Submenu
     },
     props:{
-      showLog:{
-        type:Boolean,
-        default:false
-      },
       username:{
         type:String,
         default:''
@@ -92,10 +81,6 @@
           this.$router.push(`/classic/${name.split('-')[1]}/1`)
         }
         if(name === '2'){
-          this.$Notice.config({
-            top: 80,
-            duration: 3
-          });
           this.$Notice.warning({
             title: '抱歉',
             desc: '施工中，敬请期待~'
@@ -104,13 +89,7 @@
       },
       open(){
         this.$emit('onChange');
-      },
-      logOut(){
-        localStorage.clear();
-
-        this.$emit('log-out');
-      },
-
+      }
     }
   }
 </script>
