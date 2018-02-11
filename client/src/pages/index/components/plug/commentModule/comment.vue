@@ -2,7 +2,7 @@
   <div id="comment">
     <h2 class="mark-title" v-if="!markId">评论</h2>
     <p class="mark-title" v-if="markId">回复：{{markName}}</p>
-    <Form ref="commentInformation" :model="commentInformation" :rules="ruleValidate" :label-width="60">
+    <Form ref="commentInformation" :model="commentInformation" :rules="ruleValidate" :label-width="40">
       <FormItem label="昵称" prop="name" class="comment-item">
         <i-input v-model="commentInformation.user" placeholder="输入您的昵称" class="comment-information"></i-input>
       </FormItem>
@@ -12,7 +12,7 @@
       <FormItem label="评论" prop="desc" class="comment-item">
         <i-input v-model="commentInformation.content" type="textarea" :autosize="{minRows: 5,maxRows: 8}" placeholder="输入您的评论"></i-input>
       </FormItem>
-      <FormItem label="验证码" prop="captCha" class="comment-captcha comment-item">
+      <FormItem label="验证" prop="captCha" class="comment-captcha comment-item">
 
         <i-input v-model="captChaValue" @on-focus="isGetCaptcha" placeholder="点此处击获取验证码"></i-input>
         <div v-html="gotCaptCha.data"></div>
@@ -124,6 +124,7 @@
         let url = '/addMark',
           emit = 'updateComment';
         this.commentInformation.id = this.articleId;
+        console.log(this.markId);
         if(this.markId){
           url = '/addReply';
           emit = 'updateReply';
@@ -161,14 +162,22 @@
         });
         if(CaptChaPass && EmailPass){
           this.updateMark(url,emit)
-          .then(()=>{
+            .then(()=>{
+              let saveValue = JSON.stringify({
+                user:this.commentInformation.user,
+                email:this.commentInformation.email
+              });
+              if(localStorage.getItem('userInformation') !== saveValue){
+                localStorage.setItem('userInformation',saveValue);
+              }
               this.gotCaptCha = {};
               this.commentInformation = {};
               this.$Notice.success({
                 title:'评论成功！谢谢支持~'
               })
-          }).catch(e=>{
-              console.log(e);
+
+            }).catch(e=>{
+            console.log(e);
           })
         }
       },
@@ -184,6 +193,11 @@
               console.log(res.data.msg);
             }
           })
+      }
+    },
+    mounted(){
+      if(localStorage.getItem('userInformation')){
+        this.commentInformation = JSON.parse(localStorage.getItem('userInformation'));
       }
     }
 	}
@@ -203,7 +217,9 @@
       width 260px
   .comment-captcha
     width 180px
-    /*display flex*/
-    /*flex-wrap nowrap*/
-    /*justify-content flex-start*/
+@media screen and (max-width: 550px)
+  #comment
+    .comment-item
+      .comment-information
+        width 100%
 </style>
