@@ -1,9 +1,11 @@
 <template>
   <div id="all">
-    <div id="abstract">
+    <div class="active-cover" v-show="isShow" @click="$emit('closeSide')"></div>
+    <div id="abstract" class="right-content" :class="{'right-open' : isShow}">
       <!--<div style="width: 300px;height: 50px;"></div>-->
 
-      <audio :src="src_music" controls></audio>
+      <!--<audio :src="src_music" controls></audio>-->
+      <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=52 src="//music.163.com/outchain/player?type=3&id=1367121473&auto=1&height=32"></iframe>-->
       <div class="my-icon row"></div>
       <div class="my-name row"><router-link to="/">Kalecgos</router-link></div>
       <div class="my-content row">
@@ -43,7 +45,12 @@
     data(){
 		  return {
 		    isShowToggle:false,
-        src_music:`https://${location.hostname}:${location.port}/uploads/test.mp3`
+      }
+    },
+    props:{
+		  isShow:{
+		    default:false,
+        type:Boolean
       }
     },
     watch:{
@@ -64,16 +71,24 @@
 
 <style scoped lang="stylus">
 #all
-  .new-toggle
-    width 300px
-    border 1px solid #f0e5e7
-    border-radius 5px
-    background white
+  .active-cover
+    height 100%
+    width 100%
+    position fixed
+    left 0
+    top 0
+    background rgba(8, 8, 8, 0.47)
   #abstract
     width: 300px
     min-height: 700px
     background: #a9a58e
     overflow hidden
+    box-shadow -2px 2px 2px rgba(27, 31, 35, 0.58)
+    .new-toggle
+      width 300px
+      border 1px solid #f0e5e7
+      border-radius 5px
+      background white
     .row
       display flex
     .my-icon
@@ -118,9 +133,21 @@
       min-height: 300px
       .my-tag
         margin 10px 30px
-    .new-toggle
-      background #a9a58e
-      border none
-      border-radius 0
-
+      .new-toggle
+        background #a9a58e
+        border none
+        border-radius 0
+    .right-content
+      position fixed
+      left 0
+      top 60px
+      bottom 0
+      transform: translateX(-300px)
+      transition: transform 0.5s
+      overflow-x hidden
+      overflow-y auto
+    .right-open
+      transform: translateX(0px)
+      -o-transition: transform 0.5s
+      transition: transform 0.5s
 </style>

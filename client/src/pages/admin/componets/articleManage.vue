@@ -50,6 +50,20 @@
                 return h('div', [
                   h('Button', {
                     props: {
+                      type: 'primary',
+                      size: 'small'
+                    },
+                    style: {
+                      marginRight: '3px'
+                    },
+                    on: {
+                      click: () => {
+                        this.$router.push(`/articleManage/commentManage/${params.row.id}`)
+                      }
+                    }
+                  }, '评论'),
+                  h('Button', {
+                    props: {
                       type: 'success',
                       size: 'small'
                     },
@@ -90,6 +104,20 @@
                 ])
               } else {
                 return h('div', [
+                  h('Button', {
+                    props: {
+                      type: 'primary',
+                      size: 'small'
+                    },
+                    style: {
+                      marginRight: '3px'
+                    },
+                    on: {
+                      click: () => {
+                        this.$router.push(`/articleManage/edit/${params.row.id}`)
+                      }
+                    }
+                  }, '评论'),
                   h('Button', {
                     props: {
                       type: 'warning',

@@ -13,7 +13,7 @@
           <router-view class="router"></router-view>
         </transition>
       </div>
-      <abstract class="right-content" :class="{'right-open' : isShowSideBox}"></abstract>
+      <abstract :is-show="isShowSideBox" @closeSide="showSideBox"></abstract>
     </div>
     <my-footer class="content-footer"></my-footer>
   </div>
@@ -56,10 +56,6 @@ export default {
   methods:{
     showSideBox(){
       this.isShowSideBox = !this.isShowSideBox;
-      // console.log(this.isShowSideBox);
-    },
-    closeSideBox(){
-      this.isShowSideBox = false;
     },
     changeLog(){
       this.isShowlog = !this.isShowlog;
@@ -113,33 +109,5 @@ export default {
         width 100%
         margin 0
         padding 5px
-      .right-content
-        position fixed
-        left 0
-        top 60px
-        bottom 0
-        -webkit-transform: translateX(-330px)
-        -moz-transform: translateX(-330px)
-        -ms-transform: translateX(-330px)
-        -o-transform: translateX(-330px)
-        transform: translateX(-330px)
-        -webkit-transition: transform 0.5s
-        -moz-transition: transform 0.5s
-        -ms-transition: transform 0.5s
-        -o-transition: transform 0.5s
-        transition: transform 0.5s
-        overflow-x hidden
-        overflow-y auto
 
-      .right-open
-        -webkit-transform: translateX(0px)
-        -moz-transform: translateX(0px)
-        -ms-transform: translateX(0px)
-        -o-transform: translateX(0px)
-        transform: translateX(0px)
-        -webkit-transition: transform 0.5s
-        -moz-transition: transform 0.5s
-        -ms-transition: transform 0.5s
-        -o-transition: transform 0.5s
-        transition: transform 0.5s
 </style>

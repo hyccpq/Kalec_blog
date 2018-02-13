@@ -1,8 +1,8 @@
 <template>
-<div id="nav">
+<div>
   <iMenu mode="horizontal" :theme="'dark'" id="nav" @on-select="onSelect">
     <iMenuItem name="-1" class="nav-menu-button">
-      <Icon class="icon-menu" type="navicon-round" size="30"></Icon>
+      <Icon class="icon-menu" type="android-menu" size="30"></Icon>
     </iMenuItem>
     <iMenuItem name="0" class="nav-title">
       <div>冰空的作品展示</div>
@@ -111,8 +111,8 @@
     justify-content space-between
     align-items center
     .nav-menu-button
-      display: block
-      align-self flex-start
+      display: flex
+      align-self center
     .set-center
       display block
       width: 58px
