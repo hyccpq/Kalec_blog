@@ -69,6 +69,15 @@ a {
   top: -60px;
   visibility: hidden;
 }
+.verify{
+  width: 18px;
+  height: 18px;
+  background: url("./assets/svg/verify.svg");
+  background-size: 100%;
+}
+.touch-move {
+  overflow: hidden;
+}
 html{
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;

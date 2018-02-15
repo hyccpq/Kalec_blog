@@ -1,31 +1,26 @@
 <template>
   <div>
-    <h2 class="markList-title">留言</h2>
+    <h2 class="markList-title">{{articleInfo.title}}的留言管理&站长回复</h2>
     <ul id="markList-view">
-      <li v-if="!articleInfo.markList.length" class="none-mark-view">暂时没有留言，来留下你的留言吧！</li>
-      <transition-group name="markanimation" tag="li">
+      <li v-if="!articleInfo.markList.length" class="none-mark-view">暂时没有留言</li>
         <li v-for="(value,key) in articleInfo.markList" class="mark-view" :key="key+value">
           <div class="mark-name-floor">
-            <div class="mark-view-name">
-              <div v-text="value.userName"></div>
-              <div class="verify" v-if="value.isManage"></div>说：
-            </div>
+            <div class="mark-view-name"><span v-text="value.userName"></span>说：</div>
             <div class="mark-view-floor">第<span>{{key+1}}</span>楼</div>
           </div>
           <p v-text="value.markContent" class="mark-view-content"></p>
           <div class="mark-time-reply">
             <div v-text="value.markTime" class="mark-view-time"></div>|
-            <div><a href="javascript:void(0)" @click="addReply(key,articleInfo.markList.length)">回复</a></div>
+            <div><a href="javascript:void(0)" @click="addReply(key,articleInfo.markList.length)">回复</a></div>|
+            <div><a href="javascript:void(0)" @click="deleteReply(key)">删除</a></div>
           </div>
           <ul class="mark-view-reply" v-if="!!value.replyList.length||isShowReply[key]">
-            <transition-group name="markanimation" tag="li">
               <li class="reply-view" v-for="(item,i) in value.replyList" :key="i+item">
-                <div class="reply-view-name">
-                  <div v-text="item.replyName"></div>
-                  <div class="verify" v-if="item.isManage"></div>回复：</div>
+                <div class="reply-view-name"><span v-text="item.replyName"></span>回复：</div>
                 <p v-text="item.replyContent" class="mark-view-content"></p>
                 <div class="mark-time-reply">
-                  ----<div v-text="item.replyTime" class="mark-view-time"></div>
+                  ----<div v-text="item.replyTime" class="mark-view-time"></div>|
+                  <div><a href="javascript:void(0)" @click="deleteReply(i,value.userName,key)">删除</a></div>
                 </div>
                 <hr style="border:1px dashed #b3b9c6" v-if="i!==value.replyList.length-1">
               </li>
@@ -36,35 +31,31 @@
                        @updateReply="updateReply"
                        v-if="isShowReply[key]" key="reply">
               </comment>
-            </transition-group>
           </ul>
         </li>
-      </transition-group>
     </ul>
     <comment :article-id="articleInfo.id" @updateComment="updateComment"></comment>
   </div>
 </template>
 
 <script>
-  import comment from './comment'
+  import { mapState,mapActions } from 'vuex'
+  import comment from './plug/comment'
 	export default {
 		name: "commentList",
     components:{
       comment
-    },
-    props:{
-		  articleInfo:{
-        default:{
-          markList:[]
-        },
-        type:Object
-      }
     },
     data(){
 		  return {
         isShowReply:[],
         currentKey:0
       }
+    },
+    computed:{
+      ...mapState({
+        articleInfo: state => state.articleInfo
+      })
     },
     methods:{
 		  updateComment(value){
@@ -82,26 +73,60 @@
           this.currentKey = key;
         }
         this.$set(this.isShowReply,key,!this.isShowReply[key]);
-      }
+      },
+      deleteReply(num,isReply,key){
+		    if(isReply){
+          this.removeSql('/deleteReply',{
+            id:this.$route.params.id,
+            markId:this.articleInfo.markList[key].markId,
+            replyId:this.articleInfo.markList[key].replyList[num].replyId
+          }).then(
+            this.articleInfo.markList[key].replyList.splice(num,1)
+          )
+        } else {
+          this.removeSql('/deleteReply',{
+            id:this.$route.params.id,
+            markId:this.articleInfo.markList[num].markId
+          }).then(
+            this.articleInfo.markList.splice(num,1)
+          )
+        }
     },
+      removeSql(url,params){
+		    return this.axios.delete(url,{
+		      params
+		    })
+          .then(res => {
+            if(res.data.status === 1){
+              console.log(res.data.data);
+              this.$Notice.success({
+                title: res.data.msg
+              })
+            } else {
+              this.$Notice.warning({
+                title: res.data.msg
+              })
+            }
+          }).catch(e=>{
+          console.log('error');
+        })
+      },
+      ...mapActions([
+        'getArticleList'
+      ])
+    },
+    mounted(){
+		  const self = this;
+		  if(this.articleInfo.id == this.$route.params.id){
+        return;
+      }
+      this.$store.commit('showLoading');
+      this.getArticleList(`${self.$route.params.id}`)
+		}
 	}
 </script>
 
-<style scoped>
-.markanimation-enter-active, .list-leave-active{
-  transition: all .6s;
-}
-.markanimation-enter, .list-leave-to{
-  transform: translateX(-50px);
-  opacity: 0;
-}
-</style>
 <style scoped lang="stylus">
-  .verify
-    width 18px
-    height 18px
-    background url("../../../assets/svg/verify.svg")
-    background-size 100%
   .markList-title
     margin-top 40px
   #markList-view
@@ -118,7 +143,6 @@
         display flex
         justify-content space-between
         .mark-view-name
-          display flex
           font-size 18px
           font-weight bolder
       .mark-view-content
@@ -137,6 +161,5 @@
         .reply-view
           padding 5px 0
           .reply-view-name
-            display flex
             font-weight bold
 </style>

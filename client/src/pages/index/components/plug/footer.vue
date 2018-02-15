@@ -20,6 +20,7 @@
 <style scoped>
 .footer{
   width: 100%;
+  margin-top: 25px;
   background: rgba(132,142,146,0.3);
 }
 .layout-copy{

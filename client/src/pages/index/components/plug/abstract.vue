@@ -5,7 +5,7 @@
       <!--<div style="width: 300px;height: 50px;"></div>-->
 
       <!--<audio :src="src_music" controls></audio>-->
-      <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=52 src="//music.163.com/outchain/player?type=3&id=1367121473&auto=1&height=32"></iframe>-->
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=52 src="//music.163.com/outchain/player?type=3&id=1367121473&auto=1&height=32"></iframe>
       <div class="my-icon row"></div>
       <div class="my-name row"><router-link to="/">Kalecgos</router-link></div>
       <div class="my-content row">
@@ -20,6 +20,7 @@
             <Tag :tag-name="item.tagName"></Tag>
         </li>
       </ul>
+      <div class="my-notice">提示：站长回复请认准<div class="verify"></div>标志</div>
       <Affix :offset-top="120" v-if="isShowToggle">
         <article-toggle class="new-toggle"></article-toggle>
       </Affix>
@@ -78,12 +79,14 @@
     left 0
     top 0
     background rgba(8, 8, 8, 0.47)
+    z-index 20
   #abstract
     width: 300px
     min-height: 700px
     background: #a9a58e
     overflow hidden
     box-shadow -2px 2px 2px rgba(27, 31, 35, 0.58)
+    z-index 50
     .new-toggle
       width 300px
       border 1px solid #f0e5e7
@@ -107,8 +110,12 @@
     .my-tag-title
       justify-content center
     .my-tag
-      margin 10px 30px 300px 30px
+      margin 10px 30px 10px 30px
       flex-wrap wrap
+    .my-notice
+      color #a43b01
+      display flex
+      margin 10px 30px 300px 30px
     .my-content
       justify-content space-around
       margin 15px auto
@@ -137,6 +144,11 @@
         background #a9a58e
         border none
         border-radius 0
+        margin-bottom 80px
+      .my-notice
+        color #a43b01
+        display flex
+        margin 10px 30px 10px 30px
     .right-content
       position fixed
       left 0

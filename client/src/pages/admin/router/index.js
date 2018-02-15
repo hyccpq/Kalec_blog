@@ -4,6 +4,7 @@ const admin = resolve => require(['../componets/admin'],resolve);
 const login = resolve => require(['../componets/loginPage'],resolve);
 const write = resolve => require(['../componets/write'],resolve);
 const articleManage = resolve => require(['../componets/articleManage'],resolve);
+const commentList = resolve => require(['../componets/commentList'],resolve);
 
 Vue.use(Router);
 
@@ -41,7 +42,13 @@ export default new Router({
           meta: {auth: true},
           component: write,
           name: 'adminEdit'
-        }
+        },
+        {
+          path: '/articleManage/commentManage/:id',
+          meta: {auth: true},
+          component: commentList,
+          name: 'commentEdit'
+        },
       ]
     }
   ]

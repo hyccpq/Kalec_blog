@@ -56,6 +56,13 @@ export default {
   methods:{
     showSideBox(){
       this.isShowSideBox = !this.isShowSideBox;
+      //解决移动端滚动穿透问题
+      let touchScroll = document.querySelector('html');
+      if(this.isShowSideBox){
+        touchScroll.className = 'touch-move';
+      } else {
+        touchScroll.className = '';
+      }
     },
     changeLog(){
       this.isShowlog = !this.isShowlog;

@@ -13,18 +13,16 @@
 		name: "article-toggle",
     data(){
 		  return {
-		    hasToggle:true
-      }
-    },
-    watch:{
-      toggle(toggle){
-        this.hasToggle = toggle.length==0?false:true;
+		    // hasToggle:this.toggle.length!== 0
       }
     },
     computed:{
       ...mapState({
         toggle: state => state.toggle
-      })
+      }),
+      hasToggle(){
+        return this.toggle.length !== 0;
+      }
     },
   }
 </script>

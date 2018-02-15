@@ -13,7 +13,6 @@
 <script>
   import { Table } from 'iview'
   import isRemove from './plug/login'
-  import http from '../../../modules/util/adAxios'
 	export default {
 		name: "article-manage",
     components:{
@@ -114,7 +113,7 @@
                     },
                     on: {
                       click: () => {
-                        this.$router.push(`/articleManage/edit/${params.row.id}`)
+                        this.$router.push(`/articleManage/commentManage/${params.row.id}`)
                       }
                     }
                   }, '评论'),
@@ -170,7 +169,7 @@
     },
     methods: {
       editShow (id,show) {
-        http.put('/editShow',{
+        this.axios.put('/editShow',{
           id,
           show
         }).then(res => {
@@ -203,7 +202,7 @@
 
       },
       articleRemove(){
-        http.delete('/deleteArticle',{
+        this.axios.delete('/deleteArticle',{
           params:{
             id:this.removeId.id
           }
@@ -224,7 +223,7 @@
         this.isShowRemove = !this.isShowRemove;
       },
       reqTable (){
-        http.get('/searchAll').then(res=>{
+        this.axios.get('/searchAll').then(res=>{
           // console.log(res.data.data.list);
           if(res.data.status === 1){
             this.data = res.data.data.list;
