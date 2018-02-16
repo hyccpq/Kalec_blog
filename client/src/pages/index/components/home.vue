@@ -53,7 +53,7 @@
   align-items center
   width: 100%
   height: inherit
-  background url("../assets/img/d.cfc8d05.jpg")
+  background url("../assets/img/timg (2).jpeg")
   color white
   text-align center
   .home-content

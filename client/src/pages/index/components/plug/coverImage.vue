@@ -1,13 +1,13 @@
 <template>
 <div>
-  <div class="cover">
-
+  <video autoplay loop class="cover">
+    <source src="../../assets/img/12.mp4">
     <div class="title">
       <h1>Kalec的网络日志</h1>
-      <h3>漂浮的灵魂</h3>
+      <h3>漂浮的灵魂1</h3>
     </div>
 
-  </div>
+  </video>
 </div>
 </template>
 
@@ -20,10 +20,11 @@
 <style scoped lang="stylus">
 .cover
   width: 100%
-  height: 300px
+  height: 500px
   min-height: 200px
-  background url("../../assets/img/cover.jpg") no-repeat center
-  background-size 100%
+  object-fit fill-opacity
+  /*background url("../../assets/img/cover.jpg") no-repeat center*/
+  /*background-size 100%*/
   display flex
   align-items center
   justify-content center
@@ -35,7 +36,7 @@
 @media screen and (max-width: 1118px)
   .cover
     width: 100%
-    height: 200px
-    min-height: 200px
+    height: 150px
+    min-height: 150px
 
 </style>
