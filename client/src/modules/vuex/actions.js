@@ -14,17 +14,17 @@ export const logOut = ({commit}) => {
 // 主页列表
 export const getIndexList = ({commit},payload) => {
   return API.getIndexList(payload).then((res) => {
-      if(res.data.status === 1){
-        commit(types.GET_LIST,res.data.data);
-        return new Promise((resolve,reject) => {
-          resolve(res)
-        })
-      } else {
-        console.log(res.data);
-      }
-    }).catch((e) => {
-      console.error(e);
-    })
+    if(res.data.status === 1){
+      commit(types.GET_LIST,res.data.data);
+      return new Promise((resolve,reject) => {
+        resolve(res)
+      })
+    } else {
+      console.log(res.data);
+    }
+  }).catch((e) => {
+    console.error(e);
+  })
 };
 
 // Tag页面数据
