@@ -2,7 +2,7 @@
     <div id="toggle" v-if="hasToggle">
       <p class="toggle-name">文章目录</p>
       <ul class="toggle-cat">
-        <li v-for="item in toggle" :class="`toggle-${item.tagName}`"><a :href="item.href">{{item.text}}--{{item.tagName}}</a></li>
+        <li v-for="item in toggle" :class="`toggle-${item.tagName}`"><a :href="item.href">{{item.text}}</a></li>
       </ul>
     </div>
 </template>
