@@ -16,6 +16,7 @@
       <abstract :is-show="isShowSideBox" @closeSide="showSideBox"></abstract>
     </div>
     <my-footer class="content-footer"></my-footer>
+    <to-top class="content-to-top"></to-top>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import myFooter from './plug/footer'
 import coverImage from './plug/coverImage'
 import elNav from '../components/plug/nav'
 import loginForm from '../components/plug/login'
+import toTop from './plug/goTop'
 // import onForm from '../components/plug/form'
 import loading from './plug/Loading'
 import {mapState} from 'vuex'
@@ -37,7 +39,8 @@ export default {
     elNav,
     loginForm,
     // onForm,
-    loading
+    loading,
+    toTop
   },
   data(){
     return {
@@ -96,6 +99,10 @@ export default {
 </style>
 
 <style scoped lang="stylus">
+.content-to-top
+  position fixed
+  bottom 130px
+  right 80px
 #index-content
   padding-top 60px
 .all-content
