@@ -343,7 +343,7 @@
       <workItem from="1521519386940" duration="2758000" />
       <workItem from="1521817528006" duration="179000" />
       <workItem from="1521905581127" duration="2709000" />
-      <workItem from="1521946209323" duration="8420000" />
+      <workItem from="1521946209323" duration="8748000" />
     </task>
     <task id="LOCAL-00001" summary="更改文章分页">
       <created>1516681291849</created>
@@ -391,7 +391,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99163000" />
+    <option name="totallyTimeSpent" value="99491000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1865" y="23" width="1865" height="1057" extended-state="0" />
