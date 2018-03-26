@@ -104,10 +104,8 @@ export default {
 <style scoped lang="stylus">
 .content-to-top
   position fixed
-  bottom 130px
+  bottom 80px
   right 80px
-#index-content
-  padding-top 60px
 .all-content
   width 1100px
   min-height 800px
@@ -122,9 +120,10 @@ export default {
 @media screen and (max-width: 1118px)
   .content-to-top
     position fixed
-    bottom 130px
+    bottom 50px
     right 20px
   #index-content
+    padding-top 60px
     .all-content
       width: 100%
       .left-content

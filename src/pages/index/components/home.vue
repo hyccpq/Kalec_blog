@@ -53,7 +53,8 @@
   align-items center
   width: 100%
   height: inherit
-  background url("../assets/img/home.jpg")
+  background url("//api.i-meto.com/bing") no-repeat center
+  background-size cover
   color white
   text-align center
   .home-content

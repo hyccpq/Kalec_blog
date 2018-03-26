@@ -97,6 +97,7 @@
 <style scoped lang="stylus">
 #nav
   width: 100%;
+  background: rgba(0, 0, 0, 0.50)
   .nav-title
     height: 60px
     color: aqua
@@ -107,6 +108,7 @@
     display none
 @media screen and (max-width: 1118px)
   #nav
+    background: #4d4d4d
     display flex
     justify-content space-between
     align-items center

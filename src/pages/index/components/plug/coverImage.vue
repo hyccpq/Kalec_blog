@@ -33,7 +33,7 @@
   min-height: 200px
   object-fit fill-opacity
   background url("../../assets/img/cover.jpg") no-repeat center
-  background-size auto 100%
+  background-size cover
   display flex
   align-items center
   justify-content center

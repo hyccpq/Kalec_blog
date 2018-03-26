@@ -2,24 +2,29 @@
   <div id="all">
     <div class="active-cover" v-show="isShow" @click="$emit('closeSide')"></div>
     <div id="abstract" class="right-content" :class="{'right-open' : isShow}">
-      <div class="my-icon row"></div>
-      <div class="my-name row"><router-link to="/">Kalecgos</router-link></div>
-      <div class="my-content row">
-        <a href="http://weibo.com/kalecgos" title="微博"><div class="some-contents icon1"></div></a>
-        <a href="https://github.com/hyccpq" title="GitHub"><div class="some-contents icon2"></div></a>
-        <a href="mailto:hyccpq@hotmail.com" title="邮件"><div class="some-contents icon3"></div></a>
-        <a href="https://twitter.com/hyccpq" title="Twitter"><div class="some-contents icon4"></div></a>
-      </div>
-      <div class="my-tag-title row">全部标签</div>
-      <ul class="my-tag row">
-        <li v-for="item in tagAndClassicList">
+      <div class="main">
+        <div class="my-icon row"></div>
+        <div class="my-name row"><router-link to="/">Kalecgos</router-link></div>
+        <div class="my-content row">
+          <a href="http://weibo.com/kalecgos" title="微博"><div class="some-contents icon1"></div></a>
+          <a href="https://github.com/hyccpq" title="GitHub"><div class="some-contents icon2"></div></a>
+          <a href="mailto:hyccpq@hotmail.com" title="邮件"><div class="some-contents icon3"></div></a>
+          <a href="https://twitter.com/hyccpq" title="Twitter"><div class="some-contents icon4"></div></a>
+        </div>
+        <div class="my-tag-title row">全部标签</div>
+        <ul class="my-tag row">
+          <li v-for="item in tagAndClassicList">
             <Tag :tag-name="item.tagName"></Tag>
-        </li>
-      </ul>
-      <div class="my-notice">提示：站长回复请认准<div class="verify"></div>标志</div>
+          </li>
+        </ul>
+        <div class="my-notice">提示：站长回复请认准<div class="verify"></div>标志</div>
+      </div>
       <Affix :offset-top="120" v-if="isShowToggle">
         <article-toggle class="new-toggle"></article-toggle>
       </Affix>
+
+
+
     </div>
 
   </div>
@@ -72,6 +77,12 @@
 
 <style scoped lang="stylus">
 #all
+  padding 20px 0
+  .new-toggle
+    width 300px
+    border 1px solid #f0e5e7
+    border-radius 5px
+    background white
   .active-cover
     height 100%
     width 100%
@@ -81,85 +92,88 @@
     background rgba(8, 8, 8, 0.47)
     z-index 20
   #abstract
-    width: 300px
-    min-height: 700px
-    background: #a9a58e
-    overflow hidden
-    box-shadow -2px 2px 2px rgba(27, 31, 35, 0.58)
-    z-index 50
-    .new-toggle
-      width 300px
-      border 1px solid #f0e5e7
-      border-radius 5px
-      background white
-    .row
-      display flex
-    .my-icon
-      width 180px
-      height 180px
-      -webkit-border-radius 50%
-      -moz-border-radius 50%
-      border-radius 50%
-      background url("../../assets/img/F3CB98926ED3625BBD7EAECDACD31AFF.jpg") center no-repeat
-      background-size 120%
-      margin 20px auto
-    .my-name
-      justify-content center
-      margin 0 auto
-      font-size 1.5em
-    .my-tag-title
-      justify-content center
-    .my-tag
-      margin 10px 30px 10px 30px
-      flex-wrap wrap
-    .my-notice
-      color #a43b01
-      display flex
-      margin 10px 30px 300px 30px
-    .my-content
-      justify-content space-around
-      margin 15px auto
-      .some-contents
-        margin 5px 0
-        width 40px
-        height 40px
-        background-size 100%
-      .icon1
-        background url("../../assets/svg/weibo.svg") no-repeat center
-      .icon2
-        background url("../../assets/svg/github.svg") no-repeat center
-      .icon3
-        background url("../../assets/svg/email.svg") no-repeat center
-      .icon4
-        background url("../../assets/svg/twitter.svg") no-repeat center
+    .main
+      width: 300px
+      min-height: 700px
+      background: #a9a58e
+      overflow hidden
+      box-shadow 0 0 4px 4px rgba(27, 31, 35, 0.5)
+      border-radius 2px
+      z-index 50
+      .row
+        display flex
+      .my-icon
+        width 180px
+        height 180px
+        -webkit-border-radius 50%
+        -moz-border-radius 50%
+        border-radius 50%
+        background url("../../assets/img/F3CB98926ED3625BBD7EAECDACD31AFF.jpg") center no-repeat
+        background-size 120%
+        margin 20px auto
+      .my-name
+        justify-content center
+        margin 0 auto
+        font-size 1.5em
+      .my-tag-title
+        justify-content center
+      .my-tag
+        margin 10px 30px 10px 30px
+        flex-wrap wrap
+      .my-notice
+        color #a43b01
+        display flex
+        margin 10px 30px 50px 30px
+      .my-content
+        justify-content space-around
+        margin 15px auto
+        .some-contents
+          margin 5px 0
+          width 40px
+          height 40px
+          background-size 100%
+        .icon1
+          background url("../../assets/svg/weibo.svg") no-repeat center
+        .icon2
+          background url("../../assets/svg/github.svg") no-repeat center
+        .icon3
+          background url("../../assets/svg/email.svg") no-repeat center
+        .icon4
+          background url("../../assets/svg/twitter.svg") no-repeat center
 @media screen and (max-width: 1118px)
   #all
+    padding 0
+    .new-toggle
+      background #a9a58e
+      border none
+      border-radius 0
     #abstract
       height 100%
       overflow auto
       min-height: 300px
-      .my-tag
-        margin 10px 30px
-      .new-toggle
-        background #a9a58e
-        border none
-        border-radius 0
-        margin-bottom 80px
-      .my-notice
-        color #a43b01
-        display flex
-        margin 10px 30px 10px 30px
+      border-radius 0
+      background #a9a58e
+      .main
+        min-height: 500px
+        box-shadow none
+        .my-tag
+          margin 10px 30px
+        .my-notice
+          color #a43b01
+          display flex
+          margin 10px 30px 10px 30px
     .right-content
       position fixed
       left 0
       top 60px
       bottom 0
-      transform: translateX(-300px)
-      transition: transform 0.5s
+      transform: translateX(-310px)
+      transition: transform 0.4s
       overflow-x hidden
       overflow-y auto
+      z-index 30
     .right-open
       transform: translateX(0px)
-      -o-transition: transform 0.5s
-      transition: transform 0.5s
+      -o-transition: transform 0.4s
+      transition: transform 0.4s
 </style>
