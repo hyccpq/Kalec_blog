@@ -52,7 +52,11 @@ module.exports = {
                 css: ExtractTextWebpackPlugin.extract({
                   use: 'css-loader!stylus-loader',
                   fallback: 'vue-style-loader'
-                })
+                }),
+                stylus: ExtractTextWebpackPlugin.extract({
+                  use: 'css-loader!stylus-loader',
+                  fallback: 'vue-style-loader'
+                }),
               }
             }
           }
@@ -92,7 +96,7 @@ module.exports = {
         loader: 'raw-loader'
       },
       {
-        test: /\.(styl|css)(\?.*)?$/,
+        test: /\.css$/,
         use: ExtractTextWebpackPlugin.extract({
           fallback: "style-loader",
           use:[
