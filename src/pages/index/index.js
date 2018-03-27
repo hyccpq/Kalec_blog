@@ -18,14 +18,16 @@ Vue.prototype.$Notice = Notice;
 
 if(typeof window !== "undefined"){
   const OfflinePluginRuntime = require('offline-plugin/runtime')
-    OfflinePluginRuntime.install({
+  OfflinePluginRuntime.install({
     onUpdateReady () {
       OfflinePluginRuntime.applyUpdate()
     },
     onUpdated () {
+      console.log('sw正在更新');
       window.location.reload()
     }
   });
+  OfflinePluginRuntime.applyUpdate();
   
   let fastClick = require('fastclick');
   fastClick.attach(document.body);

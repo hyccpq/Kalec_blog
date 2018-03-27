@@ -85,12 +85,10 @@ const config = merge(base, {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest_manage',
       chunks: ['vendor_manage']
-    }),
-    
-    new OfflinePlugin(),
+    })
   ],
 })
-console.log(config.entry['app']);
+
 config.entry['app'].unshift('webpack-hot-middleware/client?reload=true')
 config.entry['manage'].unshift('webpack-hot-middleware/client?reload=true')
 
@@ -104,6 +102,7 @@ if(process.env.NODE_ENV === 'production'){
     const CompressionWebpackPlugin = require('compression-webpack-plugin')
     
     config.plugins.push(
+      new OfflinePlugin(),
       new CompressionWebpackPlugin({
         asset: '[path].gz[query]',
         algorithm: 'gzip',

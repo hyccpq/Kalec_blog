@@ -3,9 +3,12 @@
     <!--<li class="goTop-wechat">-->
       <!--<div class="goTop-all wechat"></div>-->
     <!--</li>-->
-    <li class="goTop-to" v-if="showToTop">
-      <a @click.prevent="toTop"><div class="goTop-all top"></div></a>
-    </li>
+    <transition name="totop-animation">
+      <li class="goTop-to" v-if="showToTop">
+        <a @click.prevent="toTop"><div class="goTop-all top"></div></a>
+      </li>
+    </transition>
+
   </ul>
 </template>
 
@@ -29,6 +32,23 @@
     }
 	}
 </script>
+
+<style scoped lang="stylus">
+.totop-animation-enter-active, .totop-animation-leave-active
+  transition all .2s
+  -webkit-transform: scale(1)
+  -moz-transform: scale(1)
+  -ms-transform: scale(1)
+  -o-transform: scale(1)
+  transform: scale(1)
+.totop-animation-enter, .totop-animation-leave-to
+  -webkit-transform: scale(0)
+  -moz-transform: scale(0)
+  -ms-transform: scale(0)
+  -o-transform: scale(0)
+  transform: scale(0)
+
+</style>
 
 <style scoped lang="stylus">
 .goTop-all

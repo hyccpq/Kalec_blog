@@ -113,7 +113,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextWebpackPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
+      filename: utils.assetsPath('css/[name].css'),
       allChunks: true,
     }),
     // new PriuifyCSSPPlugin({

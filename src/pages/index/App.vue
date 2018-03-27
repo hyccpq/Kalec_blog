@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <!--<img src="./assets/logo.png">-->
-    <router-view></router-view>
+    <transition name="main-animation">
+      <router-view></router-view>
+    </transition>
+
 
   </div>
 </template>
@@ -12,6 +15,14 @@
     name: 'app',
   }
 </script>
+
+<style scoped lang="stylus">
+.main-animation-enter-active, .main-animation-leave-active
+  transition opacity .5s
+.main-animation-enter, .main-animation-leave-to
+  opacity: 0
+
+</style>
 
 <style lang="stylus">
 @import url('./assets/css/iview.css');
