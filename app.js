@@ -18,7 +18,7 @@ const historyApiFallback = require('./middleware/historyApiFallback')
 const app        = new Koa();
 
 // const index      = require('./route/index.js');
-const other      = require('./route/other.js');
+// const other      = require('./route/other.js');
 const api        = require('./route/api.js');
 
 const Router = require('koa-router');
