@@ -16,9 +16,9 @@ mognodb 3.0+
 ```
 > 配置安装好MongoDB
 > mongod运行MongoDB
-> git clone 
+> git clone
 > cd kalec_blog
-> npm install 
+> npm install
 > npm run build
 > npm start
 ```
@@ -30,7 +30,7 @@ mognodb 3.0+
 #### 4. 默认使用http2需要ssl证书和密钥
 #### 5. koa-multer模块协助完成静态文件上传
 
-
-
+后台部分展示
+前台部分展示
 ### License
 MIT
