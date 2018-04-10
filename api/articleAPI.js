@@ -1143,6 +1143,7 @@ const getAllTags = async () => {
             })
         })
     })
+      console.log(tags);
     return {
         tags,
         classic

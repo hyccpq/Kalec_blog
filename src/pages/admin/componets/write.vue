@@ -247,7 +247,7 @@
         if(this.addTagValue){
           let n = this.tagList.length;
           this.tagList.push({
-            tagId: n+1,
+            tagId: n+3,
             tagName: this.addTagValue
           });
           this.$Notice.success({

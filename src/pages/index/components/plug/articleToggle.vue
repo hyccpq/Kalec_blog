@@ -2,7 +2,7 @@
     <div id="toggle" v-if="hasToggle">
       <p class="toggle-name">文章目录</p>
       <ul class="toggle-cat">
-        <li v-for="item in toggle" :class="`toggle-${item.tagName}`"><a :href="item.href">{{item.text}}--{{item.tagName}}</a></li>
+        <li v-for="item in toggle" :class="`toggle-${item.tagName}`"><a :href="item.href">{{item.text}}</a></li>
       </ul>
     </div>
 </template>
@@ -38,15 +38,15 @@
   .toggle-cat
     margin 20px auto
     .toggle-H1
-      margin-left 0
+      margin-left 10px
     .toggle-H2
-      margin-left 20px
+      margin-left 25px
     .toggle-H3
       margin-left 40px
     .toggle-H4
-      margin-left 60px
+      margin-left 55px
     .toggle-H5
-      margin-left 80px
+      margin-left 70px
     .toggle-H6
-      margin-left 100px
+      margin-left 85px
 </style>
