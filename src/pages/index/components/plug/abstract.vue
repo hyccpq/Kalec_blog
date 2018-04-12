@@ -22,9 +22,6 @@
       <Affix :offset-top="120" v-if="isShowToggle">
         <article-toggle class="new-toggle"></article-toggle>
       </Affix>
-
-
-
     </div>
 
   </div>
@@ -81,8 +78,8 @@
   .new-toggle
     width 300px
     border 1px solid #f0e5e7
+    background #fbfbfb
     border-radius 5px
-    background white
   .active-cover
     height 100%
     width 100%
@@ -97,9 +94,10 @@
       min-height: 700px
       background: #a9a58e
       overflow hidden
-      box-shadow 0 0 4px 4px rgba(27, 31, 35, 0.5)
+      box-shadow 0 0 2px 2px rgba(27, 31, 35, 0.5)
       border-radius 2px
       z-index 50
+      margin-bottom 10px
       .row
         display flex
       .my-icon
@@ -110,7 +108,7 @@
         border-radius 50%
         background url("../../assets/img/F3CB98926ED3625BBD7EAECDACD31AFF.jpg") center no-repeat
         background-size 120%
-        margin 20px auto
+        margin 40px auto
       .my-name
         justify-content center
         margin 0 auto
@@ -148,7 +146,7 @@
       border none
       border-radius 0
     #abstract
-      height 100%
+      height auto
       overflow auto
       min-height: 300px
       border-radius 0

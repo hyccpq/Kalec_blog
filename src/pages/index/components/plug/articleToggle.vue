@@ -36,7 +36,8 @@
     padding 10px 20px
     border-bottom 1px solid #f0e5e7
   .toggle-cat
-    margin 20px auto
+    padding 10px 0
+    font-size 1.2em
     .toggle-H1
       margin-left 10px
     .toggle-H2

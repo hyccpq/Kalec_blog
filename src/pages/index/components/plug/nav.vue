@@ -96,6 +96,8 @@
 
 <style scoped lang="stylus">
 #nav
+  -webkit-backdrop-filter blur(5px)
+  backdrop-filter blur(5px)
   width: 100%;
   background: rgba(0, 0, 0, 0.50)
   .nav-title
