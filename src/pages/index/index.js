@@ -24,7 +24,6 @@ if(typeof window !== "undefined"){
     },
     onUpdated () {
       console.log('sw正在更新');
-      window.location.reload()
     }
   });
   OfflinePluginRuntime.applyUpdate();

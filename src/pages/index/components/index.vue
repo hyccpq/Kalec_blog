@@ -3,7 +3,7 @@
     <loading :onLoading="onLoading"></loading>
     <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
     <login-form :is-showlog="isShowlog" @onChange="changeLog">
-      <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长<a href="/admin">登录</a>
+      <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长，<a href="/admin">登录</a>
     </login-form>
     <cover-image class="cover"></cover-image>
     <div class="all-content">

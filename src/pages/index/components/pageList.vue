@@ -10,15 +10,22 @@
           <BreadcrumbItem v-if="isClassicOrTag">{{decodeURIComponent($route.path.split('/')[2])}}</BreadcrumbItem>
         </Breadcrumb>
         <div  v-for="(item,index) in articleList">
-          <Card class="article-list"
-                :style="{marginTop:index===0?'0px':'30px',marginBottom:'30px'}">
-            <h2>{{item.title}}</h2>
-            <span>发布时间：{{item.time}}</span>
-            <p>{{item.intr}}......</p>
+          <div class="article-list"
+                :style="{marginTop:index===0?'0px':'40px',marginBottom:'40px'}">
             <router-link :to="`/article/${item.id}`">
-              <i-button type="primary" shape="circle">查看更多</i-button>
+              <h2 class="article-title">{{item.title}}</h2>
             </router-link>
-          </Card>
+            <div class="article-time">
+              <div class="icon"><Icon type="calendar" class="about-info-icon"></Icon>  {{item.time}}</div>
+              <div class="icon icon-black"><Icon type="android-textsms"></Icon>  {{item.markNum}}</div>
+            </div>
+
+            <p class="article-summery">{{item.intr}}......</p>
+            <router-link :to="`/article/${item.id}`">
+              <span class="article-show">>继续阅读</span>
+            </router-link>
+            <div class="article-line" v-if="index===articleList.length - 1 ? false : true"></div>
+          </div>
         </div>
         <div class="page-block">
           <Page :total="articleListNum" @on-change="onChange" :current="current" class="arcticle-page"></Page>
@@ -33,7 +40,7 @@
 
 <script>
   import { mapState } from 'vuex'
-  import { Button,Page,Card,Content,Breadcrumb,BreadcrumbItem } from 'iview'
+  import { Page,Content,Breadcrumb,BreadcrumbItem,Icon } from 'iview'
 
   export default {
     name: "page-list",
@@ -43,12 +50,11 @@
       }
     },
     components:{
-      iButton:Button,
       Page,
-      Card,
       iContent:Content,
       Breadcrumb,
-      BreadcrumbItem
+      BreadcrumbItem,
+      Icon
     },
     methods:{
       // ...mapActions(['getIndexList'])
@@ -142,10 +148,28 @@
 <style scoped lang="stylus">
 .article-list
   width 100%
-h2
-  padding 20px 0
-p
-  padding 10px 0
+  .article-title
+    padding 20px 0
+    font-size 1.6em
+  .article-summery
+    padding 10px 0
+    font-size 1.2em
+    line-height 26px
+  .article-time
+    color: #727272
+    .icon
+      display inline-block
+    .icon-black
+      padding-left 16px
+  .article-show
+    color #4755f0
+    font-size 1.2em
+    padding-top 20px
+  .article-line
+    width: 200px
+    height: 0
+    margin-top 40px
+    border 1px solid #e1e1e1
 .page-block
   display flex
   justify-content center
