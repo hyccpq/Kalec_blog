@@ -106,7 +106,7 @@
         -webkit-border-radius 50%
         -moz-border-radius 50%
         border-radius 50%
-        background url("../../assets/img/F3CB98926ED3625BBD7EAECDACD31AFF.jpg") center no-repeat
+        background url("../../assets/img/myicon.jpg") center no-repeat
         background-size 120%
         margin 40px auto
       .my-name
