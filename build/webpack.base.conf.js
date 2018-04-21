@@ -7,6 +7,10 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const PriuifyCSSPPlugin = require('purifycss-webpack')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const plugin = new ExtractTextWebpackPlugin({
+      filename: utils.assetsPath('css/[name].css'),
+      allChunks: true,
+    })
 
 
 function resolve (dir) {
@@ -101,10 +105,7 @@ module.exports = {
           fallback: "style-loader",
           use:[
             {
-              loader: 'css-loader',
-              options:{
-                minimize: true //css压缩
-              }
+              loader: 'css-loader!postcss-loader'
             }
           ]
         })
@@ -112,10 +113,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextWebpackPlugin({
-      filename: utils.assetsPath('css/[name].css'),
-      allChunks: true,
-    }),
+    plugin,
     // new PriuifyCSSPPlugin({
     //   paths: glob.sync(resolve(__dirname,'src/pages/*.html'))
     // }),
