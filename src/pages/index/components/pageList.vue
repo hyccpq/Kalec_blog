@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div >
+    <div>
       <i-content class="left-content">
         <Breadcrumb :style="{margin: '20px 0'}">
           <BreadcrumbItem><router-link to="/">HOME</router-link></BreadcrumbItem>
           <BreadcrumbItem><span v-if="!isClassicOrTag">首页</span>
           <router-link v-if="isClassicOrTag" to="/index">首页</router-link>
           </BreadcrumbItem>
-          <BreadcrumbItem v-if="isClassicOrTag">{{decodeURIComponent($route.path.split('/')[2])}}</BreadcrumbItem>
+          <BreadcrumbItem v-if="isClassicOrTag">
+            {{decodeURIComponent($route.path.split('/')[2])}}
+          </BreadcrumbItem>
         </Breadcrumb>
         <div  v-for="(item,index) in articleList">
           <div class="article-list"

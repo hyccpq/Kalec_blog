@@ -1,22 +1,20 @@
 <template>
   <transition name="bounce">
-  <div class="svg-shade" v-if="onLoading">
-    <div class="loads-content">
-      <div class="preloader">
-        <div class="preloader-box">
-          <div>L</div>
-          <div>O</div>
-          <div>A</div>
-          <div>D</div>
-          <div>I</div>
-          <div>N</div>
-          <div>G</div>
+    <div class="svg-shade" v-if="onLoading">
+      <div class="loads-content">
+        <div class="progress container">
+          <span>L</span>
+          <span>O</span>
+          <span>A</span>
+          <span>D</span>
+          <span>I</span>
+          <span>N</span>
+          <span>G</span>
+          <span>.</span>
         </div>
       </div>
     </div>
-
-  </div>
-</transition>
+  </transition>
 </template>
 
 <script>
@@ -37,114 +35,50 @@
 </script>
 
 <style scoped lang="stylus">
-  /*.bounce-enter-active {*/
-    /*-webkit-animation: bounce-in .5s;*/
-    /*-o-animation: bounce-in .5s;*/
-    /*animation: bounce-in .5s;*/
-  /*}*/
+
   .bounce-leave-active {
-    -webkit-animation: bounce-in 1s reverse;
-    -o-animation: bounce-in 1s reverse;
-    animation: bounce-in 1s reverse;
+    transition: all 1s
   }
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-      opacity: 0;
+  .bounce-leave-to{
+    opacity: 0;
+  }
+
+  .progress{
+    width: 260px
+    margin: 0 auto;
+  }
+  .progress span{
+    transition: all 100ms ease;
+    background: #4A72DA;
+    box-shadow: 10px 20px 30px #434343;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    border-radius: 50%;
+    animation: wave 2s ease  infinite;
+    font-size:16px;
+    color: #fff;
+    line-height: 25px
+    text-align: center
+  }
+
+  .progress span:nth-child(1){  animation-delay: 0; }
+  .progress span:nth-child(2){  animation-delay: 50ms; }
+  .progress span:nth-child(3){  animation-delay: 100ms; }
+  .progress span:nth-child(4){  animation-delay: 150ms; }
+  .progress span:nth-child(5){  animation-delay: 200ms; }
+  .progress span:nth-child(6){  animation-delay: 250ms; }
+  .progress span:nth-child(7){  animation-delay: 300ms; }
+  .progress span:nth-child(8){  animation-delay: 350ms; }
+
+  @keyframes wave{
+    0%, 40%, 100% {
+      transform: translate(0, 0);
+      background-color: #4A72DA;
     }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  .preloader {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: 10;
-  }
-
-  .preloader > .preloader-box {
-    position: absolute;
-    width: 345px;
-    height: 30px;
-    top: 50%;
-    left: 50%;
-    margin: -15px 0 0 -150px;
-    -webkit-perspective: 200px;
-  }
-
-  .preloader .preloader-box > div {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background: #CCC;
-    float: left;
-    text-align: center;
-    line-height: 30px;
-    font-family: Verdana;
-    font-size: 20px;
-    color: #FFF;
-  }
-
-  .preloader .preloader-box > div:nth-child(1) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 0ms infinite alternate;
-  }
-  .preloader .preloader-box > div:nth-child(2) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 75ms infinite alternate;
-  }
-  .preloader .preloader-box > div:nth-child(3) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 150ms infinite alternate;
-  }
-
-  .preloader .preloader-box > div:nth-child(4) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 225ms infinite alternate;
-  }
-
-  .preloader .preloader-box > div:nth-child(5) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 300ms infinite alternate;
-  }
-
-  .preloader .preloader-box > div:nth-child(6) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 375ms infinite alternate;
-  }
-
-  .preloader .preloader-box > div:nth-child(7) {
-    background: #3366FF;
-    margin-right: 15px;
-    -webkit-animation: movement 600ms ease 450ms infinite alternate;
-  }
-
-  .preloader .preloader-box > div:nth-child(8) {
-    background: #3366FF;
-    -webkit-animation: movement 600ms ease 525ms infinite alternate;
-  }
-
-  @-webkit-keyframes movement {
-    from {
-      -webkit-transform: scale(1.0) translateY(0px) rotateX(0deg);
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-    }
-    to {
-      -webkit-transform: scale(1.5) translateY(-25px) rotateX(45deg);
-      box-shadow: 0 25px 40px rgba(0,0,0,0.4);
-      background: #3399FF;
+    10% {
+      transform: translate(0, -15px);
+      background-color: red;
     }
   }
 </style>
@@ -163,6 +97,8 @@
     right 0
     top 0
     bottom 0
+    width: 260px;
+    height: 30px;
     margin auto
 
 </style>

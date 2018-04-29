@@ -22,7 +22,7 @@
     <div>
 
       <article id="page-view" class="markdown-body"
-               v-html="articleInfo.content" ref="post" v-highlight>
+               v-html="articleInfo.content" ref="post">
 
       </article>
       <comment-list :article-info="articleInfo"></comment-list>

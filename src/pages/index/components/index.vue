@@ -71,6 +71,9 @@ export default {
       this.isShowlog = !this.isShowlog;
     }
   },
+  preFetch(store){
+    return store.dispatch('getAllTagClassic');
+  },
   beforeMount(){
     this.$store.dispatch('getAllTagClassic');
   },
@@ -106,6 +109,11 @@ export default {
   position fixed
   bottom 80px
   right 80px
+.my-nav
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 2000
 .all-content
   width 1100px
   min-height 800px
@@ -119,16 +127,14 @@ export default {
     min-height 200px
 @media screen and (max-width: 1118px)
   .content-to-top
-    position fixed
     bottom 50px
     right 20px
   #index-content
-    padding-top 60px
     .all-content
       width: 100%
       .left-content
         width 100%
         margin 0
-        padding 5px
+        padding 0 16px
 
 </style>

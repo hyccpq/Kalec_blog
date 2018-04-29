@@ -5,7 +5,6 @@ import App from './App'
 import { createRouter } from './router/index'
 import { createStore } from '../../modules/vuex/store'
 import axios from '../../modules/util/axios'
-import hljs from 'highlight.js'
 import { Notice } from 'iview'
 import { sync } from 'vuex-router-sync'
 
@@ -26,17 +25,16 @@ if(typeof window !== "undefined"){
       console.log('sw正在更新');
     }
   });
-  OfflinePluginRuntime.applyUpdate();
   
   let fastClick = require('fastclick');
   fastClick.attach(document.body);
-  Vue.directive('highlight',function (el) {
-    
-    let blocks = el.querySelectorAll('pre code');
-    blocks.forEach((block)=>{
-      hljs.highlightBlock(block)
-    })
-  })
+  // Vue.directive('highlight',function (el) {
+  //
+  //   let blocks = el.querySelectorAll('pre code');
+  //   blocks.forEach((block)=>{
+  //     hljs.highlightBlock(block)
+  //   })
+  // })
 }
 export function createApp() {
   const router = new createRouter();

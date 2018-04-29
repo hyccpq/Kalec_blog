@@ -6,6 +6,7 @@ const conf = require('../config')
 const { resolve, join } = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OfflinePlugin = require('offline-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 
 const config = merge(base, {
@@ -96,6 +97,19 @@ if(process.env.NODE_ENV === 'production'){
   config.entry['app'].shift();
   config.entry['manage'].shift();
   
+  config.plugins.push(new BundleAnalyzerPlugin({
+    
+    analyzerMode: 'server',
+    analyzerHost: '127.0.0.1',
+    analyzerPort: 8888,
+    reportFilename: 'report.html',
+    defaultSizes: 'parsed',
+    openAnalyzer: true,
+    generateStatsFile: false,
+    statsFilename: 'stats.json',
+    statsOptions: null,
+    logLevel: 'warn'
+  }))
   // 删除devtool
   delete config.devtool;
   if (conf.build.productionGzip) {

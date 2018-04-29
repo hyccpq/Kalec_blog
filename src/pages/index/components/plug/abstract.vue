@@ -154,6 +154,7 @@
       .main
         min-height: 500px
         box-shadow none
+        margin-top 60px
         .my-tag
           margin 10px 30px
         .my-notice
@@ -163,7 +164,7 @@
     .right-content
       position fixed
       left 0
-      top 60px
+      top 0
       bottom 0
       transform: translateX(-310px)
       transition: transform 0.4s

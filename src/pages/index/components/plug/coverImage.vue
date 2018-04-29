@@ -47,14 +47,13 @@
 @media screen and (max-width: 1118px)
   .cover
     width: 100%
-    height: 160px
+    height: 300px
     min-height: 110px
     .title
-      text-align center
-      color #ccd8f8
+      color #def4ff
       h1
-        margin 20px 0
+        margin 30px 0
         font-size 1.5em
       h3
-        margin 20px 0
+        margin 30px 0
 </style>
