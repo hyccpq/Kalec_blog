@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const home = resolve => require(['../components/home'],resolve);
-const index = resolve => require(['../components/index'],resolve);
-const articlePage = resolve => require(['../components/articlePage'],resolve);
-const pageList = resolve => require(['../components/pageList'],resolve);
+const home = resolve => require(['../components/home'], resolve);
+const index = resolve => require(['../components/index'], resolve);
+const articlePage = resolve => require(['../components/articlePage'], resolve);
+const pageList = resolve => require(['../components/pageList'], resolve);
+const express = resolve => require(['../components/express/express'], resolve);
+const expressImg = resolve => require(['../components/express/expressImg'], resolve);
 
 Vue.use(Router)
 
@@ -16,6 +18,16 @@ export function createRouter(){
         path:'/',
         name: 'home',
         component: home,
+      },
+      {
+        path: '/express',
+        name: 'express',
+        component: express,
+      },
+      {
+        path: '/express/img',
+        name: 'expressImg',
+        component: expressImg,
       },
       {
         path: '/index',
@@ -46,5 +58,5 @@ export function createRouter(){
         ]
       }
     ]
-  })  
+  })
 }

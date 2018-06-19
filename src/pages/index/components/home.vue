@@ -10,6 +10,7 @@
       <ul class="home-content-center">
         <router-link to="/index"><li>》网络日志(Blog)</li></router-link>
         <li @click.naitve="onClickPt">》相册</li>
+        <router-link to="/express"><li>》毕业季运费查询</li></router-link>
       </ul>
 
       <div class="home-content-bottom">
@@ -59,7 +60,7 @@
   text-align center
   .home-content
     width: 550px
-    height: 350px
+    /*height: 350px*/
     background rgba(40, 40, 40, 0.31)
     border-radius 20px
     padding 10px 60px
@@ -78,7 +79,7 @@
       padding 10px 0
       li
         height: 35px
-        margin 25px 0
+        margin 15px 0
         background rgba(27, 31, 35, 0.61)
         border-radius 7px
         text-align left
