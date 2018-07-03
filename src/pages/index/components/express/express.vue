@@ -79,15 +79,15 @@
       zhongtongmon () {
         let me = this.province[this.model1 - 1]
         if(this.height == 0)return 0;
-        return me.zhongtong ? (me.zhongtong * this.height).toFixed() : '无法送达'
+        return me.zhongtong ? (me.zhongtong * this.height + 10).toFixed() : '无法送达'
       },
       shunfengmon () {
         let me = this.province[this.model1 - 1]
-        if(this.height < 40) {
+        if(this.height <= 40) {
           if(this.height == 0)return me.shunfeng1 ? 0 : '无法送达'
           return me.shunfeng1 ? me.shunfeng1 : '无法送达'
         } else {
-          return me.shunfeng2 ? (me.shunfeng2 * this.height).toFixed() : '无法送达'
+          return me.shunfeng2 ? (me.shunfeng2 * (this.height - 40) + me.shunfeng1).toFixed() : '无法送达'
         }
       },
       youzhenmon (){

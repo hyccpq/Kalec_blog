@@ -1,7 +1,7 @@
 <template>
   <div class="img">
-    <img src="../../assets/img/IMG_20180619_095639.jpg" alt="">
-    <img src="../../assets/img/IMG_20180619_095657.jpg" alt="">
+    <img src="../../assets/img/mmexport1529483379503.jpg" alt="">
+    <!--<img src="../../assets/img/IMG_20180619_095657.jpg" alt="">-->
     <i-button type="success" @click="goToBack()">《 点击此处返回</i-button>
   </div>
 
