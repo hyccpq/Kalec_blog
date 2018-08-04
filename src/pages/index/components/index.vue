@@ -3,7 +3,7 @@
     <loading :onLoading="onLoading"></loading>
     <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
     <login-form :is-showlog="isShowlog" @onChange="changeLog">
-      <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长，<a href="/admin">登录</a>
+      <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长登录，<a href="/admin">点击此处登录</a>
     </login-form>
     <cover-image class="cover"></cover-image>
     <div class="all-content">
@@ -90,17 +90,18 @@ export default {
   .router {
     /*position: absolute;*/
     width: inherit;
-    transition: all .4s ease;
+    transition: all .3s ease;
   }
+
   .router-transition-enter{
-    opacity: 0;
-    -webkit-transform: translate(100%, 0);
-    transform: translate(100%, 0);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    opacity 0
   }
-  .router-transition-leave-active{
-    opacity: 0;
-    -webkit-transform: translate(-100%, 0);
-    transform: translate(-100% 0);
+  .router-transition-leave-to{
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    opacity 0
   }
 </style>
 

@@ -1,8 +1,8 @@
 <template>
 <div>
-  <iMenu mode="horizontal" :theme="'dark'" id="nav" @on-select="onSelect">
+  <iMenu mode="horizontal" :theme="isShowNavBgc ? 'light': 'dark'" id="nav" @on-select="onSelect" :style="isShowNavBgc ? { background: 'rgba(0,0,0,0)' }: null">
     <iMenuItem name="-1" class="nav-menu-button">
-      <Icon class="icon-menu" type="android-menu" size="30" color="#1E1E1E"></Icon>
+      <Icon class="icon-menu" type="android-menu" size="36" color="#1E1E1E"></Icon>
     </iMenuItem>
     <iMenuItem name="0" class="nav-title">
       <div>冰空的作品展示</div>
@@ -61,7 +61,18 @@
     data () {
       return {
         theme1: 'light',
+        height: 0,
+        isShowNavBgc: true
       }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.windScroll)
+      // window.onscroll = () => {
+      //
+      // }
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.windScroll)
     },
     computed:{
       ...mapState({
@@ -69,6 +80,12 @@
       })
     },
     methods:{
+      windScroll() {
+        this.height = document.documentElement.scrollTop || document.body.scrollTop
+        // console.log(this.height)
+        this.isShowNavBgc = (this.height <= 0)
+        console.log(this.isShowNavBgc);
+      },
       onSelect(name){
         if(name === '-1'){
           this.$emit('showSideBox');
@@ -100,17 +117,19 @@
   backdrop-filter blur(5px)
   width: 100%;
   background: rgba(0, 0, 0, 0.50)
+  transition .5s
   .nav-title
     height: 60px
-    color: #00deff
+    color: #2bc9ff
     font-size 18px
+    font-weight bolder
   .nav-menu-button
     display: none;
   .set-center
     display none
 @media screen and (max-width: 1118px)
   #nav
-    background: rgba(230, 230, 230, 0.35)
+    background: rgba(230, 230, 230, 0.75)
     display flex
     justify-content space-between
     align-items center
@@ -118,7 +137,9 @@
       color: #191919
     .nav-menu-button
       display: flex
-      align-self center
+      .icon-menu
+        align-self center
+        height 36px
     .set-center
       display block
       width: 58px

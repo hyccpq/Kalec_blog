@@ -10,7 +10,7 @@
       <ul class="home-content-center">
         <router-link to="/index"><li>》网络日志(Blog)</li></router-link>
         <li @click.naitve="onClickPt">》相册</li>
-        <router-link to="/express"><li>》毕业季运费查询</li></router-link>
+        <router-link to="/express"><li>》毕业季运费查询（已失效）</li></router-link>
       </ul>
 
       <div class="home-content-bottom">
@@ -42,6 +42,7 @@
         top: 80,
         duration: 3
       });
+      document.title = '冰空的作品展示 - Kalec的个人网站'
     }
 	}
 </script>

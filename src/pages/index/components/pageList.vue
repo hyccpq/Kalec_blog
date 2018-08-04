@@ -98,6 +98,14 @@
               this.$store.commit('showLoading');
             })
         }
+      },
+      updateTitle(){
+        document.title = `冰空的作品展示 -
+        ${ this.$route.params.class || this.$route.params.tag
+          ? this.$route.params.class || this.$route.params.tag
+          : '文章'}
+          第
+        ${ this.$route.params.page } 页`
       }
     },
     computed:{
@@ -116,13 +124,17 @@
         this.listChange = true;
       },
       '$route'(to,from){
-        let self = this;
+        this.updateTitle()
+        let self = this
         this.loadPage(self.$route.params.page-1,self.$route.params.class,self.$route.params.tag);
       }
     },
     beforeMount(){
-      let self = this;
+      let self = this
       this.loadPage(self.$route.params.page-1,self.$route.params.class,self.$route.params.tag);
+    },
+    mounted() {
+      this.updateTitle()
     },
     preFetch(store) {
       let classic = store.state.route.params.classic;

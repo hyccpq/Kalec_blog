@@ -53,6 +53,9 @@
         height: 0
       }
     },
+    mounted(){
+      document.title = '毕业季快递查询助手'
+    },
     computed:{
       // iptHeight: {
       //   get() {

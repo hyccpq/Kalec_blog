@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <!--<img src="./assets/logo.png">-->
-    <transition name="main-animation">
-      <router-view></router-view>
+    <transition name="main-animation" mode="out-in">
+      <router-view class="all-router"></router-view>
     </transition>
 
 
@@ -17,10 +17,13 @@
 </script>
 
 <style scoped lang="stylus">
+/*.all-router*/
+  /*position absolute*/
 .main-animation-enter-active, .main-animation-leave-active
-  transition opacity .5s
+  transition all .5s ease
 .main-animation-enter, .main-animation-leave-to
-  opacity: 0
+  opacity: 0.1
+  transform translateY(-700px)
 
 </style>
 

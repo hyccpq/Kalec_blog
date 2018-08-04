@@ -1,25 +1,25 @@
-const Koa        = require('koa');
+const Koa = require('koa');
 const bodyparser = require('koa-bodyparser');
-const view       = require('koa-views');
-const koaError   = require('koa-onerror');
-const convert    = require('koa-convert');
-const koaStatic  = require('koa-static');
-const logger     = require('koa-logger');
-const http       = require('http');
-const compress   = require('koa-compress');
-const https      = require('https');
-const http2      = require('http2');
-const fs         = require('fs');
+const view = require('koa-views');
+const koaError = require('koa-onerror');
+const convert = require('koa-convert');
+const koaStatic = require('koa-static');
+const logger = require('koa-logger');
+const http = require('http');
+const compress = require('koa-compress');
+const https = require('https');
+const http2 = require('http2');
+const fs = require('fs');
 const koaSslify  = require('koa-sslify');
 const historyApiFallback = require('./middleware/historyApiFallback')
 // const middleware = require('./middleware')
-// const opener     = require('opener');
+// const opener = require('opener');
 
-const app        = new Koa();
+const app = new Koa();
 
-// const index      = require('./route/index.js');
-// const other      = require('./route/other.js');
-const api        = require('./route/api.js');
+// const index = require('./route/index.js');
+// const other = require('./route/other.js');
+const api = require('./route/api.js');
 
 const Router = require('koa-router');
 const path = require('path')

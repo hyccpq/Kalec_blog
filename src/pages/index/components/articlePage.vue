@@ -85,9 +85,13 @@
           this.createToggle();
           this.$store.commit('getToggle', this.toggle);
           this.$store.commit('showLoading');
+          document.title = '冰空的作品展示 - ' + this.articleInfo.title
         }
       );
 		},
+    mounted() {
+		  document.title = '冰空的作品展示 - ' + (this.articleInfo.title ? this.articleInfo.title : '')
+    },
     preFetch(store){
 		  return store.dispatch('getArticleList',store.state.route.params.id);
     }
