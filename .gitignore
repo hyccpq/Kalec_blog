@@ -8,3 +8,5 @@
 *.njsproj
 *.sln
 /node_modules
+/public
+/server/conf
