@@ -4,7 +4,6 @@ import R from 'ramda'
 
 const MIDDLEWARES = ['utils', 'staticServer', 'router']
 const condition = process.env.NODE_ENV
-const prod = condition === 'production'
 
 switch (condition) {
 	case 'development:index':

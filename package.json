@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "bcrypt": "^2.0.1",
+    "bcrypt": "^3.0.0",
+    "color": "^3.0.0",
     "ejs": "^2.6.1",
     "fastclick": "^1.0.6",
     "glob": "^7.1.2",
@@ -30,7 +31,7 @@
     "koa-views": "^6.1.4",
     "lodash": "^4.17.5",
     "mavon-editor": "^2.4.13",
-    "mongoose": "^5.0.11",
+    "mongoose": "^5.2.7",
     "nanoid": "^1.0.2",
     "node-crypto": "^1.0.0",
     "offline-plugin": "^5.0.5",
