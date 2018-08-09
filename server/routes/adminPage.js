@@ -1,4 +1,4 @@
-import { controller, get, post, auth, admin, required } from '../lib/decorator'
+import { controller, get } from '../lib/decorator'
 
 @controller('/admin')
 export class AdminControllers {

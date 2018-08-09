@@ -1,6 +1,7 @@
 'use strict';
 import mongoose from 'mongoose';
-import user from '../conf/userConf'
+import glob from 'glob'
+import { userInfo } from '../conf/userConf'
 
 const DB_URL = 'mongodb://localhost:27017/blog_database';
 mongoose.Promise = global.Promise;
@@ -15,11 +16,11 @@ export const initSchemas = () => {
 export const initAdmin = async () => {
 	const User = mongoose.model('User')
 	let user = await User.findOne({
-		username: 'hyccpq'
+		user: userInfo.user
 	})
 	
 	if(!user) {
-		const user = new User(user)
+		const user = new User(userInfo)
 		
 		await user.save()
 	}

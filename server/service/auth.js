@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import secret from '../conf/secret'
+import { secret } from '../conf/userConf'
 
 export const verify = async (ctx, next) => {
 	const token = ctx.get('Authorization');

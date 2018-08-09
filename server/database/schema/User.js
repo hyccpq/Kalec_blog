@@ -6,7 +6,7 @@ const SALT_WORK_FACTOR = 10
 const MAX_LOGIN_ATTEMPS = 5
 const LOCK_TIME = 30 * 60 * 1000
 
-let adminUser = {
+let adminUser = new Schema({
     user: {
         unique: true,
         type: String
@@ -29,7 +29,7 @@ let adminUser = {
     role: {
         type: String,
         default: 'user'
-    }
+    },
     remark: {
         type: String,
         default: '暂无'
@@ -42,7 +42,7 @@ let adminUser = {
         type: Date,
         default: Date.now()
     }
-};
+});
 
 adminUser.virtual('isLocked').get(function() {
     return this.isLocked && this.isLocked > Date.now()
