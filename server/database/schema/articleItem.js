@@ -16,7 +16,7 @@ let articleItem = new Schema({
     content:String,
     markdown:String,
     imgUrl:{ type: String },
-    classic:String,
+    classic: String,
     show:{ type: Number, default:0 },
     pv:{ type: Number, default:0 },
     markNum:{ type: Number, default:0 },
