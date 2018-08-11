@@ -58,7 +58,7 @@ adminUser.pre('save', function(next) {
 })
 
 adminUser.pre('save', function(next) {
-    if (!this.isModifed('password')) return next();
+    if (!this.isModified('password')) return next();
     bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
         if (err) return next(err);
 

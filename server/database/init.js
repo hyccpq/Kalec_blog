@@ -1,20 +1,19 @@
 'use strict';
 import mongoose from 'mongoose';
 import glob from 'glob'
+import { resolve } from 'path'
 import { userInfo } from '../conf/userConf'
 
 const DB_URL = 'mongodb://localhost:27017/blog_database';
 mongoose.Promise = global.Promise;
 
 export const initSchemas = () => {
-	glob.sync(resolve(__dirname, './schema', '**/*.js')).forEach(item => {
-		console.log(item);
-		require(item)
-	})
+	glob.sync(resolve(__dirname, './schema', '**/*.js')).forEach(require)
 }
 
 export const initAdmin = async () => {
-	const User = mongoose.model('User')
+	
+	const User = mongoose.model('adminUserModel')
 	let user = await User.findOne({
 		user: userInfo.user
 	})
@@ -24,6 +23,42 @@ export const initAdmin = async () => {
 		
 		await user.save()
 	}
+}
+
+export const initClassicAndTags = async () => {
+	const ArticleModel = mongoose.model('articleModel')
+	
+	
+	let classicTags = await ArticleModel.find({}, 'tag classic')
+	
+	const ClassicAndTagModel = mongoose.model('classicTagModel')
+	let classicAndTag = await ClassicAndTagModel.find()
+	let newTag = []
+		// let tagId = []
+	let classic = []
+	if(!classicAndTag.length) {
+		classicTags.forEach(item => {
+			if(item.classic && classic.indexOf(item.classic) === -1){
+				classic.push(item.classic)
+			}
+			item.tag.forEach(tag => {
+				let flag = true
+				for(let i = 0; i < newTag.length; i++){
+					if(tag.tagId === newTag[i].tagId) {
+						flag = false
+					}
+				}
+				if(flag)newTag.push(tag);
+			})
+		})
+	}
+	const classicAndTagInfo = new ClassicAndTagModel({
+		classic,
+		tag: newTag
+	})
+	
+	await classicAndTagInfo.save()
+
 }
 
 export const connect = () => {
@@ -57,8 +92,8 @@ export const connect = () => {
 		})
 		
 		mongoose.connection.on('open', () => {
-			resolve()
 			console.log('MongoDB成功连接'.bgGreen)
+			resolve()
 		})
 	})
 }
