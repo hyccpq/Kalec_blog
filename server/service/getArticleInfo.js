@@ -63,7 +63,24 @@ export const getAllTagsAndClassic = async () => {
 
 export const saveMark = async (id, user, email, content, captchaStr) => {
 	try {
-		/* 验证码验证 */
+		let articleInfo = await articleDatabase.findById(id)
+		articleInfo.markNum += 1;
+		articleInfo.markList.push({
+			userName: user,
+			userEmail: email,
+			markContent: content,
+			isManage: false
+		})
+		let addData = new articleDatabase(articleInfo)
+	    await addData.save()
+		
+	} catch (e) {
+		throw e
+	}
+}
+
+export const saveReply = async (id, markId, user, replyUser, email, content) => {
+	try {
 		let articleInfo = await articleDatabase.findById(id)
 		articleInfo.markNum += 1;
 		articleInfo.markList.push({

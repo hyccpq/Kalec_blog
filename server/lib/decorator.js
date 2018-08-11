@@ -4,6 +4,7 @@ import glob from 'glob'
 import _ from 'lodash'
 import R from 'ramda'
 import { verify } from '../service/auth'
+import { resData } from './util'
 
 const symbolPrefix = Symbol('prefix')
 const routerMap = new Map()
@@ -92,19 +93,30 @@ export const auth = convert(async (ctx, next) => {
 })
 
 
-// export const admin = roleExpected => convert(async (ctx, next) => {
-// 	const { role } = ctx.session.views
-//
-// 	if(!role || role !== roleExpected) {
-// 		return (ctx.body = {
-// 			success: false,
-// 			code: 403,
-// 			err: 'sorry，您没权限'
-// 		})
-// 	}
-//
-// 	await next()
-// })
+export const admin = roleExpected => convert(async (ctx, next) => {
+	const { role } = ctx.session.views
+
+	if(!role || role !== roleExpected) {
+		return (ctx.body = {
+			success: false,
+			code: 403,
+			err: 'sorry，发生错误'
+		})
+	}
+
+	await next()
+})
+
+export const compresCaptcha = convert(async (ctx, next) => {
+	const { captcha } = ctx.session
+	const { captchaStr } = ctx.request.body
+	
+	if(captcha !== captchaStr) {
+		return (ctx.body = resData(0, '验证码不正确'))
+	}
+	
+	await next();
+})
 
 export const required = rules => convert(async (ctx, next) => {
 	let errors = []

@@ -1,10 +1,11 @@
-import { controller, get, post, auth, required } from '../lib/decorator'
-import { getArticle, searchOneArticle, getAllTagsAndClassic, saveMark } from '../service/getArticleInfo'
+import { controller, get, post, required, compresCaptcha } from '../lib/decorator'
+import { getArticle, searchOneArticle, getAllTagsAndClassic, saveMark, saveReply } from '../service/getArticleInfo'
 import { resData } from '../lib/util'
 
 @controller('/api/public')
 export class PublicApiControllers {
 	@post('/login')
+	@required()
 	async login (ctx, next) {
 	
 	}
@@ -55,11 +56,13 @@ export class PublicApiControllers {
 	// }
 	
 	@post("/addMark")
+	@compresCaptcha
 	async addMark (ctx, next) {
-		let { id, user, email, content, captchaStr } = ctx.request.body
+		let { id, user, email, content } = ctx.request.body
 		try {
-			if(id && user && email && content && captchaStr) {
-				await saveMark(id, user, email, content, captchaStr)
+			if(id && user && email && content) {
+				
+				await saveMark(id, user, email, content)
 			} else {
 				throw '信息不全'
 			}
@@ -73,11 +76,13 @@ export class PublicApiControllers {
 	}
 	
 	@post("/addReply")
+	@compresCaptcha
 	async addReply (ctx, next) {
-		let { id, markId, user, replyUser, email, content, captchaStr } = ctx.request.body
+		let { id, markId, user, replyUser, email, content } = ctx.request.body
 		try {
-			if(id && markId && user && replyUser && email && content && captchaStr) {
-				await saveMark(id, user, replyUser, email, content, captchaStr)
+			if(id && markId && user && replyUser && email && content) {
+				
+				await saveReply(id, markId, user, replyUser, email, content)
 			} else {
 				throw '信息不全'
 			}
@@ -96,6 +101,10 @@ export class PublicApiControllers {
 	
 	@get("/getCaptcha")
 	async getCaptcha (ctx, next) {
-	
+		try {
+		
+		} catch (e) {
+		
+		}
 	}
 }
