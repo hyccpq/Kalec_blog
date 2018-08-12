@@ -1,5 +1,6 @@
 import { controller, get, post, required, compresCaptcha } from '../lib/decorator'
-import { getArticle, searchOneArticle, getAllTagsAndClassic, saveMark, saveReply } from '../service/getArticleInfo'
+
+import { getArticle, searchOneArticle, getAllTagsAndClassic, saveMark, saveReply, createCaptchas } from '../service/getArticleInfo'
 import { resData } from '../lib/util'
 
 @controller('/api/public')
@@ -102,9 +103,12 @@ export class PublicApiControllers {
 	@get("/getCaptcha")
 	async getCaptcha (ctx, next) {
 		try {
-		
+			let captcha = await createCaptchas();
+			ctx.session.captcha = captcha.text
+			ctx.body = resData(1, '查询成功', captcha.data)
 		} catch (e) {
-		
+			ctx.body = resData(0, '查询出错', e.toString())
+			throw e
 		}
 	}
 }

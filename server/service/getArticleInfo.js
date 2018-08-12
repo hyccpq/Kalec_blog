@@ -1,8 +1,16 @@
 import mongoose from 'mongoose'
+import svgCaptch from 'svg-captcha'
 import { formatDate } from '../lib/util'
 
 const articleDatabase = mongoose.model('articleModel')
 const tagAndClassicDatabase = mongoose.model('classicTagModel')
+
+const CAPTCHA_CONFIG = {
+	size: 4,
+	ignoreChars: '0o1i',
+	noise: 5,
+	
+}
 
 export const getArticle = async (limit = 10, skip = 0, params = {}) => {
 	let query = {
@@ -81,17 +89,27 @@ export const saveMark = async (id, user, email, content, captchaStr) => {
 
 export const saveReply = async (id, markId, user, replyUser, email, content) => {
 	try {
-		let articleInfo = await articleDatabase.findById(id)
-		articleInfo.markNum += 1;
-		articleInfo.markList.push({
-			userName: user,
-			userEmail: email,
-			markContent: content,
+		let articleInfo = await articleDatabase.findById(id).select('markList');
+		articleInfo.markList.id(markId).replyList.push({
+			replyName: user,
+			replyEmail: email,
+			replyContent: content,
+			replyedUser: replyUser,
 			isManage: false
-		})
+		});
+		articleInfo.markNum += 1;
+		
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()
 		
+	} catch (e) {
+		throw e
+	}
+}
+
+export const createCaptchas = async () => {
+	try {
+		return await svgCaptch.createMathExpr(CAPTCHA_CONFIG)
 	} catch (e) {
 		throw e
 	}
