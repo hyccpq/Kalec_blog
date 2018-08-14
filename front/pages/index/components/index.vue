@@ -1,141 +1,150 @@
 <template>
-  <div id="index-content">
-    <loading :onLoading="onLoading"></loading>
-    <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
-    <login-form :is-showlog="isShowlog" @onChange="changeLog">
-      <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长登录，<a href="/admin/">点击此处登录</a>
-    </login-form>
-    <cover-image class="cover"></cover-image>
-    <div class="all-content">
+    <div id="index-content">
+        <loading :onLoading="onLoading"></loading>
+        <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
+        <login-form :is-showlog="isShowlog" @onChange="changeLog">
+            <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长登录，<a href="/admin/">点击此处登录</a>
+        </login-form>
+        <cover-image class="cover"></cover-image>
+        <div class="all-content">
 
-      <div class="left-content">
-        <transition name="router-transition" mode="out-in">
-          <router-view class="router"></router-view>
-        </transition>
-      </div>
-      <abstract :is-show="isShowSideBox" @closeSide="showSideBox"></abstract>
+            <div class="left-content">
+                <transition name="router-transition" mode="out-in">
+                    <router-view class="router"></router-view>
+                </transition>
+            </div>
+            <abstract :is-show="isShowSideBox" @closeSide="showSideBox"></abstract>
+        </div>
+        <my-footer class="content-footer"></my-footer>
+        <to-top class="content-to-top"></to-top>
     </div>
-    <my-footer class="content-footer"></my-footer>
-    <to-top class="content-to-top"></to-top>
-  </div>
 </template>
 
 <script>
-import toTop from './plug/goTop'
-import abstract from './plug/abstract'
-import myFooter from './plug/footer'
-import coverImage from './plug/coverImage'
-import elNav from '../components/plug/nav'
-import loginForm from '../components/plug/login'
-// import onForm from '../components/plug/form'
-import loading from './plug/Loading'
-import {mapState} from 'vuex'
-export default {
-  name: "index",
-  components:{
-    abstract,
-    myFooter,
-    coverImage,
-    elNav,
-    loginForm,
-    // onForm,
-    loading,
-    toTop
-  },
-  data(){
-    return {
-      isShowlog:false,
-      showLog:false,
-      username:'',
-      isShowSideBox:false,
-      transitionName:'side-right'
-    }
-  },
-  computed:{
-    ...mapState({
-      onLoading:state => state.onLoading
-    })
-  },
-  methods:{
-    showSideBox(){
-      this.isShowSideBox = !this.isShowSideBox;
-      //解决移动端滚动穿透问题
-      let touchScroll = document.querySelector('html');
-      if(this.isShowSideBox){
-        touchScroll.className = 'touch-move';
-      } else {
-        touchScroll.className = '';
-      }
-    },
-    changeLog(){
-      this.isShowlog = !this.isShowlog;
-    }
-  },
-  preFetch(store){
-    return store.dispatch('getAllTagClassic');
-  },
-  beforeMount(){
-    this.$store.dispatch('getAllTagClassic');
-  },
-  mounted(){
-    this.$Notice.config({
-      top: 80,
-      duration: 3
-    });
-  }
-}
+	import toTop from './plug/goTop'
+	import abstract from './plug/abstract'
+	import myFooter from './plug/footer'
+	import coverImage from './plug/coverImage'
+	import elNav from '../components/plug/nav'
+	import loginForm from '../components/plug/login'
+	// import onForm from '../components/plug/form'
+	import loading from './plug/Loading'
+	import {mapState} from 'vuex'
+	export default {
+		name: "index",
+		components:{
+			abstract,
+			myFooter,
+			coverImage,
+			elNav,
+			loginForm,
+			// onForm,
+			loading,
+			toTop
+		},
+		data(){
+			return {
+				isShowlog:false,
+				showLog:false,
+				username:'',
+				isShowSideBox:false,
+				transitionName:'side-right'
+			}
+		},
+		computed:{
+			...mapState({
+				onLoading:state => state.onLoading
+			})
+		},
+		methods:{
+			showSideBox(){
+				this.isShowSideBox = !this.isShowSideBox;
+				//解决移动端滚动穿透问题
+				let touchScroll = document.querySelector('html');
+				if(this.isShowSideBox){
+					touchScroll.className = 'touch-move';
+				} else {
+					touchScroll.className = '';
+				}
+			},
+			changeLog(){
+				this.isShowlog = !this.isShowlog;
+			},
+            listenScroll() {
+				let scrollTop = document.documentElement.scrollTop
+                this.$store.commit('update_scroll_top', scrollTop)
+            }
+		},
+		preFetch(store){
+			return store.dispatch('getAllTagClassic');
+		},
+		beforeMount(){
+			this.$store.dispatch('getAllTagClassic');
+		},
+		mounted(){
+			this.$Notice.config({
+				top: 80,
+				duration: 3
+			});
+
+			window.addEventListener('scroll', this.listenScroll)
+		},
+        beforeDestroy(){
+			window.removeEventListener('scroll', this.listenScroll)
+        }
+	}
 </script>
 
 <style scoped lang="stylus">
-  .router {
-    /*position: absolute;*/
-    width: inherit;
-    transition: all .3s ease;
-  }
+    .router {
+        /*position: absolute;*/
+        width: inherit;
+        transition: all .3s ease;
+    }
 
-  .router-transition-enter{
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-    opacity 0
-  }
-  .router-transition-leave-to{
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-    opacity 0
-  }
+    .router-transition-enter{
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        opacity 0
+    }
+    .router-transition-leave-to{
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        opacity 0
+    }
 </style>
 
 <style scoped lang="stylus">
-.content-to-top
-  position fixed
-  bottom 80px
-  right 80px
-.my-nav
-  position: fixed
-  top: 0
-  width: 100%
-  z-index: 2000
-.all-content
-  width 1100px
-  min-height 800px
-  margin 0 auto
-  display flex
-  align-items flex-start
-
-  .left-content
-    width 768px
-    margin-right 20px
-    min-height 200px
-@media screen and (max-width: 1118px)
-  .content-to-top
-    bottom 50px
-    right 20px
-  #index-content
+    .content-to-top
+        position fixed
+        bottom 80px
+        right 80px
+    .my-nav
+        position: fixed
+        top: 0
+        width: 100%
+        z-index: 2000
     .all-content
-      width: 100%
-      .left-content
-        width 100%
-        margin 0
-        padding 0 16px
+        width 1100px
+        min-height 800px
+        margin 0 auto
+        display flex
+        align-items flex-start
+
+        .left-content
+            width 768px
+            margin-right 20px
+            min-height 200px
+    @media screen and (max-width: 1118px)
+        .content-to-top
+            bottom 50px
+            right 20px
+        #index-content
+            .all-content
+                width: 100%
+                .left-content
+                    width 100%
+                    margin 0
+                    padding 0 16px
 
 </style>

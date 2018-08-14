@@ -15,10 +15,10 @@ export class PublicApiControllers {
 	async indexPage(ctx, next) {
 		let query = ctx.request.query;
 		try {
-			let result = await getArticle(query.count, query.page, query)
+			let result = await getArticle(parseInt(query.page), parseInt(query.count), query)
 			ctx.body = resData(1, '查询成功', result)
 		} catch (e) {
-			ctx.body = resData(0,'查询出错')
+			ctx.body = resData(0,'查询出错', e.toString())
 			throw e
 		}
 	}

@@ -1,15 +1,15 @@
 import http from './axios'
 
 // index页的数据获取
-const GET_INDEXPAGE_MESSAGE_API = 'indexPage';
+const GET_INDEXPAGE_MESSAGE_API = 'public/indexPage';
 // tag页的数据获取
-const GET_TAGPAGE_MESSAGE_API = 'searchTag?tag=';
+const GET_TAGPAGE_MESSAGE_API = 'public/searchTag?tag=';
 // 分类页数据获取
-const GET_CLASSIC_MESSAGE_API = 'searchClassic?classic=';
+const GET_CLASSIC_MESSAGE_API = 'public/searchClassic?classic=';
 // 文章
-const GET_ARTICLEINFO_MESSAGE_API = 'searchOne?&id=';
+const GET_ARTICLEINFO_MESSAGE_API = 'public/searchOne?&id=';
 // 全部tag获取
-const GET_ALLTAG_API = 'searchAllTags';
+const GET_ALLTAG_API = 'public/searchAllTags';
 
 
 export default {
@@ -28,7 +28,7 @@ export default {
         console.log(res.data)
       }
     }).catch((e) => {
-      console.log('error')
+      console.log(e)
     })
   },
   getClassicList (payload, callback) {
@@ -43,7 +43,7 @@ export default {
         console.log(res.data)
       }
     }).catch((e) => {
-      console.log('error')
+      console.log(e)
     })
   },
   getArticleList (params) {
@@ -60,7 +60,7 @@ export default {
           console.log(res.data);
         }
       }).catch(e=>{
-        console.log('error!!');
+        console.log(e);
     })
   }
 }

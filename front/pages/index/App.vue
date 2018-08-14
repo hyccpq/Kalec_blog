@@ -17,7 +17,7 @@
   /*position absolute*/
 .main-animation-enter-active, .main-animation-leave-active
   transition all .5s ease
-.main-animation-enter, .main-animation-leave-to
+.main-animation-leave-to
   opacity: 0.1
   transform translateY(-700px)
 

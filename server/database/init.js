@@ -51,13 +51,14 @@ export const initClassicAndTags = async () => {
 				if(flag)newTag.push(tag);
 			})
 		})
+		const classicAndTagInfo = new ClassicAndTagModel({
+			classic,
+			tag: newTag
+		})
+		
+		await classicAndTagInfo.save()
 	}
-	const classicAndTagInfo = new ClassicAndTagModel({
-		classic,
-		tag: newTag
-	})
 	
-	await classicAndTagInfo.save()
 
 }
 

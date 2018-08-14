@@ -7,20 +7,22 @@ import 'babel-polyfill'
 
 Vue.use(Vuex);
 export function createStore() {
-  return new Vuex.Store({
-    state:{
-      token: null,
-      indexPageList: {},
-      articleInfo: {
-        markList:[]
-      },
-      toggle:{},
-      onLoading:false,
-      tagAndClassicList:{}
-    },
-    actions,
-    mutations,
-  });
+	return new Vuex.Store({
+		state:{
+			token: null,
+			indexPageList: {},
+			articleInfo: {
+				markList:[]
+			},
+			toggle:{},
+			onLoading:false,
+			tagAndClassicList:{},
+			scrollTop: 0
+		},
+		actions,
+		mutations,
+		
+	});
 }
 
 

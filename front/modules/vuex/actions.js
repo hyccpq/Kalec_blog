@@ -64,6 +64,7 @@ export const getArticleList = ({commit}, payload) => {
 // TAG标签列表
 export const getAllTagClassic = ({commit}) => {
   API.getAllTag().then(res => {
+  	console.log(res);
     commit(types.GET_ALL_TAG_CLASSIC, res)
   })
 };

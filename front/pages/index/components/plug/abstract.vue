@@ -59,7 +59,7 @@
     },
     computed:{
       ...mapState({
-        tagAndClassicList: state => state.tagAndClassicList.tags
+        tagAndClassicList: state => state.tagAndClassicList.tag
       })
     },
     beforeMount(){

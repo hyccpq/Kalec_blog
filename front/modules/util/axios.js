@@ -8,7 +8,8 @@ if(typeof window !== 'undefined'){
   });
 } else {
   http = axios.create({
-    baseURL:'https://www.kalecgos.top/api/',
+    // baseURL:'https://www.kalecgos.top/api/',
+	baseURL:'http://localhost:5678/api/',
     timeout:5000,
     data:{},
   });

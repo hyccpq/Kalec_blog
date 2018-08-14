@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import svgCaptch from 'svg-captcha'
+import svgCaptcha from 'svg-captcha'
 import { formatDate } from '../lib/util'
 
 const articleDatabase = mongoose.model('articleModel')
@@ -12,18 +12,18 @@ const CAPTCHA_CONFIG = {
 	
 }
 
-export const getArticle = async (limit = 10, skip = 0, params = {}) => {
-	let query = {
+export const getArticle = async (skip = 0, limit = 10, params = {}) => {
+	let querys = {
 		show: 1
 	}
-	if(params.classic) query.classic = params.classic;
-	else if(params.tag) query.tag = params.tag;
+	if(params.classic) querys.classic = params.classic;
+	else if(params.tag) querys.tag = params.tag;
 	try {
-		const articleNum = await articleDatabase.find(query).count()
+		const articleNum = await articleDatabase.find(querys).count()
 		const articleListAllInfo = await articleDatabase
-			.find(query, "id markNum imgUrl time title abstract")
-			.limit(limit)
+			.find(querys, "id markNum imgUrl time title abstract")
 			.skip(skip)
+			.limit(limit)
 			.sort({
 				time : -1
 			})
@@ -63,7 +63,7 @@ export const searchOneArticle = async (id) => {
 
 export const getAllTagsAndClassic = async () => {
 	try {
-		return await tagAndClassicDatabase.find()
+		return await tagAndClassicDatabase.findOne()
 	} catch (e) {
 		throw e
 	}
@@ -109,7 +109,7 @@ export const saveReply = async (id, markId, user, replyUser, email, content) => 
 
 export const createCaptchas = async () => {
 	try {
-		return await svgCaptch.createMathExpr(CAPTCHA_CONFIG)
+		return await svgCaptcha.createMathExpr(CAPTCHA_CONFIG)
 	} catch (e) {
 		throw e
 	}
