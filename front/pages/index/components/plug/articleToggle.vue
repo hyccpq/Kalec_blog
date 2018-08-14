@@ -18,7 +18,7 @@
                     (toggle[index + 1] ? scrollTop < toggle[index + 1].total : true)
                     ? 'active' : 'freeze'
                     ]">
-                    <a @click.prevent="gotoToggle(item.total,item.href)">{{item.text}} {{item.total}}</a>
+                    <a @click.prevent="gotoToggle(item.total,item.href)">{{item.text}}</a>
                 </li>
             </ul>
         </section>

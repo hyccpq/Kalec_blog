@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
 // const glob = require('glob')
+const WebpackBar = require('webpackbar')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
 const os = require('os');
@@ -134,7 +135,8 @@ let conf = {
 		new MiniCssExtractPlugin({
 			filename: '[name].[hash:8].css',
 			chunkFilename: '[id].[hash:8].css'
-		})
+		}),
+		new WebpackBar()
     ],
 	node: {
 		// prevent webpack from injecting useless setImmediate polyfill because Vue

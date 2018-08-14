@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="left-content" v-show="!onLoading">
+        <div class="left-content">
             <Content>
                 <Breadcrumb :style="{margin: '20px 0'}">
                     <BreadcrumbItem><router-link to="/">HOME</router-link></BreadcrumbItem>
@@ -13,7 +13,7 @@
                 <div class="about-info">
                     <Icon type="md-cube" class="about-info-icon"></Icon>{{articleInfo.classic}}</div>
                 <div class="about-info">
-                    <Icon type="md-calendar" class="about-info-icon"></Icon>{{articleInfo.time}}</div>
+                    <Icon type="md-calendar" class="about-info-icon"></Icon>{{$formatTime(articleInfo.time)}}</div>
                 <ul class="about-info">
                     <Icon type="md-pricetags" class="about-info-icon"></Icon>
                     <li v-for="item in articleInfo.tag">

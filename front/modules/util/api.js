@@ -1,4 +1,5 @@
 import http from './axios'
+import * as type from '../vuex/type'
 
 // index页的数据获取
 const GET_INDEXPAGE_MESSAGE_API = 'public/indexPage';
@@ -11,56 +12,117 @@ const GET_ARTICLEINFO_MESSAGE_API = 'public/searchOne?&id=';
 // 全部tag获取
 const GET_ALLTAG_API = 'public/searchAllTags';
 
+const GET_CAPTCHA = 'public/getCaptcha';
+
+const POST_COMMENT = 'public/addMark';
+const POST_REPLY = 'public/addReply';
+
+const POST_COMPRESS_CAPTCHA = 'public/compressCaptcha';
+
+const _httpRequest = (param, fn) => {
+	return http({
+		...param
+	})
+		.then(res => {
+			if (res.data.status === 1) {
+				fn(false)
+				return res.data.data
+			} else {
+				fn(false)
+				throw res.data
+			}
+		}).catch(err=> {
+			fn(false)
+			throw err
+		})
+}
+
+export function request (param) {
+	const type = typeof param
+	if(type === 'function') {
+		param(true);
+		return obj => _httpRequest(obj, param);
+	} else if(type === 'object' && param !== null) {
+		return _httpRequest(param, () => {})
+	}
+}
 
 export default {
-  getIndexList({page}){
-    return http(GET_INDEXPAGE_MESSAGE_API+`?page=${page}`)
-  },
-  getTagList (payload) {
-    return http(GET_TAGPAGE_MESSAGE_API + `${payload.params}&page=${payload.page}`)
-    .then((res) => {
-      if (res.data.status === 1) {
-        let data = res.data.data
-        return new Promise((resolve, reject) => {
-          resolve(data)
-        })
-      } else {
-        console.log(res.data)
-      }
-    }).catch((e) => {
-      console.log(e)
-    })
-  },
-  getClassicList (payload, callback) {
-    return http(GET_CLASSIC_MESSAGE_API + `${payload.params}&page=${payload.page}`)
-    .then((res) => {
-      if (res.data.status === 1) {
-        let data = res.data.data;
-        return new Promise((resolve, reject) => {
-          resolve(data)
-        })
-      } else {
-        console.log(res.data)
-      }
-    }).catch((e) => {
-      console.log(e)
-    })
-  },
-  getArticleList (params) {
-    return http(GET_ARTICLEINFO_MESSAGE_API + params)
-  },
-  getAllTag(){
-    return http(GET_ALLTAG_API)
-      .then((res)=>{
-        if(res.data.status === 1){
-          return new Promise((resolve, reject) => {
-            resolve(res.data.data);
-          })
-        } else {
-          console.log(res.data);
-        }
-      }).catch(e=>{
-        console.log(e);
-    })
-  }
+	getIndexList({page}, commit){
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: GET_INDEXPAGE_MESSAGE_API+`?page=${page}`,
+			method: 'GET'
+		})
+	},
+	getTagList (payload, commit) {
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: GET_TAGPAGE_MESSAGE_API + `${payload.params}&page=${payload.page}`,
+			method: 'GET'
+		})
+	},
+	getClassicList (payload, commit) {
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: GET_CLASSIC_MESSAGE_API + `${payload.params}&page=${payload.page}`,
+			method: 'GET'
+		})
+	},
+	getArticleList (params, commit) {
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: GET_ARTICLEINFO_MESSAGE_API + params,
+			method: 'GET'
+		})
+	},
+	getAllTag(commit){
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: GET_ALLTAG_API,
+			method: 'GET'
+		})
+	},
+	
+	getCaptcha(commit){
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: GET_CAPTCHA,
+			method: 'GET'
+		})
+	},
+	
+	commitComment(payload, commit) {
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: POST_COMMENT,
+			method: 'POST',
+			data: payload
+		})
+	},
+	
+	commitReply(payload, commit) {
+		return request(
+			currentState => commit(type.SHOW_LOADING, currentState)
+		)({
+			url: POST_REPLY,
+			method: 'POST',
+			data: payload
+		})
+	},
+	
+	compressCaptcha(payload) {
+		return request({
+			url: POST_COMPRESS_CAPTCHA,
+			method: "POST",
+			data: payload
+		})
+	}
 }

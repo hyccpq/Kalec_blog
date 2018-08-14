@@ -15,7 +15,7 @@ export class PublicApiControllers {
 	async indexPage(ctx, next) {
 		let query = ctx.request.query;
 		try {
-			let result = await getArticle(parseInt(query.page), parseInt(query.count), query)
+			let result = await getArticle(parseInt(query.page), query)
 			ctx.body = resData(1, '查询成功', result)
 		} catch (e) {
 			ctx.body = resData(0,'查询出错', e.toString())
@@ -59,18 +59,19 @@ export class PublicApiControllers {
 	@post("/addMark")
 	@compresCaptcha
 	async addMark (ctx, next) {
-		let { id, user, email, content } = ctx.request.body
+		let { _id, user, email, content } = ctx.request.body
+			console.log(ctx.request.body);
 		try {
-			if(id && user && email && content) {
+			if(_id && user && email && content) {
 				
-				await saveMark(id, user, email, content)
+				let markData = await saveMark(_id, user, email, content)
+				
+				ctx.body = resData(1, '查询成功', markData)
 			} else {
 				throw '信息不全'
 			}
-			
-			ctx.body = resData(1, '查询成功', {})
 		} catch (e) {
-			ctx.body = resData(0,'查询出错')
+			ctx.body = resData(0,'查询出错', e.toString())
 			throw e
 		}
 		
@@ -79,16 +80,16 @@ export class PublicApiControllers {
 	@post("/addReply")
 	@compresCaptcha
 	async addReply (ctx, next) {
-		let { id, markId, user, replyUser, email, content } = ctx.request.body
+		let { _id, markId, user, replyUser, email, content } = ctx.request.body
 		try {
-			if(id && markId && user && replyUser && email && content) {
+			if(_id && markId && user && email && content) {
 				
-				await saveReply(id, markId, user, replyUser, email, content)
+				let replyData = await saveReply(_id, markId, user, replyUser, email, content)
+				ctx.body = resData(1, '查询成功', replyData)
 			} else {
 				throw '信息不全'
 			}
 			
-			ctx.body = resData(1, '查询成功', {})
 		} catch (e) {
 			ctx.body = resData(0,'查询出错', e.toString())
 			throw e
@@ -110,5 +111,11 @@ export class PublicApiControllers {
 			ctx.body = resData(0, '查询出错', e.toString())
 			throw e
 		}
+	}
+	
+	@post("/compressCaptcha")
+	@compresCaptcha
+	async compressCaptchaAll (ctx, next) {
+		ctx.body = resData(1, '验证成功', true)
 	}
 }

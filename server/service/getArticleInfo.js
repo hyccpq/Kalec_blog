@@ -12,7 +12,7 @@ const CAPTCHA_CONFIG = {
 	
 }
 
-export const getArticle = async (skip = 0, limit = 10, params = {}) => {
+export const getArticle = async (skip = 0, params = {}) => {
 	let querys = {
 		show: 1
 	}
@@ -20,6 +20,8 @@ export const getArticle = async (skip = 0, limit = 10, params = {}) => {
 	else if(params.tag) querys.tag = params.tag;
 	try {
 		const articleNum = await articleDatabase.find(querys).count()
+		
+		let limit = (skip + 1) * 10 <= articleNum ? 10 : articleNum % 10
 		const articleListAllInfo = await articleDatabase
 			.find(querys, "id markNum imgUrl time title abstract")
 			.skip(skip)
@@ -27,6 +29,7 @@ export const getArticle = async (skip = 0, limit = 10, params = {}) => {
 			.sort({
 				time : -1
 			})
+		
 		let articleList = articleListAllInfo.map(item => {
 			return {
 				id: item._id,
@@ -82,6 +85,16 @@ export const saveMark = async (id, user, email, content, captchaStr) => {
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()
 		
+		let currentMark = articleInfo.markList[articleInfo.markList.length - 1]
+		
+		return {
+			markTime:currentMark.markTime,
+            userName:currentMark.userName,
+            markContent:currentMark.markContent,
+            markId:currentMark._id,
+            replyList:[]
+		}
+		
 	} catch (e) {
 		throw e
 	}
@@ -90,7 +103,10 @@ export const saveMark = async (id, user, email, content, captchaStr) => {
 export const saveReply = async (id, markId, user, replyUser, email, content) => {
 	try {
 		let articleInfo = await articleDatabase.findById(id).select('markList');
-		articleInfo.markList.id(markId).replyList.push({
+		
+		let { replyList } = articleInfo.markList.id(markId)
+		
+		replyList.push({
 			replyName: user,
 			replyEmail: email,
 			replyContent: content,
@@ -101,6 +117,14 @@ export const saveReply = async (id, markId, user, replyUser, email, content) => 
 		
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()
+		
+		let currentReply = replyList[replyList.length - 1]
+		
+		return {
+			replyName: currentReply.replyName,
+			replyTime: currentReply.replyTime,
+			replyContent: currentReply.replyContent
+		}
 		
 	} catch (e) {
 		throw e

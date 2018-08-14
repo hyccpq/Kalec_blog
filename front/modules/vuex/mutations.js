@@ -18,8 +18,8 @@ export default {
 	['getToggle'] (state,data) {
 		state.toggle = data;
 	},
-	['showLoading'](state){
-		state.onLoading = !state.onLoading;
+	[types.SHOW_LOADING](state, currentState){
+		state.onLoading = currentState;
 	},
 	[types.GET_ALL_TAG_CLASSIC](state,data){
 		state.tagAndClassicList = data;

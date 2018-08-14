@@ -6,6 +6,7 @@ import 'colors'
 
 const MIDDLEWARES = [
 	'utils',
+	'session',
 	'staticServer',
 	'router'
 ];

@@ -14,12 +14,15 @@ const CONFIG = {
 	store: {
 		storage: new Map(),
 		get (key, maxAge) {
-			this.storage.get(key)
+			console.log('得到session', key);
+			return this.storage.get(key)
 		},
 		set (key, sess, maxAge) {
+			console.log('存session', key, sess);
 			this.storage.set(key, sess)
 		},
 		destroy (key) {
+			console.log('销毁session', key);
 			this.storage.delete(key)
 		}
 	}

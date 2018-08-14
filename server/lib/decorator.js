@@ -109,9 +109,10 @@ export const admin = roleExpected => convert(async (ctx, next) => {
 
 export const compresCaptcha = convert(async (ctx, next) => {
 	const { captcha } = ctx.session
-	const { captchaStr } = ctx.request.body
-	
-	if(captcha !== captchaStr) {
+	const { captChaValue } = ctx.request.body
+		console.log(ctx.session);
+		console.log(captcha, captChaValue);
+	if(captcha !== captChaValue) {
 		return (ctx.body = resData(0, '验证码不正确'))
 	}
 	
