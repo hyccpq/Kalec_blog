@@ -96,10 +96,10 @@ export class PublicApiControllers {
 		}
 	}
 	
-	@get("/addLike")
-	async addLike (ctx, next) {
-	
-	}
+	// @get("/addLike")
+	// async addLike (ctx, next) {
+	//
+	// }
 	
 	@get("/getCaptcha")
 	async getCaptcha (ctx, next) {

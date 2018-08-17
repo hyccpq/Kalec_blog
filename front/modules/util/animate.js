@@ -18,7 +18,7 @@ export const scrollAnimate = (total, current) => {
 			
 		}
 		
-		render()
+		window.requestAnimationFrame(render)
 	})
 	
 }

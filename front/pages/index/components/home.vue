@@ -25,6 +25,10 @@
 <script>
 	import myFooter from './plug/footer'
 	export default {
+		metaInfo: {
+			title: ' Kalec的个人网站',
+            titleTemplate: '%s - 冰空的作品展示'
+        },
 		name: "home",
 		components:{
 			myFooter
@@ -42,7 +46,6 @@
 				top: 80,
 				duration: 3
 			});
-			document.title = '冰空的作品展示 - Kalec的个人网站'
 		}
 	}
 </script>

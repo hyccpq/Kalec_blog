@@ -9,15 +9,14 @@ export default async (ctx, renderer) => {
         const appString = await renderer.renderToString(context)
         
         
-        // const html = ejs.render(template, {
-            
-        // })
+        const { title } = context.meta.inject()
 
         await ctx.render('index.ejs', {
             appString,
             style: context.renderStyles(),
             state: context.renderState(),
-            javascript: context.renderScripts()
+            javascript: context.renderScripts(),
+	        title: title.text()
         })
         
     } catch (error) {

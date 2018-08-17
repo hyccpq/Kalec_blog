@@ -26,7 +26,7 @@
                         <router-link :to="`/article/${item.id}`">
                             <span class="article-show">>继续阅读</span>
                         </router-link>
-                        <div class="article-line" v-if="index===articleList.length - 1 ? false : true"></div>
+                        <div class="article-line" v-if="index!==articleList.length - 1"></div>
                     </div>
                 </div>
                 <div class="page-block">
@@ -45,6 +45,14 @@
 	import { Page,Content,Breadcrumb,BreadcrumbItem,Icon } from 'iview'
 
 	export default {
+		metaInfo() {
+			return {
+				title:  `${ this.$route.params.class || this.$route.params.tag
+				? this.$route.params.class || this.$route.params.tag
+				: '文章'} 第 ${ this.$route.params.page } 页`,
+                titleTemplate: '%s - 冰空的作品展示'
+			}
+        },
 		name: "page-list",
 		data(){
 			return {
@@ -74,13 +82,13 @@
 			},
 			loadPage(page=0,classic='',tag=''){
 				if(classic){
-					this.$store.dispatch('getClassicList',{
-						params:classic,
+					this.$store.dispatch('getIndexList',{
+						classic,
 						page
 					})
 				} else if(tag) {
-					this.$store.dispatch('getTagList',{
-						params:tag,
+					this.$store.dispatch('getIndexList',{
+						tag,
 						page
 					})
 				} else {
@@ -88,14 +96,6 @@
 						page
 					})
 				}
-			},
-			updateTitle(){
-				document.title = `冰空的作品展示 -
-        ${ this.$route.params.class || this.$route.params.tag
-					? this.$route.params.class || this.$route.params.tag
-					: '文章'}
-          第
-        ${ this.$route.params.page } 页`
 			}
 		},
 		computed:{
@@ -123,21 +123,18 @@
 			let self = this
 			this.loadPage(self.$route.params.page-1,self.$route.params.class,self.$route.params.tag);
 		},
-		mounted() {
-			this.updateTitle()
-		},
 		preFetch(store) {
 			let classic = store.state.route.params.classic;
 			let tag = store.state.route.params.tag;
 			let page = store.state.route.params.page-1;
 			if(classic){
-				return store.dispatch('getClassicList',{
-					params:classic,
+				return store.dispatch('getIndexList',{
+					classic,
 					page
 				})
 			} else if(tag) {
-				return store.dispatch('getTagList',{
-					params:tag,
+				return store.dispatch('getIndexList',{
+					tag,
 					page
 				})
 			} else {

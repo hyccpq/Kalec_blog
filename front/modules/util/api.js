@@ -48,12 +48,14 @@ export function request (param) {
 }
 
 export default {
-	getIndexList({page}, commit){
+	getIndexList(payload, commit){
+		console.log(payload);
 		return request(
 			currentState => commit(type.SHOW_LOADING, currentState)
 		)({
-			url: GET_INDEXPAGE_MESSAGE_API+`?page=${page}`,
-			method: 'GET'
+			url: GET_INDEXPAGE_MESSAGE_API,
+			method: 'GET',
+			params: payload
 		})
 	},
 	getTagList (payload, commit) {

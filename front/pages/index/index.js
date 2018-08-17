@@ -5,6 +5,7 @@ import App from './App'
 import { createRouter } from './router/index'
 import { createStore } from '../../modules/vuex/store'
 import axios from '../../modules/util/axios'
+import Meta from 'vue-meta'
 import { Notice } from 'iview'
 import { sync } from 'vuex-router-sync'
 
@@ -59,6 +60,8 @@ if(typeof window !== "undefined"){
 export function createApp() {
 	const router = new createRouter();
 	const store = new createStore();
+	
+	Vue.use(Meta)
 	
 	sync(store, router);
 	const app = new Vue({

@@ -17,7 +17,7 @@ export const getArticle = async (skip = 0, params = {}) => {
 		show: 1
 	}
 	if(params.classic) querys.classic = params.classic;
-	else if(params.tag) querys.tag = params.tag;
+	else if(params.tag) querys["tag.tagName"] = params.tag;
 	try {
 		const articleNum = await articleDatabase.find(querys).count()
 		
@@ -72,9 +72,9 @@ export const getAllTagsAndClassic = async () => {
 	}
 }
 
-export const saveMark = async (id, user, email, content, captchaStr) => {
+export const saveMark = async (id, user, email, content) => {
 	try {
-		let articleInfo = await articleDatabase.findById(id)
+		let articleInfo = await articleDatabase.findByIdAndUpdate(id)
 		articleInfo.markNum += 1;
 		articleInfo.markList.push({
 			userName: user,
@@ -102,10 +102,9 @@ export const saveMark = async (id, user, email, content, captchaStr) => {
 
 export const saveReply = async (id, markId, user, replyUser, email, content) => {
 	try {
-		let articleInfo = await articleDatabase.findById(id).select('markList');
-		
+		let articleInfo = await articleDatabase.findByIdAndUpdate(id);
 		let { replyList } = articleInfo.markList.id(markId)
-		
+		articleInfo.markNum += 1
 		replyList.push({
 			replyName: user,
 			replyEmail: email,
@@ -113,7 +112,6 @@ export const saveReply = async (id, markId, user, replyUser, email, content) => 
 			replyedUser: replyUser,
 			isManage: false
 		});
-		articleInfo.markNum += 1;
 		
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()

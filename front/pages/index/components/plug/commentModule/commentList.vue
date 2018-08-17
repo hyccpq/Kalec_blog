@@ -15,7 +15,7 @@
                     <p v-text="value.markContent" class="mark-view-content"></p>
                     <div class="mark-time-reply">
                         <div v-text="$formatTime(value.markTime)" class="mark-view-time"></div>|
-                        <div><a href="javascript:void(0)" @click="addReply(key,articleInfo.markList.length)">回复</a></div>
+                        <div><a href="javascript:void(0)" @click="addReply(key, articleInfo.markList.length)">回复</a></div>
                     </div>
                     <ul class="mark-view-reply" v-if="!!value.replyList.length||isShowReply[key]">
                         <transition-group name="markanimation" tag="li">
@@ -28,10 +28,11 @@
                                     ----<div v-text="$formatTime(item.replyTime)" class="mark-view-time"></div>
                                 </div>
                                 <hr style="border:1px dashed #b3b9c6" v-if="i!==value.replyList.length-1">
+
                             </li>
 
                             <comment :article-id="articleInfo._id"
-                                     :mark-id="value.markId"
+                                     :mark-id="value._id"
                                      :mark-name="value.userName"
                                      @updateReply="updateReply"
                                      v-if="isShowReply[key]" key="reply">
@@ -78,6 +79,7 @@
 			},
 			addReply(key,len){
 				this.isShowReply.length = len;
+				console.log(this.currentKey, key);
 				if(key !== this.currentKey){
 					this.isShowReply.fill(false);
 					this.currentKey = key;

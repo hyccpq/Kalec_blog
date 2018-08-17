@@ -2,8 +2,8 @@
     <div id="index-content">
         <loading :onLoading="onLoading"></loading>
         <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
-        <login-form :is-showlog="isShowlog" @onChange="changeLog">
-            <!--<on-form @has-log="hasLog"></on-form>-->暂只允许站长登录，<a href="/admin/">点击此处登录</a>
+        <login-form :is-showlog="isShowlog" @onChange="changeLog" class="goto-notice">
+            <!--<on-form @has-log="hasLog"></on-form>-->暂只能站长登录，<a class="goto-admin" href="/admin/" target="_blank">点击登录</a>
         </login-form>
         <cover-image class="cover"></cover-image>
         <div class="all-content">
@@ -27,8 +27,8 @@
 	import coverImage from './plug/coverImage'
 	import elNav from '../components/plug/nav'
 	import loginForm from '../components/plug/login'
-	// import onForm from '../components/plug/form'
 	import loading from './plug/Loading'
+    import { Button } from 'iview'
 	import {mapState} from 'vuex'
 	export default {
 		name: "index",
@@ -38,6 +38,7 @@
 			coverImage,
 			elNav,
 			loginForm,
+            iButton: Button,
 			// onForm,
 			loading,
 			toTop
@@ -129,6 +130,12 @@
             top: 0
             width: 100%
             z-index: 2000
+        .goto-notice
+            text-align center
+            .goto-admin
+                text-decoration underline
+                color: blue
+                line-height 40px
         .all-content
             width 1100px
             min-height 800px

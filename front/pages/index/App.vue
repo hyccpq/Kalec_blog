@@ -1,6 +1,6 @@
 <template>
     <!--<img src="./assets/logo.png">-->
-    <transition name="main-animation" mode="out-in">
+    <transition name="main-animation">
       <router-view class="all-router"></router-view>
     </transition>
 </template>
@@ -8,6 +8,9 @@
 <script>
 
   export default {
+  	metaInfo:{
+  		title: '冰空的作品展示'
+    },
     name: 'app',
   }
 </script>
@@ -16,10 +19,9 @@
 /*.all-router*/
   /*position absolute*/
 .main-animation-enter-active, .main-animation-leave-active
-  transition all .5s ease
+  transition all .3s
 .main-animation-leave-to
-  opacity: 0.1
-  transform translateY(-700px)
+  opacity: .2
 
 </style>
 
