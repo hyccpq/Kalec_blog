@@ -1,7 +1,7 @@
 <template>
   <iMenu mode="horizontal" :theme="'dark'" id="nav" @on-select="onSelect">
     <iMenuItem name="-1" class="nav-menu-button">
-      <Icon class="icon-menu" type="android-menu" size="30"></Icon>
+      <Icon class="icon-menu" type="md-menu" size="30"></Icon>
     </iMenuItem>
     <iMenuItem name="0" class="nav-title">
       <div>冰空作品管理</div>
@@ -28,7 +28,7 @@
     },
     data () {
       return {
-        username:sessionStorage.getItem('admin'),
+        username:localStorage.getItem('admin'),
         theme1: 'light',
       }
     },

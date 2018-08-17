@@ -2,11 +2,11 @@ import * as types from './type'
 
 export default {
 	[types.SET_TOKEN] (state, data) {
-		sessionStorage.setItem('token', data.token);
+		localStorage.setItem('token', data.token);
 		state.token = data;
 	},
 	[types.LOG_OUT] (state) {
-		sessionStorage.removeItem('token');
+		localStorage.removeItem('token');
 		state.token = '';
 	},
 	[types.GET_LIST] (state, data) {

@@ -5,11 +5,6 @@ import { resData } from '../lib/util'
 
 @controller('/api/public')
 export class PublicApiControllers {
-	@post('/login')
-	@required()
-	async login (ctx, next) {
-	
-	}
 	
 	@get('/indexPage')
 	async indexPage(ctx, next) {

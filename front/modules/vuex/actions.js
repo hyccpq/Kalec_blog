@@ -1,16 +1,17 @@
 import * as types from './type'
 import API from '../util/api'
 
-// export const setToken = ({commit},data) => {
-// 	commit(types.SET_TOKEN, data);
-// };
+export const setToken = ({commit},data) => {
+	commit(types.SET_TOKEN, data);
+};
 
-// export const logOut = ({commit}) => {
-// 	commit(types.LOG_OUT);
-// 	return new Promise(resolve => {
-// 		resolve({commit});
-// 	})
-// };
+export const logOut = ({commit}) => {
+	commit(types.LOG_OUT);
+	return new Promise(resolve => {
+		resolve({commit});
+	})
+};
+
 // 主页列表
 export const getIndexList = ({commit}, payload) => {
 	return API.getIndexList(payload, commit).then((res) => {

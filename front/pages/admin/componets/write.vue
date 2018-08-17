@@ -5,7 +5,7 @@
         <Form ref="subInfo" :model="subInfo" :label-width="0" class="content">
           <!--文章标题-->
           <FormItem label="文章标题" prop="文章标题">
-            < size=default v-model="subInfo.title" placeholder="输入你的标题"></Input>
+            <Input size='default' v-model="subInfo.title" placeholder="输入你的标题"></Input>
           </FormItem>
           <mavon-editor ref="md" @imgAdd="$imgAdd" @imgDel="$imgDel"
                         :ishljs = "true" v-model="subInfo.markdown" default_open="edit" class="editor"></mavon-editor>
@@ -19,11 +19,11 @@
 
             <!--日期-->
             <FormItem label="发布日期" prop="发布日期">
-                <DatePicker type="datetime" format="yyyy-MM-dd HH:mm" placeholder="更改发布时间" style="width: 200px" v-model="selectDate"></DatePicker>
+                <DatePicker size="default" :transfer="true" type="datetime" format="yyyy-MM-dd HH:mm" placeholder="更改发布时间" style="width: 200px" v-model="selectDate"></DatePicker>
              </FormItem>
             <!--标签-->
             <FormItem label="标签" prop="标签">{{selectTagName}}
-              <Select size="default" v-model="selectTagName" :multiple="true" :value="selectTagName">
+              <Select transfer size="default" v-model="selectTagName" :multiple="true" :value="selectTagName">
                 <Option v-for="(item,key) in tagList" :value="item.tagName" :key="key">
                   {{ item.tagName }}
                 </Option>
@@ -33,7 +33,7 @@
             </FormItem>
             <!--分类-->
             <FormItem label="分类" prop="分类">
-              <Select v-model="subInfo.classic" placeholder="选择你的分类">
+              <Select transfer size="default" v-model="subInfo.classic" placeholder="选择你的分类">
                 <Option v-for="(classItem,key) in classicList" :key="key" :value="classItem">
                   {{classItem}}
                 </Option>
@@ -168,7 +168,7 @@
 
       toLoading(){
         this.loading = true;
-        this.subInfo.author = sessionStorage.getItem('admin');
+        this.subInfo.author = localStorage.getItem('admin');
         this.subInfo.tag=this.getTag;
         if(this.selectDate){
           this.subInfo.time = this.selectDate;
@@ -333,11 +333,11 @@
       }
     },
     created () {
-      this.axios.get('searchAllTags')
+      this.axios.get('/public/searchAllTags')
         .then(res => {
           if(res.data.status === 1){
-            console.log(res.data.data.tags);
-            this.tagList = res.data.data.tags;
+            console.log(res.data.data);
+            this.tagList = res.data.data.tag;
             this.classicList = res.data.data.classic;
           }
         })

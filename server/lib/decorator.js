@@ -97,11 +97,7 @@ export const admin = roleExpected => convert(async (ctx, next) => {
 	const { role } = ctx.session.views
 
 	if(!role || role !== roleExpected) {
-		return (ctx.body = {
-			success: false,
-			code: 403,
-			err: 'sorry，发生错误'
-		})
+		return (ctx.body = resData(0, '抱歉您不是管理员'))
 	}
 
 	await next()
