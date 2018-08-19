@@ -33,19 +33,19 @@ export default new Router({
 					name: 'adminWrite'
 				},
 				{
-					path: '/articleManage',
+					path: 'articleManage',
 					meta: {auth: true},
 					component: articleManage,
 					name: 'articleManage',
 				},
 				{
-					path: '/articleManage/edit/:id',
+					path: 'articleManage/edit/:id',
 					meta: {auth: true},
 					component: write,
 					name: 'adminEdit'
 				},
 				{
-					path: '/articleManage/commentManage/:id',
+					path: 'articleManage/commentManage/:id',
 					meta: {auth: true},
 					component: commentList,
 					name: 'commentEdit'

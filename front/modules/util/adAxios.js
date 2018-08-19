@@ -35,7 +35,9 @@ http.interceptors.response.use(
 				case 401:
 					alert('登陆超时');
 					store.commit(types.LOG_OUT);
-					app.$router.replace('/admin/');
+					if(window){
+						window.location.href = '/admin/login'
+					}
 			}
 		}
 		return Promise.reject(error);

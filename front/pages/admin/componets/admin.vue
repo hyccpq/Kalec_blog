@@ -79,7 +79,7 @@
 			async adLogOut(){
 				await this.$store.dispatch('logOut');
 				this.showLogOut();
-				this.$router.push('/login');
+				this.$router.push('/admin/login');
 				this.$Notice.success({
 					title:'登出成功！'
 				})
@@ -87,10 +87,10 @@
 			onSelectItem(name){
 				// console.log(name);
 				if(name === '1-1'){
-					this.$router.push('/write');
+					this.$router.push('/admin/edit/write');
 				}
 				if(name === '1-2'){
-					this.$router.push('/articleManage')
+					this.$router.push('/admin/edit/articleManage')
 				}
 			}
 		}

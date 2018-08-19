@@ -1,6 +1,6 @@
-import { controller, get, post, required, auth, admin } from '../lib/decorator'
+import { controller, get, put, del, post, required, auth, admin } from '../lib/decorator'
 
-import { checkPassword } from '../service/getAdminInfo'
+import { checkPassword, commitArticle, editArticle, deleteArticle, editShow, getAdArticleList, getOneAdArticle } from '../service/getAdminInfo'
 import { resData } from '../lib/util'
 import { getToken } from "../service/auth";
 
@@ -22,7 +22,7 @@ export class AdminApiControllers {
 					_id: matchData.userInfo._id,
 					email: matchData.userInfo.email,
 					role: matchData.userInfo.role,
-					username: matchData.userInfo.username
+					user: matchData.userInfo.user
 				}
 				
 				let token = getToken(user)
@@ -37,8 +37,82 @@ export class AdminApiControllers {
 		
 	}
 	
-	@get("/getAdTagAndClassic")
-	async getAdTagAndClassic (ctx, next) {
-	
+	@post("/addArticle")
+	@auth
+	@admin('admin')
+	async addArticle (ctx, next) {
+	    try {
+		    const addInfo = ctx.request.body
+		    let data = await commitArticle(addInfo)
+		    ctx.body = resData(1, '查询成功', data)
+	    } catch (e) {
+		    ctx.body = resData(0, '出现错误', e.toString())
+	    }
 	}
+	
+	@put("/editArticle")
+	@auth
+	@admin('admin')
+	async editArticle (ctx, next) {
+	    try {
+			const editInfo = ctx.request.body
+		    let data = await editArticle(editInfo.id, editInfo)
+		    ctx.body = resData(1, '查询成功', data)
+	    } catch (e) {
+		    ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@get("/searchAll")
+	@auth
+	async searchAll (ctx, next) {
+	    try {
+	        const params = ctx.request.query
+		    let data = await getAdArticleList(params.page, params.count, params)
+	        ctx.body = resData(1, '查询成功', data)
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@get("/searchAdArticle")
+	@auth
+	@admin('admin')
+	async searchAdArticle (ctx, next) {
+	    try {
+	        const { id } = ctx.request.query
+		    let data = await getOneAdArticle(id)
+	        ctx.body = resData(1, '查询成功', data)
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@put("/editShow")
+	@auth
+	@admin('admin')
+	async editArticleShow (ctx, next) {
+	    try {
+	        const { id, show } = ctx.request.body
+		    let data = await editShow(id, show)
+	        ctx.body = resData(1, '查询成功', data)
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@del("/deleteArticle")
+	@auth
+	@admin('admin')
+	async deleteMyArticle (ctx, next) {
+	    try {
+	        const { id } = ctx.request.body
+		    
+		    let data = deleteArticle(id)
+	        ctx.body = resData(1, '查询成功', data)
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
 }
