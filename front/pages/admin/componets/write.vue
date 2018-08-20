@@ -70,7 +70,7 @@
                             :on-exceeded-size="handleMaxSize"
                             type="drag"
                             name="articleImage"
-                            action="/api/upload">
+                            action="/api/admin/v0/upload">
                             <div style="padding: 20px 0">
                                 <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
                                 <p>点击或者拖动到此处上传</p>
@@ -289,7 +289,7 @@
 				console.log(pos);
 				// let xhr = new XMLHttpRequest();
 				formData.append("articleImage",$file);
-				$http('/api/upload',{
+				$http('/api/admin/v0/upload',{
 					method:'POST',
 					data:formData,
 					headers:{

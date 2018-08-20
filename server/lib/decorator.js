@@ -5,6 +5,7 @@ import _ from 'lodash'
 import R from 'ramda'
 import { verify } from '../service/auth'
 import { resData } from './util'
+import multer from 'koa-multer'
 
 const symbolPrefix = Symbol('prefix')
 const routerMap = new Map()
@@ -131,3 +132,26 @@ export const required = rules => convert(async (ctx, next) => {
 	
 	await next()
 })
+
+const STORAGE = multer.diskStorage({
+	//文件保存路径
+	destination (req, file, cb) {
+		cb(null,
+			resolve(__dirname,'../../public/static/uploads/'))
+		// 'public/uploads/')
+	},
+	//修改文件名称
+	filename (req, file, cb) {
+		let fileFormat = (file.originalname).split(".");
+		cb(null,Date.now() + "." + fileFormat[fileFormat.length - 1]);
+	}
+})
+
+const LIMITS = {
+	fieldSize: '10MB',
+	files: 5
+}
+
+const upload = multer({ storage: STORAGE, limits: LIMITS })
+
+export const fileUpload = name => convert(upload.single(name))

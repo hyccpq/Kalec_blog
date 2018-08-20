@@ -1,5 +1,4 @@
 import axios from 'axios'
-import app from '../../pages/admin/app'
 import { createStore } from '../vuex/store'
 
 const store = new createStore();
@@ -35,9 +34,14 @@ http.interceptors.response.use(
 				case 401:
 					alert('登陆超时');
 					store.commit(types.LOG_OUT);
-					if(window){
-						window.location.href = '/admin/login'
-					}
+					window.location.href = '/admin/login'
+					break
+					
+				case 500:
+					alert('服务内部出错，请尝试重新登录');
+					store.commit(types.LOG_OUT);
+					window.location.href = '/admin/login'
+					break
 			}
 		}
 		return Promise.reject(error);

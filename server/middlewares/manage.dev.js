@@ -9,8 +9,7 @@ const compiler = webpack(webpackConfig)
 const opt = {
     logTime: true,
 	colors: true,
-	writeToDisk:true,
-	logTime: true
+	writeToDisk:true
 }
 
 export const webpackDev = app => {

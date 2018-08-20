@@ -1,8 +1,10 @@
-import { controller, get, put, del, post, required, auth, admin } from '../lib/decorator'
+import {controller, get, put, del, post, required, auth, admin, fileUpload} from '../lib/decorator'
 
 import { checkPassword, commitArticle, editArticle, deleteArticle, editShow, getAdArticleList, getOneAdArticle } from '../service/getAdminInfo'
 import { resData } from '../lib/util'
 import { getToken } from "../service/auth";
+import fs from 'fs'
+import { resolve } from 'path'
 
 @controller('/api/admin/v0')
 export class AdminApiControllers {
@@ -111,6 +113,20 @@ export class AdminApiControllers {
 		    let data = deleteArticle(id)
 	        ctx.body = resData(1, '查询成功', data)
 	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@post("/upload")
+	@admin('admin')
+	@fileUpload('articleImage')
+	async upload (ctx, next) {
+	    try {
+	        let fileName = ctx.req.file.filename
+		    
+	        ctx.body = resData(1, '上传成功', { fileName, filePath: `uploads/${fileName}` })
+	    } catch(e) {
+	    	console.log(e);
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
