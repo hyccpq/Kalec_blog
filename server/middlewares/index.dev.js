@@ -1,8 +1,6 @@
 import dev from './dev/devMiddleware';
 import hot from './dev/hotMiddleware';
 import webpack from 'webpack';
-import serve from 'koa-static';
-import views from 'koa-views';
 import MemoryFs from 'memory-fs';
 import fs from 'fs';
 import { resolve, join } from 'path';

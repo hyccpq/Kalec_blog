@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length - 1 });
-
+const {VueLoaderPlugin} = require('vue-loader')
 const prod = process.env.NODE_ENV === 'production';
 
 function resolve(dir) {
@@ -28,23 +28,20 @@ let conf = {
 				test: /\.vue$/,
 				use: [
 					{
-						loader: 'happypack/loader?id=vue'
+						loader: 'vue-loader',
+						options: {
+							loaders:{
+								css: [
+									'vue-style-loader',
+									'happypack/loader?id=css'
+								],
+								stylus: [
+									'vue-style-loader',
+									'happypack/loader?id=stylus'
+								]
+							}
+						}
 					}
-					// {
-					// 	loader: 'vue-loader',
-					// 	options: {
-					// 		loaders: {
-                    //             css: [
-                    //                 prod ? MiniCssExtractPlugin.loader : 'style-loader',
-                    //                 'happypack/loader?id=css'
-                    //             ],
-                    //             stylus: [
-                    //                 prod ? MiniCssExtractPlugin.loader: 'style-loader',
-                    //                 'happypack/loader?id=stylus'
-                    //             ]
-					// 		}
-					// 	}
-					// }
 				]
 			},
 			{
@@ -83,14 +80,14 @@ let conf = {
 			{
 				test: /\.css$/,
 				use: [
-					!prod ? 'style-loader' : MiniCssExtractPlugin.loader,
+					'vue-style-loader',
 					'happypack/loader?id=css'
 				]
 			},
 			{
 				test: /\.styl(us)?$/,
 				use: [
-					!prod ? 'style-loader' : MiniCssExtractPlugin.loader,
+					'vue-style-loader',
 					'happypack/loader?id=stylus'
 				],
 				exclude: [path.resolve(__dirname, '../../node_modules')]
@@ -136,6 +133,7 @@ let conf = {
 			filename: '[name].[hash:8].css',
 			chunkFilename: '[id].[hash:8].css'
 		}),
+		new VueLoaderPlugin(),
 		new WebpackBar()
     ],
 	node: {

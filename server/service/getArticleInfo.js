@@ -72,7 +72,7 @@ export const getAllTagsAndClassic = async () => {
 	}
 }
 
-export const saveMark = async (id, user, email, content) => {
+export const saveMark = async (id, user, email, content, isManage) => {
 	try {
 		let articleInfo = await articleDatabase.findByIdAndUpdate(id)
 		articleInfo.markNum += 1;
@@ -80,7 +80,7 @@ export const saveMark = async (id, user, email, content) => {
 			userName: user,
 			userEmail: email,
 			markContent: content,
-			isManage: false
+			isManage
 		})
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()
@@ -91,7 +91,7 @@ export const saveMark = async (id, user, email, content) => {
 			markTime:currentMark.markTime,
             userName:currentMark.userName,
             markContent:currentMark.markContent,
-            markId:currentMark._id,
+            _id:currentMark._id,
             replyList:[]
 		}
 		
@@ -100,7 +100,7 @@ export const saveMark = async (id, user, email, content) => {
 	}
 }
 
-export const saveReply = async (id, markId, user, replyUser, email, content) => {
+export const saveReply = async (id, markId, user, replyUser, email, content, isManage) => {
 	try {
 		let articleInfo = await articleDatabase.findByIdAndUpdate(id);
 		let { replyList } = articleInfo.markList.id(markId)
@@ -110,7 +110,7 @@ export const saveReply = async (id, markId, user, replyUser, email, content) => 
 			replyEmail: email,
 			replyContent: content,
 			replyedUser: replyUser,
-			isManage: false
+			isManage
 		});
 		
 		let addData = new articleDatabase(articleInfo)
@@ -121,7 +121,8 @@ export const saveReply = async (id, markId, user, replyUser, email, content) => 
 		return {
 			replyName: currentReply.replyName,
 			replyTime: currentReply.replyTime,
-			replyContent: currentReply.replyContent
+			replyContent: currentReply.replyContent,
+			_id: currentReply._id
 		}
 		
 	} catch (e) {

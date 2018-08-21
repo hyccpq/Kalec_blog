@@ -69,10 +69,8 @@ if (prod) {
 	config.plugins.push(
 		new OfflinePlugin(),
 		new BundleAnalyzerPlugin({
-			analyzerMode: 'server',
-			analyzerHost: '127.0.0.1',
-			analyzerPort: 8889,
-			reportFilename: 'report.html',
+			analyzerMode: 'static',
+			reportFilename: join(__dirname, '../../report-' + Date.now() + '.html'),
 			defaultSizes: 'parsed',
 			openAnalyzer: true,
 			generateStatsFile: false,

@@ -51,13 +51,13 @@
 </template>
 
 <script>
-	import { Row,Col,Menu,Submenu,MenuItem,Icon,Button } from 'iview'
+	import { Row,Col,Menu,Submenu,MenuItem,Icon } from 'iview'
 	import adNav from './plug/nav'
 	import logOut from './plug/login'
 	export default {
 		name: "admin",
 		components:{
-			Row,Col,Menu,Submenu,MenuItem,Icon,adNav,Button,
+			Row,Col,Menu,Submenu,MenuItem,Icon,adNav,
 			logOut
 		},
 		data(){

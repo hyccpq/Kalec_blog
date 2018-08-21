@@ -14,13 +14,13 @@ const MIDDLEWARES = [
 const condition = process.env.NODE_ENV
 
 switch (condition) {
-	case 'development:index':
-		MIDDLEWARES.push('index.dev')
-		break;
-
-	case 'development:manage':
-		MIDDLEWARES.push('manage.dev')
-		break;
+	// case 'development:index':
+	// 	MIDDLEWARES.push('index.dev')
+	// 	break;
+	//
+	// case 'development:manage':
+	// 	MIDDLEWARES.push('manage.dev')
+	// 	break;
 
 	default:
 		MIDDLEWARES.push('prod')
@@ -28,7 +28,7 @@ switch (condition) {
 }
 
 const app = new Koa()
-
+	console.log(MIDDLEWARES);
 
 
 ;(async () => {

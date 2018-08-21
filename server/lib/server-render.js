@@ -20,13 +20,7 @@ export default async (ctx, renderer) => {
         })
         
     } catch (error) {
-        await ctx.render('error.ejs', {
-            code: 404,
-            info: error.toString(),
-            title: '渲染出现错误',
-            jumpUrl: '/'
-        })
-        console.error('渲染错误',error);   
-        throw new Error(error)
+    	console.error('渲染错误',error);
+     
     }
 }

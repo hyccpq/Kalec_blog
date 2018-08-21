@@ -13,7 +13,7 @@
                 </iInput>
             </FormItem>
             <FormItem>
-                <iButton type="success" size="default" long @click="login">提交</iButton>
+                <Button type="success" size="default" long @click="login">提交</Button>
             </FormItem>
             <a href="/">点击此处返回首页</a>
         </iForm>
@@ -22,15 +22,14 @@
 </template>
 
 <script>
-	import { Form,FormItem,Input,Icon,Button } from 'iview'
+	import { Form,FormItem,Input,Icon } from 'iview'
 	export default {
 		name: "my-form",
 		components:{
 			iForm:Form,
 			FormItem,
 			iInput:Input,
-			Icon,
-			iButton:Button
+			Icon
 		},
 		data () {
 			return {

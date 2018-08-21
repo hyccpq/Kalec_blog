@@ -1,16 +1,23 @@
-import serve from 'koa-static'
-import views from 'koa-views'
-import { resolve } from 'path'
 
+import { resolve } from 'path'
+import {createBundleRenderer} from "vue-server-renderer";
+import serverRender from "../lib/server-render";
+import clientManifestResp from '../../public/dist/vue-ssr-client-manifest.json'
 
 export const prod = app => {
 	
-	app.use(serve(resolve(__dirname, '../../front/dist')))
-	app.use(views(resolve(__dirname, '../../front/dist')), {
-			extensions: 'html'
-	})
-
 	app.use(async (ctx, next) => {
-		await ctx.render('index.html')
-	})
+		try {
+			
+			const renderer = createBundleRenderer(resolve(__dirname, '../server-build/vue-ssr-server-bundle.json'),
+			{
+				inject: false,
+				clientManifest: clientManifestResp
+			});
+
+			await serverRender(ctx, renderer);
+		} catch (error) {
+			console.log(error);
+		}
+	});
 }

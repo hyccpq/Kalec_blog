@@ -5,6 +5,7 @@ import { resData } from '../lib/util'
 
 @controller('/api/public')
 export class PublicApiControllers {
+	static isManage = false
 	
 	@get('/indexPage')
 	async indexPage(ctx, next) {
@@ -59,7 +60,7 @@ export class PublicApiControllers {
 		try {
 			if(_id && user && email && content) {
 				
-				let markData = await saveMark(_id, user, email, content)
+				let markData = await saveMark(_id, user, email, content, PublicApiControllers.isManage)
 				
 				ctx.body = resData(1, '查询成功', markData)
 			} else {
@@ -79,7 +80,7 @@ export class PublicApiControllers {
 		try {
 			if(_id && markId && user && email && content) {
 				
-				let replyData = await saveReply(_id, markId, user, replyUser, email, content)
+				let replyData = await saveReply(_id, markId, user, replyUser, email, content, PublicApiControllers.isManage)
 				ctx.body = resData(1, '查询成功', replyData)
 			} else {
 				throw '信息不全'

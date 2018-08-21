@@ -15,7 +15,7 @@ const config = merge(base, {
     devtool: prod ? false : '#cheap-module-eval-source-map',
     output: {
 		path: resolve(__dirname, '../../public/dist'),
-		filename: '[name].js',
+		filename: '[name].[hash:6].js',
 		publicPath: '/'
 	},
 	optimization: {
@@ -81,10 +81,8 @@ if (prod) {
 	config.plugins.push(
 		new OfflinePlugin(),
 		new BundleAnalyzerPlugin({
-			analyzerMode: 'server',
-			analyzerHost: '127.0.0.1',
-			analyzerPort: 8888,
-			reportFilename: 'report.html',
+			analyzerMode: 'static',
+			reportFilename: join(__dirname, '../../report-' + Date.now() + '.html'),
 			defaultSizes: 'parsed',
 			openAnalyzer: true,
 			generateStatsFile: false,

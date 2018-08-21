@@ -124,3 +124,42 @@ export const editShow = async (id, show) => {
 	}
 }
 
+
+export const delMark = async (id, markId) => {
+	try {
+		let data = await ArticleDatabase.findById(id)
+		data.markList.pull(markId)
+		await data.save()
+		
+	} catch (e) {
+		throw e
+	}
+}
+
+export const delReply = async (id, markId, replyId) => {
+	try {
+		let data = await ArticleDatabase.findById(id)
+		
+		let markData = data.markList.id(markId)
+			console.log(markData)
+		markData.replyList.pull(replyId)
+		data.save()
+		
+	} catch (e) {
+		throw e
+	}
+}
+
+export const searchOneArticleComment = async (id) => {
+	try {
+		let oneCommentInfo = await ArticleDatabase.findById(id, "title id author markNum markList")
+		if(!oneCommentInfo) {
+			throw '无法找到文章'
+		}
+		return oneCommentInfo
+		
+	} catch (e) {
+		throw e
+	}
+}
+
