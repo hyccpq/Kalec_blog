@@ -4,14 +4,63 @@ const merge = require('webpack-merge');
 const base = require('./webpack.config.base');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const { resolve, join } = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
 
-module.exports = merge(base, {
+class ServerMiniCssExtractPlugin extends MiniCssExtractPlugin {
+	getCssChunkObject(mainChunk) {
+		return {};
+	}
+}
+
+
+let baseConf= merge(base, {
 	mode: prod ? 'production' : 'development',
 	target: 'node',
 	devtool: prod ? false : 'source-map',
 	entry:  resolve(__dirname, '../../front/pages/index/server-entry.js'),
+	module: {
+		rules: [
+			{
+				test: /\.vue$/,
+				use: [
+					{
+						loader: 'vue-loader',
+						options: {
+							loaders:{
+								css: [
+									prod ? ServerMiniCssExtractPlugin.loader :'vue-style-loader',
+									'happypack/loader?id=css'
+								],
+								stylus: [
+									prod ? ServerMiniCssExtractPlugin.loader :'vue-style-loader',
+									'happypack/loader?id=stylus'
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [
+					// prod ? ServerMiniCssExtractPlugin.loader :
+						'vue-style-loader',
+					'happypack/loader?id=css'
+				]
+			},
+			{
+				test: /\.styl(us)?$/,
+				use: [
+					// prod ? ServerMiniCssExtractPlugin.loader :
+						'vue-style-loader',
+					'happypack/loader?id=stylus'
+				],
+				exclude: [resolve(__dirname, '../../node_modules')]
+			}
+		]
+	},
 	output: {
 		filename: `server-entry.js`,
 		libraryTarget: 'commonjs2',
@@ -25,6 +74,17 @@ module.exports = merge(base, {
 		}),
 		new VueSSRServerPlugin({
 			filename: 'vue-ssr-server-bundle.json'
-		})
+		}),
 	]
 });
+
+if(prod) {
+	baseConf.plugins.push(
+		new ServerMiniCssExtractPlugin({
+			filename: '[name].[hash:8].css',
+			// chunkFilename: '[id].[hash:8].css'
+		})
+	)
+}
+
+module.exports = baseConf

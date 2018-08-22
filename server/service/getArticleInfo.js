@@ -74,7 +74,7 @@ export const getAllTagsAndClassic = async () => {
 
 export const saveMark = async (id, user, email, content, isManage) => {
 	try {
-		let articleInfo = await articleDatabase.findByIdAndUpdate(id)
+		let articleInfo = await articleDatabase.findById(id)
 		articleInfo.markNum += 1;
 		articleInfo.markList.push({
 			userName: user,
@@ -102,7 +102,7 @@ export const saveMark = async (id, user, email, content, isManage) => {
 
 export const saveReply = async (id, markId, user, replyUser, email, content, isManage) => {
 	try {
-		let articleInfo = await articleDatabase.findByIdAndUpdate(id);
+		let articleInfo = await articleDatabase.findById(id);
 		let { replyList } = articleInfo.markList.id(markId)
 		articleInfo.markNum += 1
 		replyList.push({

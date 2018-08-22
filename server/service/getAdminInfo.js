@@ -1,9 +1,11 @@
 import mongoose from 'mongoose'
 import { formatDate } from '../lib/util'
+import {Arr} from "../../front/pages/index/components/express/config";
 
 const User = mongoose.model('adminUserModel')
 const ArticleDatabase = mongoose.model('articleModel')
 const LoginLogs = mongoose.model('siteReadingModel')
+const tagAndClassicDatabase = mongoose.model('classicTagModel')
 
 export const checkPassword = async (user, password, ip) => {
 	let match = false
@@ -158,6 +160,19 @@ export const searchOneArticleComment = async (id) => {
 		}
 		return oneCommentInfo
 		
+	} catch (e) {
+		throw e
+	}
+}
+
+export const addTagOrClassicInfo = async ({tag, classic}) => {
+	console.log(tag, classic);
+	try {
+		return await tagAndClassicDatabase.findOneAndUpdate({}, {
+			$push: {
+				tag, classic
+			}
+		})
 	} catch (e) {
 		throw e
 	}

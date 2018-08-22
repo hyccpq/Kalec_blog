@@ -10,7 +10,7 @@ import {
 	getOneAdArticle,
 	delMark,
 	delReply,
-	searchOneArticleComment
+	searchOneArticleComment, addTagOrClassicInfo
 } from '../service/getAdminInfo'
 import {saveReply, saveMark, searchOneArticle} from '../service/getArticleInfo'
 import { resData } from '../lib/util'
@@ -217,6 +217,19 @@ export class AdminApiControllers {
 	    try {
 	        await delMark(id, markId)
 	        ctx.body = resData(1, '删除成功', {})
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@post("/addTagOrClassic")
+	@auth
+	@admin('admin')
+	async addTagOrClassic (ctx, next) {
+		let params = ctx.request.body
+	    try {
+	        let data = await addTagOrClassicInfo(params)
+	        ctx.body = resData(1, '查询成功', data)
 	    } catch(e) {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }

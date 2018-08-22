@@ -6,7 +6,9 @@ const { resolve, join } = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -15,6 +17,45 @@ const config = merge(base, {
 	devtool: prod ? false : 'source-map',
 	entry: {
 		app: [ resolve(__dirname, '../../front/pages/index/client-entry.js') ],
+	},
+	module: {
+		rules: [
+			{
+				test: /\.vue$/,
+				use: [
+					{
+						loader: 'vue-loader',
+						options: {
+							loaders:{
+								css: [
+									prod ? MiniCssExtractPlugin.loader :'vue-style-loader',
+									'happypack/loader?id=css'
+								],
+								stylus: [
+									prod ? MiniCssExtractPlugin.loader :'vue-style-loader',
+									'happypack/loader?id=stylus'
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [
+					prod ? MiniCssExtractPlugin.loader :'vue-style-loader',
+					'happypack/loader?id=css'
+				]
+			},
+			{
+				test: /\.styl(us)?$/,
+				use: [
+					prod ? MiniCssExtractPlugin.loader :'vue-style-loader',
+					'happypack/loader?id=stylus'
+				],
+				exclude: [resolve(__dirname, '../../node_modules')]
+			}
+		]
 	},
 	output: {
 		path: resolve(__dirname, '../../public/dist'),
@@ -67,10 +108,20 @@ if (prod) {
 	config.entry['app'].shift();
 
 	config.plugins.push(
-		new OfflinePlugin(),
+		
+		new MiniCssExtractPlugin({
+			filename: '[name].[hash:8].css',
+			// chunkFilename: '[id].[hash:8].css'
+		}),
+		new OfflinePlugin({
+			autoUpdate: 1000 * 60 * 60 * 24 * 15,
+			ServiceWorker: {
+				output: 'index.sw.js'
+			}
+		}),
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'static',
-			reportFilename: join(__dirname, '../../report-' + Date.now() + '.html'),
+			reportFilename: join(__dirname, '../../public/dist/report-' + Date.now() + '.html'),
 			defaultSizes: 'parsed',
 			openAnalyzer: true,
 			generateStatsFile: false,

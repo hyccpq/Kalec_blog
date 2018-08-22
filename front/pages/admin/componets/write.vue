@@ -34,7 +34,7 @@
                         <!--分类-->
                         <FormItem label="分类" prop="分类">
                             <Select transfer size="default" v-model="subInfo.classic" placeholder="选择你的分类">
-                                <Option v-for="(classItem,key) in classicList" :key="key" :value="classItem">
+                                <Option v-for="(classItem,key) in classicList" :key="key" :value="classItem ? classItem : ''">
                                     {{classItem}}
                                 </Option>
                             </Select>
@@ -89,7 +89,7 @@
                 </FormItem>
                 <FormItem>
                     <Button size="default" type="primary" @click="addTag">添加</Button>
-                    <Button size="default" type="ghost" style="margin-left: 8px" @click="changeAdd">取消</Button>
+                    <Button size="default" style="margin-left: 8px" @click="changeAdd">取消</Button>
                 </FormItem>
             </Form>
         </add-tag>
@@ -100,7 +100,7 @@
                 </FormItem>
                 <FormItem>
                     <Button size="default" type="primary" @click="addClassic">添加</Button>
-                    <Button size="default" type="ghost" style="margin-left: 8px" @click="changeAddClassic">取消</Button>
+                    <Button size="default" style="margin-left: 8px" @click="changeAddClassic">取消</Button>
                 </FormItem>
             </Form>
         </add-classic>
@@ -127,6 +127,8 @@
 				loading: false,
 				isTagAdd: false,
 				isClassicAdd:false,
+                newClassic: '',
+                newTagList: [],
 				tagList: [],
 				classicList:[],
 				defaultList:[],
@@ -187,38 +189,31 @@
 				}
 				if(!this.$route.params.id){
 
-					this.axios('/admin/v0/addArticle',{
-						method:'POST',
-						headers:{
-							'Content-Type': 'application/json'
-						},
-						data: this.subInfo
-					})
-						.then(data => {
+					Promise.all([this.addArticle(), this.updateNewTagOrClassic()])
+						.then(([data, updateInfo]) => {
+							console.log(data);
 							if(data.data.status === 1){
 								this.$Notice.info({title:'保存成功'});
-								console.log(this.subInfo);
+								console.log(updateInfo);
 							} else {
 								this.$Notice.warning({title:data.data.msg});
 							}
-							this.loading = false;
 						})
-						.then(()=>this.loading = false)
+						.then(()=>{
+							this.loading = false
+                            this.$router.push('/admin/edit/articleManage')
+						})
 						.catch(err => {
 							console.error(err);
 						})
 				} else {
 					this.subInfo.id = this.$route.params.id;
-					this.axios('/admin/v0/editArticle',{
-						method:'PUT',
-						headers:{
-							'Content-Type': 'application/json'
-						},
-						data: this.subInfo
-					})
-						.then(data => {
+					Promise.all([this.updateArticle(), this.updateNewTagOrClassic()])
+						.then(([data, updateInfo]) => {
+							console.log(data);
 							if(data.data.status === 1){
 								this.$Notice.info({title:'修改成功'});
+								console.log(updateInfo);
 							} else {
 								this.$Notice.warning({title:data.data.msg});
 							}
@@ -234,6 +229,44 @@
 				}
 
 			},
+			updateArticle() {
+				return this.axios('/admin/v0/editArticle',{
+					method:'PUT',
+					headers:{
+						'Content-Type': 'application/json'
+					},
+					data: this.subInfo
+				})
+			},
+			addArticle(){
+				return this.axios('/admin/v0/addArticle',{
+					method:'POST',
+					headers:{
+						'Content-Type': 'application/json'
+					},
+					data: this.subInfo
+				})
+			},
+			updateNewTagOrClassic() {
+				let data = {
+					tag: []
+                }
+				if(this.subInfo.classic === this.newClassic) data.classic = this.newClassic;
+				for (let i = 0; i < this.subInfo.tag.length; i++) {
+					for (let j = 0; j < this.newTagList.length; j++) {
+                        if(this.subInfo.tag[i].tagId === this.newTagList[j].tagId) {
+                        	data.tag.push(this.newTagList[j])
+                        }
+					}
+				}
+				return this.axios('/admin/v0/addTagOrClassic',{
+					method:'POST',
+					headers:{
+						'Content-Type': 'application/json'
+					},
+					data
+				})
+			},
 			getHtml(){
 				let artContent = document.querySelector('.v-show-content');
 				Array.from(artContent.querySelectorAll('h1,h2,h3,h4,h5,h6')).forEach((value, index) => {
@@ -246,10 +279,12 @@
 			addTag() {
 				if(this.addTagValue){
 					let n = this.tagList.length;
-					this.tagList.push({
+					let newTag = {
 						tagId: n+3,
 						tagName: this.addTagValue
-					});
+					}
+					this.tagList.push(newTag);
+					this.newTagList.push(newTag)
 					this.$Notice.success({
 						title:`成功添加新标签:${this.addTagValue}`
 					});
@@ -268,6 +303,7 @@
 			addClassic(){
 				if(this.addClassicValue){
 					this.classicList.push(this.addClassicValue);
+					this.newClassic = this.addClassicValue;
 					this.$Notice.success({
 						title:`成功添加新分类:${this.addClassicValue}`
 					});

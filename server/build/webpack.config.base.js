@@ -5,7 +5,7 @@ const WebpackBar = require('webpackbar')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
 const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length - 1 });
+const happyThreadPool = HappyPack.ThreadPool({ size: (os.cpus().length - 1) ? (os.cpus().length - 1) : 1 });
 const {VueLoaderPlugin} = require('vue-loader')
 const prod = process.env.NODE_ENV === 'production';
 
@@ -24,26 +24,6 @@ let conf = {
 	},
 	module: {
 		rules: [
-			{
-				test: /\.vue$/,
-				use: [
-					{
-						loader: 'vue-loader',
-						options: {
-							loaders:{
-								css: [
-									'vue-style-loader',
-									'happypack/loader?id=css'
-								],
-								stylus: [
-									'vue-style-loader',
-									'happypack/loader?id=stylus'
-								]
-							}
-						}
-					}
-				]
-			},
 			{
 				test: /iview\/.*?js$/,
 				loader: 'happypack/loader?id=babel'
@@ -76,21 +56,6 @@ let conf = {
 					limit: 100000,
 					name: 'fonts/[name].[hash:7].[ext]'
 				}
-			},
-			{
-				test: /\.css$/,
-				use: [
-					'vue-style-loader',
-					'happypack/loader?id=css'
-				]
-			},
-			{
-				test: /\.styl(us)?$/,
-				use: [
-					'vue-style-loader',
-					'happypack/loader?id=stylus'
-				],
-				exclude: [path.resolve(__dirname, '../../node_modules')]
 			}
 		]
 	},
@@ -128,10 +93,6 @@ let conf = {
 			],
 			// 使用共享进程池中的子进程去处理任务
 			threadPool: happyThreadPool
-		}),
-		new MiniCssExtractPlugin({
-			filename: '[name].[hash:8].css',
-			chunkFilename: '[id].[hash:8].css'
 		}),
 		new VueLoaderPlugin(),
 		new WebpackBar()

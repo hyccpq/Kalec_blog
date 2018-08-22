@@ -114,14 +114,11 @@
 				this.listChange = true;
 			},
 			'$route'(to,from){
-				this.updateTitle()
-				let self = this
-				this.loadPage(self.$route.params.page-1,self.$route.params.class,self.$route.params.tag);
+				this.loadPage(this.$route.params.page-1, this.$route.params.class, this.$route.params.tag);
 			}
 		},
 		beforeMount(){
-			let self = this
-			this.loadPage(self.$route.params.page-1,self.$route.params.class,self.$route.params.tag);
+			this.loadPage(this.$route.params.page-1, this.$route.params.class, this.$route.params.tag);
 		},
 		preFetch(store) {
 			let classic = store.state.route.params.classic;
