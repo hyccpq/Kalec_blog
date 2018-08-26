@@ -1,24 +1,33 @@
 export const scrollAnimate = (total, current) => {
 	let detal = total - current
-	let prew, curr
 	
 	return new Promise(resolve => {
+		let curr = current
 		function render () {
-			prew = document.documentElement.scrollTop
-			curr = prew + (total - prew)/4
-			document.documentElement.scrollTop = curr
-			// console.log(document.documentElement.scrollTop, detal);
-			if(document.documentElement.scrollTop !== prew && detal > 0 ? curr <= total : curr > total){
+			let diff = total - curr
+			curr = curr + diff / 3
+			setScrollTop(curr)
+			
+			if(detal > 0 ? diff > 10 : diff < -10){
 				
 				window.requestAnimationFrame(render)
 			} else {
-				document.documentElement.scrollTop = total
+				// document.body.scrollTop = total
+				setScrollTop(total)
 				resolve(total)
 			}
 			
 		}
 		
-		window.requestAnimationFrame(render)
+		render();
+		
+		function setScrollTop (curr) {
+			if(document.body.scrollTop) {
+				document.body.scrollTop = curr
+			} else {
+				document.documentElement.scrollTop = curr
+			}
+		}
 	})
 	
 }

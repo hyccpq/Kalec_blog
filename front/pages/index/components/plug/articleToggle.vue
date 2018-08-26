@@ -18,7 +18,7 @@
                     (toggle[index + 1] ? scrollTop < toggle[index + 1].total : true)
                     ? 'active' : 'freeze'
                     ]">
-                    <a @click.prevent="gotoToggle(item.total,item.href)">{{item.text}}</a>
+                    <a @click="gotoToggle(item.total,item.href)">{{item.text}}</a>
                 </li>
             </ul>
         </section>
@@ -60,9 +60,9 @@
 				this.$nextTick(() => {
 					let currentClickAnchor = document.querySelector(`#T-${hash}`)
                     total = currentClickAnchor.offsetTop
-                    scrollAnimate(total - 60, document.documentElement.scrollTop).then(res => {
+                    scrollAnimate(total - 60, this.$getScrollTop()).then(res => {
                         console.log(res);
-                        window.pageYOffset = res;
+                        // window.pageYOffset = res;
                         window.history.replaceState({}, '', `#${hash}`)
                         // window.location.hash = hash;
                     })

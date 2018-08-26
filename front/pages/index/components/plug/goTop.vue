@@ -30,8 +30,8 @@
         },
 		methods:{
 			toTop(){
-				scrollAnimate(0, document.documentElement.scrollTop).then(res => {
-					document.documentElement.scrollTop = document.body.scrollTop = res;
+				scrollAnimate(0, this.$getScrollTop()).then(res => {
+					// document.documentElement.scrollTop = document.body.scrollTop = res;
                 })
 			}
 		}

@@ -72,8 +72,7 @@
 				this.isShowlog = !this.isShowlog;
 			},
             listenScroll() {
-				let scrollTop = document.documentElement.scrollTop
-                this.$store.commit('update_scroll_top', scrollTop)
+                this.$store.commit('update_scroll_top', this.$getScrollTop())
             }
 		},
 		preFetch(store){
@@ -148,10 +147,11 @@
                 margin-right 20px
                 min-height 200px
     @media screen and (max-width: 1118px)
-        .content-to-top
-            bottom 50px
-            right 20px
+
         #index-content
+            .content-to-top
+                bottom 60px
+                right 20px
             .all-content
                 width: 100%
                 .left-content

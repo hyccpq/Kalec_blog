@@ -49,6 +49,13 @@ if(typeof window !== "undefined"){
 	
 	let fastClick = require('fastclick');
 	fastClick.attach(document.body);
+	
+	Vue.prototype.$getScrollTop = () => window.pageYOffset
+		|| document.documentElement.scrollTop
+		|| document.body.scrollTop
+		|| 0;
+
+	
 	// Vue.directive('highlight',function (el) {
 	//
 	//   let blocks = el.querySelectorAll('pre code');
@@ -64,6 +71,7 @@ export function createApp() {
 	Vue.use(Meta)
 	
 	sync(store, router);
+	
 	const app = new Vue({
 		el: '#root',
 		render: h => h(App),

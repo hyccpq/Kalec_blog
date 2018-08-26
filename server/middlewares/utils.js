@@ -4,6 +4,10 @@ import koaCompress from 'koa-compress'
 import nodeZlib from 'zlib'
 import koaSslify from 'koa-sslify'
 
+export const sslify = app => {
+	// app.use(koaSslify())
+}
+
 export const addBodyParser = app => {
 	app.use(koaBodyparser())
 }
@@ -12,9 +16,6 @@ export const logs = app => {
 	app.use(logger())
 }
 
-export const sslify = app => {
-	// app.use(koaSslify())
-}
 
 export const compression = app => {
 	app.use(koaCompress({

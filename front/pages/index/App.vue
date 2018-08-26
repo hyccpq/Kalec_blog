@@ -26,6 +26,7 @@
 </style>
 
 <style lang="stylus">
+@import "~nprogress/nprogress.css"
 
 html, body, div, span, iframe,
 /*h1, h2, h3, h4, h5, h6, p,*/

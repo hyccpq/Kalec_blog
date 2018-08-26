@@ -45,16 +45,16 @@ let baseConf= merge(base, {
 			{
 				test: /\.css$/,
 				use: [
-					// prod ? ServerMiniCssExtractPlugin.loader :
-						'vue-style-loader',
+					prod ? ServerMiniCssExtractPlugin.loader :
+					'vue-style-loader',
 					'happypack/loader?id=css'
 				]
 			},
 			{
 				test: /\.styl(us)?$/,
 				use: [
-					// prod ? ServerMiniCssExtractPlugin.loader :
-						'vue-style-loader',
+					prod ? ServerMiniCssExtractPlugin.loader :
+					'vue-style-loader',
 					'happypack/loader?id=stylus'
 				],
 				exclude: [resolve(__dirname, '../../node_modules')]
@@ -64,7 +64,8 @@ let baseConf= merge(base, {
 	output: {
 		filename: `server-entry.js`,
 		libraryTarget: 'commonjs2',
-		path: join(__dirname, '../server-build')
+		path: join(__dirname, '../server-build'),
+		publicPath: '/'
 	},
 	externals: Object.keys(require('../../package.json').dependencies),
 	plugins: [
@@ -82,7 +83,7 @@ if(prod) {
 	baseConf.plugins.push(
 		new ServerMiniCssExtractPlugin({
 			filename: '[name].[hash:8].css',
-			// chunkFilename: '[id].[hash:8].css'
+			chunkFilename: '[id].[hash:8].css'
 		})
 	)
 }
