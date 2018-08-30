@@ -5,20 +5,29 @@ import App from './app'
 import router from './router/index'
 import { createStore } from '../../modules/vuex/store'
 import axios from '../../modules/util/adAxios'
-import { Notice,Button } from 'iview'
+import { Notice, Button, LoadingBar } from 'iview'
 
 if(typeof window !== 'undefined'){
+	LoadingBar.config({
+		color: '#68f34f',
+	    failedColor: '#ff600c',
+	    height: 3
+	})
 	
 	router.beforeEach((to,from,next)=>{
+		LoadingBar.start()
 		let token = localStorage.getItem('token');
 		console.log(to.matched.some(({meta}) => meta.auth));
 		if(to.matched.some(({meta}) => meta.auth)){
 			if(!token){
+				LoadingBar.error()
 				next('/admin/login');
 			} else {
+				LoadingBar.finish()
 				next();
 			}
 		} else {
+			LoadingBar.finish()
 			next();
 		}
 	});

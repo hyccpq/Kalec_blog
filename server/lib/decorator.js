@@ -118,10 +118,10 @@ export const compresCaptcha = convert(async (ctx, next) => {
 
 export const required = rules => convert(async (ctx, next) => {
 	let errors = []
-	
 	const checkRules = R.forEachObjIndexed(
 		(value, key) => {
-			
+			console.log(value, key);
+			console.log(ctx.request.body);
 			errors = R.filter(i => !R.has(i, ctx.request[key]))(value)
 		}
 	)

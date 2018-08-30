@@ -16,6 +16,7 @@ class AdminGalleryApi {
 	})
 	async createGallery (ctx, next) {
 	    try {
+	    	console.log('验证通过');
 	        const {title, author, description} = ctx.request.body
 		    await saveNewGallery(title, author, description)
 	        ctx.body = resData(1, '查询成功', {})
