@@ -1,6 +1,4 @@
 import mongoose from 'mongoose'
-import { formatDate } from '../lib/util'
-import {Arr} from "../../front/pages/index/components/express/config";
 
 const User = mongoose.model('adminUserModel')
 const ArticleDatabase = mongoose.model('articleModel')
@@ -130,9 +128,12 @@ export const editShow = async (id, show) => {
 export const delMark = async (id, markId) => {
 	try {
 		let data = await ArticleDatabase.findById(id)
-		data.markList.pull(markId)
-		await data.save()
-		
+		if(data) {
+			data.markList.pull(markId)
+			await data.save()
+		} else {
+			throw '文章不存在'
+		}
 	} catch (e) {
 		throw e
 	}

@@ -17,16 +17,17 @@
                         <Icon type="ios-keypad"></Icon>
                         管理
                     </template>
-                    <MenuItem name="2-1">评论管理</MenuItem>
-                    <MenuItem name="2-2">账号管理</MenuItem>
+                    <MenuItem name="2-1">统计</MenuItem>
+                    <MenuItem name="2-2">日志</MenuItem>
+                    <MenuItem name="2-3">账号管理</MenuItem>
                 </Submenu>
                 <Submenu name="3">
                     <template slot="title">
                         <Icon type="ios-analytics"></Icon>
-                        其他
+                        相册管理
                     </template>
-                    <MenuItem name="3-1">Option 1</MenuItem>
-                    <MenuItem name="3-2">Option 2</MenuItem>
+                    <MenuItem name="3-1">相册信息编辑</MenuItem>
+                    <MenuItem name="3-2">相册管理</MenuItem>
                 </Submenu>
             </Menu>
 
@@ -85,13 +86,21 @@
 				})
 			},
 			onSelectItem(name){
-				// console.log(name);
-				if(name === '1-1'){
-					this.$router.push('/admin/edit/write');
+				switch (name) {
+                    case '1-1':
+                    	this.$router.push('/admin/edit/write');
+                    	break
+                    case  '1-2':
+                    	this.$router.push('/admin/edit/articleManage');
+                    	break
+                    case '3-1':
+                    	this.$router.push('/admin/edit/galleryManage/addGallery')
+                        break
+                    case '3-2':
+                    	this.$router.push('/admin/edit/galleryManage')
+                        break
 				}
-				if(name === '1-2'){
-					this.$router.push('/admin/edit/articleManage')
-				}
+
 			}
 		}
 	}

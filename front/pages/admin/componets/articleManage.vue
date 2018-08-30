@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>文章列表</h3>
+        <h1>文章列表</h1>
         <i-table size="default" border :columns="columns7" :data="data"></i-table>
         <Page
             :total="articleNum"

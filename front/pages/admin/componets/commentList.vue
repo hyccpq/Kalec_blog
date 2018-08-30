@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="markList-title">{{articleInfo.title}}的留言管理&站长回复</h2>
+        <h1 class="markList-title">{{articleInfo.title}}的留言管理&站长回复</h1>
         <ul id="markList-view">
             <li v-if="!articleInfo.markList.length" class="none-mark-view">暂时没有留言</li>
             <li v-for="(value,key) in articleInfo.markList" class="mark-view" :key="key+value">

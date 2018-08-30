@@ -12,7 +12,7 @@ import {
 	delReply,
 	searchOneArticleComment, addTagOrClassicInfo
 } from '../service/getAdminInfo'
-import {saveReply, saveMark, searchOneArticle} from '../service/getArticleInfo'
+import { saveReply, saveMark, searchOneArticle } from '../service/getArticleInfo'
 import { resData } from '../lib/util'
 import { getToken } from "../service/auth";
 
@@ -137,7 +137,6 @@ export class AdminApiControllers {
 		    
 	        ctx.body = resData(1, '上传成功', { fileName, filePath: `uploads/${fileName}` })
 	    } catch(e) {
-	    	console.log(e);
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
@@ -149,7 +148,7 @@ export class AdminApiControllers {
 			let result = await searchOneArticleComment(id)
 			ctx.body = resData(1, '查询成功', result)
 		} catch (e) {
-			ctx.body = resData(0,'查询出错')
+			ctx.body = resData(0, '查询出错')
 			throw e
 		}
 	}

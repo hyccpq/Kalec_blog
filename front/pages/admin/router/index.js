@@ -5,6 +5,8 @@ const login = resolve => require(['../componets/loginPage'],resolve);
 const write = resolve => require(['../componets/write'],resolve);
 const articleManage = resolve => require(['../componets/articleManage'],resolve);
 const commentList = resolve => require(['../componets/commentList'],resolve);
+const galleryList = resolve => require(['../componets/galleryManage'],resolve);
+const editGallery = resolve => require(['../componets/editGallery'],resolve);
 
 Vue.use(Router);
 
@@ -50,6 +52,18 @@ export default new Router({
 					component: commentList,
 					name: 'commentEdit'
 				},
+				{
+					path: 'galleryManage',
+					meta: {auth: true},
+					component: galleryList,
+					name: 'galleryManage'
+				},
+				{
+					path: 'galleryManage/addGallery',
+					meta: {auth: true},
+					component: editGallery,
+					name: 'addGallery'
+				}
 			]
 		}
 	]
