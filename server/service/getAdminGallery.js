@@ -43,6 +43,23 @@ export const deleteOneGallery = async id => {
 	}
 }
 
+export const updateShowGallery = async (id, show) => {
+	try {
+		if(show === 1 || show === 0) {
+			let data = await GalleryItem.findByIdAndUpdate(id, { show })
+			if(data){
+				return data.show
+			} else {
+				throw '相册不存在'
+			}
+		} else {
+			throw '数据格式不正确'
+		}
+	} catch (e) {
+		throw e
+	}
+}
+
 export const updateImages = async (id, imageName, imageDesc, imagePath) => {
 	let query = {
 		imagePath, imageName, imageDesc

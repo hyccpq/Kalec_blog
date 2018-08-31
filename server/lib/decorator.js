@@ -120,15 +120,16 @@ export const required = rules => convert(async (ctx, next) => {
 	let errors = []
 	const checkRules = R.forEachObjIndexed(
 		(value, key) => {
-			console.log(value, key);
-			console.log(ctx.request.body);
 			errors = R.filter(i => !R.has(i, ctx.request[key]))(value)
 		}
 	)
 	
 	checkRules(rules)
 	
-	if(errors.length) ctx.throw(412, `${errors.join(',')}是必须填写的`)
+	if(errors.length) {
+		console.log(`${errors.join(',')}是必须填写的`);
+		ctx.throw(412, `${errors.join(',')}是必须填写的`)
+	}
 	
 	await next()
 })

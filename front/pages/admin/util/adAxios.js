@@ -1,8 +1,7 @@
 import axios from 'axios'
-import { createStore } from '../vuex/store'
 
-const store = new createStore();
-import * as types from '../vuex/type.js'
+import store from '../adVuex/store'
+import * as types from '../../../modules/vuex/type.js'
 
 const http = axios.create({
 	baseURL:`${location.protocol}//${location.hostname}:${location.port}/api`,

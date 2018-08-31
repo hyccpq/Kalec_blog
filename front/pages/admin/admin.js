@@ -3,8 +3,8 @@
 import Vue from 'vue'
 import App from './app'
 import router from './router/index'
-import { createStore } from '../../modules/vuex/store'
-import axios from '../../modules/util/adAxios'
+import store from './adVuex/store'
+import axios from './util/adAxios'
 import { Notice, Button, LoadingBar } from 'iview'
 
 if(typeof window !== 'undefined'){
@@ -62,7 +62,6 @@ Date.prototype.Format = function(fmt) {
 	
 }
 
-const store = new createStore();
 /* eslint-disable no-new */
 export default new Vue({
 	el: '#app',

@@ -45,7 +45,7 @@
 </template>
 
 <script>
-	import { mapState,mapActions } from 'vuex'
+	// import { mapState,mapActions } from 'vuex'
 	import comment from './plug/comment'
 	export default {
 		name: "commentList",

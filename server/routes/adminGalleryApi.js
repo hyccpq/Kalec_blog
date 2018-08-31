@@ -1,6 +1,6 @@
 import { controller, get, put, del, post, required, auth, admin, fileUpload } from '../lib/decorator'
 import { resData } from '../lib/util'
-import { saveNewGallery, deleteOneGallery, getAllGallery, updateImages } from '../service/getAdminGallery'
+import { saveNewGallery, deleteOneGallery, getAllGallery, updateImages, updateShowGallery } from '../service/getAdminGallery'
 
 @controller('/api/gallery/v0')
 class AdminGalleryApi {
@@ -37,6 +37,7 @@ class AdminGalleryApi {
 	    }
 	}
 	
+	
 	@del("/deleteGallery")
 	@auth
 	@admin('admin')
@@ -47,6 +48,23 @@ class AdminGalleryApi {
 	    try {
 	        const { id } = ctx.request.query
 		    let data = await deleteOneGallery(id)
+	        ctx.body = resData(1, '查询成功', data)
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@put("/showGallery")
+	@auth
+	@admin('admin')
+	@required({
+		body: ['id', 'show']
+	})
+	async showGallery (ctx, next) {
+	    try {
+	        const { id, show } = ctx.request.body
+		        console.log(id, show);
+		    let data = await updateShowGallery(id, show)
 	        ctx.body = resData(1, '查询成功', data)
 	    } catch(e) {
 	        ctx.body = resData(0, '出现错误', e.toString())

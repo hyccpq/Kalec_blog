@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>添加相册</h1>
+        <h1>{{$route.params.id ? `编辑${$route.params.title}` : '添加'}}相册</h1>
         <Form ref="formValidate" :model="formValidate" :rules="ruleCustom" :label-width="80">
             <FormItem label="相册名称" prop="title">
                 <Input v-model="formValidate.title" size="default" placeholder="输入相册名称"></Input>
@@ -9,7 +9,8 @@
                 <Input v-model="formValidate.description" type="textarea" size="default" :autosize="{minRows: 2,maxRows: 5}" placeholder="输入相册描述"></Input>
             </FormItem>
             <FormItem>
-                <Button type="primary" @click="handleSubmit('formValidate')" size="default">提交</Button>
+                <Button type="primary" @click="handleSubmit('formValidate')" size="default" v-if="!$route.params.id">提交</Button>
+                <Button type="primary" @click="handleUpdate('formValidate')" size="default" v-else>更新</Button>
                 <Button @click="handleReset('formValidate')" style="margin-left: 8px" size="default">重置</Button>
             </FormItem>
         </Form>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     import {FormItem, Form, Button, Input} from 'iview'
 	export default {
 		name: "editGallery",
@@ -39,7 +41,8 @@
 				formValidate: {
                     title: '',
                     description: '',
-                    author: ''
+                    author: '',
+                    id: ''
                 },
                 ruleCustom: {
 					title: [
@@ -51,13 +54,29 @@
                 }
             }
         },
+        async mounted() {
+			let { id, index } = this.$route.params
+            if(this.$route.params.id) {
+                this.formValidate.id = id
+                if(!this.galleryAll.length) {
+                	await this.$store.dispatch('getAllGallery')
+                }
+                this.formValidate = this.galleryAll[index]
+            }
+        },
+        computed: {
+            ...mapState({
+                galleryAll: state => state.galleryAll
+            })
+        },
         methods: {
+			handleUpdate (name) {
+
+            },
             handleSubmit (name) {
                 this.$refs[name].validate((valid) => {
                 	console.log(this, valid);
                     if (valid) {
-
-                        
                     	let author = window.localStorage.getItem('admin')
                         this.formValidate.author = author === 'hyccpq' ? 'Kalecgos' : author
                         let data = this.formValidate

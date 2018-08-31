@@ -7,6 +7,7 @@ const articleManage = resolve => require(['../componets/articleManage'],resolve)
 const commentList = resolve => require(['../componets/commentList'],resolve);
 const galleryList = resolve => require(['../componets/galleryManage'],resolve);
 const editGallery = resolve => require(['../componets/editGallery'],resolve);
+const galleryPage = resolve => require(['../componets/galleryInfoPage'],resolve);
 
 Vue.use(Router);
 
@@ -63,6 +64,18 @@ export default new Router({
 					meta: {auth: true},
 					component: editGallery,
 					name: 'addGallery'
+				},
+				{
+					path: 'galleryPage/:id/:title',
+					meta: {auth: true},
+					component: galleryPage,
+					name: 'galleryPage'
+				},
+				{
+					path: 'galleryManage/editGallery/:id/:index/:title',
+					meta: {auth: true},
+					component: editGallery,
+					name: 'editGallery'
 				}
 			]
 		}
