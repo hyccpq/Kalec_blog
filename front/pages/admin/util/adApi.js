@@ -1,7 +1,10 @@
 import http from './adAxios'
 
+const ADD_GALLERY = '/gallery/v0/addGallery'
+const EDIT_GALLERY = '/gallery/v0/editGallery'
 const GET_ALL_GALLERY = '/gallery/v0/adSearchAllGallery'
 const PUT_SHOW_GALLERY = '/gallery/v0/showGallery'
+const DELETE_GALLERY = '/gallery/v0/deleteGallery'
 
 const _httpRequest = (param, fn) => {
 	return http({
@@ -43,6 +46,32 @@ export const getGalleryList = () => {
 export const putGalleryShow = (data) => {
 	return request({
 		url: PUT_SHOW_GALLERY,
+		method: 'PUT',
+		data
+	})
+}
+
+export const deleteOneGallery = (id) => {
+	return request({
+		url: DELETE_GALLERY,
+		method: 'DELETE',
+		params: {
+			id
+		}
+	})
+}
+
+export const addOneGallery = (data) => {
+	return request({
+		url: ADD_GALLERY,
+		method: 'POST',
+		data
+	})
+}
+
+export const editOneGallery = (data) => {
+	return request({
+		url: EDIT_GALLERY,
 		method: 'PUT',
 		data
 	})

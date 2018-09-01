@@ -31,12 +31,15 @@
                             相册上线
                         </Button>
                         <Button size="small"
-                                type="info"
                                 @click="updateShow(galleryItem._id, galleryItem.show, galleryIndex)"
                                 v-else>
                             相册下线
                         </Button>
-                        <Button size="small" type="error">删除相册</Button>
+                        <Button size="small"
+                                type="error"
+                                @click="deleteGallery(galleryItem._id, galleryIndex, galleryItem.title)">
+                            删除相册
+                        </Button>
                     </div>
                 </Poptip>
                 <!--<a href="javascript:void 0">操作</a>-->
@@ -68,10 +71,12 @@
         },
         methods: {
             ...mapActions(['putGalleryShow']),
-			async updateShow(id, show, index) {
+			updateShow(id, show, index) {
             	show = show === 1 ? 0 : 1
-                await this.putGalleryShow({id, show, index})
-                this.$emit('updateState', index, show)
+                this.putGalleryShow({id, show, index})
+            },
+            deleteGallery(id, index, title) {
+                this.$emit('removeGalleryOne', id, index, title)
             }
         }
 	}

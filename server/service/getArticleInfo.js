@@ -21,11 +21,11 @@ export const getArticle = async (skip = 0, params = {}) => {
 	try {
 		const articleNum = await articleDatabase.find(querys).count()
 		
-		let limit = (skip + 1) * 10 <= articleNum ? 10 : articleNum % 10
+		// let limit = (skip + 1) * 10 <= articleNum ? 10 : articleNum % 10
 		const articleListAllInfo = await articleDatabase
 			.find(querys, "id markNum imgUrl time title abstract")
-			.skip(skip)
-			.limit(limit)
+			.skip(skip * 10)
+			.limit(10)
 			.sort({
 				time : -1
 			})

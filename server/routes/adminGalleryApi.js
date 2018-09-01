@@ -1,6 +1,6 @@
 import { controller, get, put, del, post, required, auth, admin, fileUpload } from '../lib/decorator'
 import { resData } from '../lib/util'
-import { saveNewGallery, deleteOneGallery, getAllGallery, updateImages, updateShowGallery } from '../service/getAdminGallery'
+import { saveNewGallery, savedGallery, deleteOneGallery, getAllGallery, updateImages, updateShowGallery } from '../service/getAdminGallery'
 
 @controller('/api/gallery/v0')
 class AdminGalleryApi {
@@ -8,7 +8,7 @@ class AdminGalleryApi {
 	/**
 	 * 相册相关
 	 */
-	@post("/editGallery")
+	@post("/addGallery")
 	@auth
 	@admin('admin')
 	@required({
@@ -16,9 +16,24 @@ class AdminGalleryApi {
 	})
 	async createGallery (ctx, next) {
 	    try {
-	    	console.log('验证通过');
 	        const {title, author, description} = ctx.request.body
 		    await saveNewGallery(title, author, description)
+	        ctx.body = resData(1, '查询成功', {})
+	    } catch(e) {
+	        ctx.body = resData(0, '出现错误', e.toString())
+	    }
+	}
+	
+	@put("/editGallery")
+	@auth
+	@admin('admin')
+	@required({
+		body: ['id', 'title', 'author', 'description']
+	})
+	async changeGallery (ctx, next) {
+	    try {
+	        const {id, title, author, description} = ctx.request.body
+		    await savedGallery(id, title, author, description)
 	        ctx.body = resData(1, '查询成功', {})
 	    } catch(e) {
 	        ctx.body = resData(0, '出现错误', e.toString())

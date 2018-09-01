@@ -14,6 +14,22 @@ export const saveNewGallery = async (title, author, description) => {
 	}
 }
 
+export const savedGallery = async (id, title, author, description) => {
+	let query = {
+		title, author, description
+	}
+	try {
+		let saveData = await GalleryItem.findByIdAndUpdate(id, query)
+		if(saveData) {
+			return saveData
+		} else {
+			throw '相册不存在'
+		}
+	} catch (e) {
+		throw e
+	}
+}
+
 export const getAllGallery = async (isManage) => {
 	try {
 		if(isManage) {

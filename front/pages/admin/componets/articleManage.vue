@@ -13,15 +13,15 @@
         ></Page>
         <is-remove :is-showlog="isShowRemove" @onChange="showRemove">
             <h3>确定要删除吗？</h3>
-            <Button size="default" type="warning" @click.native="articleRemove">确定</Button>
-            <Button size="default" style="margin-left: 8px" @click.native="showRemove">取消</Button>
+            <Button size="default" type="warning" @click="articleRemove">确定</Button>
+            <Button size="default" style="margin-left: 8px" @click="showRemove">取消</Button>
         </is-remove>
     </div>
 </template>
 
 <script>
 	import { Table, Page } from 'iview'
-	import isRemove from './plug/login'
+	import isRemove from './plug/modal'
 	export default {
 		name: "article-manage",
 		components:{

@@ -19,6 +19,7 @@
 
 <script>
     import { mapState } from 'vuex'
+    import { addOneGallery, editOneGallery } from '../util/adApi'
     import {FormItem, Form, Button, Input} from 'iview'
 	export default {
 		name: "editGallery",
@@ -57,11 +58,11 @@
         async mounted() {
 			let { id, index } = this.$route.params
             if(this.$route.params.id) {
-                this.formValidate.id = id
                 if(!this.galleryAll.length) {
                 	await this.$store.dispatch('getAllGallery')
                 }
-                this.formValidate = this.galleryAll[index]
+                let { title, description, author, _id } = this.galleryAll[index]
+                this.formValidate = { title, description, author, id: _id }
             }
         },
         computed: {
@@ -71,22 +72,29 @@
         },
         methods: {
 			handleUpdate (name) {
-
+                this.$refs[name].validate(async (valid) => {
+                    if (valid) {
+                        await editOneGallery(this.formValidate)
+                        this.$Notice.success({
+                            title: '更新成功'
+                        });
+                        this.$router.push('/admin/edit/galleryManage')
+                    } else {
+                        this.$Notice.error({
+                            title: '提交失败，请按要求提交'
+                        });
+                    }
+                })
             },
             handleSubmit (name) {
-                this.$refs[name].validate((valid) => {
-                	console.log(this, valid);
+                this.$refs[name].validate(async (valid) => {
                     if (valid) {
                     	let author = window.localStorage.getItem('admin')
                         this.formValidate.author = author === 'hyccpq' ? 'Kalecgos' : author
                         let data = this.formValidate
-                        this.axios.post('/gallery/v0/editGallery', data).then(res => {
-                        	this.$Notice.success({title: '提交成功'});
-                        }).catch(e => {
-                        	this.$Notice.error({title: '提交失败，请重试'});
-                        	console.log(e);
-                        })
-
+                        await addOneGallery(data)
+                        this.$Notice.success({title: '提交成功'});
+                    	this.$router.push('/admin/edit/galleryManage')
                     } else {
                         this.$Notice.error({
                             title: '提交失败，请按要求提交'

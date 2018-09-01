@@ -14,5 +14,8 @@ export default {
 	},
 	[types.PUT_GALLERY_SHOW] (state, {show, index}) {
 		state.galleryAll[index].show = show
+	},
+	[types.DELETE_ONE_GALLERY] (state, index) {
+		state.galleryAll.splice(index, 1)
 	}
 }

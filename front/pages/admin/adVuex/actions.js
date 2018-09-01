@@ -29,3 +29,12 @@ export const putGalleryShow = async ({commit}, {id, show, index}) => {
 		console.log(e);
 	}
 }
+
+export const delGallery = async ({commit}, {id, index}) => {
+	try {
+		await API.deleteOneGallery(id)
+		commit(types.DELETE_ONE_GALLERY, index)
+	} catch (e) {
+		console.log(e);
+	}
+}

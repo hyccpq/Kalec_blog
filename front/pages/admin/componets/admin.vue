@@ -54,7 +54,7 @@
 <script>
 	import { Row,Col,Menu,Submenu,MenuItem,Icon } from 'iview'
 	import adNav from './plug/nav'
-	import logOut from './plug/login'
+	import logOut from './plug/modal'
 	export default {
 		name: "admin",
 		components:{

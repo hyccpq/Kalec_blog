@@ -110,7 +110,7 @@
 <script>
 	import { Form,FormItem,Input,Button,Upload,Select,Option,Row,Col,Icon,DatePicker } from 'iview'
 	import { mavonEditor } from 'mavon-editor';
-	import add from './plug/login'
+	import add from './plug/modal'
 	import $http from 'axios'
 	// import MarkdownIt from 'markdown-it'
 	export default {
