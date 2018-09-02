@@ -38,3 +38,30 @@ export const delGallery = async ({commit}, {id, index}) => {
 		console.log(e);
 	}
 }
+
+export const getQiniuUpdateToken = async ({commit}) => {
+	try {
+		let data = await API.getQiniuToken()
+		commit(types.GET_QINIU_UPDATE_TOKEN, data)
+	} catch (e) {
+		console.log(e);
+	}
+}
+
+export const postImagesList = async ({commit}, {id, imageList}) => {
+	try {
+		await API.postGalleryOneImagesList(id, imageList)
+		commit(types.POST_IMAGES_LIST, imageList)
+	}catch (e) {
+		console.log(e);
+	}
+}
+
+export const getImageList = async ({commit}, id) => {
+	try {
+		let data = await API.getGalleryImages(id)
+		commit(types.GET_IMAGES_LIST_ALL, data)
+	} catch (e) {
+		console.log(e);
+	}
+}

@@ -8,8 +8,12 @@ import 'babel-polyfill'
 Vue.use(Vuex);
 const store = new Vuex.Store({
 	state:{
-		token: null,
-		galleryAll: []
+		token: '',
+		qiniuToken: '',
+		galleryAll: [],
+		imagesListInfo: {
+			images: []
+		}
 	},
 	actions,
 	mutations,

@@ -5,6 +5,9 @@ const EDIT_GALLERY = '/gallery/v0/editGallery'
 const GET_ALL_GALLERY = '/gallery/v0/adSearchAllGallery'
 const PUT_SHOW_GALLERY = '/gallery/v0/showGallery'
 const DELETE_GALLERY = '/gallery/v0/deleteGallery'
+const GET_QINIU_TOKEN = '/gallery/v0/getUpdateToken'
+const GET_GALLERY_IMAGES_ALL = '/gallery/v0/getGalleryImages'
+const POST_GALLERY_IMAGES_LIST = '/gallery/v0/updatedImages'
 
 const _httpRequest = (param, fn) => {
 	return http({
@@ -74,5 +77,33 @@ export const editOneGallery = (data) => {
 		url: EDIT_GALLERY,
 		method: 'PUT',
 		data
+	})
+}
+
+export const getQiniuToken = () => {
+	return request({
+		url: GET_QINIU_TOKEN,
+		method: 'GET'
+	})
+}
+
+export const getGalleryImages = (id) => {
+	return request({
+		url: GET_GALLERY_IMAGES_ALL,
+		method: 'GET',
+		params: {
+			id
+		}
+	})
+}
+
+export const postGalleryOneImagesList = (id, imageList) => {
+	return request({
+		url: POST_GALLERY_IMAGES_LIST,
+		method: 'POST',
+		data: {
+			id,
+			imageListInf: imageList
+		}
 	})
 }

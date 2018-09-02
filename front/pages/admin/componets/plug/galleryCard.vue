@@ -1,11 +1,14 @@
 <template>
     <Card class="card-all" :padding="0">
-        <div class="cover-image">
-            <div class="cover"><img :src="galleryItem.url + galleryItem.path" :alt="galleryItem.title" v-if="galleryItem.path"></div>
-            <div class="none-cover cover">
-                <Icon :size="35" type="md-information-circle" /><span>暂无封面</span>
+        <router-link :to="`/admin/edit/galleryPage/${galleryItem._id}/${galleryItem.title}`" class="cover-link">
+            <div class="cover-image">
+                <div class="cover"><img :src="galleryItem.url + galleryItem.path" :alt="galleryItem.title" v-if="galleryItem.path"></div>
+                <div class="none-cover cover">
+                    <Icon :size="35" type="md-information-circle" /><span>暂无封面</span>
+                </div>
             </div>
-        </div>
+        </router-link>
+
         <div class="content">
             <h3 class="cov-title">{{galleryItem.title}}</h3>
             <div class="auth-opert">
@@ -99,19 +102,20 @@ cover-height = 300px
                 float left
             .operating
                 float right
-
-    .cover-image
-        width: 100%
-        height cover-height
-        .cover
+    .cover-link
+        color #505a6d
+        .cover-image
             width: 100%
-        .none-cover
-            font-size 1.5rem
-            text-align center
             height cover-height
-            line-height cover-height
-            background-color: #e8eaec;
-            >*
-                vertical-align middle
+            .cover
+                width: 100%
+            .none-cover
+                font-size 1.5rem
+                text-align center
+                height cover-height
+                line-height cover-height
+                background-color: #e8eaec;
+                >*
+                    vertical-align middle
 
 </style>

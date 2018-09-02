@@ -1,10 +1,24 @@
 import mongoose from 'mongoose'
+import qiniu from 'qiniu'
+import { qiniu as qiniuSecretConf } from '../conf/userConf'
+
+const BUCKET = qiniuSecretConf.qiniu.bucket
+const MAC = new qiniu.auth.digest.Mac(qiniuSecretConf.qiniu.AK, qiniuSecretConf.qiniu.SK)
+const QINIU_UPDATE_OPTION = {
+	scope: BUCKET,
+	returnBody: '{"key":"$(key)","hash":"$(etag)","fsize":$(fsize),"name":"$(x:name)","type":"$(mimeType)"}'
+}
+
+export const getQiniuToken = () => {
+	const putPolicy = new qiniu.rs.PutPolicy(QINIU_UPDATE_OPTION)
+	return putPolicy.uploadToken(MAC)
+}
 
 const GalleryItem = mongoose.model('galleryModel')
 
 export const saveNewGallery = async (title, author, description) => {
 	let query = {
-		title, author, description
+		title, author, description, url: 'http://img.kalecgos.top'
 	}
 	try {
 		let addData = new GalleryItem(query)
@@ -76,15 +90,34 @@ export const updateShowGallery = async (id, show) => {
 	}
 }
 
-export const updateImages = async (id, imageName, imageDesc, imagePath) => {
-	let query = {
-		imagePath, imageName, imageDesc
-	}
+export const updateImages = async (id, imageList) => {
+	let listCheck = imageList.map(item => {
+		return {
+			imagePath: item.imagePath,
+			imageName: item.imageName,
+			imageDesc: item.imageDesc
+		}
+	})
 	try {
 		let data = await GalleryItem.findById(id)
 		if(data) {
-			data.images.push(query)
+			for(let item of listCheck) {
+				data.images.push(item)
+			}
 			await data.save()
+		} else {
+			throw '相册不存在'
+		}
+	} catch (e) {
+		throw e
+	}
+}
+
+export const getOneGalleryImages = async (id) => {
+	try {
+		let data = await GalleryItem.findById(id)
+		if(data) {
+			return data
 		} else {
 			throw '相册不存在'
 		}
