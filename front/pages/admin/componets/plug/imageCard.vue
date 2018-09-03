@@ -1,0 +1,57 @@
+<template>
+    <div class="img-card">
+        <div class="img-area" :style="{backgroundImage: `url(${imgUri})`}"></div>
+        <div class="img-inf">
+            <h3>{{imageName}}</h3>
+            <p>{{updateTime}}</p>
+            <p>{{imageDesc}}</p>
+        </div>
+    </div>
+</template>
+
+<script>
+	export default {
+		name: "imageCard",
+        props: {
+			imgUri: {
+				type: String,
+				default: ''
+            },
+            fontSize: {
+				type: Number,
+                default: 0
+            },
+            updateTime: {
+				type: String,
+                default: ''
+            },
+            imageName: {
+				type: String,
+                default: ''
+            },
+            imageDesc: {
+				type: String,
+                default: ''
+            },
+            // imgWidth: {
+			// 	type: Number,
+            //     default: 0
+            // }
+        }
+	}
+</script>
+
+<style scoped lang="stylus">
+.img-card
+    width: 20em;
+    height: 20em;
+    overflow hidden
+    .img-area
+        height 15em
+        background-size cover
+        background-repeat no-repeat
+    .img-inf
+        background-color: #f9f9f9;
+        padding 0 0.6em
+        height 5em
+</style>

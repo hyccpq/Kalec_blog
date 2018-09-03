@@ -97,7 +97,7 @@ const config = merge(base, {
 			'process.env.VUE_ENV': '"client"'
 		}),
 		new HtmlWebpackPlugin({
-			filename: resolve(__dirname, '../../server/ejs/manage.ejs'),
+			filename: resolve(__dirname, '../ejs/manage.ejs'),
 			template: resolve(__dirname,'../../front/pages/admin/admin.html'),
             inject: true,
             minify: {

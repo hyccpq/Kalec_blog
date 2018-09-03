@@ -1,119 +1,71 @@
+<style scoped lang="stylus">
+.gallery-info
+    .gallery-title
+        text-align center
+    .list
+        display flex
+        .item
+            margin 5px
+            cursor pointer
+            .item-card
+                width: 300px
+                height: 300px
+                overflow hidden
+                font-size 15px
+                >*
+                    height: 100%;
+</style>
+
 <template>
-    <section>
-        <h1>{{$route.params.title}} 照片编辑</h1>
-        {{$route.params.id}}
-        <!--<Button size="default" @click="getUpdateToken">test</Button>-->
-        {{qiniuToken}}
-        <ul>
-            <li v-for="(item, index) in imagesListInfo.images"
-                :key="index"
-                style="height: 100px;overflow: hidden">
-                <img :src="imagesListInfo.url + '/' + item.imagePath" alt="" height="100" width="100">
+    <section class="gallery-info">
+        <h1 class="gallery-info-title">{{$route.params.title}}相册 照片编辑</h1>
+        <ul class="list">
+            <li class="item" v-for="(item, index) in imagesListInfo.images"
+                :key="index">
+                <Card class="item-card" :padding="0">
+                    <image-card :img-uri="imagesListInfo.url + '/' + item.imagePath"
+                                :font-size="15"
+                                :update-time="item.updateTime"
+                                :image-name="item.imageName"
+                                :image-desc="item.imageDesc"
+                    />
+                    <!--<img :src="imagesListInfo.url + '/' + item.imagePath" alt="" width="300">-->
+                </Card>
+
+            </li>
+            <li class="item">
+                <Card class="item-card" :padding="0" >
+                    <addImg></addImg>
+                </Card>
             </li>
         </ul>
 
-        <imageUpdate @updateImageList="updateImageList"></imageUpdate>
-        <!--<img :src="" alt="">-->
-        <ul>
-            <li v-for="(item, index) in willUpdateImageList"
-                :key="index"
-                style="height: 100px;overflow: hidden">
-                <img :src="item.localUrl" alt="" height="50" width="50">
-                <div>{{item.percent}}</div>
-            </li>
-        </ul>
-        <Button size="default" @click="startUpdate">点击上传</Button>
+
     </section>
 </template>
 
 <script>
     import { mapActions, mapState } from 'vuex'
-    import imageUpdate from './plug/imageUpdate'
-    import * as qiniu from 'qiniu-js'
-    import nanoId from 'nanoid'
+    import addImg from './plug/addImg'
+    import imageCard from './plug/imageCard'
+    import {Card} from 'iview'
 	export default {
 		name: "galleryInfoPage",
+        components: {
+			addImg, Card, imageCard
+        },
         data() {
 			return {
-				files: '',
-                willUpdateImageList: [],
-                updateImagesInfo: []
+                updateImagesInfo: [],
             }
-        },
-        components: {
-			imageUpdate
         },
         computed: {
             ...mapState({
-                qiniuToken: state => state.qiniuToken,
                 imagesListInfo: state => state.imagesListInfo
             }),
         },
         methods: {
-            ...mapActions(['getQiniuUpdateToken', 'postImagesList', 'getImageList']),
-			// async getUpdateToken() {
-            //     await this.getQiniuUpdateToken()
-            // },
-            async updateImageList(files) {
-            	try {
-		            await this.getQiniuUpdateToken()
-                    for(let file of files) {
-                    	let localUrl = window.URL.createObjectURL(file)
-                        let key = nanoId()
-                    	this.willUpdateImageList.push({
-                            localUrl,
-                            key,
-                            file,
-                            updating: false,
-                            percent: 0
-                        })
-                    }
-	            } catch (e) {
-                    console.log(e);
-	            }
-            	
-            },
-
-            async startUpdate () {
-	            // this.willUpdateImageList.forEach(this.updateImageToQiniu)
-                try {
-	                for (let i = 0; i < this.willUpdateImageList.length; i++) {
-		                let res = await this.updateImageToQiniu(this.willUpdateImageList[i], i)
-                            console.log(res);
-		                this.updateImagesInfo.push({
-                            imageDesc: 'test',
-                            imagePath: res.key,
-                            imageName: 'test'
-                        })
-	                }
-
-                    await this.postImagesList({
-                        id: this.$route.params.id,
-                        imageList: this.updateImagesInfo
-                    })
-                } catch (e) {
-                    console.log(e);
-                }
-
-            },
-
-            updateImageToQiniu (item, index) {
-            	return new Promise((resolve, reject) => {
-            		let observable = qiniu.upload(item.file, item.key, this.qiniuToken)
-
-                    let next = (res) => {
-            		    this.willUpdateImageList[index].percent = res.total.percent
-                    }
-                    let error = (err) => {
-            			reject(err)
-                    }
-                    let complete = (res) => {
-            			resolve(res)
-                    }
-                    observable.subscribe(next, error, complete)
-                })
-
-            }
+            ...mapActions(['getImageList']),
         },
         mounted () {
 			this.getImageList(this.$route.params.id)
@@ -121,6 +73,3 @@
 	}
 </script>
 
-<style scoped>
-
-</style>
