@@ -24,6 +24,21 @@ Welcome to my blog!
 ...
 
 ## 管理页面截图
+1. 登录页面
+![登录页](https://github.com/hyccpq/Kalec_blog/raw/master/static/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%2020181.png)
+
+2. 文章新建或编辑页
+![编辑](https://github.com/hyccpq/Kalec_blog/raw/master/static/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%2020182.png)
+
+3. 文章列表
+![文章列表](https://github.com/hyccpq/Kalec_blog/raw/master/static/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%2020183.png)
+
+4. 相册管理
+![相册管理](https://github.com/hyccpq/Kalec_blog/raw/master/static/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%2020184.png)
+
+5. 照片上传管理
+![照片上传管理](https://github.com/hyccpq/Kalec_blog/raw/master/static/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%2020185.png)
+![照片上传管理](https://github.com/hyccpq/Kalec_blog/raw/master/static/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%2020186.png)
 
 
 
