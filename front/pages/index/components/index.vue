@@ -49,7 +49,8 @@
 				showLog:false,
 				username:'',
 				isShowSideBox:false,
-				transitionName:'side-right'
+				transitionName:'side-right',
+                timer: 0
 			}
 		},
 		computed:{
@@ -71,6 +72,12 @@
 			changeLog(){
 				this.isShowlog = !this.isShowlog;
 			},
+            debounce () {
+				clearTimeout(this.timer)
+			    this.timer = setTimeout(() => {
+			    	this.listenScroll()
+                }, 100)
+            },
             listenScroll() {
                 this.$store.commit('update_scroll_top', this.$getScrollTop())
             }
@@ -87,10 +94,10 @@
 				duration: 3
 			});
 
-			window.addEventListener('scroll', this.listenScroll)
+			window.addEventListener('scroll', this.debounce)
 		},
         beforeDestroy(){
-			window.removeEventListener('scroll', this.listenScroll)
+			window.removeEventListener('scroll', this.debounce)
         }
 	}
 </script>
