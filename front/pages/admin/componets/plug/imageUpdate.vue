@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @dragenter="">
         <div @click="fileSelect">
             点击添加照片
         </div>

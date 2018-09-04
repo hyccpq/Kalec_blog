@@ -15,14 +15,14 @@
             <div class="write-content write-contents-2">
                 <h3>添加相关信息</h3>
                 <div slot="content" style="margin: 20px auto;">
-                    <Form ref="subInfo" :model="subInfo" :label-width="0">
+                    <Form ref="subInfo" :model="subInfo" :label-width="40" label-position="right">
 
                         <!--日期-->
                         <FormItem label="发布日期" prop="发布日期">
                             <DatePicker size="default" :transfer="true" type="datetime" format="yyyy-MM-dd HH:mm" placeholder="更改发布时间" style="width: 200px" v-model="selectDate"></DatePicker>
                         </FormItem>
                         <!--标签-->
-                        <FormItem label="标签" prop="标签">{{selectTagName}}
+                        <FormItem label="标签" prop="标签">
                             <Select transfer size="default" v-model="selectTagName" :multiple="true" :value="selectTagName">
                                 <Option v-for="(item,key) in tagList" :value="item.tagName" :key="key">
                                     {{ item.tagName }}
@@ -43,7 +43,7 @@
                         <!--封面图-->
                         <!--上传文件-->
                         <Button size="default" type="primary" :loading="loading" icon="checkmark-round" @click="toLoading" style="margin: 30px auto;">
-                            <span v-if="!loading">提交日志</span>
+                            <span v-if="!loading">提交</span>
                             <span v-else>Loading...</span>
 
                         </Button>

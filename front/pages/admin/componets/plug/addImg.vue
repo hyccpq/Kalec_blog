@@ -33,12 +33,12 @@
 
 <template>
     <section class="add-area">
-        <div class="add-button" @click="showImgModal">
+        <div class="add-button" @click="openImgModal">
             <Icon type="md-add" size="64" />
             <div>添加照片</div>
         </div>
 
-        <update-modal :is-showlog="isShowModal" @onChange="showImgModal">
+        <update-modal :is-showlog="isShowModal" @onChange="closeImgModal">
             <div class="add-update">
                 <h3>添加照片</h3>
                 <p>注意：填写完整信息后提交，若需单独修改，请提交后修改。</p>
@@ -58,7 +58,7 @@
                     </li>
                 </ul>
                 <Button size="default" type="warning" @click="startUpdate">确定上传</Button>
-                <Button size="default" style="margin-left: 8px" @click="showImgModal">取消</Button>
+                <Button size="default" style="margin-left: 8px" @click="closeImgModal">取消</Button>
             </div>
 
         </update-modal>
@@ -88,7 +88,9 @@
 			imageUpdate,
             imageCard,
             Icon,
-            updateModal: modal
+            updateModal: modal,
+            imageDesc: '',
+            imageName: ''
         },
         computed: {
             ...mapState({
@@ -98,8 +100,13 @@
         methods: {
             ...mapActions(['getQiniuUpdateToken', 'postImagesList']),
 
-            showImgModal () {
-            	this.isShowModal = !this.isShowModal
+            openImgModal () {
+            	this.isShowModal = true
+            },
+
+            closeImgModal () {
+            	this.willUpdateImageList = []
+                this.isShowModal = false
             },
 
             async updateImageList(files) {
@@ -139,7 +146,7 @@
                         imageList: this.updateImagesInfo
                     })
 
-                    this.showImgModal()
+                    this.closeImgModal()
 
                     this.$Notice.success({
                         title: '恭喜，上传成功'

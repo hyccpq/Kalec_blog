@@ -1,6 +1,6 @@
 {
     "name": "kalec_blog",
-    "version": "3.0",
+    "version": "3.0.0",
     "description": "my_blog",
     "main": "index.js",
     "repository": "https://github.com/hyccpq/Kalec_blog.git",
