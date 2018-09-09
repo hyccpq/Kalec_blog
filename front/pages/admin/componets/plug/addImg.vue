@@ -81,6 +81,7 @@
 				files: '',
                 willUpdateImageList: [],
                 updateImagesInfo: [],
+                formData: {},
                 isShowModal: false
             }
         },
@@ -109,12 +110,14 @@
                 this.isShowModal = false
             },
 
-            async updateImageList(files) {
+            async updateImageList(data) {
+            	let {files, formData} = data
             	try {
 		            await this.getQiniuUpdateToken()
                     for(let file of files) {
                     	let localUrl = window.URL.createObjectURL(file)
                         let key = nanoId()
+                        this.formData = formData
                     	this.willUpdateImageList.push({
                             localUrl,
                             key,
@@ -135,9 +138,9 @@
 		                let res = await this.updateImageToQiniu(this.willUpdateImageList[i], i)
                             console.log(res);
 		                this.updateImagesInfo.push({
-                            imageDesc: 'test',
+                            imageDesc: this.formData.imageDesc,
                             imagePath: res.key,
-                            imageName: 'test'
+                            imageName: this.formData.imageName
                         })
 	                }
 
