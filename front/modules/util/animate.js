@@ -5,10 +5,9 @@ export const scrollAnimate = (total, current) => {
 		let curr = current
 		function render () {
 			let diff = total - curr
-			curr = curr + diff / 3
+			curr += diff / 3
 			setScrollTop(curr)
-			
-			if(detal > 0 ? diff > 10 : diff < -10){
+			if(detal > 0 ? diff > 30 : diff < -30){
 				
 				window.requestAnimationFrame(render)
 			} else {
