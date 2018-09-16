@@ -6,10 +6,10 @@ export const scrollAnimate = (total, current) => {
     let direction = detal > 0
 	if(direction) {
 	    currentSpeed = SPEEDS
-        targetLocationDeviation = total - 80
+        targetLocationDeviation = total - SPEEDS
     } else {
 	    currentSpeed = -SPEEDS
-        targetLocationDeviation = total + 80
+        targetLocationDeviation = total + SPEEDS
     }
 
 	return new Promise(resolve => {
