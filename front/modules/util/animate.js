@@ -1,13 +1,23 @@
+const SPEEDS = 80
+
 export const scrollAnimate = (total, current) => {
 	let detal = total - current
-	
+    let currentSpeed, targetLocationDeviation
+    let direction = detal > 0
+	if(direction) {
+	    currentSpeed = SPEEDS
+        targetLocationDeviation = total - 80
+    } else {
+	    currentSpeed = -SPEEDS
+        targetLocationDeviation = total + 80
+    }
+
 	return new Promise(resolve => {
 		let curr = current
 		function render () {
-			let diff = total - curr
-			curr += diff / 3
+			curr += currentSpeed
 			setScrollTop(curr)
-			if(detal > 0 ? diff > 30 : diff < -30){
+			if(direction ? curr < targetLocationDeviation : curr > targetLocationDeviation){
 				
 				window.requestAnimationFrame(render)
 			} else {
