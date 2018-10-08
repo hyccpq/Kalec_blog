@@ -15,6 +15,7 @@
             .update-card
                 font-size 12px
                 position relative;
+                list-style-type none
                 .cover
                     position absolute
                     top 0
@@ -54,7 +55,7 @@
                                 :image-name="item.imageName"
                                 :image-desc="item.imageDesc"
                         />
-                        <div class="cover">{{item.percent}}%</div>
+                        <div class="cover">{{Math.floor(item.percent)}}%</div>
                     </li>
                 </ul>
                 <Button size="default" type="warning" @click="startUpdate">确定上传</Button>

@@ -2,9 +2,12 @@
     <div class="img-card">
         <div class="img-area" :style="{backgroundImage: `url(${imgUri})`}"></div>
         <div class="img-inf">
-            <h3>{{imageName}}</h3>
-            <p>{{updateTime}}</p>
-            <p>{{imageDesc}}</p>
+            <div class="img-content">
+                <h3>{{imageName}}</h3>
+                <p>{{updateTime}}</p>
+                <p>{{imageDesc}}</p>
+            </div>
+            <div class="img-option" v-if="true"><Icon type="ios-options" /></div>
         </div>
     </div>
 </template>
@@ -54,4 +57,15 @@
         background-color: #f9f9f9;
         padding 0 0.6em
         height 5em
+        .img-option
+            width 36
+            height 36
+            float right
+        .img-content
+            float left
+            &:after
+                content ''
+                visibilitiy hidden
+                height 0
+                clear both
 </style>
