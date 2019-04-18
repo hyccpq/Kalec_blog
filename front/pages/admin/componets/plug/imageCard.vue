@@ -13,6 +13,7 @@
 </template>
 
 <script>
+    import {Icon} from 'iview'
 	export default {
 		name: "imageCard",
         props: {
@@ -40,6 +41,9 @@
 			// 	type: Number,
             //     default: 0
             // }
+        },
+        components: {
+            Icon,
         }
 	}
 </script>
