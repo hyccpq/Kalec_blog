@@ -7,6 +7,7 @@ const articlePage = resolve => require(['../components/articlePage'], resolve);
 const pageList = resolve => require(['../components/pageList'], resolve);
 const express = resolve => require(['../components/express/express'], resolve);
 const expressImg = resolve => require(['../components/express/expressImg'], resolve);
+const gallery = resolve => require(['../components/gallery/gallery'], resolve);
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export function createRouter(){
 				path: '/express',
 				name: 'express',
 				component: express,
+			},
+			{
+				path: '/gallery',
+				name: 'gallery',
+				component: gallery,
 			},
 			{
 				path: '/express/img',
@@ -60,7 +66,7 @@ export function createRouter(){
 			}
 		]
 	})
-	
+
 	if(typeof window !== 'undefined') {
 		Nprogress.configure({
 			easing: 'ease-in',
@@ -69,20 +75,20 @@ export function createRouter(){
 			trickleSpeed: 200,
 			minimum: 0.3
 		})
-		
-		
+
+
 		vueRouter.beforeEach((to, from, next) => {
 			Nprogress.start()
-			
+
 			next()
 		})
-		
+
 		vueRouter.afterEach(() => {
 			Nprogress.done()
 		})
 	}
-	
-	
-	
+
+
+
 	return vueRouter
 }

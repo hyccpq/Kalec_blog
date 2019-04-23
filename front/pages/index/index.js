@@ -9,7 +9,6 @@ import Meta from 'vue-meta'
 import { Notice } from 'iview'
 import { sync } from 'vuex-router-sync'
 
-
 Vue.config.productionTip = false;
 Vue.prototype.axios = axios;
 Vue.prototype.$Notice = Notice;
@@ -33,7 +32,7 @@ Date.prototype.Format = function(fmt) {
 		if (new RegExp("(" + k + ")").test(fmt))
 			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 	return fmt;
-	
+
 }
 
 if(typeof window !== "undefined"){
@@ -46,16 +45,16 @@ if(typeof window !== "undefined"){
 			console.log('sw正在更新');
 		}
 	});
-	
+
 	let fastClick = require('fastclick');
 	fastClick.attach(document.body);
-	
+
 	Vue.prototype.$getScrollTop = () => window.pageYOffset
 		|| document.documentElement.scrollTop
 		|| document.body.scrollTop
 		|| 0;
 
-	
+
 	// Vue.directive('highlight',function (el) {
 	//
 	//   let blocks = el.querySelectorAll('pre code');
@@ -67,11 +66,11 @@ if(typeof window !== "undefined"){
 export function createApp() {
 	const router = new createRouter();
 	const store = new createStore();
-	
+
 	Vue.use(Meta)
-	
+
 	sync(store, router);
-	
+
 	const app = new Vue({
 		el: '#root',
 		render: h => h(App),
