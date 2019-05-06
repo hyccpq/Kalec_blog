@@ -1,67 +1,12 @@
-<template>
-    <div>
-        <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
-            <template v-for="item in slides">
-                <figure
-                        itemprop="associatedMedia"
-                        itemscope
-                        itemtype="http://schema.org/ImageObject">
-                    <a :href="item.src" itemprop="contentUrl" :data-size="'' + item.w + 'x' + item.h">
-                        <img :src="item.msrc" :alt="item.alt" itemprop="thumbnail"/>
-                    </a>
-                    <figcaption style="display: none" itemprop="caption description">{{item.title}}</figcaption>
-                </figure>
-            </template>
-        </div>
-        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="pswp__bg"></div>
-            <div class="pswp__scroll-wrap">
-                <div class="pswp__container">
-                    <div class="pswp__item"></div>
-                    <div class="pswp__item"></div>
-                    <div class="pswp__item"></div>
-                </div>
-                <div class="pswp__ui pswp__ui--hidden">
-
-                    <div class="pswp__top-bar">
-                        <div class="pswp__counter"></div>
-                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                        <button class="pswp__button pswp__button--share" title="Share"></button>
-                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                        <div class="pswp__preloader">
-                            <div class="pswp__preloader__icn">
-                                <div class="pswp__preloader__cut">
-                                    <div class="pswp__preloader__donut"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                        <div class="pswp__share-tooltip"></div>
-                    </div>
-                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-                    </button>
-                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-                    </button>
-                    <div class="pswp__caption">
-                        <div class="pswp__caption__center"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
-    // import PreviewComponent from './preview_component'
+    import PreviewComponent from './preview_component'
     // import PreviewComponent from './preview.vue'
     import PhotoSwipe from 'photoswipe/dist/photoswipe'
     import PhotoSwipeUIDefault from 'photoswipe/dist/photoswipe-ui-default'
 
     export default {
         name: "preview",
-        // mixins: [PreviewComponent],
+        mixins: [PreviewComponent],
         props: {
             slides: {
                 type: Array, default: function () {
@@ -199,8 +144,6 @@
                     // PhotoSwipe opened from URL
                     if (fromURL) {
                         if (photoSwipeOptions.galleryPIDs) {
-                            // parse real index when custom PIDs are used
-                            // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
                             for (let j = 0; j < items.length; j++) {
                                 if (items[j].pid === index) {
                                     photoSwipeOptions.index = j
@@ -247,8 +190,3 @@
         }
     }
 </script>
-
-<style>
-    @import "~photoswipe/dist/photoswipe.css";
-    @import "~photoswipe/dist/default-skin/default-skin.css";
-</style>

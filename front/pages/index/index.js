@@ -8,6 +8,7 @@ import axios from '../../modules/util/axios'
 import Meta from 'vue-meta'
 import { Notice } from 'iview'
 import { sync } from 'vuex-router-sync'
+import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false;
 Vue.prototype.axios = axios;
@@ -45,6 +46,13 @@ if(typeof window !== "undefined"){
 			console.log('sw正在更新');
 		}
 	});
+
+	Vue.use(VueLazyload, {
+		preLoad: 1.3,
+		error: require('./assets/svg/fail.svg'),
+		loading: require('./assets/svg/loading.svg'),
+		attempt: 1
+	})
 
 	let fastClick = require('fastclick');
 	fastClick.attach(document.body);

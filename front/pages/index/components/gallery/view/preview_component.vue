@@ -7,7 +7,7 @@
           itemprop="associatedMedia"
           itemscope
           itemtype="http://schema.org/ImageObject">
-          <a :href="item.src" itemprop="contentUrl" :data-size="'' + item.w + 'x' + item.h">
+          <a :href="item.src" itemprop="contentUrl" :data-size="item.h && item.w ? item.w + 'x' + item.h : ''">
             <img :src="item.msrc" :alt="item.alt" itemprop="thumbnail"/>
           </a>
           <figcaption style="display: none" itemprop="caption description">{{item.title}}</figcaption>
