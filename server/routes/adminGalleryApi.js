@@ -23,7 +23,7 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
+
 	@put("/editGallery")
 	@auth
 	@admin('admin')
@@ -39,20 +39,21 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
-	
+
+
 	@get("/adSearchAllGallery")
 	@auth
 	async adSearchAllGallery (ctx, next) {
 	    try {
-	        let data = await getAllGallery(AdminGalleryApi.isManage)
+	    	const { pageNum, pageSize } = ctx.request.query
+	        let data = await getAllGallery(AdminGalleryApi.isManage, {pageNum, pageSize})
 	        ctx.body = resData(1, '查询成功', data)
 	    } catch(e) {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
-	
+
+
 	@del("/deleteGallery")
 	@auth
 	@admin('admin')
@@ -68,7 +69,7 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
+
 	@put("/showGallery")
 	@auth
 	@admin('admin')
@@ -85,7 +86,7 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
+
 	@post("/updatedImages")
 	@auth
 	@admin('admin')
@@ -101,7 +102,7 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
+
 	@get("/getGalleryImages")
 	@auth
 	@required({
@@ -116,8 +117,8 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
-	
+
+
 	@get("/getUpdateToken")
 	@auth
 	@admin('admin')
@@ -129,5 +130,5 @@ class AdminGalleryApi {
 	        ctx.body = resData(0, '出现错误', e.toString())
 	    }
 	}
-	
+
 }
