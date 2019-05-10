@@ -129,7 +129,7 @@ export const updateImages = async (id, imageList) => {
 
 export const getOneGalleryImages = async (id) => {
     try {
-        let data = await GalleryItem.findById(id)
+        let data = await GalleryItem.findById(id, "-images.show")
         if (data) {
             return data
         } else {
