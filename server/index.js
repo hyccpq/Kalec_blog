@@ -65,12 +65,15 @@ console.log(MIDDLEWARES);
 
     useMiddlewares(app)
 
-    app.listen(8088, () => {
-        console.log('服务运行于\nhttp://localhost:8088');
-    })
+    if (process.env.NODE_ENV !== 'production') {
+        app.listen(8088, () => {
+            console.log('服务运行于\nhttp://localhost:8088');
+        })
+    } else {
+        http2.createSecureServer(HTTPS_OPTIONS, app.callback()).listen(443, () => {
+            console.log("https://localhost:443".bgRed);
+        });
+    }
 
-// http2.createSecureServer(HTTPS_OPTIONS, app.callback()).listen(443, ()=>{
-//     console.log("https://localhost:443".bgRed);
-// });
 
 })()
