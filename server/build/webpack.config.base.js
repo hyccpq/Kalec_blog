@@ -26,7 +26,7 @@ let conf = {
 		rules: [
 			{
 				test: /iview\/.*?js$/,
-				loader: 'happypack/loader?id=babel'
+				loader: 'happypack/loader?id=babel',
 			},
 			{
 				test: /\.js$/,

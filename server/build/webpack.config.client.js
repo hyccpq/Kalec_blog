@@ -111,7 +111,7 @@ if (prod) {
 
     config.plugins.push(
         new MiniCssExtractPlugin({
-            filename: '[name].[hash:8].css',
+            filename: '[name].client.[hash:8].css',
             // chunkFilename: '[id].[hash:8].css'
         }),
         new OfflinePlugin({
