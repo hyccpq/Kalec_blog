@@ -87,6 +87,7 @@
         "memory-fs": "^0.4.1",
         "mini-css-extract-plugin": "^0.4.1",
         "nodemon": "^1.17.3",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-loader": "^2.1.4",
         "qiniu-upload-plugin": "^1.2.9",
         "style-loader": "^0.20.3",

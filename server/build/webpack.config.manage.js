@@ -9,6 +9,8 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const QiniuUploadPlugin = require('qiniu-upload-plugin');
 const {qiniu} = require('../conf/qiniu');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -140,13 +142,26 @@ if (prod) {
 
 	config.plugins = config.plugins.concat([
 		new QiniuUploadPlugin({
-			publicPath: 'http://static.kalecgos.top/',
+			publicPath: 'https://static.kalecgos.top/',
 			accessKey: qiniu.AK,
 			secretKey: qiniu.SK,
 			bucket: 'static',
 			zone: 'Zone_z0',
 			cover: true
 		}),
+		new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorPluginOptions: {
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                    normalizeUnicode: false
+                }]
+            },
+            canPrint: true
+        }),
 		new UglifyJsPlugin({
 			// 使用外部引入的新版本的js压缩工具
 			parallel: true,

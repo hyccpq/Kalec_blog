@@ -81,7 +81,7 @@ let conf = {
 			id: 'stylus',
 			// 如何处理 .css 文件，用法和 Loader 配置中一样
 			loaders: [
-				'css-loader',
+				'css-loader?minimize',
 				'postcss-loader',
 				'stylus-loader',
 			],
@@ -92,7 +92,7 @@ let conf = {
 			id: 'css',
 			// 如何处理 .css 文件，用法和 Loader 配置中一样
 			loaders: [
-				'css-loader',
+				'css-loader?minimize',
 				'postcss-loader'
 			],
 			// 使用共享进程池中的子进程去处理任务
