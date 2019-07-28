@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const base = require('./webpack.config.base');
 const { resolve, join } = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const QiniuUploadPlugin = require('qiniu-upload-plugin');
@@ -162,32 +163,41 @@ if (prod) {
             },
             canPrint: true
         }),
-		new UglifyJsPlugin({
-			// 使用外部引入的新版本的js压缩工具
-			parallel: true,
-			uglifyOptions: {
-				ie8: false,
-				ecma: 6,
-				warnings: false,
-				mangle: true,
-				output: {
-					comments: false,
-					beautify: false
-				},
-				compress: {
-					// 在UglifyJs删除没有用到的代码时不输出警告
-					warnings: false,
-					// 删除所有的 `console` 语句
-					// 还可以兼容ie浏览器
-					drop_console: true,
-					// 内嵌定义了但是只用到一次的变量
-					collapse_vars: true,
-					// 提取出出现多次但是没有定义成变量去引用的静态值
-					reduce_vars: true
-				}
-			}
-		})
+		// new UglifyJsPlugin({
+		// 	// 使用外部引入的新版本的js压缩工具
+		// 	parallel: true,
+		// 	uglifyOptions: {
+		// 		ie8: false,
+		// 		ecma: 6,
+		// 		warnings: false,
+		// 		mangle: true,
+		// 		output: {
+		// 			comments: false,
+		// 			beautify: false
+		// 		},
+		// 		compress: {
+		// 			// 在UglifyJs删除没有用到的代码时不输出警告
+		// 			warnings: false,
+		// 			// 删除所有的 `console` 语句
+		// 			// 还可以兼容ie浏览器
+		// 			drop_console: true,
+		// 			// 内嵌定义了但是只用到一次的变量
+		// 			collapse_vars: true,
+		// 			// 提取出出现多次但是没有定义成变量去引用的静态值
+		// 			reduce_vars: true
+		// 		}
+		// 	}
+		// })
 	]);
+
+	config.optimization.minimizer = [
+        new TerserPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: true,
+            // 等等详细配置见官网
+        }),
+    ]
 }
 
 module.exports = config;

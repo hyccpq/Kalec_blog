@@ -3,7 +3,6 @@ import Vue from 'vue'
 
 import * as actions from './actions'
 import mutations from './mutations'
-import 'babel-polyfill'
 
 Vue.use(Vuex);
 export function createStore() {
@@ -21,7 +20,7 @@ export function createStore() {
 		},
 		actions,
 		mutations,
-		
+
 	});
 }
 
