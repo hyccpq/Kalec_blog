@@ -95,7 +95,7 @@ const config = merge(base, {
         }
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
         // strip dev-only code in Vue source
         new webpack.DefinePlugin({
@@ -106,10 +106,10 @@ const config = merge(base, {
     ]
 });
 
-config.entry['app'].unshift('webpack-hot-middleware/client?reload=true');
+// config.entry['app'].unshift('webpack-hot-middleware/client?reload=true');
 
 if (prod) {
-    config.entry['app'].shift();
+    // config.entry['app'].shift();
 
     config.plugins.push(
         new MiniCssExtractPlugin({

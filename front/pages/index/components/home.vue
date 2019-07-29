@@ -9,7 +9,7 @@
 
             <ul class="home-content-center">
                 <router-link to="/index"><li>》网络日志(Blog)</li></router-link>
-                <router-link to="/gallery"><li>》相册</li></router-link>
+<!--                <router-link to="/gallery"><li>》相册</li></router-link>-->
                 <router-link to="/express"><li>》毕业季运费查询（已失效）</li></router-link>
             </ul>
 

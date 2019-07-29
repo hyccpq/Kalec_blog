@@ -1,21 +1,18 @@
-import dev from './dev/devMiddleware'
-import hot from './dev/hotMiddleware'
+// import dev from './dev/devMiddleware'
+// import hot from './dev/hotMiddleware'
+import koaWebpack from 'koa-webpack';
 import webpack from 'webpack'
 
 import webpackConfig from '../build/webpack.config.manage'
 
 const compiler = webpack(webpackConfig)
 
-const opt = {
-    logTime: true,
-	colors: true,
-	writeToDisk:true
-}
+export const webpackDev = async app => {
+    // app.use(dev(compiler, opt))
+    // app.use(hot(compiler, opt))
+    const devMiddleware = await koaWebpack({compiler})
+    app.use(devMiddleware)
 
-export const webpackDev = app => {
-	app.use(dev(compiler, opt))
-    app.use(hot(compiler, opt))
-    
     app.use(async (ctx, next) => {
         try {
             await ctx.render('error.ejs', {

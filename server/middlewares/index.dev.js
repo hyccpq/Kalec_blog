@@ -1,8 +1,8 @@
-import dev from './dev/devMiddleware';
-import hot from './dev/hotMiddleware';
+// import dev from './dev/devMiddleware';
+// import hot from './dev/hotMiddleware';
 import webpack from 'webpack';
 import MemoryFs from 'memory-fs';
-import fs from 'fs';
+import koaWebpack from 'koa-webpack';
 import {resolve, join} from 'path';
 import serverConfig from '../build/webpack.config.server';
 import clientConfig from '../build/webpack.config.client';
@@ -36,15 +36,15 @@ serverCompiler.watch({}, (err, stats) => {
     console.log('服务端新的打包完成');
 });
 
-export const allWebpackDev = (app) => {
+export const allWebpackDev = async (app) => {
     const clientCompiler = webpack(clientConfig);
 
-    const devMiddleware = dev(clientCompiler, opt);
+    const devMiddleware = await koaWebpack({ compiler: clientCompiler })
 
     app.use(devMiddleware);
 
     clientCompiler.plugin('done', () => {
-        const mfs = devMiddleware.fileSystem;
+        const mfs = devMiddleware.devMiddleware.fileSystem;
         const filePath = join(clientConfig.output.path, '../../public/dist/vue-ssr-client-manifest.json');
         console.log(mfs.existsSync(filePath));
 
@@ -54,7 +54,7 @@ export const allWebpackDev = (app) => {
         }
     });
 
-    app.use(hot(clientCompiler, opt));
+    // app.use(hot(clientCompiler, opt));
 
     // opt.writeToDisk = true
     // app.use(dev(manageCompiler, opt))

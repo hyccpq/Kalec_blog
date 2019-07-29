@@ -36,7 +36,7 @@
 	import {mapState,mapActions} from 'vuex'
 	import articleToggle from './plug/articleToggle'
 	import commentList from './plug/commentModule/commentList'
-	import { Breadcrumb,BreadcrumbItem,Icon } from 'iview'
+	import { Breadcrumb,BreadcrumbItem,Icon, Content } from 'iview'
 	import Tag from './plug/Tag'
 	export default {
 		metaInfo () {
@@ -49,7 +49,7 @@
 		components:{
 			articleToggle,
 			commentList,
-			Breadcrumb,BreadcrumbItem,Icon,Tag
+			Breadcrumb,BreadcrumbItem,Icon,Tag, Content
 		},
 		data(){
 			return {

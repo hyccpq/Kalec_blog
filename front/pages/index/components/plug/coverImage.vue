@@ -3,7 +3,7 @@
         <div class="cover">
             <div class="title">
                 <h1>Kalec的网络日志</h1>
-                <h3>漂浮的灵魂</h3>
+                <h3>未来连结</h3>
             </div>
         </div>
     </div>
