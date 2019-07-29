@@ -29,10 +29,10 @@
 <style scoped lang="stylus">
     .cover
         width: 100%
-        height: 400px
+        height: 500px
         min-height: 200px
         object-fit fill-opacity
-        background url("../../assets/img/A1.jpg") no-repeat center
+        background url("../../assets/img/cover-s.jpg") no-repeat top center
         background-size cover
         display flex
         align-items center
@@ -40,6 +40,7 @@
         .title
             text-align center
             color white
+            text-shadow: 0 1px #999, 1px 0 #999, -1px 0 #999, 0 -1px #999;
             h1
                 margin 50px 0
             h3
@@ -51,6 +52,7 @@
             min-height: 110px
             .title
                 color #def4ff
+                text-shadow: 0 1px #999, 1px 0 #999, -1px 0 #999, 0 -1px #999;
                 h1
                     margin 30px 0
                     font-size 1.5em

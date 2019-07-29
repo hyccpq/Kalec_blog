@@ -9,10 +9,10 @@ import clientConfig from '../build/webpack.config.client';
 import {createBundleRenderer} from 'vue-server-renderer';
 import serverRender from '../lib/server-render';
 
-const opt = {
-    logTime: true,
-    colors: true,
-};
+// const opt = {
+//     logTime: true,
+//     colors: true,
+// };
 
 let bundle, clientManifestResp;
 
