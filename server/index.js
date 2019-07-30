@@ -70,6 +70,9 @@ console.log(MIDDLEWARES);
             console.log('服务运行于\nhttp://localhost:8088');
         })
     } else {
+        app.listen(80, () => {
+            console.log('服务运行于\nhttp://localhost:80');
+        })
         http2.createSecureServer(HTTPS_OPTIONS, app.callback()).listen(443, () => {
             console.log("https://localhost:443".bgRed);
         });

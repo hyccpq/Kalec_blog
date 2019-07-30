@@ -1,7 +1,7 @@
 <template>
     <div id="index-content">
         <loading :onLoading="onLoading"></loading>
-        <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox"></el-nav>
+        <el-nav @onChange="changeLog" class="my-nav" @showSideBox="showSideBox" :is-show-side-box="isShowSideBox"></el-nav>
         <login-form :is-showlog="isShowlog" @onChange="changeLog" class="goto-notice">
             <!--<on-form @has-log="hasLog"></on-form>-->暂只能站长登录，<a class="goto-admin" href="/admin/" target="_blank">点击登录</a>
         </login-form>

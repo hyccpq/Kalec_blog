@@ -2,9 +2,11 @@
 import { resolve } from 'path'
 import {createBundleRenderer} from "vue-server-renderer";
 import serverRender from "../lib/server-render";
+import koaSslify from 'koa-sslify'
 import clientManifestResp from '../../public/dist/vue-ssr-client-manifest.json'
 
 export const prod = app => {
+	app.use(koaSslify());
 
 	app.use(async (ctx, next) => {
 		try {

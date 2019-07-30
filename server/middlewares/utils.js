@@ -2,11 +2,6 @@ import koaBodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import koaCompress from 'koa-compress'
 import nodeZlib from 'zlib'
-import koaSslify from 'koa-sslify'
-
-export const sslify = app => {
-	app.use(koaSslify())
-}
 
 export const addBodyParser = app => {
 	app.use(koaBodyparser())

@@ -1,9 +1,9 @@
 <template>
     <div>
         <iMenu mode="horizontal" theme="dark" id="nav"
-               :class="isShowNavBgc ? 'all-nav nav-show-blur': 'all-nav'" @on-select="onSelect">
+               :class="isShowNavBgc && !isShowSideBox ? 'nav-show-blur': 'all-nav'" @on-select="onSelect">
             <iMenuItem name="-1" class="nav-menu-button">
-                <Icon class="icon-menu" type="md-menu" size="36" color="#1E1E1E"></Icon>
+                <Icon class="icon-menu" type="md-menu" size="24" color="#343739"></Icon>
             </iMenuItem>
             <iMenuItem name="0" class="nav-title">
                 <div>冰空的作品展示</div>
@@ -65,6 +65,10 @@
             username: {
                 type: String,
                 default: ''
+            },
+            isShowSideBox: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -122,7 +126,7 @@
 <style scoped lang="stylus">
 
 
-    #nav.all-nav
+    #nav
         width: 100%;
         background: rgba(0, 0, 0, 0.50)
         transition .5s
@@ -149,17 +153,17 @@
 
             .nav-title
                 color: #191919
-
             .nav-menu-button
                 display: flex
 
                 .icon-menu
+                    justify-self center
                     align-self center
-                    height 36px
+                    /*height 36px*/
 
             .set-center
                 display block
-                width: 58px
+                width: 70px
                 visibility hidden
 
             .code-row-bg
