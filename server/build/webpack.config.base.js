@@ -14,118 +14,111 @@ function resolve(dir) {
 }
 
 let conf = {
-    context: path.resolve(__dirname, '../'),
+    context: path.resolve(__dirname, "../"),
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: [".js", ".vue", ".json"],
         alias: {
-            vue$: 'vue/dist/vue.esm.js',
-            '@': resolve('/')
+            vue$: "vue/dist/vue.esm.js",
+            "@": resolve("/")
         }
     },
     module: {
         rules: [
             {
                 test: /iview\/.*?js$/,
-                loader: 'happypack/loader?id=babel',
+                loader: "happypack/loader?id=babel"
             },
             {
                 test: /\.js$/,
-                loader: 'happypack/loader?id=babel',
+                loader: "happypack/loader?id=babel",
                 exclude: /node_modules/
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 use: [
                     {
-                        loader: 'url-loader',
+                        loader: "url-loader",
                         options: {
                             // 具体配置见插件官网
                             limit: 10000,
-                            name: '[name]-[hash:5].[ext]',
-                            outputPath: 'img/', // outputPath所设置的路径，是相对于 webpack 的输出目录。
+                            name: "[name]-[hash:5].[ext]",
+                            outputPath: "img/" // outputPath所设置的路径，是相对于 webpack 的输出目录。
                             // publicPath 选项则被许多webpack的插件用于在生产模式下更新内嵌到css、html文件内的 url , 如CDN地址
-                        },
+                        }
                     },
                     {
-                        loader: 'image-webpack-loader',
+                        loader: "image-webpack-loader",
                         options: {
                             mozjpeg: {
-                                progressive: true,
-                                quality: 65
+                                progressive: false,
+                                quality: 75,
                             },
                             // optipng.enabled: false will disable optipng
                             optipng: {
-                                enabled: false,
+                                enabled: false
                             },
                             pngquant: {
-                                quality: '65-90',
+                                quality: "65-90",
                                 speed: 4
                             },
                             gifsicle: {
-                                interlaced: false,
+                                interlaced: false
                             },
-                            // the webp option will enable WEBP
-                            webp: {
-                                quality: 75
-                            }
+                            // // the webp option will enable WEBP
+                            // webp: {
+                            //     quality: 75
+                            // }
                         }
                     }
                 ]
             },
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                loader: 'url-loader',
+                loader: "url-loader",
                 options: {
                     limit: 100000,
-                    name: 'media/[name].[hash:7].[ext]'
+                    name: "media/[name].[hash:7].[ext]"
                 }
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
+                loader: "url-loader",
                 options: {
                     limit: 100000,
-                    name: 'fonts/[name].[hash:7].[ext]'
+                    name: "fonts/[name].[hash:7].[ext]"
                 }
             }
         ]
     },
     externals: {
-        'vue': 'Vue',
-        'vue-router': 'VueRouter'
+        vue: "Vue",
+        "vue-router": "VueRouter"
     },
     plugins: [
         new HappyPack({
             // 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件
-            id: 'babel',
+            id: "babel",
             // 如何处理 .js 文件，用法和 Loader 配置中一样
-            loaders: ['babel-loader?cacheDirectory'],
+            loaders: ["babel-loader?cacheDirectory"],
             // 使用共享进程池中的子进程去处理任务
             threadPool: happyThreadPool
         }),
         new HappyPack({
-            id: 'vue',
-            loaders: ['vue-loader'],
+            id: "vue",
+            loaders: ["vue-loader"],
             threadPool: happyThreadPool
         }),
         new HappyPack({
-            id: 'stylus',
+            id: "stylus",
             // 如何处理 .css 文件，用法和 Loader 配置中一样
-            loaders: [
-                'css-loader?minimize',
-                'postcss-loader',
-                'stylus-loader',
-            ],
+            loaders: ["css-loader?minimize", "postcss-loader", "stylus-loader"],
             // 使用共享进程池中的子进程去处理任务
             threadPool: happyThreadPool
         }),
         new HappyPack({
-            id: 'css',
+            id: "css",
             // 如何处理 .css 文件，用法和 Loader 配置中一样
-            loaders: [
-                'css-loader?minimize',
-                'postcss-loader'
-            ],
+            loaders: ["css-loader?minimize", "postcss-loader"],
             // 使用共享进程池中的子进程去处理任务
             threadPool: happyThreadPool
         }),
@@ -138,11 +131,11 @@ let conf = {
         setImmediate: false,
         // prevent webpack from injecting mocks to Node native modules
         // that does not make sense for the client
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty'
+        dgram: "empty",
+        fs: "empty",
+        net: "empty",
+        tls: "empty",
+        child_process: "empty"
     }
 };
 

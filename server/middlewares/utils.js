@@ -5,7 +5,7 @@ import nodeZlib from 'zlib'
 import koaSslify from 'koa-sslify'
 
 export const sslify = app => {
-	// app.use(koaSslify())
+	app.use(koaSslify())
 }
 
 export const addBodyParser = app => {
