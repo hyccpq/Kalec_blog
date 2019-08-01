@@ -5,6 +5,8 @@ const base = require('./webpack.config.base');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const { resolve, join } = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const QiniuUploadPlugin = require('qiniu-upload-plugin');
+
 
 const prod = process.env.NODE_ENV === 'production';
 
@@ -84,7 +86,15 @@ if(prod) {
 		new ServerMiniCssExtractPlugin({
 			filename: '[name].[hash:8].css',
 			chunkFilename: '[id].[hash:8].css'
-		})
+		}),
+		 new QiniuUploadPlugin({
+            publicPath: 'https://static.kalecgos.top/',
+            accessKey: qiniu.AK,
+            secretKey: qiniu.SK,
+            bucket: 'static',
+            zone: 'Zone_z0',
+            cover: true
+        }),
 	)
 }
 

@@ -120,11 +120,17 @@ if (prod) {
             autoUpdate: true,
             responseStrategy: 'cache-first',
             safeToUseOptionalCaches: true,
+            relativePaths: false,
+            publicPath: 'https://static.kalecgos.top/',
             caches: {
-                main: [],
+                main: [
+                    'https://lib.baomitu.com/vue/2.6.10/vue.min.js',
+                    'https://lib.baomitu.com/vue-router/3.0.7/vue-router.min.js'
+                ],
                 additional: [
-                    ':externals:'
-                ]
+                    ':rest:' ,':externals:'
+                ],
+                optional: ['*.chunk.js']
             },
             externals: [
                 'http://static.kalecgos.top',
