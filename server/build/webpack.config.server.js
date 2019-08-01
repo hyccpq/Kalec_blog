@@ -6,6 +6,8 @@ const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 const { resolve, join } = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const QiniuUploadPlugin = require('qiniu-upload-plugin');
+const {qiniu} = require('../conf/qiniu');
+
 
 
 const prod = process.env.NODE_ENV === 'production';

@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/kalec_blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kalec_blog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build/webpack.config.client.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/ejs/manage.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/ejs/manage.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -206,7 +206,7 @@
       <workItem from="1564476330732" duration="1918000" />
       <workItem from="1564485003233" duration="2109000" />
       <workItem from="1564661363516" duration="468000" />
-      <workItem from="1564661930769" duration="1651000" />
+      <workItem from="1564661930769" duration="2337000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
