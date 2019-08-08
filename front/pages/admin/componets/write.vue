@@ -2,10 +2,12 @@
     <div id="write">
         <div class="write-content write-contents-1">
             <h3>编辑文章</h3>
-            <Form ref="subInfo" :model="subInfo" :label-width="0" class="content">
+            <Form ref="subInfo" :model="subInfo" :label-width="60" class="content">
                 <!--文章标题-->
                 <FormItem label="文章标题" prop="文章标题">
-                    <Input size='default' v-model="subInfo.title" placeholder="输入你的标题"></Input>
+                    <label>
+                        <Input size='default' v-model="subInfo.title" placeholder="输入你的标题"></Input>
+                    </label>
                 </FormItem>
                 <mavon-editor ref="md" @imgAdd="$imgAdd" @imgDel="$imgDel"
                               :ishljs = "true" v-model="subInfo.markdown" default_open="edit" class="editor"></mavon-editor>
@@ -23,21 +25,25 @@
                         </FormItem>
                         <!--标签-->
                         <FormItem label="标签" prop="标签">
-                            <Select transfer size="default" v-model="selectTagName" :multiple="true" :value="selectTagName">
-                                <Option v-for="(item,key) in tagList" :value="item.tagName" :key="key">
-                                    {{ item.tagName }}
-                                </Option>
-                            </Select>
+                            <label>
+                                <Select transfer size="default" v-model="selectTagName" :multiple="true" :value="selectTagName">
+                                    <Option v-for="(item,key) in tagList" :value="item.tagName" :key="key">
+                                        {{ item.tagName }}
+                                    </Option>
+                                </Select>
+                            </label>
                             <Button size="default" type="info" @click="changeAdd">添加标签</Button>
 
                         </FormItem>
                         <!--分类-->
                         <FormItem label="分类" prop="分类">
-                            <Select transfer size="default" v-model="subInfo.classic" placeholder="选择你的分类">
-                                <Option v-for="(classItem,key) in classicList" :key="key" :value="classItem ? classItem : ''">
-                                    {{classItem}}
-                                </Option>
-                            </Select>
+                            <label>
+                                <Select transfer size="default" v-model="subInfo.classic" placeholder="选择你的分类">
+                                    <Option v-for="(classItem,key) in classicList" :key="key" :value="classItem ? classItem : ''">
+                                        {{classItem}}
+                                    </Option>
+                                </Select>
+                            </label>
                             <Button size="default" type="info" @click="changeAddClassic">添加分类</Button>
                         </FormItem>
                         <!--封面图-->
@@ -56,8 +62,10 @@
                     <Form ref="subInfo" :model="subInfo" :label-width="0">
                         <!--简介-->
                         <FormItem label="简介" prop="简介内容">
-                            <Input size="default" v-model="subInfo.abstract" type="textarea" :autosize="{minRows: 6,maxRows: 6}"
-                                   placeholder="请输入简介"></Input>
+                            <label>
+                                <Input size="default" v-model="subInfo.abstract" type="textarea" :autosize="{minRows: 6,maxRows: 6}"
+                                       placeholder="请输入简介"></Input>
+                            </label>
                         </FormItem>
 
                         <Upload
@@ -85,7 +93,9 @@
         <add-tag :isShowlog="isTagAdd" @onChange="changeAdd" >
             <Form :label-width="0" class="add-tags">
                 <FormItem label="新标签">
-                    <Input size="default" v-model="addTagValue" placeholder="请输入新标签"></Input>
+                    <label>
+                        <Input size="default" v-model="addTagValue" placeholder="请输入新标签"></Input>
+                    </label>
                 </FormItem>
                 <FormItem>
                     <Button size="default" type="primary" @click="addTag">添加</Button>
@@ -96,7 +106,9 @@
         <add-classic :isShowlog="isClassicAdd" @onChange="changeAddClassic" >
             <Form :label-width="0" class="add-tags">
                 <FormItem label="新分类">
-                    <Input size="default" v-model="addClassicValue" placeholder="请输入新分类"></Input>
+                    <label>
+                        <Input size="default" v-model="addClassicValue" placeholder="请输入新分类"></Input>
+                    </label>
                 </FormItem>
                 <FormItem>
                     <Button size="default" type="primary" @click="addClassic">添加</Button>

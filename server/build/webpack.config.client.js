@@ -133,7 +133,6 @@ if (prod) {
                 optional: ['*.chunk.js']
             },
             externals: [
-                'http://static.kalecgos.top',
                 'https://static.kalecgos.top',
             ],
             ServiceWorker: {

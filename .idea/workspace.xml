@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kalec_blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kalec_blog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/modules/util/animate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/modules/util/animate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/build/webpack.config.client.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.manage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/ejs/manage.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/ejs/manage.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middlewares/manage.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/manage.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminPage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,30 +32,6 @@
         <option value="Vue Single File Component" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>options</find>
-      <find>Breadcrumb</find>
-      <find>show</find>
-      <find>'</find>
-      <find>optimization</find>
-      <find>core-js</find>
-      <find>polyfill</find>
-      <find>uglify</find>
-      <find>core</find>
-      <find>UglifyJsPlugin</find>
-      <find>ugli</find>
-      <find>漂浮</find>
-      <find>webpack</find>
-      <find>HotModuleReplacementPlugin</find>
-      <find>kalec</find>
-      <find>black</find>
-      <find>assets/img/cover-s.jpg</find>
-      <find>nav-menu-button</find>
-      <find>.all-nav</find>
-      <find>nav-show-blur</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,6 +67,7 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/koa-webpack/lib/index.js" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -206,7 +187,8 @@
       <workItem from="1564476330732" duration="1918000" />
       <workItem from="1564485003233" duration="2109000" />
       <workItem from="1564661363516" duration="468000" />
-      <workItem from="1564661930769" duration="2337000" />
+      <workItem from="1564661930769" duration="3182000" />
+      <workItem from="1565252655131" duration="5361000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>

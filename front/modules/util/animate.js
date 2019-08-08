@@ -1,4 +1,4 @@
-const SPEEDS = 80
+const SPEEDS = 120
 
 export const scrollAnimate = (total, current) => {
 	let detal = total - current
@@ -18,18 +18,18 @@ export const scrollAnimate = (total, current) => {
 			curr += currentSpeed
 			setScrollTop(curr)
 			if(direction ? curr < targetLocationDeviation : curr > targetLocationDeviation){
-				
+
 				window.requestAnimationFrame(render)
 			} else {
 				// document.body.scrollTop = total
 				setScrollTop(total)
 				resolve(total)
 			}
-			
+
 		}
-		
+
 		render();
-		
+
 		function setScrollTop (curr) {
 			if(document.body.scrollTop) {
 				document.body.scrollTop = curr
@@ -38,6 +38,6 @@ export const scrollAnimate = (total, current) => {
 			}
 		}
 	})
-	
+
 }
 

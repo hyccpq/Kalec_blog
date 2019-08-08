@@ -17,7 +17,7 @@ const prod = process.env.NODE_ENV === 'production';
 
 const config = merge(base, {
 	mode: prod ? 'production' : 'development',
-    devtool: prod ? false : '#cheap-module-eval-source-map',
+    devtool: prod ? false : 'source-map',
     output: {
 		path: resolve(__dirname, '../../public/dist'),
 		filename: '[name].[hash:6].js',
@@ -102,7 +102,8 @@ const config = merge(base, {
 			'process.env.VUE_ENV': '"client"'
 		}),
 		new HtmlWebpackPlugin({
-			filename: resolve(__dirname, '../ejs/manage.ejs'),
+			filename: 'manage.html',
+			// filename: prod ? resolve(__dirname, '../ejs/manage.ejs') : ,
 			template: resolve(__dirname,'../../front/pages/admin/admin.html'),
             inject: true,
             minify: {

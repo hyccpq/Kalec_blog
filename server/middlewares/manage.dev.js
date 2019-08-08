@@ -2,6 +2,7 @@
 // import hot from './dev/hotMiddleware'
 import koaWebpack from 'koa-webpack';
 import webpack from 'webpack'
+import {resolve} from 'path'
 
 import webpackConfig from '../build/webpack.config.manage'
 
@@ -11,7 +12,14 @@ export const webpackDev = async app => {
     // app.use(dev(compiler, opt))
     // app.use(hot(compiler, opt))
     const devMiddleware = await koaWebpack({compiler})
-    app.use(devMiddleware)
+    // app.use(devMiddleware)
+    app.use((ctx, next) => {
+        ctx.manageWebViewConf = {
+            filename: resolve(webpackConfig.output.path, 'manage.html'),
+            devMiddleware
+        }
+        return devMiddleware(ctx, next)
+    })
 
     app.use(async (ctx, next) => {
         try {
