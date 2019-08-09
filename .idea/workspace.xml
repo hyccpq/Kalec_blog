@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/modules/util/animate.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/modules/util/animate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.client.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.manage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/ejs/manage.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/ejs/manage.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/middlewares/manage.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/manage.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middlewares/prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/prod.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -189,6 +187,7 @@
       <workItem from="1564661363516" duration="468000" />
       <workItem from="1564661930769" duration="3182000" />
       <workItem from="1565252655131" duration="5361000" />
+      <workItem from="1565316697210" duration="4212000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
