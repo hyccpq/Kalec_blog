@@ -29,7 +29,9 @@ switch (condition) {
     case 'development:manage':
         MIDDLEWARES.push('manage.dev')
         break;
-
+    case 'test':
+        MIDDLEWARES.push('test')
+        break;
     default:
         MIDDLEWARES.push('prod')
         break;

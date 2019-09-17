@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/middlewares/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/adminFileApi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/service/base/fileManageBase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/service/fileManage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/test/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -94,7 +100,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.test">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -125,13 +131,25 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="npm.dev:manage" />
       <item itemvalue="npm.dev:index" />
       <item itemvalue="npm.build" />
+      <item itemvalue="npm.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.dev:index" />
       </list>
@@ -182,7 +200,10 @@
       <workItem from="1564661363516" duration="468000" />
       <workItem from="1564661930769" duration="3182000" />
       <workItem from="1565252655131" duration="5361000" />
-      <workItem from="1565316697210" duration="6818000" />
+      <workItem from="1565316697210" duration="7271000" />
+      <workItem from="1565591784105" duration="705000" />
+      <workItem from="1566357481037" duration="1450000" />
+      <workItem from="1568703388504" duration="5688000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -229,5 +250,17 @@
     <MESSAGE value="相册初始化" />
     <MESSAGE value="懒加载图片" />
     <option name="LAST_COMMIT_MESSAGE" value="懒加载图片" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server/test/test.js</url>
+          <line>5</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
