@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
 import qiniu from 'qiniu'
 import {qiniu as qiniuSecretConf} from '../conf/userConf'
+import {FileManage} from "./fileManage";
 
 const BUCKET = qiniuSecretConf.qiniu.bucket
-const MAC = new qiniu.auth.digest.Mac(qiniuSecretConf.qiniu.AK, qiniuSecretConf.qiniu.SK)
+const MAC = FileManage.instance.mac
 const QINIU_UPDATE_OPTION = {
     scope: BUCKET,
     returnBody: '{"key":"$(key)","hash":"$(etag)","fsize":$(fsize),"name":"$(x:name)","type":"$(mimeType)"}'
@@ -76,8 +77,11 @@ export const getAllGallery = async (isManage, {pageNum = 0, pageSize = 10}) => {
 
 export const deleteOneGallery = async id => {
     try {
-        let data = await GalleryItem.findByIdAndRemove(id)
-        if (data) {
+        let imageData = await GalleryItem.findById(id);
+        if (imageData) {
+            console.log(imageData);
+            await FileManage.instance.deleteListFile(imageData.images.map(item=> item.imagePath), BUCKET);
+            await GalleryItem.findByIdAndRemove(id)
             return '相册删除成功'
         } else {
             throw '相册不存在'

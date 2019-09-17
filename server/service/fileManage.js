@@ -1,11 +1,19 @@
 import {FileManageBase} from "./base/fileManageBase";
-import {qiniu} from "../conf/userConf";
+import * as conf from "../conf/userConf";
+import qiniu from "qiniu";
 
 export class FileManage extends FileManageBase {
+    static _fileManage;
+
+    static get instance() {
+        if (!this._fileManage) this._fileManage = new FileManage();
+        return this._fileManage;
+    }
+
     fileListNextMarker;
 
     constructor() {
-        super({accessKey: qiniu.qiniu.AK, secretKey: qiniu.qiniu.SK});
+        super({accessKey: conf.qiniu.qiniu.AK, secretKey: conf.qiniu.qiniu.SK});
     }
 
     async getFileList(limit, bucket = 'myupload') {
@@ -23,12 +31,24 @@ export class FileManage extends FileManageBase {
 
     }
 
+    async deleteListFile(fileNameList = [], bucket = 'image') {
+        let deleteOperations = fileNameList.map(item => qiniu.rs.deleteOp(bucket, item));
+        try {
+            return await this._qiniuDeleteListFile(deleteOperations);
+        } catch (e) {
+            console.log(e);
+            throw e;
+        }
+    }
+
     _qiniuGetPrefixList = (options, bucket = 'myupload') => new Promise((resolve, reject) => {
-        this.bucketManager.listPrefix(bucket, options, (err, respBody, respInfo) => {
-            if (err) reject(err);
-            else if (respInfo.statusCode !== 200) reject(respInfo.code);
-            else resolve(respBody);
-        });
+        const request = this.networkContentProcessor(resolve, reject);
+        this.bucketManager.listPrefix(bucket, options, request);
+    })
+
+    _qiniuDeleteListFile = (deleteOperations) => new Promise((resolve, reject) => {
+        const request = this.networkContentProcessor(resolve, reject);
+        this.bucketManager.batch(deleteOperations, request);
     })
 }
 
