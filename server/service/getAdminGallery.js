@@ -1,7 +1,10 @@
 import mongoose from 'mongoose'
 import qiniu from 'qiniu'
+import _ from 'lodash'
 import {qiniu as qiniuSecretConf} from '../conf/userConf'
 import {FileManage} from "./fileManage";
+
+const isArray = c => _.isArray(c) ? c : [c]
 
 const BUCKET = qiniuSecretConf.qiniu.bucket
 const MAC = FileManage.instance.mac
@@ -17,9 +20,9 @@ export const getQiniuToken = () => {
 
 const GalleryItem = mongoose.model('galleryModel')
 
-export const saveNewGallery = async (title, author, description) => {
+export const saveNewGallery = async (title, author, description, url = 'http://img.kalecgos.top') => {
     let query = {
-        title, author, description, url: 'http://img.kalecgos.top'
+        title, author, description, url
     }
     try {
         let addData = new GalleryItem(query)
@@ -79,8 +82,7 @@ export const deleteOneGallery = async id => {
     try {
         let imageData = await GalleryItem.findById(id);
         if (imageData) {
-            console.log(imageData);
-            await FileManage.instance.deleteListFile(imageData.images.map(item=> item.imagePath), BUCKET);
+            await FileManage.instance.deleteListFile(imageData.images.map(item => item.imagePath), BUCKET);
             await GalleryItem.findByIdAndRemove(id)
             return '相册删除成功'
         } else {
@@ -144,3 +146,35 @@ export const getOneGalleryImages = async (id) => {
     }
 }
 
+export const setCoverImage = async (id, imagePath) => {
+    try {
+        let data = await GalleryItem.findByIdAndUpdate(id, {coverImgPath: imagePath})
+        if (data) {
+            return data
+        } else {
+            throw '相册不存在'
+        }
+
+    } catch (e) {
+        throw e
+    }
+}
+
+export const delOneImage = async (id, imageId) => {
+    let imageIdList = isArray(imageId)
+    try {
+        let galleryItem = await GalleryItem.findById(id)
+        let imagePathList = []
+
+        for (let itemId of imageIdList) {
+            let imageInfo = galleryItem.images.id(itemId)
+            imagePathList.push(imageInfo.imagePath)
+            imageInfo.remove()
+        }
+        await FileManage.instance.deleteListFile(imagePathList, BUCKET);
+
+        galleryItem.save()
+    } catch (e) {
+        throw e
+    }
+}

@@ -9,7 +9,7 @@ const CAPTCHA_CONFIG = {
 	size: 4,
 	ignoreChars: '0o1i',
 	noise: 5,
-	
+
 }
 
 export const getArticle = async (skip = 0, params = {}) => {
@@ -17,10 +17,10 @@ export const getArticle = async (skip = 0, params = {}) => {
 		show: 1
 	}
 	if(params.classic) querys.classic = params.classic;
-	else if(params.tag) querys["tag.tagName"] = params.tag;
+	if(params.tag) querys["tag.tagName"] = params.tag;
 	try {
 		const articleNum = await articleDatabase.find(querys).count()
-		
+
 		// let limit = (skip + 1) * 10 <= articleNum ? 10 : articleNum % 10
 		const articleListAllInfo = await articleDatabase
 			.find(querys, "id markNum imgUrl time title abstract")
@@ -29,7 +29,7 @@ export const getArticle = async (skip = 0, params = {}) => {
 			.sort({
 				time : -1
 			})
-		
+
 		let articleList = articleListAllInfo.map(item => {
 			return {
 				id: item._id,
@@ -57,7 +57,7 @@ export const searchOneArticle = async (id) => {
 			throw '无法找到文章'
 		}
 		return oneArticleInfo
-		
+
 		// let resData = getReturnArticle(allArticleInfo, false)
 	} catch (e) {
 		throw e
@@ -84,9 +84,9 @@ export const saveMark = async (id, user, email, content, isManage) => {
 		})
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()
-		
+
 		let currentMark = articleInfo.markList[articleInfo.markList.length - 1]
-		
+
 		return {
 			markTime:currentMark.markTime,
             userName:currentMark.userName,
@@ -94,7 +94,7 @@ export const saveMark = async (id, user, email, content, isManage) => {
             _id:currentMark._id,
             replyList:[]
 		}
-		
+
 	} catch (e) {
 		throw e
 	}
@@ -112,19 +112,19 @@ export const saveReply = async (id, markId, user, replyUser, email, content, isM
 			replyedUser: replyUser,
 			isManage
 		});
-		
+
 		let addData = new articleDatabase(articleInfo)
 	    await addData.save()
-		
+
 		let currentReply = replyList[replyList.length - 1]
-		
+
 		return {
 			replyName: currentReply.replyName,
 			replyTime: currentReply.replyTime,
 			replyContent: currentReply.replyContent,
 			_id: currentReply._id
 		}
-		
+
 	} catch (e) {
 		throw e
 	}
@@ -137,3 +137,11 @@ export const createCaptchas = async () => {
 		throw e
 	}
 }
+
+// export const getOneTag = async id => {
+// 	try {
+//
+// 	} catch (e) {
+// 		console.log(e)
+// 	}
+// }

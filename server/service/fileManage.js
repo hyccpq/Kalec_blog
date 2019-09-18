@@ -3,11 +3,11 @@ import * as conf from "../conf/userConf";
 import qiniu from "qiniu";
 
 export class FileManage extends FileManageBase {
-    static _fileManage;
+    static #fileManage;
 
     static get instance() {
-        if (!this._fileManage) this._fileManage = new FileManage();
-        return this._fileManage;
+        if (!this.#fileManage) this.#fileManage = new FileManage();
+        return this.#fileManage;
     }
 
     fileListNextMarker;
@@ -34,12 +34,14 @@ export class FileManage extends FileManageBase {
     async deleteListFile(fileNameList = [], bucket = 'image') {
         let deleteOperations = fileNameList.map(item => qiniu.rs.deleteOp(bucket, item));
         try {
-            return await this._qiniuDeleteListFile(deleteOperations);
+            return await this.delListFileSource(deleteOperations);
         } catch (e) {
             console.log(e);
             throw e;
         }
     }
+
+    delListFileSource = (deleteOperations = []) => this._qiniuDeleteListFile(deleteOperations)
 
     _qiniuGetPrefixList = (options, bucket = 'myupload') => new Promise((resolve, reject) => {
         const request = this.networkContentProcessor(resolve, reject);
