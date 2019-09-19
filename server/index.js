@@ -70,6 +70,7 @@ console.log(MIDDLEWARES);
     if (condition !== 'production' || condition === 'production:test') {
         app.listen(8088, () => {
             console.log('服务运行于\nhttp://localhost:8088');
+            console.log('服务运行于\nhttp://kalec.kalecgos.top:8088');
         })
     } else {
         app.listen(80, () => {

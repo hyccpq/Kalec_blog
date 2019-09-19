@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import {comparePassword, encryptionPassword, LOCK_TIME, MAX_LOGIN_ATTEMPS} from "../tool/encryption";
 
 const Schema = mongoose.Schema
 
@@ -18,7 +19,13 @@ let galleryItem = new Schema({
         }
     ],
     description: String,
-    password: {type: String, default: ''},
+    lockUntil: Number,
+    loginAttepts: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+    password: {type: String, unique: true},
     url: {type: String, default: ''},
     coverImgPath: {type: String, default: ''},
     show: {type: Number, default: 0},
@@ -35,5 +42,69 @@ let galleryItem = new Schema({
         }
     }
 })
+
+
+galleryItem.virtual('isLocked').get(function () {
+    return this.isLocked && this.isLocked > Date.now()
+})
+
+galleryItem.pre('save', function (next) {
+    if (this.isNew) {
+        this.meta.joinTime = this.meta.updateTime = Date.now()
+    } else {
+        this.meta.updateTime = Date.now()
+    }
+    next()
+})
+
+galleryItem.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    try {
+        let hash = await encryptionPassword(this.password)
+        this.password = hash
+        next()
+    } catch (e) {
+        next(e)
+    }
+})
+
+galleryItem.methods = {
+    comparePassword,
+
+    incLoginAttepts: user => {
+        return new Promise((resolve, reject) => {
+            if (this.lockUntil && this.lockUntil < Date.now()) {
+                this.update({
+                    $set: {
+                        loginAttepts: 1
+                    },
+                    $unset: {
+                        lockUntil: 1
+                    }
+                }, err => {
+                    if (!err) resolve(true);
+                    else reject(err)
+                })
+            } else {
+                let updateLoginCount = {
+                    $inc: {
+                        loginAttepts: 1
+                    }
+                }
+                if (this.loginAttepts + 1 >= MAX_LOGIN_ATTEMPS && this.isLocked) {
+                    updateLoginCount.$set = {
+                        lockUntil: Date.now() + LOCK_TIME
+                    }
+                }
+
+                this.update(updateLoginCount, err => {
+                    if (!err) resolve(false);
+                    else reject(err)
+                })
+            }
+        })
+    }
+}
+
 
 mongoose.model('galleryModel', galleryItem)

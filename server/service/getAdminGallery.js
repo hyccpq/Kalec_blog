@@ -20,10 +20,11 @@ export const getQiniuToken = () => {
 
 const GalleryItem = mongoose.model('galleryModel')
 
-export const saveNewGallery = async (title, author, description, url = 'http://img.kalecgos.top') => {
+export const saveNewGallery = async (title, author, description, password, url = 'http://img.kalecgos.top') => {
     let query = {
         title, author, description, url
     }
+    if (password) query.password = password
     try {
         let addData = new GalleryItem(query)
         return await addData.save()
@@ -32,15 +33,25 @@ export const saveNewGallery = async (title, author, description, url = 'http://i
     }
 }
 
-export const savedGallery = async (id, title, author, description) => {
+export const savedGallery = async (id, title, author, description, password) => {
     let query = {
         title, author, description
     }
+
     try {
-        let saveData = await GalleryItem.findByIdAndUpdate(id, query)
-        if (saveData) {
-            return saveData
+        let data;
+        if (password) {
+            data = await GalleryItem.findById(id)
+            data.password = password
+            data.title = title
+            data.author = author
+            data.description = description
+            await data.save()
         } else {
+            data = await GalleryItem.findByIdAndUpdate(id, query)
+        }
+        if (data) return data
+        else {
             throw '相册不存在'
         }
     } catch (e) {
@@ -160,7 +171,7 @@ export const setCoverImage = async (id, imagePath) => {
     }
 }
 
-export const delOneImage = async (id, imageId) => {
+export const delSelectImage = async (id, imageId) => {
     let imageIdList = isArray(imageId)
     try {
         let galleryItem = await GalleryItem.findById(id)
@@ -174,6 +185,27 @@ export const delOneImage = async (id, imageId) => {
         await FileManage.instance.deleteListFile(imagePathList, BUCKET);
 
         galleryItem.save()
+    } catch (e) {
+        throw e
+    }
+}
+
+export const editSelectImage = async (id, imageId, {imageName, imageDesc, show}) => {
+    try {
+        let galleryItem = await GalleryItem.findById(id)
+        let imageInfo = galleryItem.images.id(imageId)
+        if (imageName && imageDesc && typeof show === 'undefined') return;
+        if (show === 1 || show === 0) {
+            if (imageName) imageInfo.imageName = imageName
+            if (imageDesc) imageInfo.imageDesc = imageDesc
+            if (typeof show !== 'undefined') imageInfo.show = show
+            await imageInfo.save()
+            return imageInfo;
+        } else {
+            throw '数据格式不正确'
+        }
+
+
     } catch (e) {
         throw e
     }

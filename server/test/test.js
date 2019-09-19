@@ -1,5 +1,6 @@
 import {FileManage} from "../service/fileManage";
-import {deleteOneGallery, delOneImage, saveNewGallery, setCoverImage} from "../service/getAdminGallery";
+import * as gallery from "../service/getAdminGallery";
+import {checkGalleryPassword} from "../service/getGalleryInfo";
 
 export const testMain = async app => {
     // let fileManage = new FileManage();
@@ -10,5 +11,6 @@ export const testMain = async app => {
     // deleteOneGallery('5b8817fedb76b4625139512a');
     // delOneImage('5b8a1030385310084c91467d', '5cb832dc33700480f888228a')
     // setCoverImage('5b8a1030385310084c91467d', 'pLWC4LjOFSy_fIvsQJnQS')
-    saveNewGallery('酷的一笔', 'hyccpq', '哈哈哈哈哈牛x')
+    await gallery.savedGallery('5b8a1030385310084c91467d','旅大改', 'hyccpq', '哈哈哈哈哈牛x，爽的一笔', '1234')
+    checkGalleryPassword('5b8a1030385310084c91467d', '1234')
 }

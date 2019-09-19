@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/front/pages/admin/util/base.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/database/tool/encryption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/admin/util/adApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/util/adApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/database/schema/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/database/schema/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/gallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service/getGalleryInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getGalleryInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/test.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,9 +153,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev:index" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.dev:index" />
       </list>
     </recent_temporary>
   </component>
@@ -199,7 +209,7 @@
       <workItem from="1566357481037" duration="1450000" />
       <workItem from="1568703388504" duration="10757000" />
       <workItem from="1568772092890" duration="8125000" />
-      <workItem from="1568863488192" duration="407000" />
+      <workItem from="1568863488192" duration="13986000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
