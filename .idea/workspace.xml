@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/gallery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/fileManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/fileManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getArticleInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getArticleInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +94,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.test">
+  <component name="RunManager" selected="npm.dev:manage">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -202,7 +198,8 @@
       <workItem from="1565591784105" duration="705000" />
       <workItem from="1566357481037" duration="1450000" />
       <workItem from="1568703388504" duration="10757000" />
-      <workItem from="1568772092890" duration="7621000" />
+      <workItem from="1568772092890" duration="8125000" />
+      <workItem from="1568863488192" duration="407000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
