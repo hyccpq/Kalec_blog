@@ -2,9 +2,17 @@
     <Card class="card-all" :padding="0">
         <router-link :to="`/admin/edit/galleryPage/${galleryItem._id}/${galleryItem.title}`" class="cover-link">
             <div class="cover-image">
-                <div class="cover"><img :src="galleryItem.url + galleryItem.path" :alt="galleryItem.title" v-if="galleryItem.path"></div>
-                <div class="none-cover cover">
-                    <Icon :size="35" type="md-information-circle" /><span>暂无封面</span>
+                <div class="cover" v-if="galleryItem.coverImgPath"><img class="cover-image-show"
+                                                                        :src="galleryItem.url + '/' + galleryItem.coverImgPath"
+                                                                        :alt="galleryItem.title"
+                ></div>
+                <!--                <div class="none-cover cover" v-if="galleryItem.coverImgPath">-->
+                <!--                    <img :src="galleryItem.coverImgPath" alt="">-->
+                <!--                </div>-->
+                <div class="none-cover cover" v-if="!galleryItem.coverImgPath">
+                    <Icon :size="35" type="md-information-circle"/>
+                    <span>暂无封面</span>
+
                 </div>
             </div>
         </router-link>
@@ -23,7 +31,7 @@
                             上传照片
                         </Button>
                         <Button size="small" type="warning"
-                            :to="`/admin/edit/galleryManage/editGallery/${galleryItem._id}/${galleryIndex}/${galleryItem.title}`"
+                                :to="`/admin/edit/galleryManage/editGallery/${galleryItem._id}/${galleryIndex}/${galleryItem.title}`"
                         >
                             修改相册
                         </Button>
@@ -55,67 +63,82 @@
 </template>
 
 <script>
-    import { Card, Icon, Poptip } from 'iview'
-    import { mapActions } from 'vuex'
-	export default {
-		name: "galleryCard",
+    import {Card, Icon, Poptip} from 'iview'
+    import {mapActions} from 'vuex'
+
+    export default {
+        name: "galleryCard",
         components: {
             Card, Icon, Poptip
         },
         props: {
-			galleryItem: {
-				type: Object,
+            galleryItem: {
+                type: Object,
                 default: {}
             },
             galleryIndex: {
-				type: Number,
+                type: Number,
                 default: 0
             }
         },
         methods: {
-            ...mapActions(['putGalleryShow']),
-			updateShow(id, show, index) {
-            	show = show === 1 ? 0 : 1
+            ...mapActions('galleryModule', ['putGalleryShow']),
+            updateShow(id, show, index) {
+                show = show === 1 ? 0 : 1
                 this.putGalleryShow({id, show, index})
             },
             deleteGallery(id, index, title) {
                 this.$emit('removeGalleryOne', id, index, title)
             }
         }
-	}
+    }
 </script>
 
 <style scoped lang="stylus">
-cover-height = 300px
-.card-all
-    width cover-height
-    .content
-        padding 5px 10px
-        .auth-opert
-            &:after
-                display block
-                content: ''
-                clear: both
-                visibility hidden
-                height 0
-            .author
-                float left
-            .operating
-                float right
-    .cover-link
-        color #505a6d
-        .cover-image
-            width: 100%
-            height cover-height
-            .cover
+    cover-height = 300px
+    .card-all
+        width cover-height
+
+        .content
+            padding 5px 10px
+
+            .auth-opert
+                &:after
+                    display block
+                    content: ''
+                    clear: both
+                    visibility hidden
+                    height 0
+
+                .author
+                    float left
+
+                .operating
+                    float right
+
+        .cover-link
+            color #505a6d
+
+            .cover-image
                 width: 100%
-            .none-cover
-                font-size 1.5rem
-                text-align center
                 height cover-height
-                line-height cover-height
+                display flex
+                justify-content center
+                align-items center
                 background-color: #e8eaec;
-                >*
-                    vertical-align middle
+
+                .cover
+                    width: 100%
+
+
+                .cover-image-show
+                    width 100%
+
+                .none-cover
+                    font-size 1.5rem
+                    text-align center
+
+                    > *
+                        vertical-align middle
 
 </style>

@@ -37,7 +37,7 @@
             }
         },
         methods: {
-            ...mapActions(['getAllGallery', 'delGallery']),
+            ...mapActions('galleryModule', ['getAllGallery', 'delGallery']),
             showRemove(){
 				this.isShowRemove = !this.isShowRemove;
 			},
@@ -59,7 +59,7 @@
             }
         },
         computed : {
-            ...mapState({
+            ...mapState('galleryModule', {
                 galleryAll: state => state.galleryAll
             })
         },

@@ -110,12 +110,12 @@ export default {
     };
   },
   computed: {
-    ...mapState({
+    ...mapState('galleryModule', {
       imagesListInfo: state => state.imagesListInfo
     })
   },
   methods: {
-    ...mapActions(["getImageList"]),
+    ...mapActions('galleryModule', ["getImageList"]),
     removeImg() {}
   },
   mounted() {

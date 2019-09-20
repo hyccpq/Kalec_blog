@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import {mapActions, mapState} from 'vuex'
     import { addOneGallery, editOneGallery } from '../util/adApi'
     import {FormItem, Form, Button, Input} from 'iview'
 	export default {
@@ -59,18 +59,22 @@
 			let { id, index } = this.$route.params
             if(this.$route.params.id) {
                 if(!this.galleryAll.length) {
-                	await this.$store.dispatch('getAllGallery')
+                	// await this.$store.dispatch('getAllGallery')
+                    await this.getAllGallery()
                 }
                 let { title, description, author, _id } = this.galleryAll[index]
                 this.formValidate = { title, description, author, id: _id }
             }
         },
         computed: {
-            ...mapState({
+            ...mapState('galleryModule', {
                 galleryAll: state => state.galleryAll
             })
         },
         methods: {
+		    ...mapActions('galleryModule', [
+		        'getAllGallery'
+            ]),
 			handleUpdate (name) {
                 this.$refs[name].validate(async (valid) => {
                     if (valid) {
