@@ -95,12 +95,12 @@
             imageName: ''
         },
         computed: {
-            ...mapState({
+            ...mapState('galleryModule', {
                 qiniuToken: state => state.qiniuToken,
             }),
         },
         methods: {
-            ...mapActions(['getQiniuUpdateToken', 'postImagesList']),
+            ...mapActions('galleryModule', ['getQiniuUpdateToken', 'postImagesList']),
 
             openImgModal () {
             	this.isShowModal = true
@@ -135,6 +135,7 @@
 
             async startUpdate () {
                 try {
+                    // console.log()
 	                for (let i = 0; i < this.willUpdateImageList.length; i++) {
 		                let res = await this.updateImageToQiniu(this.willUpdateImageList[i], i)
                             console.log(res);

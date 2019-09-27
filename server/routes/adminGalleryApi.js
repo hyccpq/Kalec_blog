@@ -44,7 +44,7 @@ class AdminGalleryApi {
         try {
             const {id, title, author, description, password} = ctx.request.body
             await savedGallery(id, title, author, description, password)
-            ctx.body = resData(1, '查询成功', {})
+            ctx.body = resData(1, '修改成功', {})
         } catch (e) {
             ctx.body = resData(0, '出现错误', e.toString())
         }

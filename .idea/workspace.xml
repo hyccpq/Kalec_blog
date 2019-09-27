@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/mutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/adVuex/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/adVuex/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/mutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/adVuex/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/editGallery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/editGallery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/galleryInfoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/galleryInfoPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/galleryManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/galleryManage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/plug/galleryCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/plug/galleryCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/plug/addImg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/plug/addImg.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +203,8 @@
       <workItem from="1568772092890" duration="8125000" />
       <workItem from="1568863488192" duration="14977000" />
       <workItem from="1568946140219" duration="1518000" />
-      <workItem from="1568969419468" duration="3352000" />
+      <workItem from="1568969419468" duration="3712000" />
+      <workItem from="1569566400873" duration="6834000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
