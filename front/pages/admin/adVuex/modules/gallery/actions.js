@@ -54,3 +54,12 @@ export const getImageList = async ({commit}, id) => {
 		console.log(e);
 	}
 }
+
+export const putImageConf =  async ({commit, dispatch}, {id, imageId, imageDesc, imageName, show}) => {
+	try {
+	    let data = await API.putImages(id, imageId, {imageDesc, imageName, show})
+		dispatch('getImageList', id)
+	} catch (e) {
+		console.log(e);
+	}
+}

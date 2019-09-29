@@ -46,13 +46,13 @@
 
                         <h4>照片操作:{{item.imageName}}</h4>
                         <Button size="small" type="warning"
-                                @click="editPhoto(item._id, item.imageName, item.imageDesc)"
+                                @click="editPhoto(item._id, item.imageName, item.imageDesc, item.show)"
                         >
                             修改照片信息
                         </Button>
                         <Button size="small"
                                 type="success"
-                                @click="removeImg">
+                                @click="setCoverImg">
                             设置为封面
                         </Button>
                         <Button size="small"
@@ -73,7 +73,7 @@
                 :z-index="1100"
                 v-model="editPhotoInfo.showModal"
                 title="修改照片"
-                @on-ok=""
+                @on-ok="saveEditPhoto"
                 @on-cancel="changeShowEdit">
             <Form :model="editPhotoInfo" :label-width="80">
                 <Form-item label="标题">
@@ -88,6 +88,12 @@
                                placeholder="请输入描述..."></Input>
                     </label>
                 </Form-item>
+                <FormItem label="展示">
+                    <i-switch v-model="editPhotoInfo.isShow" size="large">
+                        <span slot="open">显示</span>
+                        <span slot="close">隐藏</span>
+                    </i-switch>
+                </FormItem>
             </Form>
         </Modal>
     </section>
@@ -97,7 +103,7 @@
     import {mapActions, mapState} from "vuex";
     import addImg from "./plug/addImg";
     import imageCard from "./plug/imageCard";
-    import {Card, Poptip, Modal, Form, FormItem, Input} from "iview";
+    import {Card, Poptip, Modal, Form, FormItem, Input, Switch} from "iview";
 
     export default {
         name: "galleryInfoPage",
@@ -106,7 +112,7 @@
             Card,
             imageCard,
             Poptip,
-            Modal, Form, FormItem, Input
+            Modal, Form, FormItem, Input, iSwitch: Switch
         },
         data() {
             return {
@@ -115,7 +121,8 @@
                     showModal: false,
                     iptName: '',
                     iptDesc: '',
-                    photoId: ''
+                    photoId: '',
+                    isShow: true
                 }
             };
         },
@@ -125,17 +132,29 @@
             })
         },
         methods: {
-            ...mapActions('galleryModule', ["getImageList"]),
+            ...mapActions('galleryModule', ["getImageList", "putImageConf"]),
             removeImg() {
             },
-            editPhoto(photoId, name, desc) {
+            editPhoto(photoId, name, desc, isShowNum) {
                 this.editPhotoInfo.iptDesc = desc;
                 this.editPhotoInfo.iptName = name;
                 this.editPhotoInfo.photoId = photoId;
+                this.editPhotoInfo.isShow = isShowNum === 1;
                 this.editPhotoInfo.showModal = true
             },
             changeShowEdit() {
                 this.editPhotoInfo.showModal = false
+            },
+            setCoverImg () {
+            },
+            saveEditPhoto () {
+                this.putImageConf({
+                    id: this.$route.params.id,
+                    imageId: this.editPhotoInfo.photoId,
+                    imageDesc: this.editPhotoInfo.iptDesc,
+                    imageName: this.editPhotoInfo.iptName,
+                    show: this.editPhotoInfo.isShow ? 1 : 0
+                });
             }
         },
         mounted() {

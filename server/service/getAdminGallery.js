@@ -146,7 +146,7 @@ export const updateImages = async (id, imageList) => {
 
 export const getOneGalleryImages = async (id) => {
     try {
-        let data = await GalleryItem.findById(id, "-images.show")
+        let data = await GalleryItem.findById(id)
         if (data) {
             return data
         } else {
@@ -199,7 +199,7 @@ export const editSelectImage = async (id, imageId, {imageName, imageDesc, show})
             if (imageName) imageInfo.imageName = imageName
             if (imageDesc) imageInfo.imageDesc = imageDesc
             if (typeof show !== 'undefined') imageInfo.show = show
-            await imageInfo.save()
+            await galleryItem.save()
             return imageInfo;
         } else {
             throw '数据格式不正确'
