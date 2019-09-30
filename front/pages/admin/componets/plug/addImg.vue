@@ -10,9 +10,15 @@
     .add-update
         width: 600px;
         cursor default
+        overflow auto
         .update-list
             display flex
+            justify-content space-evenly
+            flex-flow:row wrap;
             .update-card
+                width 16rem
+                height 16rem
+                margin 1rem
                 font-size 12px
                 position relative;
                 list-style-type none
@@ -42,7 +48,7 @@
         <update-modal :is-showlog="isShowModal" @onChange="closeImgModal">
             <div class="add-update">
                 <h3>添加照片</h3>
-                <p>注意：填写完整信息后提交，若需单独修改，请提交后修改。</p>
+                <p>注意：填写完整信息后提交，若需单独修改，请提交后修改。。</p>
                 <imageUpdate @updateImageList="updateImageList"></imageUpdate>
                 <ul class="update-list">
                     <li v-for="(item, index) in willUpdateImageList"

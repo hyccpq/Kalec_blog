@@ -29,6 +29,7 @@ export const saveNewGallery = async (title, author, description, password, url =
         let addData = new GalleryItem(query)
         return await addData.save()
     } catch (e) {
+        console.error(e)
         throw e
     }
 }
@@ -93,7 +94,7 @@ export const deleteOneGallery = async id => {
     try {
         let imageData = await GalleryItem.findById(id);
         if (imageData) {
-            await FileManage.instance.deleteListFile(imageData.images.map(item => item.imagePath), BUCKET);
+            if (imageData.images.length) await FileManage.instance.deleteListFile(imageData.images.map(item => item.imagePath), BUCKET);
             await GalleryItem.findByIdAndRemove(id)
             return '相册删除成功'
         } else {

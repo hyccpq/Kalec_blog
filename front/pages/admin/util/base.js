@@ -7,14 +7,14 @@ const _httpRequest = (param, fn) => {
 	})
 		.then(res => {
 			if (res.data.status === 1) {
-				fn(false)
+				if(fn)fn(false, res.data.msg)
 				return res.data.data
 			} else {
-				fn(false)
+				if(fn)fn(false, res.data.msg)
 				throw res.data
 			}
 		}).catch(err=> {
-			fn(false)
+			if(fn)fn(false)
 			console.log(err);
 		})
 }
@@ -25,6 +25,6 @@ export function request (param) {
 		param(true);
 		return obj => _httpRequest(obj, param);
 	} else if(type === 'object' && param !== null) {
-		return _httpRequest(param, () => {})
+		return _httpRequest(param)
 	}
 }

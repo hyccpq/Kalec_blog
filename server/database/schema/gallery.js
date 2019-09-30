@@ -25,7 +25,7 @@ let galleryItem = new Schema({
         default: 0,
         required: true
     },
-    password: {type: String, unique: true},
+    password: {type: String, default: ''},
     url: {type: String, default: ''},
     coverImgPath: {type: String, default: ''},
     show: {type: Number, default: 0},

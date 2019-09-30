@@ -3,7 +3,7 @@
         <router-link :to="`/admin/edit/galleryPage/${galleryItem._id}/${galleryItem.title}`" class="cover-link">
             <div class="cover-image">
                 <div class="cover" v-if="galleryItem.coverImgPath"><img class="cover-image-show"
-                                                                        :src="galleryItem.url + '/' + galleryItem.coverImgPath"
+                                                                        :src="galleryItem.url + '/' + galleryItem.coverImgPath + galleryConf"
                                                                         :alt="galleryItem.title"
                 ></div>
                 <!--                <div class="none-cover cover" v-if="galleryItem.coverImgPath">-->
@@ -79,6 +79,10 @@
             galleryIndex: {
                 type: Number,
                 default: 0
+            },
+            galleryConf: {
+                type: String,
+                default: ''
             }
         },
         methods: {
@@ -120,6 +124,7 @@
             color #505a6d
 
             .cover-image
+                overflow hidden
                 width: 100%
                 height cover-height
                 display flex

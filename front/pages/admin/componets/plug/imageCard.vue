@@ -50,8 +50,8 @@
 
 <style scoped lang="stylus">
 .img-card
-    width: 20em;
-    height: 20em;
+    width: 100%;
+    height: 100%;
     overflow hidden
     .img-area
         height 15em

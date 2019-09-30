@@ -86,8 +86,8 @@ export const postGalleryOneImagesList = (id, imageList) => {
     })
 }
 
-export const delImages = (id, imageIds) => {
-    return request({
+export const delImages = (cb, id, imageIds) => {
+    return request(cb)({
         url: OPTION_IMAGES,
         method: 'DELETE',
         params: {
@@ -96,12 +96,12 @@ export const delImages = (id, imageIds) => {
     })
 }
 
-export const putImages = (id, imageId, {imageDesc, imageName, show}) => {
+export const putImages = (id, imageId, cb, {imageDesc, imageName, show}) => {
     let dataItem = {}
     if (imageDesc) dataItem.imageDesc = imageDesc
     if (imageName) dataItem.imageName = imageName
     if (show) dataItem.show = show
-    return request({
+    return request(cb)({
         url: OPTION_IMAGES,
         method: 'PUT',
         data: {
@@ -110,12 +110,19 @@ export const putImages = (id, imageId, {imageDesc, imageName, show}) => {
     })
 }
 
-export const postCover = (id, imagePath) => {
-	return request({
-		url: SET_COVER,
-		method : 'POST',
-		data: {
-			id, imagePath
-		}
-	})
+/**
+ * 设定封面
+ * @param cb 设定完成回调
+ * @param id 相册id
+ * @param imagePath 照片路径
+ * @returns {*}
+ */
+export const postCover = (cb, id, imagePath) => {
+    return request(cb)({
+        url: SET_COVER,
+        method: 'POST',
+        data: {
+            id, imagePath
+        }
+    })
 }

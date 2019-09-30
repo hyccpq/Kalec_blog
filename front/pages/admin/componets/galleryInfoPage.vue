@@ -6,10 +6,13 @@
 
         .list {
             display: flex;
+            flex-wrap wrap
+            justify-content space-evenly
 
             .item {
                 margin: 5px;
                 cursor: pointer;
+                list-style-type none
 
                 .item-card {
                     width: 300px;
@@ -36,7 +39,7 @@
                         <image-card
                                 :img-uri="imagesListInfo.url + '/' + item.imagePath  + '?imageView2/1/w/900/h/600/interlace/1/q/75|imageslim'"
                                 :font-size="15"
-                                :update-time="item.updateTime"
+                                :update-time="$formatTime(item.updateTime)"
                                 :image-name="item.imageName"
                                 :image-desc="item.imageDesc"
                         />
@@ -52,12 +55,12 @@
                         </Button>
                         <Button size="small"
                                 type="success"
-                                @click="setCoverImg">
+                                @click="setCoverImg(item.imagePath)">
                             设置为封面
                         </Button>
                         <Button size="small"
                                 type="error"
-                                @click="removeImg">
+                                @click="removeImg(item._id)">
                             删除照片
                         </Button>
                     </div>
@@ -132,8 +135,13 @@
             })
         },
         methods: {
-            ...mapActions('galleryModule', ["getImageList", "putImageConf"]),
-            removeImg() {
+            ...mapActions('galleryModule', ["getImageList", "putImageConf", "setCover", "delImageConf"]),
+            removeImg(imageIds) {
+                this.delImageConf({
+                    cb: this.showNotice,
+                    id: this.$route.params.id,
+                    imageIds
+                })
             },
             editPhoto(photoId, name, desc, isShowNum) {
                 this.editPhotoInfo.iptDesc = desc;
@@ -145,16 +153,25 @@
             changeShowEdit() {
                 this.editPhotoInfo.showModal = false
             },
-            setCoverImg () {
+            setCoverImg (imageName) {
+                this.setCover({
+                    id: this.$route.params.id,
+                    imageName,
+                    cb: this.showNotice
+                })
             },
             saveEditPhoto () {
                 this.putImageConf({
+                    cb: this.showNotice,
                     id: this.$route.params.id,
                     imageId: this.editPhotoInfo.photoId,
                     imageDesc: this.editPhotoInfo.iptDesc,
                     imageName: this.editPhotoInfo.iptName,
                     show: this.editPhotoInfo.isShow ? 1 : 0
                 });
+            },
+            showNotice (whetherLoaded, msg) {
+                if(!whetherLoaded) this.$noticeInfo(msg ? msg : '出现错位！！', !!msg)
             }
         },
         mounted() {
