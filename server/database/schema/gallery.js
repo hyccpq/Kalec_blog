@@ -68,6 +68,14 @@ galleryItem.pre('save', async function (next) {
     }
 })
 
+// galleryItem.pre('find', function(next) {
+//     console.log(this instanceof mongoose.Query);
+//     console.warn(JSON.stringify(this))
+//     if(!this.getQuery().password) return next();
+//     this.isPsd = !!this.password;
+//     next();
+// })
+
 galleryItem.methods = {
     comparePassword,
 

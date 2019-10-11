@@ -22,12 +22,12 @@ class AdminGalleryApi {
     @auth
     @admin('admin')
     @required({
-        body: ['title', 'author', 'description']
+        body: ['title', 'author', 'description', 'isPwd']
     })
     async createGallery(ctx, next) {
         try {
-            const {title, author, description, password} = ctx.request.body
-            await saveNewGallery(title, author, description, password)
+            const {title, author, description, password, isPwd} = ctx.request.body
+            await saveNewGallery(title, author, description, password, isPwd)
             ctx.body = resData(1, '查询成功', {})
         } catch (e) {
             ctx.body = resData(0, '出现错误', e.toString())
@@ -38,12 +38,12 @@ class AdminGalleryApi {
     @auth
     @admin('admin')
     @required({
-        body: ['id', 'title', 'author', 'description']
+        body: ['id', 'title', 'author', 'description', 'isPwd']
     })
     async changeGallery(ctx, next) {
         try {
-            const {id, title, author, description, password} = ctx.request.body
-            await savedGallery(id, title, author, description, password)
+            const {id, title, author, description, password, isPwd} = ctx.request.body
+            await savedGallery(id, title, author, description, password, isPwd)
             ctx.body = resData(1, '修改成功', {})
         } catch (e) {
             ctx.body = resData(0, '出现错误', e.toString())

@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/adVuex/modules/gallery/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/admin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/editGallery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/editGallery.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/galleryInfoPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/galleryInfoPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/galleryManage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/galleryManage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/plug/addImg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/plug/addImg.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/plug/galleryCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/plug/galleryCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/plug/imageCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/plug/imageCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/util/adApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/util/adApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/util/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/util/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/database/schema/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/gallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -215,7 +208,11 @@
       <workItem from="1568969419468" duration="3712000" />
       <workItem from="1569566400873" duration="7240000" />
       <workItem from="1569747975834" duration="3258000" />
-      <workItem from="1569809679009" duration="10356000" />
+      <workItem from="1569809679009" duration="10743000" />
+      <workItem from="1570516578932" duration="7260000" />
+      <workItem from="1570701282437" duration="1250000" />
+      <workItem from="1570777194461" duration="1169000" />
+      <workItem from="1570779399665" duration="2231000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>

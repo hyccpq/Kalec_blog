@@ -7,7 +7,16 @@
             </FormItem>
             <FormItem label="相册描述" prop="description">
                 <Input v-model="formValidate.description" type="textarea" size="default"
-                       :autosize="{minRows: 2,maxRows: 5}" placeholder="输入相册描述"></Input>
+                       :autosize="{minRows: 5,maxRows: 15}" placeholder="输入相册描述"></Input>
+            </FormItem>
+            <FormItem label="相册加密">
+                <i-switch v-model="formValidate.isPwd" size="large">
+                    <span slot="open">On</span>
+                    <span slot="close">Off</span>
+                </i-switch>
+            </FormItem>
+            <FormItem label="加密密码" prop="title" v-if="formValidate.isPwd">
+                <Input v-model="formValidate.password" type="password" size="default" placeholder="输入相册密码"></Input>
             </FormItem>
             <FormItem>
                 <Button type="primary" @click="handleSubmit('formValidate')" size="default" v-if="!$route.params.id">
@@ -23,7 +32,7 @@
 <script>
     import {mapActions, mapState} from 'vuex'
     import {addOneGallery, editOneGallery} from '../util/adApi'
-    import {FormItem, Form, Button, Input} from 'iview'
+    import {FormItem, Form, Button, Input, Switch} from 'iview'
 
     export default {
         name: "editGallery",
@@ -31,7 +40,8 @@
             FormItem,
             Form,
             Button,
-            Input
+            Input,
+            ISwitch: Switch
         },
         data() {
             const validatePass = (rule, value, callback) => {
@@ -43,11 +53,14 @@
                 }
             };
             return {
+                defIsPwd: false,
                 formValidate: {
                     title: '',
                     description: '',
                     author: '',
-                    id: ''
+                    id: '',
+                    isPwd: false,
+                    password: ''
                 },
                 ruleCustom: {
                     title: [
@@ -66,8 +79,9 @@
                     // await this.$store.dispatch('getAllGallery')
                     await this.getAllGallery()
                 }
-                let {title, description, author, _id} = this.galleryAll[index]
-                this.formValidate = {title, description, author, id: _id}
+                let {title, description, author, _id, isPwd} = this.galleryAll[index]
+                this.defIsPwd = isPwd
+                this.formValidate = {title, description, author, id: _id, switch: isPwd}
             }
         },
         computed: {
@@ -121,6 +135,7 @@
     .section-edit
         width 100%
         max-width 768px
+
         .title
             text-align center
             padding 15px 0

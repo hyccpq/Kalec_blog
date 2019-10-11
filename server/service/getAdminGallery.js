@@ -20,11 +20,11 @@ export const getQiniuToken = () => {
 
 const GalleryItem = mongoose.model('galleryModel')
 
-export const saveNewGallery = async (title, author, description, password, url = 'http://img.kalecgos.top') => {
+export const saveNewGallery = async (title, author, description, password, url = 'http://img.kalecgos.top', isPwd = false) => {
     let query = {
         title, author, description, url
     }
-    if (password) query.password = password
+    if (password && isPwd) query.password = password
     try {
         let addData = new GalleryItem(query)
         return await addData.save()
@@ -34,14 +34,14 @@ export const saveNewGallery = async (title, author, description, password, url =
     }
 }
 
-export const savedGallery = async (id, title, author, description, password) => {
+export const savedGallery = async (id, title, author, description, password, isPwd = false) => {
     let query = {
         title, author, description
     }
 
     try {
         let data;
-        if (password) {
+        if (password && isPwd) {
             data = await GalleryItem.findById(id)
             data.password = password
             data.title = title
@@ -63,11 +63,16 @@ export const savedGallery = async (id, title, author, description, password) => 
 export const getAllGallery = async (isManage, {pageNum = 0, pageSize = 10}) => {
     try {
         if (isManage) {
-            return await GalleryItem
-                .find({}, 'title author description url coverImgPath show pv like meta')
+            let data = await GalleryItem
+                .find({}, 'title author description url coverImgPath show pv like meta password')
                 .sort({
                     ['meta.updateTime']: -1
-                })
+                }).lean()
+            return data.map((item) => {
+                item.isPwd = !!item.password
+                delete item.password
+                return item
+            })
         } else {
             // 非管理员访问列表
             const querys = {show: 1}

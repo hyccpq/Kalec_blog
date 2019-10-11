@@ -42,7 +42,7 @@
     "koa-webpack": "^5.2.4",
     "lodash": "^4.17.5",
     "mavon-editor": "^2.4.13",
-    "mongoose": "^5.2.7",
+    "mongoose": "^5.7.3",
     "nanoid": "^1.2.2",
     "node-crypto": "^1.0.0",
     "nprogress": "^0.2.0",
