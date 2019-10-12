@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/editGallery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/editGallery.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/gallery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +207,7 @@
       <workItem from="1570516578932" duration="7260000" />
       <workItem from="1570701282437" duration="1250000" />
       <workItem from="1570777194461" duration="1169000" />
-      <workItem from="1570779399665" duration="2231000" />
+      <workItem from="1570779399665" duration="2558000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
