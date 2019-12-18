@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/admin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/admin/componets/write.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +90,7 @@
       <recent name="$PROJECT_DIR$/front/pages/index/assets/svg" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev:index">
+  <component name="RunManager" selected="npm.dev:manage">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -136,9 +139,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev:index" />
         <item itemvalue="npm.test" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +220,7 @@
       <workItem from="1570846099101" duration="1355000" />
       <workItem from="1571018318554" duration="1401000" />
       <workItem from="1575098055629" duration="119000" />
-      <workItem from="1576574640215" duration="2567000" />
+      <workItem from="1576574640215" duration="4407000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -270,25 +273,29 @@
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="440" y="174" key="#Notifications/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635717518" />
-    <state width="1636" height="156" key="GridCell.Tab.0.bottom" timestamp="1576637844215">
+    <state width="1636" height="238" key="GridCell.Tab.0.bottom" timestamp="1576640335559">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="156" key="GridCell.Tab.0.bottom/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576637844215" />
+    <state width="1636" height="238" key="GridCell.Tab.0.bottom/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576640335559" />
     <state width="1356" height="156" key="GridCell.Tab.0.bottom/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549189" />
-    <state width="1636" height="156" key="GridCell.Tab.0.center" timestamp="1576637844213">
+    <state width="1636" height="238" key="GridCell.Tab.0.center" timestamp="1576640335558">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="156" key="GridCell.Tab.0.center/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576637844213" />
+    <state width="1636" height="238" key="GridCell.Tab.0.center/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576640335558" />
     <state width="1356" height="156" key="GridCell.Tab.0.center/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549188" />
-    <state width="1636" height="156" key="GridCell.Tab.0.left" timestamp="1576637844212">
+    <state width="1636" height="238" key="GridCell.Tab.0.left" timestamp="1576640335557">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="156" key="GridCell.Tab.0.left/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576637844212" />
+    <state width="1636" height="238" key="GridCell.Tab.0.left/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576640335557" />
     <state width="1356" height="156" key="GridCell.Tab.0.left/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549187" />
-    <state width="1636" height="156" key="GridCell.Tab.0.right" timestamp="1576637844214">
+    <state width="1636" height="238" key="GridCell.Tab.0.right" timestamp="1576640335558">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="156" key="GridCell.Tab.0.right/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576637844214" />
+    <state width="1636" height="238" key="GridCell.Tab.0.right/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576640335558" />
     <state width="1356" height="156" key="GridCell.Tab.0.right/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549189" />
+    <state x="498" y="287" width="683" height="476" key="find.popup" timestamp="1576639833950">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="498" y="287" width="683" height="476" key="find.popup/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576639833950" />
   </component>
 </project>

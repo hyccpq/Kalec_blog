@@ -6,6 +6,7 @@
   "repository": "https://github.com/hyccpq/Kalec_blog.git",
   "author": "hyccpq <hyccpq@hotmail.com>",
   "license": "MIT",
+  "type": "nodule",
   "scripts": {
     "dev:index": "NODE_ENV=development:index nodemon  -r @babel/register  server/index.js",
     "dev:manage": "NODE_ENV=development:manage nodemon -r @babel/register server/index.js",

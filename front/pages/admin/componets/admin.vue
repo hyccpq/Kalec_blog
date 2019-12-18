@@ -37,7 +37,7 @@
                     <router-view></router-view>
                 </div>
                 <div class="layout-copy">
-                    2016-2018 &copy; 冰空的作品展示
+                    2016-2020 &copy; 冰空的作品展示
                 </div>
             </div>
 
