@@ -23,11 +23,11 @@
 </template>
 
 <script>
-	import myFooter from './plug/footer'
+    import myFooter from './plug/footer'
 
     export default {
-		metaInfo: {
-			title: ' Kalec的个人网站',
+        metaInfo: {
+            title: ' Kalec的个人网站',
             titleTemplate: '%s - 冰空的作品展示'
         },
 		name: "home",
@@ -59,7 +59,7 @@
         align-items center
         width: 100%
         height: inherit
-        background url("//api.i-meto.com/bing") no-repeat center
+        background url("https://api.dujin.org/bing/1920.php") no-repeat center
         background-size cover
         color white
         text-align center

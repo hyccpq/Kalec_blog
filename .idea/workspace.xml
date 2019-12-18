@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/pages/index/components/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +55,11 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
@@ -81,19 +87,7 @@
       <recent name="$PROJECT_DIR$/front/pages/index/assets/svg" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="npm.dev:manage">
+  <component name="RunManager" selected="npm.dev:index">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -147,6 +141,18 @@
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -208,6 +214,10 @@
       <workItem from="1570701282437" duration="1250000" />
       <workItem from="1570777194461" duration="1169000" />
       <workItem from="1570779399665" duration="2558000" />
+      <workItem from="1570846099101" duration="1355000" />
+      <workItem from="1571018318554" duration="1401000" />
+      <workItem from="1575098055629" duration="119000" />
+      <workItem from="1576574640215" duration="2299000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -254,5 +264,27 @@
     <MESSAGE value="相册初始化" />
     <MESSAGE value="懒加载图片" />
     <option name="LAST_COMMIT_MESSAGE" value="懒加载图片" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="440" y="174" key="#Notifications" timestamp="1576635717518">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="440" y="174" key="#Notifications/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635717518" />
+    <state width="1356" height="156" key="GridCell.Tab.0.bottom" timestamp="1576635549189">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1356" height="156" key="GridCell.Tab.0.bottom/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549189" />
+    <state width="1356" height="156" key="GridCell.Tab.0.center" timestamp="1576635549188">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1356" height="156" key="GridCell.Tab.0.center/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549188" />
+    <state width="1356" height="156" key="GridCell.Tab.0.left" timestamp="1576635549187">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1356" height="156" key="GridCell.Tab.0.left/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549187" />
+    <state width="1356" height="156" key="GridCell.Tab.0.right" timestamp="1576635549189">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1356" height="156" key="GridCell.Tab.0.right/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549189" />
   </component>
 </project>

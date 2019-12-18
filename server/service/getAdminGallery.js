@@ -100,7 +100,7 @@ export const deleteOneGallery = async id => {
         let imageData = await GalleryItem.findById(id);
         if (imageData) {
             if (imageData.images.length) await FileManage.instance.deleteListFile(imageData.images.map(item => item.imagePath), BUCKET);
-            await GalleryItem.findByIdAndRemove(id)
+            await GalleryItem.findByIdAndRemove(id);
             return '相册删除成功'
         } else {
             throw '相册不存在'
