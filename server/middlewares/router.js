@@ -1,9 +1,11 @@
-import { Route } from '../lib/decorator'
+import { Route } from '../lib/decorator.js'
 import { resolve } from 'path'
+import { getDirname } from '../lib/file.js'
 
-export const routers = app => {
-	const apiPath = resolve(__dirname, '../routes')
-	const router = new Route(app, apiPath)
-	
-	router.init()
+export const routers = async app => {
+  const routerDirPath =
+    process.env.NODE_ENV === 'production' ? '../routes-build' : '../routes'
+  const apiPath = resolve(getDirname(import.meta).__dirname, routerDirPath)
+  const router = new Route(app, apiPath)
+  await router.init()
 }

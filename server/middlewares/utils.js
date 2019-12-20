@@ -4,18 +4,18 @@ import koaCompress from 'koa-compress'
 import nodeZlib from 'zlib'
 
 export const addBodyParser = app => {
-	app.use(koaBodyparser())
+  app.use(koaBodyparser())
 }
 
 export const logs = app => {
-	app.use(logger())
+  app.use(logger())
 }
-
 
 export const compression = app => {
-	app.use(koaCompress({
-		threshold: 2048,
-		flush: nodeZlib.Z_SYNC_FLUSH
-	}))
+  app.use(
+    koaCompress({
+      threshold: 2048,
+      flush: nodeZlib.Z_SYNC_FLUSH
+    })
+  )
 }
-

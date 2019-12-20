@@ -1,5 +1,5 @@
-import {testMain} from "../test/test";
+import { testMain } from '../test/test.js'
 
 export const test = _ => {
-    testMain(_);
+  testMain(_)
 }

@@ -5,4 +5,8 @@
 // })
 // require('babel-polyfill')
 
-require('./server/index')
+// require('./server/index')
+;(async () => {
+  ;(await import('@babel/register'))()
+  import('./server/index.js')
+})()

@@ -1,85 +1,102 @@
-import Koa from 'koa';
-import {resolve} from 'path'
+import Koa from 'koa'
+import { resolve } from 'path'
 import R from 'ramda'
 import http2 from 'http2'
 import fs from 'fs'
-import {initSchemas, initAdmin, connect, initClassicAndTags} from './database/init'
+import {
+  initSchemas,
+  initAdmin,
+  connect,
+  initClassicAndTags
+} from './database/init.js'
 import 'colors'
+import { getDirname, getRequire } from './lib/file.js'
 
-const MIDDLEWARES = [
-    'utils',
-    'session',
-    'staticServer',
-    'router'
-];
+const MIDDLEWARES = ['utils', 'session', 'staticServer', 'router']
 
 const HTTPS_OPTIONS = {
-    key: fs.readFileSync(resolve(__dirname, './conf/ssl/private.key')),
-    cert: fs.readFileSync(resolve(__dirname, './conf/ssl/full_chain.pem')),
-    allowHTTP1: true
+  key: fs.readFileSync(
+    resolve(getDirname(import.meta).__dirname, './conf/ssl/private.key')
+  ),
+  cert: fs.readFileSync(
+    resolve(getDirname(import.meta).__dirname, './conf/ssl/full_chain.pem')
+  ),
+  allowHTTP1: true
 }
 
 const condition = process.env.NODE_ENV
 
 switch (condition) {
-    case 'development:index':
-        MIDDLEWARES.push('index.dev')
-        break;
+  case 'development:index':
+    MIDDLEWARES.push('index.dev')
+    break
 
-    case 'development:manage':
-        MIDDLEWARES.push('manage.dev')
-        break;
-    case 'test':
-        MIDDLEWARES.push('test')
-        break;
-    default:
-        MIDDLEWARES.push('prod')
-        break;
+  case 'development:manage':
+    MIDDLEWARES.push('manage.dev')
+    break
+  case 'test':
+    MIDDLEWARES.push('test')
+    break
+  default:
+    MIDDLEWARES.push('prod')
+    break
 }
 
 const app = new Koa()
-console.log(MIDDLEWARES);
-
-
+console.log(MIDDLEWARES)
 ;(async () => {
+  await initSchemas()
 
-    initSchemas();
+  await connect()
 
-    await connect();
+  await initAdmin()
 
-    await initAdmin();
+  await initClassicAndTags()
 
-    await initClassicAndTags();
+  console.log('数据库初始化完毕'.yellow)
 
-    console.log('数据库初始化完毕'.yellow);
-
-    const useMiddlewares = app => {
-        R.map(
-            R.compose(
-                R.forEachObjIndexed(
-                    initWith => initWith(app)
-                ),
-                require,
-                name => resolve(__dirname, `./middlewares/${name}`)
-            )
-        )(MIDDLEWARES)
+  const initMiddlewares = app => async prs => {
+    try {
+      let middleFiles = await Promise.all(prs)
+      for (const middles of middleFiles) {
+        let keys = R.keys(middles)
+        for (const key of keys) {
+          await middles[key](app)
+        }
+      }
+      // middleFiles.map(i => console.log(R.keys(i)))
+    } catch (e) {
+      console.error(e.bgRed)
     }
+  }
 
-    useMiddlewares(app)
+  const useMiddlewares = app => {
+    R.pipe(
+      R.map(
+        R.compose(
+          s => import(s),
+          name =>
+            resolve(getDirname(import.meta).__dirname, `./middlewares/${name}`),
+          iter => `${iter}.js`
+        )
+      ),
+      initMiddlewares(app)
+    )(MIDDLEWARES)
+  }
 
-    if (condition !== 'production' || condition === 'production:test') {
-        app.listen(8088, () => {
-            console.log('服务运行于\nhttp://localhost:8088');
-            console.log('服务运行于\nhttp://kalec.kalecgos.top:8088');
-        })
-    } else {
-        app.listen(80, () => {
-            console.log('服务运行于\nhttp://localhost:80');
-        })
-        http2.createSecureServer(HTTPS_OPTIONS, app.callback()).listen(443, () => {
-            console.log("https://localhost:443".bgRed);
-        });
-    }
+  useMiddlewares(app)
 
-
+  if (condition !== 'production' || condition === 'production:test') {
+    app.listen(8088, () => {
+      console.log('服务运行于\nhttp://localhost:8088')
+      console.log('服务运行于\nhttp://kalec.kalecgos.top:8088')
+    })
+  } else {
+    app.listen(80, () => {
+      console.log('服务运行于\nhttp://localhost:80')
+    })
+    http2.createSecureServer(HTTPS_OPTIONS, app.callback()).listen(443, () => {
+      console.log('https://localhost:443'.bgRed)
+    })
+  }
 })()

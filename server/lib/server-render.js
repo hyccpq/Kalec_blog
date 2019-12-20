@@ -1,26 +1,21 @@
 export default async (ctx, renderer) => {
-    
+  const context = { url: ctx.path }
 
-    const context = { url: ctx.path }
+  try {
+    ctx.set('Content-Type', 'text/html')
 
-    try {
-        ctx.set('Content-Type', 'text/html')
+    const appString = await renderer.renderToString(context)
 
-        const appString = await renderer.renderToString(context)
-        
-        
-        const { title } = context.meta.inject()
+    const { title } = context.meta.inject()
 
-        await ctx.render('index.ejs', {
-            appString,
-            style: context.renderStyles(),
-            state: context.renderState(),
-            javascript: context.renderScripts(),
-	        title: title.text()
-        })
-        
-    } catch (error) {
-    	console.error('渲染错误',error);
-     
-    }
+    await ctx.render('index.ejs', {
+      appString,
+      style: context.renderStyles(),
+      state: context.renderState(),
+      javascript: context.renderScripts(),
+      title: title.text()
+    })
+  } catch (error) {
+    throw error
+  }
 }
