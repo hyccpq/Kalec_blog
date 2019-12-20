@@ -9,9 +9,9 @@
   "main": "./server/index.js",
   "homepage": "https://www.kalecgos.top",
   "scripts": {
-    "dev:index": "NODE_ENV=development:index node server/index.js",
-    "dev:manage": "NODE_ENV=development:manage nodemon server/index.js",
-    "node": "nodemon server/index.js",
+    "dev:index": "NODE_ENV=development:index nodemon index.js",
+    "dev:manage": "NODE_ENV=development:manage nodemon index.js",
+    "node": "nodemon index.js",
     "build": "rm -rf public/dist && rm -rf .cache && yarn build:client && yarn build:server && yarn build:manage && yarn build-routes",
     "build:client": "cross-env NODE_ENV=production webpack --config server/build/webpack.config.client.cjs --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config server/build/webpack.config.server.cjs --progress --hide-modules",

@@ -2,61 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/babel.config.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/webpack.config.base.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/webpack.config.client.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/webpack.config.manage.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/build/webpack.config.server.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/lib/file.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.babelrc" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodemon.json" beforeDir="false" afterPath="$PROJECT_DIR$/nodemon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.cjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.base.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.client.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.manage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/articleItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/articleItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/gallery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/loginLogs.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/loginLogs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/siteReading.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/siteReading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/schema/tagAndClassic.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/schema/tagAndClassic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database/tool/encryption.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/tool/encryption.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/lib/decorator.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/decorator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/lib/server-render.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/server-render.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/lib/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/lib/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/dev/devMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/dev/devMiddleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/dev/hotMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/dev/hotMiddleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/final.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/final.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/index.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/index.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/manage.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/manage.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/prod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/session.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/session.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/staticServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/staticServer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/middlewares/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/adminApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/adminFileApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminFileApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminGalleryApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/adminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/adminPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/publicApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/publicApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/publicGalleryApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/publicGalleryApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/base/fileManageBase.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/base/fileManageBase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/fileManage.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/fileManage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getAdminGallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminGallery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getAdminInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getAdminInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getArticleInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getArticleInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/service/getGalleryInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/service/getGalleryInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/test/test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +92,7 @@
       <recent name="$PROJECT_DIR$/front/pages/index/assets/svg" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build-routes" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -159,6 +108,16 @@
       <command value="run" />
       <scripts>
         <script value="build-server" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -184,16 +143,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="node" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="node" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -207,18 +156,18 @@
     <list>
       <item itemvalue="npm.dev:manage" />
       <item itemvalue="npm.dev:index" />
-      <item itemvalue="npm.node" />
       <item itemvalue="npm.start" />
       <item itemvalue="npm.build-server" />
       <item itemvalue="npm.build-routes" />
+      <item itemvalue="npm.build" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.build-routes" />
         <item itemvalue="npm.dev:index" />
         <item itemvalue="npm.build-server" />
-        <item itemvalue="npm.node" />
       </list>
     </recent_temporary>
   </component>
@@ -299,7 +248,7 @@
       <workItem from="1575098055629" duration="119000" />
       <workItem from="1576574640215" duration="18391000" />
       <workItem from="1576672308052" duration="154000" />
-      <workItem from="1576673096675" duration="23499000" />
+      <workItem from="1576673096675" duration="24223000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -356,34 +305,34 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="490" y="310" key="EditFileWatcherDialog/0.0.1680.1050/-2560.-278.2560.1417@0.0.1680.1050" timestamp="1576661311734" />
-    <state width="1636" height="441" key="GridCell.Tab.0.bottom" timestamp="1576823590439">
+    <state width="1636" height="441" key="GridCell.Tab.0.bottom" timestamp="1576827893348">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="441" key="GridCell.Tab.0.bottom/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576823590439" />
+    <state width="1636" height="441" key="GridCell.Tab.0.bottom/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576827893348" />
     <state width="1636" height="303" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576808308469" />
     <state width="1636" height="264" key="GridCell.Tab.0.bottom/0.0.1680.994/-2560.-278.2560.1417@0.0.1680.994" timestamp="1576735948758" />
     <state width="1356" height="156" key="GridCell.Tab.0.bottom/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549189" />
     <state width="1636" height="452" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1576672475674" />
-    <state width="1636" height="441" key="GridCell.Tab.0.center" timestamp="1576823590437">
+    <state width="1636" height="441" key="GridCell.Tab.0.center" timestamp="1576827893344">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="441" key="GridCell.Tab.0.center/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576823590437" />
+    <state width="1636" height="441" key="GridCell.Tab.0.center/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576827893344" />
     <state width="1636" height="303" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576808308468" />
     <state width="1636" height="264" key="GridCell.Tab.0.center/0.0.1680.994/-2560.-278.2560.1417@0.0.1680.994" timestamp="1576735948757" />
     <state width="1356" height="156" key="GridCell.Tab.0.center/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549188" />
     <state width="1636" height="452" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1576672475673" />
-    <state width="1636" height="441" key="GridCell.Tab.0.left" timestamp="1576823590436">
+    <state width="1636" height="441" key="GridCell.Tab.0.left" timestamp="1576827893343">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="441" key="GridCell.Tab.0.left/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576823590436" />
+    <state width="1636" height="441" key="GridCell.Tab.0.left/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576827893343" />
     <state width="1636" height="303" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576808308467" />
     <state width="1636" height="264" key="GridCell.Tab.0.left/0.0.1680.994/-2560.-278.2560.1417@0.0.1680.994" timestamp="1576735948756" />
     <state width="1356" height="156" key="GridCell.Tab.0.left/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549187" />
     <state width="1636" height="452" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1576672475672" />
-    <state width="1636" height="441" key="GridCell.Tab.0.right" timestamp="1576823590438">
+    <state width="1636" height="441" key="GridCell.Tab.0.right" timestamp="1576827893346">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1636" height="441" key="GridCell.Tab.0.right/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576823590438" />
+    <state width="1636" height="441" key="GridCell.Tab.0.right/0.0.1680.1050/-2560.-301.2560.1440@0.0.1680.1050" timestamp="1576827893346" />
     <state width="1636" height="303" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576808308468" />
     <state width="1636" height="264" key="GridCell.Tab.0.right/0.0.1680.994/-2560.-278.2560.1417@0.0.1680.994" timestamp="1576735948757" />
     <state width="1356" height="156" key="GridCell.Tab.0.right/0.23.1680.971/-2560.-278.2560.1417@0.23.1680.971" timestamp="1576635549189" />

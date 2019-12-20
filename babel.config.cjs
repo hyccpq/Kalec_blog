@@ -3,7 +3,7 @@
 module.exports = function(api) {
   api.cache(true)
   const serverMode = process.env.BUILD_ENV === "server";
-  console.log(serverMode, process.env.BUILD_ENV)
+  // console.log(serverMode, process.env.BUILD_ENV)
 
   const envOptsNoTargets = {
     loose: serverMode,
