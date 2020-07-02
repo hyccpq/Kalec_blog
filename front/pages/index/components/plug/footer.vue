@@ -1,10 +1,10 @@
 <template>
 <div class="footer">
   <div class="layout-copy">
-     <div><span class="footer-nu">2016-2019 &copy; 冰空的作品展示</span> | <span class="footer-nu">Designed by Kalecgos</span></div>
+     <div><span class="footer-nu">2016-2020 &copy; 冰空的作品展示</span> | <span class="footer-nu">Designed by Kalecgos</span></div>
     <p class="record">
-      <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">
-        辽ICP备16019219号-1
+      <a href="http://www.beian.miit.gov.cn/">
+        滇ICP备20004963
       </a>
     </p>
   </div>

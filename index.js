@@ -7,6 +7,6 @@
 
 // require('./server/index')
 ;(async () => {
-  ;(await import('@babel/register'))()
+  // ;(await import('@babel/register'))()
   import('./server/index.js')
 })()

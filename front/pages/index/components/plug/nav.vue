@@ -6,7 +6,7 @@
                 <Icon class="icon-menu" type="md-menu" size="24" color="#343739"></Icon>
             </iMenuItem>
             <iMenuItem name="0" class="nav-title">
-                <div>冰空的作品展示</div>
+                <div>{{title}}</div>
             </iMenuItem>
             <div class="set-center"></div>
             <Row type="flex" justify="end" class="code-row-bg">
@@ -51,6 +51,7 @@
 <script>
     import {Menu, Row, Icon, MenuItem, Submenu} from 'iview'
     import {mapState} from 'vuex'
+    import { BLOG_TITLE } from "../../../../utils/util";
 
     export default {
         name: "my-nav",
@@ -73,6 +74,7 @@
         },
         data() {
             return {
+              title: BLOG_TITLE,
                 theme1: 'light',
                 height: 0,
                 isShowNavBgc: true

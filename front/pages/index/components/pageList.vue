@@ -43,6 +43,7 @@
 <script>
 	import { mapState } from 'vuex'
 	import { Page,Content,Breadcrumb,BreadcrumbItem,Icon } from 'iview'
+    import { BLOG_TITLE } from "../../../utils/util";
 
 	export default {
 		metaInfo() {
@@ -50,7 +51,7 @@
 				title:  `${ this.$route.params.class || this.$route.params.tag
 				? this.$route.params.class || this.$route.params.tag
 				: '文章'} 第 ${ this.$route.params.page } 页`,
-                titleTemplate: '%s - 冰空的作品展示'
+                titleTemplate: `%s - ${BLOG_TITLE}`
 			}
         },
 		name: "page-list",

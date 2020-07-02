@@ -7,9 +7,11 @@
 
 <script>
 
+  import { BLOG_TITLE } from "../../utils/util";
+
   export default {
   	metaInfo:{
-  		title: '冰空的作品展示'
+  		title: BLOG_TITLE
     },
     name: 'app',
   }

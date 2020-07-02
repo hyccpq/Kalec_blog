@@ -39,10 +39,11 @@
 <script>
 	import { Arr } from './config'
 	import { Select, Option, Input, Button } from 'iview'
+    import { BLOG_TITLE } from "../../../../utils/util";
 	export default {
 		metaInfo: {
 			title: '毕业季快递查询助手',
-			titleTemplate: '%s - 冰空的作品展示'
+			titleTemplate: `%s - ${BLOG_TITLE}`
 		},
 		name: "express",
 		components: {

@@ -22,12 +22,13 @@
     import {Breadcrumb, BreadcrumbItem, Icon} from 'iview'
     import MyFooter from '../plug/footer'
     import GalleryCard from '../plug/galleryCard'
+    import { BLOG_TITLE } from "../../../../utils/util";
 
     export default {
         name: "gallery",
         metaInfo: {
 			title: ' Kalec的个人相册',
-            titleTemplate: '%s - 冰空的作品展示'
+            titleTemplate: `%s - ${BLOG_TITLE}`
         },
         components: {
             Breadcrumb, BreadcrumbItem, MyFooter, GalleryCard, Icon

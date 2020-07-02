@@ -38,11 +38,12 @@
 	import commentList from './plug/commentModule/commentList'
 	import { Breadcrumb,BreadcrumbItem,Icon, Content } from 'iview'
 	import Tag from './plug/Tag'
+    import { BLOG_TITLE } from "../../../utils/util";
 	export default {
 		metaInfo () {
 		    return {
 		    	title: this.articleInfo.title,
-                titleTemplate: '%s - 冰空的作品展示'
+                titleTemplate: `%s - ${BLOG_TITLE}`
             }
         },
 		name: "article-page",
