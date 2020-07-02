@@ -19,7 +19,7 @@ const HTTPS_OPTIONS = {
     resolve(getDirname(import.meta).__dirname, './conf/ssl/private.key')
   ),
   cert: fs.readFileSync(
-    resolve(getDirname(import.meta).__dirname, './conf/ssl/full_chain.pem')
+    resolve(getDirname(import.meta).__dirname, './conf/ssl/full_chain.crt')
   ),
   allowHTTP1: true
 }
