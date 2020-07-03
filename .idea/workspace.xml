@@ -2,25 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/front/pages/index/components/live/live.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/utils/util.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/ejs/live.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/live.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.greenlockrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/greenlock.d/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/greenlock.d/config.json.bak" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/articlePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/articlePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/express/express.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/express/express.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/gallery/gallery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/gallery/gallery.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/pageList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/pageList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/plug/footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/plug/footer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/components/plug/nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/components/plug/nav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index/server-entry.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index/server-entry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/server-build/vue-ssr-server-bundle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +94,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.start">
     <configuration name="build-routes" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -178,9 +165,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.build-routes" />
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.production:test" />
         <item itemvalue="npm.dev:index" />
       </list>
@@ -257,7 +244,8 @@
       <workItem from="1582344524971" duration="157000" />
       <workItem from="1592812896786" duration="795000" />
       <workItem from="1593182664183" duration="147000" />
-      <workItem from="1593674624943" duration="1175000" />
+      <workItem from="1593674624943" duration="1513000" />
+      <workItem from="1593758901548" duration="9874000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -305,25 +293,34 @@
     <option name="LAST_COMMIT_MESSAGE" value="懒加载图片" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1659" height="310" key="GridCell.Tab.0.bottom" timestamp="1593676745657">
+    <state width="1659" height="344" key="GridCell.Tab.0.bottom" timestamp="1593769912475">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="310" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593676745657" />
-    <state width="1659" height="310" key="GridCell.Tab.0.center" timestamp="1593676745656">
+    <state width="1659" height="310" key="GridCell.Tab.0.bottom/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806221" />
+    <state width="1659" height="344" key="GridCell.Tab.0.bottom/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593769912475" />
+    <state width="1659" height="310" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1593676834750" />
+    <state width="1659" height="344" key="GridCell.Tab.0.center" timestamp="1593769912467">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="310" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593676745656" />
-    <state width="1659" height="310" key="GridCell.Tab.0.left" timestamp="1593676745655">
+    <state width="1659" height="310" key="GridCell.Tab.0.center/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806218" />
+    <state width="1659" height="344" key="GridCell.Tab.0.center/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593769912467" />
+    <state width="1659" height="310" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1593676834748" />
+    <state width="1659" height="344" key="GridCell.Tab.0.left" timestamp="1593769912463">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="310" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593676745655" />
-    <state width="1659" height="310" key="GridCell.Tab.0.right" timestamp="1593676745657">
+    <state width="1659" height="310" key="GridCell.Tab.0.left/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806212" />
+    <state width="1659" height="344" key="GridCell.Tab.0.left/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593769912463" />
+    <state width="1659" height="310" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1593676834746" />
+    <state width="1659" height="344" key="GridCell.Tab.0.right" timestamp="1593769912469">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state width="1659" height="310" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593676745657" />
-    <state x="540" y="282" width="600" height="486" key="find.popup" timestamp="1593676591272">
+    <state width="1659" height="310" key="GridCell.Tab.0.right/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806219" />
+    <state width="1659" height="344" key="GridCell.Tab.0.right/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593769912469" />
+    <state width="1659" height="310" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1593676834749" />
+    <state x="540" y="282" width="600" height="486" key="find.popup" timestamp="1593766996958">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="540" y="282" width="600" height="486" key="find.popup/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593766996958" />
     <state x="540" y="282" width="600" height="486" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1593676591272" />
   </component>
 </project>
