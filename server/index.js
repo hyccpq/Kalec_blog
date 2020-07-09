@@ -99,9 +99,9 @@ console.log(MIDDLEWARES)
       console.log('服务运行于\nhttp://kalec.kalecgos.top:8088')
     })
   } else {
-    app.listen(80, () => {
-      console.log('服务运行于\nhttp://localhost:80')
-    })
+    // app.listen(80, () => {
+    //   console.log('服务运行于\nhttp://localhost:80')
+    // })
 
     GreenLock.init({
       packageRoot: resolve(getDirname(import.meta).__dirname, '../'),
@@ -117,6 +117,12 @@ function httpsWorker(glx, app) {
   const mHttp2Server = glx.http2Server({}, app.callback())
 
   mHttp2Server.listen(443, '0.0.0.0', function() {
-    console.log('https://localhost:443'.bgRed)
+    console.log('Listening on ', mHttp2Server.address().bgRed)
+  })
+
+  const mHttpServer = glx.httpServer()
+
+  mHttpServer.listen(80, '0.0.0.0', function() {
+    console.info('Listening on ', mHttpServer.address())
   })
 }
