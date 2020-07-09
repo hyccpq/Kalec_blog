@@ -117,7 +117,7 @@ function httpsWorker(glx, app) {
   const mHttp2Server = glx.http2Server({}, app.callback())
 
   mHttp2Server.listen(443, '0.0.0.0', function() {
-    console.log('Listening on ', mHttp2Server.address().bgRed)
+    console.log('Listening on ', mHttp2Server.address())
   })
 
   const mHttpServer = glx.httpServer()
