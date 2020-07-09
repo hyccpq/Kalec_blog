@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import R from 'ramda'
 import http2 from 'http2'
 import fs from 'fs'
-import GreenLock from 'greenlock-koa'
+import GreenLock from 'greenlock-express'
 
 import {
   initSchemas,
@@ -99,61 +99,24 @@ console.log(MIDDLEWARES)
       console.log('服务运行于\nhttp://kalec.kalecgos.top:8088')
     })
   } else {
-    const greenlock = GreenLock.create({
-      version: 'draft-11', // Let's Encrypt v2
-      // You MUST change this to 'https://acme-v02.api.letsencrypt.org/directory' in production
-      server: 'https://acme-staging-v02.api.letsencrypt.org/directory',
-
-      email: userInfo.email,
-      agreeTos: true,
-      approveDomains: ['kalecgos.top'],
-      // store: await import('greenlock-store-fs'),
-      // Join the community to get notified of important updates
-      // and help make greenlock better
-      communityMember: true,
-
-      configDir: resolve(getDirname(import.meta).__dirname, `./conf/ssl`),
-      domainKeyPath: resolve(
-        getDirname(import.meta).__dirname,
-        './conf/ssl/privkey.pem'
-      ),
-      privkeyPath: resolve(
-        getDirname(import.meta).__dirname,
-        './conf/ssl/privkey.pem'
-      ),
-      fullchainPath: resolve(
-        getDirname(import.meta).__dirname,
-        './conf/ssl/fullchain.pem'
-      ),
-      certPath: resolve(
-        getDirname(import.meta).__dirname,
-        './conf/ssl/cert.pem'
-      ),
-      chainPath: resolve(
-        getDirname(import.meta).__dirname,
-        './conf/ssl/chain.pem'
-      ),
-      bundlePath: resolve(
-        getDirname(import.meta).__dirname,
-        './conf/ssl/bundle.pem'
-      )
-
-      //, debug: true
-
-      //, debug: true
-    })
     app.listen(80, () => {
       console.log('服务运行于\nhttp://localhost:80')
     })
-    console.log(';;;;;;;;;')
-    console.log(greenlock)
-    http2
-      .createSecureServer(
-        greenlock.tlsOptions,
-        greenlock.middleware(app.callback())
-      )
-      .listen(443, () => {
-        console.log('https://localhost:443'.bgRed)
-      })
+
+    GreenLock.init({
+      packageRoot: resolve(getDirname(import.meta).__dirname, '../'),
+      configDir: './greenlock.d',
+      maintainerEmail: userInfo.email,
+      cluster: false
+    }).ready(glx => httpsWorker(glx, app))
   }
 })()
+
+function httpsWorker(glx, app) {
+  console.log(glx)
+  const mHttp2Server = glx.http2Server({}, app.callback())
+
+  mHttp2Server.listen(443, '0.0.0.0', function() {
+    console.log('https://localhost:443'.bgRed)
+  })
+}
