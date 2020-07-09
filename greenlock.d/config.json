@@ -14,5 +14,5 @@
     "serverKeyType": "RSA-2048",
     "subscriberEmail": "hyccpq@hotmail.com"
   },
-  "sites": []
+  "sites": [{ "subject": "kalecgos.top", "altnames": ["www.kalecgos.top"] }]
 }
