@@ -1,0 +1,20 @@
+{
+  "privateKeyJwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "d": "_S_ajjCS20PmP-faSx44tlvbpDqrUqN4o4VMO8_-oF8",
+    "x": "KdBoeASlfqSk_A1R5Cp1a5a0ReiffT2fY1TOinjTWL0",
+    "y": "3FiMR0wXecI2LDvrvKuqJ9RYLwTc41XtcGFYOknTsi4",
+    "kid": "9-jx4k4CQI3C9GQ1DynSnDo666ff-cqetamDoBqwbhM"
+  },
+  "publicKeyJwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "KdBoeASlfqSk_A1R5Cp1a5a0ReiffT2fY1TOinjTWL0",
+    "y": "3FiMR0wXecI2LDvrvKuqJ9RYLwTc41XtcGFYOknTsi4",
+    "kid": "9-jx4k4CQI3C9GQ1DynSnDo666ff-cqetamDoBqwbhM",
+    "use": "sig"
+  },
+  "privateKeyPem": "-----BEGIN EC PRIVATE KEY-----\nMHcCAQEEIP0v2o4wkttD5j/n2kseOLZb26Q6q1KjeKOFTDvP/qBfoAoGCCqGSM49\nAwEHoUQDQgAEKdBoeASlfqSk/A1R5Cp1a5a0ReiffT2fY1TOinjTWL3cWIxHTBd5\nwjYsO+u8q6on1FgvBNzjVe1wYVg6SdOyLg==\n-----END EC PRIVATE KEY-----",
+  "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKdBoeASlfqSk/A1R5Cp1a5a0Reif\nfT2fY1TOinjTWL3cWIxHTBd5wjYsO+u8q6on1FgvBNzjVe1wYVg6SdOyLg==\n-----END PUBLIC KEY-----"
+}

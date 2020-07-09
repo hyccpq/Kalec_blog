@@ -107,13 +107,13 @@ console.log(MIDDLEWARES)
       packageRoot: resolve(getDirname(import.meta).__dirname, '../'),
       configDir: './greenlock.d',
       maintainerEmail: userInfo.email,
+      debug: false,
       cluster: false
     }).ready(glx => httpsWorker(glx, app))
   }
 })()
 
 function httpsWorker(glx, app) {
-  console.log(glx)
   const mHttp2Server = glx.http2Server({}, app.callback())
 
   mHttp2Server.listen(443, '0.0.0.0', function() {
