@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.greenlockrc" beforeDir="false" afterPath="$PROJECT_DIR$/.greenlockrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greenlock.d/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/greenlock.d/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/greenlock.d/config.json.bak" beforeDir="false" afterPath="$PROJECT_DIR$/greenlock.d/config.json.bak" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +244,7 @@
       <workItem from="1593182664183" duration="147000" />
       <workItem from="1593674624943" duration="1513000" />
       <workItem from="1593758901548" duration="10302000" />
-      <workItem from="1594276764516" duration="3169000" />
+      <workItem from="1594276764516" duration="3879000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -289,6 +292,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="懒加载图片" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="578" y="276" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594283352586">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="578" y="276" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1594283352586" />
     <state width="620" height="466" key="DebuggerActiveHint" timestamp="1594279874538">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
