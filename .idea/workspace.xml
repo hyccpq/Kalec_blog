@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build/webpack.config.client.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/server/build/webpack.config.client.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middlewares/index.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/index.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middlewares/prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middlewares/prod.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +93,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build-routes" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -110,11 +114,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="dev:index" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="build:client" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="dev:index" />
+        <script value="build:client" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -152,19 +156,19 @@
     </configuration>
     <list>
       <item itemvalue="npm.dev:manage" />
-      <item itemvalue="npm.dev:index" />
       <item itemvalue="npm.start" />
       <item itemvalue="npm.build-routes" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.production:test" />
+      <item itemvalue="npm.build:client" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.build:client" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.build-routes" />
         <item itemvalue="npm.production:test" />
-        <item itemvalue="npm.dev:index" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +245,7 @@
       <workItem from="1593182664183" duration="147000" />
       <workItem from="1593674624943" duration="1513000" />
       <workItem from="1593758901548" duration="10302000" />
-      <workItem from="1594276764516" duration="12994000" />
+      <workItem from="1594276764516" duration="18663000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
@@ -306,34 +310,38 @@
     </state>
     <state width="1013" height="466" key="DebuggerActiveHint/0.0.1680.1050@0.0.1680.1050" timestamp="1594360300015" />
     <state width="620" height="466" key="DebuggerActiveHint/0.25.1680.966@0.25.1680.966" timestamp="1594279222139" />
-    <state width="1659" height="243" key="GridCell.Tab.0.bottom" timestamp="1594361077389">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1659" height="404" key="GridCell.Tab.0.bottom" timestamp="1594369752108">
+      <screen x="0" y="25" width="1680" height="966" />
     </state>
     <state width="1659" height="310" key="GridCell.Tab.0.bottom/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806221" />
     <state width="1659" height="437" key="GridCell.Tab.0.bottom/0.-920.1680.920/0.25.1680.966@0.25.1680.966" timestamp="1594108503417" />
     <state width="1659" height="437" key="GridCell.Tab.0.bottom/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593770123624" />
-    <state width="1659" height="243" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1594361077389" />
-    <state width="1659" height="243" key="GridCell.Tab.0.center" timestamp="1594361077387">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1659" height="401" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1594368978932" />
+    <state width="1659" height="404" key="GridCell.Tab.0.bottom/0.25.1680.966@0.25.1680.966" timestamp="1594369752108" />
+    <state width="1659" height="404" key="GridCell.Tab.0.center" timestamp="1594369752106">
+      <screen x="0" y="25" width="1680" height="966" />
     </state>
     <state width="1659" height="310" key="GridCell.Tab.0.center/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806218" />
     <state width="1659" height="437" key="GridCell.Tab.0.center/0.-920.1680.920/0.25.1680.966@0.25.1680.966" timestamp="1594108503416" />
     <state width="1659" height="437" key="GridCell.Tab.0.center/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593770123622" />
-    <state width="1659" height="243" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1594361077387" />
-    <state width="1659" height="243" key="GridCell.Tab.0.left" timestamp="1594361077384">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1659" height="401" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1594368978930" />
+    <state width="1659" height="404" key="GridCell.Tab.0.center/0.25.1680.966@0.25.1680.966" timestamp="1594369752106" />
+    <state width="1659" height="404" key="GridCell.Tab.0.left" timestamp="1594369752105">
+      <screen x="0" y="25" width="1680" height="966" />
     </state>
     <state width="1659" height="310" key="GridCell.Tab.0.left/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806212" />
     <state width="1659" height="437" key="GridCell.Tab.0.left/0.-920.1680.920/0.25.1680.966@0.25.1680.966" timestamp="1594108503415" />
     <state width="1659" height="437" key="GridCell.Tab.0.left/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593770123621" />
-    <state width="1659" height="243" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1594361077384" />
-    <state width="1659" height="243" key="GridCell.Tab.0.right" timestamp="1594361077388">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1659" height="401" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1594368978929" />
+    <state width="1659" height="404" key="GridCell.Tab.0.left/0.25.1680.966@0.25.1680.966" timestamp="1594369752105" />
+    <state width="1659" height="404" key="GridCell.Tab.0.right" timestamp="1594369752107">
+      <screen x="0" y="25" width="1680" height="966" />
     </state>
     <state width="1659" height="310" key="GridCell.Tab.0.right/0.-1415.2560.1415/0.25.1680.966@0.25.1680.966" timestamp="1593741806219" />
     <state width="1659" height="437" key="GridCell.Tab.0.right/0.-920.1680.920/0.25.1680.966@0.25.1680.966" timestamp="1594108503416" />
     <state width="1659" height="437" key="GridCell.Tab.0.right/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593770123623" />
-    <state width="1659" height="243" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1594361077388" />
+    <state width="1659" height="401" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1594368978931" />
+    <state width="1659" height="404" key="GridCell.Tab.0.right/0.25.1680.966@0.25.1680.966" timestamp="1594369752107" />
     <state width="1659" height="283" key="GridCell.Tab.1.bottom" timestamp="1594361000950">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -386,11 +394,11 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1659" height="283" key="GridCell.Tab.3.right/0.0.1680.1050@0.0.1680.1050" timestamp="1594361000953" />
-    <state x="540" y="282" width="600" height="486" key="find.popup" timestamp="1594284637217">
+    <state x="830" y="266" width="600" height="486" key="find.popup" timestamp="1594369167196">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="540" y="282" width="600" height="486" key="find.popup/0.-945.1680.945/0.0.1680.1050@0.0.1680.1050" timestamp="1593766996958" />
-    <state x="540" y="282" width="600" height="486" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1594284637217" />
+    <state x="830" y="266" width="600" height="486" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1594369167196" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,6 +1,6 @@
 {
   "name": "kalec_blog",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "description": "my_blog",
   "repository": "https://github.com/hyccpq/Kalec_blog.git",
   "author": "hyccpq <hyccpq@hotmail.com>",
@@ -92,6 +92,7 @@
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "babel-plugin-import": "^1.13.0",
+    "filemanager-webpack-plugin": "^2.0.5",
     "core-js": "^3.1.4",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",

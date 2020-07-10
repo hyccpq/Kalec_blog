@@ -6,7 +6,7 @@ import { getDirname, getRequire } from '../lib/file.js'
 
 const condition = process.env.NODE_ENV
 const clientManifestResp = getRequire(import.meta).require(
-  '../../public/dist/vue-ssr-client-manifest.json'
+  '../server-build/vue-ssr-client-manifest.json'
 )
 
 export const prod = app => {

@@ -50,7 +50,7 @@ export const allWebpackDev = async app => {
     const mfs = devMiddleware.devMiddleware.fileSystem
     const filePath = join(
       clientConfig.output.path,
-      '../../public/dist/vue-ssr-client-manifest.json'
+      '../server-build/vue-ssr-client-manifest.json'
     )
     console.log(mfs.existsSync(filePath))
 
