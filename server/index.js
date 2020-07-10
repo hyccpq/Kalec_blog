@@ -2,6 +2,7 @@ import Koa from 'koa'
 import { resolve } from 'path'
 import R from 'ramda'
 import http2 from 'http2'
+import http from 'http'
 import fs from 'fs'
 import GreenLock from 'greenlock-express'
 
@@ -80,10 +81,7 @@ console.log(MIDDLEWARES)
         R.compose(
           s => import(s),
           name =>
-            resolve(
-              getDirname(import.meta).__dirname,
-              `/conf/ssl./middlewares/${name}`
-            ),
+            resolve(getDirname(import.meta).__dirname, `./middlewares/${name}`),
           iter => `${iter}.js`
         )
       ),
@@ -114,6 +112,8 @@ console.log(MIDDLEWARES)
 })()
 
 function httpsWorker(glx, app) {
+  const cb = app.callback()
+
   const mHttp2Server = glx.http2Server({}, app.callback())
 
   mHttp2Server.listen(443, '0.0.0.0', function() {

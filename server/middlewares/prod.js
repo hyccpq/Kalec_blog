@@ -10,7 +10,7 @@ const clientManifestResp = getRequire(import.meta).require(
 )
 
 export const prod = app => {
-  if (condition === 'production') app.use(koaSslify())
+  // if (condition === 'production') app.use(koaSslify())
 
   app.use(async (ctx, next) => {
     try {
