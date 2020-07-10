@@ -12,3 +12,5 @@ yarn.lock
 /node_modules
 /public
 /server/conf
+
+/greenlock.d
