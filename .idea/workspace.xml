@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535d86ba-4fc4-43ad-91b6-beddd538d247" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +241,7 @@
       <workItem from="1593182664183" duration="147000" />
       <workItem from="1593674624943" duration="1513000" />
       <workItem from="1593758901548" duration="10302000" />
-      <workItem from="1594276764516" duration="12576000" />
+      <workItem from="1594276764516" duration="12994000" />
     </task>
     <task id="LOCAL-00001" summary="选择方案中">
       <created>1556009082754</created>
