@@ -11,7 +11,7 @@ import {
 } from './database/init.js'
 import 'colors'
 import { getDirname, getRequire } from './lib/file.js'
-import { userInfo } from './conf/userConf'
+import { userInfo } from './conf/userConf.js'
 
 const MIDDLEWARES = ['utils', 'session', 'staticServer', 'router']
 
