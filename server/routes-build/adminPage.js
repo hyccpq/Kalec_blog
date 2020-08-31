@@ -14,7 +14,7 @@ let AdminControllers = (_dec = controller('/admin'), _dec2 = get('*'), _dec(_cla
         await next();
       } else {
         ctx.response.type = 'html';
-        ctx.response.body = fs.createReadStream(resolve(getDirname(import.meta).__dirname, '../../public/dist/manage.html'));
+        ctx.response.body = fs.createReadStream(resolve(getDirname(import.meta).__dirname, '../server-build/manage.html'));
       } // ctx.manageWebViewConf
       // console.log(ctx.manageWebViewConf)
       // if (ctx.manageWebViewConf) {
