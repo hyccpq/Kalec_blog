@@ -17,7 +17,7 @@ export default class AdminControllers {
         ctx.response.body = fs.createReadStream(
           resolve(
             getDirname(import.meta).__dirname,
-            '../../public/dist/manage.html'
+            '../server-build/manage.html'
           )
         )
       }

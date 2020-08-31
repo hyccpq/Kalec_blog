@@ -11,6 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const QiniuUploadPlugin = require('qiniu-upload-plugin')
 const { qiniu } = require('../conf/qiniu')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const FileManagerPlugin = require('filemanager-webpack-plugin')
 
 const prod = process.env.NODE_ENV === 'production'
 
@@ -169,6 +170,18 @@ if (prod) {
         ]
       },
       canPrint: true
+    }),
+    new FileManagerPlugin({
+      onEnd: [
+        {
+          copy: [
+            {
+              source: resolve(__dirname, '../../public/dist/manage.html'),
+              destination: resolve(__dirname, '../server-build/manage.html')
+            }
+          ]
+        }
+      ]
     })
   ])
 
