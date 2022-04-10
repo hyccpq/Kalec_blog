@@ -5,7 +5,7 @@ import { resolve } from 'path'
 import { userInfo } from '../conf/userConf.js'
 import { getDirname } from '../lib/file.js'
 
-const DB_URL = 'mongodb://localhost:27017/blog_database'
+const DB_URL = 'mongodb://192.168.123.100:41966/blog_database'
 mongoose.Promise = global.Promise
 
 export const initSchemas = async () => {

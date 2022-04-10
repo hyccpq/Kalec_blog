@@ -32,8 +32,9 @@ const _httpRequest = (param, fn) => {
 				throw res.data
 			}
 		}).catch(err=> {
+			console.error('=========err=======', err)
 			fn(false)
-			throw err
+			// throw err
 		})
 }
 
@@ -90,7 +91,7 @@ export default {
 			method: 'GET'
 		})
 	},
-	
+
 	getCaptcha(commit){
 		return request(
 			currentState => commit(type.SHOW_LOADING, currentState)
@@ -99,7 +100,7 @@ export default {
 			method: 'GET'
 		})
 	},
-	
+
 	commitComment(payload, commit) {
 		return request(
 			currentState => commit(type.SHOW_LOADING, currentState)
@@ -109,7 +110,7 @@ export default {
 			data: payload
 		})
 	},
-	
+
 	commitReply(payload, commit) {
 		return request(
 			currentState => commit(type.SHOW_LOADING, currentState)
@@ -119,7 +120,7 @@ export default {
 			data: payload
 		})
 	},
-	
+
 	compressCaptcha(payload) {
 		return request({
 			url: POST_COMPRESS_CAPTCHA,

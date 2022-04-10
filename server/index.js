@@ -1,7 +1,6 @@
 import Koa from 'koa'
 import { resolve } from 'path'
 import R from 'ramda'
-import GreenLock from 'greenlock-express'
 
 import {
   initSchemas,
@@ -14,16 +13,6 @@ import { getDirname, getRequire } from './lib/file.js'
 import { userInfo } from './conf/userConf.js'
 
 const MIDDLEWARES = ['utils', 'session', 'staticServer', 'router']
-
-// const HTTPS_OPTIONS = {
-//   key: fs.readFileSync(
-//     resolve(getDirname(import.meta).__dirname, '/conf/ssl./conf/ssl/private.key')
-//   ),
-//   cert: fs.readFileSync(
-//     resolve(getDirname(import.meta).__dirname, '/conf/ssl./conf/ssl/full_chain.crt')
-//   ),
-//   allowHTTP1: true
-// }
 
 const condition = process.env.NODE_ENV
 
@@ -72,6 +61,8 @@ console.log(MIDDLEWARES)
     }
   }
 
+  console.log('MIDDLEWARES', MIDDLEWARES.green)
+
   const useMiddlewares = app => {
     R.pipe(
       R.map(
@@ -88,38 +79,7 @@ console.log(MIDDLEWARES)
 
   useMiddlewares(app)
 
-  if (condition !== 'production' || condition === 'production:test') {
-    app.listen(8088, () => {
-      console.log('服务运行于\nhttp://localhost:8088')
-      console.log('服务运行于\nhttp://kalec.kalecgos.top:8088')
-    })
-  } else {
-    // app.listen(80, () => {
-    //   console.log('服务运行于\nhttp://localhost:80')
-    // })
-
-    GreenLock.init({
-      packageRoot: resolve(getDirname(import.meta).__dirname, '../'),
-      configDir: './greenlock.d',
-      maintainerEmail: userInfo.email,
-      debug: false,
-      cluster: false
-    }).ready(glx => httpsWorker(glx, app))
-  }
+  app.listen(8088, () => {
+    console.log('服务运行于\nhttp://127.0.0.1:8088')
+  })
 })()
-
-function httpsWorker(glx, app) {
-  const cb = app.callback()
-
-  const mHttp2Server = glx.http2Server({}, cb)
-
-  mHttp2Server.listen(443, '0.0.0.0', function() {
-    console.log('Listening on ', mHttp2Server.address())
-  })
-
-  const mHttpServer = glx.httpServer()
-
-  mHttpServer.listen(80, '0.0.0.0', function() {
-    console.info('Listening on ', mHttpServer.address())
-  })
-}

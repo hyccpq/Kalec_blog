@@ -92,7 +92,7 @@ a {
 //  -webkit-overflow-scrolling: touch;
 //  overflow-x: hidden;
 //}
-html,body,#app {
+html,body,#root {
   height: 100%;
   width: 100%;
 }

@@ -105,24 +105,7 @@ const config = merge(base, {
       ),
       "process.env.VUE_ENV": "\"client\""
     }),
-    new VueSSRClientPlugin(),
-    new FileManagerPlugin({
-      onEnd: [
-        {
-          copy: [
-            {
-              source: resolve(__dirname, "../../public/dist/vue-ssr-client-manifest.json"),
-              destination: resolve(__dirname, "../server-build/vue-ssr-client-manifest.json")
-            }
-          ]
-        }
-        // {
-        //   delete: [
-        //     "./dist/bundle.js"
-        //   ]
-        // }
-      ]
-    })
+    new VueSSRClientPlugin()
   ]
 });
 
@@ -154,6 +137,23 @@ if (prod) {
         minify: true
       }
     }),
+    new FileManagerPlugin({
+        onEnd: [
+          {
+            copy: [
+              {
+                source: resolve(__dirname, "../../public/dist/vue-ssr-client-manifest.json"),
+                destination: resolve(__dirname, "../server-build/vue-ssr-client-manifest.json")
+              }
+            ]
+          }
+          // {
+          //   delete: [
+          //     "./dist/bundle.js"
+          //   ]
+          // }
+        ]
+    }),
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
       reportFilename: join(
@@ -164,7 +164,8 @@ if (prod) {
       openAnalyzer: true,
       statsFilename: "stats.json"
     })
-  );
+
+);
   // 删除devtool
   delete config.devtool;
   config.plugins = config.plugins.concat([
